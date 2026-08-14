@@ -238,6 +238,17 @@ body.rtl .sov .rl b{font-family:'Cairo',sans-serif}
 .langtabs span{font:600 10.5px 'JetBrains Mono',monospace;padding:4px 10px;border-radius:99px;background:#EFEBE0;color:#8a8577}
 .langtabs span.on{background:#14141a;color:#CCFF2E}
 body.rtl .langtabs span{font-family:'Cairo',sans-serif}
+/* ===== REPORT PREVIEW CARDS ===== */
+.rcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:820px){.rcards{grid-template-columns:1fr}}
+.rcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
+.rcard .ic{font-size:26px;display:block;margin-bottom:12px}
+.rcard h3{font-size:17px;margin-bottom:8px}
+.rcard p{color:var(--dim);font-size:14.5px;line-height:1.6}
+.rcard .quote{color:var(--cream);font-style:italic;border-inline-start:3px solid var(--acid);padding-inline-start:12px}
+body.rtl .rcard .quote{font-style:normal}
+.rcard .pbadge{position:absolute;top:20px;inset-inline-end:20px;padding:3px 9px;border-radius:99px;background:var(--acid);color:#0A0A0B;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.05em}
+body.rtl .rcard .pbadge{font-family:'Cairo',sans-serif;letter-spacing:0}
 /* ===== COMPARISON TABLE ===== */
 .cmp{max-width:760px;margin:0 auto;overflow-x:auto}
 .cmptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
@@ -391,6 +402,16 @@ body.rtl .langtabs span{font-family:'Cairo',sans-serif}
   </div>
 </div></section>
 
+<!-- REPORT PREVIEW : ce que le client reçoit -->
+<section class="s" id="report" style="padding-top:20px"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="rp_k"></span></div><h2 data-i="rp_t"></h2><p data-i="rp_p"></p></div>
+  <div class="rcards rv">
+    <div class="rcard"><span class="ic">📊</span><h3 data-i="rp1t"></h3><p data-i="rp1p"></p></div>
+    <div class="rcard"><span class="ic">🧠</span><h3 data-i="rp2t"></h3><p class="quote" data-i="rp2p"></p></div>
+    <div class="rcard"><span class="ic">🎯</span><span class="pbadge">PREMIUM</span><h3 data-i="rp3t"></h3><p data-i="rp3p"></p></div>
+  </div>
+</div></section>
+
 <!-- BENTO -->
 <section class="s" id="feat"><div class="wrap">
   <div class="head"><div class="kicker"><s></s><span data-i="f_k"></span></div><h2 data-i="f_t"></h2><p data-i="f_p"></p></div>
@@ -485,6 +506,10 @@ h_k:"Three steps",h_t:"Set up once. Insights every week.",h_p:"No training, no j
 s1t:"Add your brand",s1p:"Your name, your rivals, your industry. AIVisib auto-writes the real questions your buyers ask AI.",
 s2t:"We interrogate the AIs",s2p:"Every week we run those questions through ChatGPT, Gemini, Perplexity and Claude — in three languages.",
 s3t:"You see, then you win",s3p:"A clear scoreboard: who gets named, which sources the AIs trust, and the actions that move you up.",
+rp_k:"Your report",rp_t:"Exactly what you get",rp_p:"Not just numbers — a clear read and a plan you can act on.",
+rp1t:"A visibility score",rp1p:"Your share of voice against rivals, per AI engine and per language.",
+rp2t:"Plain-language interpretation",rp2p:"“You dominate in English but you're invisible in Arabic — a gap worth closing.”",
+rp3t:"A prioritized action plan",rp3p:"Concrete actions ranked by impact and effort, so AI recommends you more often.",
 f_k:"What's inside",f_t:"Everything you need. Nothing you'll never open.",f_p:"The complete AI-visibility toolkit, for a fraction of what the big platforms charge.",
 f1t:"Arabic. Actually.",f1p:"Your Gulf customers ask AI in Arabic — and every English-only tool is blind to those answers. We test real Arabic prompts. Nobody else does.",
 f2t:"Competitor share of voice",f2p:"See precisely who gets recommended instead of you — per question, per engine, per language.",
@@ -527,6 +552,10 @@ h_k:"Trois étapes",h_t:"Configuré une fois. Des insights chaque semaine.",h_p:
 s1t:"Ajoutez votre marque",s1p:"Votre nom, vos concurrents, votre secteur. AIVisib rédige automatiquement les vraies questions posées aux IA.",
 s2t:"Nous interrogeons les IA",s2p:"Chaque semaine, ces questions passent par ChatGPT, Gemini, Perplexity et Claude — en trois langues.",
 s3t:"Vous voyez, puis vous gagnez",s3p:"Un tableau clair : qui est cité, quelles sources les IA utilisent, et les actions qui vous font monter.",
+rp_k:"Ton rapport",rp_t:"Exactement ce que tu reçois",rp_p:"Pas juste des chiffres — une lecture claire et un plan concret.",
+rp1t:"Un score de visibilité",rp1p:"Ta part de voix face à tes concurrents, par moteur IA et par langue.",
+rp2t:"Une interprétation en clair",rp2p:"« Tu domines en anglais mais tu es invisible en arabe — un manque à combler. »",
+rp3t:"Un plan d'action priorisé",rp3p:"Des actions concrètes classées par impact et effort, pour être recommandé plus souvent.",
 f_k:"Ce qu'il y a dedans",f_t:"Tout le nécessaire. Rien d'inutile.",f_p:"La boîte à outils complète de visibilité IA, à une fraction du prix des grandes plateformes.",
 f1t:"L'arabe. Pour de vrai.",f1p:"Vos clients du Golfe interrogent l'IA en arabe — et tous les outils anglophones sont aveugles sur ces réponses. Nous testons de vrais prompts arabes. Personne d'autre ne le fait.",
 f2t:"Part de voix concurrentielle",f2p:"Voyez précisément qui est recommandé à votre place — par question, par moteur, par langue.",
@@ -569,6 +598,10 @@ h_k:"ثلاث خطوات",h_t:"إعداد واحد. رؤى كل أسبوع.",h_p
 s1t:"أضف علامتك التجارية",s1p:"اسمك، منافسوك، قطاعك. وAIVisib يكتب تلقائياً الأسئلة الحقيقية التي يطرحها عملاؤك.",
 s2t:"نحن نسأل المحركات",s2p:"كل أسبوع نمرّر هذه الأسئلة على ChatGPT وGemini وPerplexity وClaude — بثلاث لغات.",
 s3t:"ترى، ثم تفوز",s3p:"لوحة واضحة: من يُذكر، وما المصادر التي تثق بها المحركات، وما الإجراءات التي ترفع ترتيبك.",
+rp_k:"تقريرك",rp_t:"بالضبط ما تحصل عليه",rp_p:"ليست مجرد أرقام — قراءة واضحة وخطة قابلة للتنفيذ.",
+rp1t:"درجة ظهور واضحة",rp1p:"حصتك من الصوت مقابل منافسيك، لكل محرك ذكاء اصطناعي ولكل لغة.",
+rp2t:"تفسير بلغة بسيطة",rp2p:"«أنت متصدّر بالإنجليزية لكنك غير مرئي بالعربية — فجوة تستحق المعالجة.»",
+rp3t:"خطة عمل حسب الأولوية",rp3p:"إجراءات ملموسة مرتبة حسب الأثر والجهد، لتُوصي بك المحركات أكثر.",
 f_k:"ما بداخلها",f_t:"كل ما تحتاجه لتتصدّر في الذكاء الاصطناعي.",f_p:"مجموعة أدوات كاملة لقياس وتحسين تقييمك، بواجهة عربية بسيطة وواضحة.",
 f1t:"العربية. فعلياً.",f1p:"عملاؤك في الخليج يسألون الذكاء الاصطناعي بالعربية — وكل الأدوات الإنجليزية عمياء عن تلك الإجابات. نحن نختبر أسئلة عربية حقيقية. لا أحد غيرنا يفعل ذلك.",
 f2t:"نصيبك من التوصيات مقابل المنافسين",f2p:"شاهد بدقة من يُوصى به بدلاً منك — لكل سؤال، ولكل محرك، ولكل لغة.",
