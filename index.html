@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIVisib — Does AI recommend your brand?</title>
+<meta name="description" content="AIVisib shows you exactly what ChatGPT, Gemini, Perplexity and Claude say about your brand — in English, French and Arabic. Track it. Beat competitors. The only AI-visibility tool that speaks Arabic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0A0B; --ink2:#111114; --panel:#161619; --line:rgba(255,255,255,.09);
+  --cream:#F5F1E8; --dim:#8E8E96; --acid:#CCFF2E; --hot:#FF5C3E; --cool:#5BE7C4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;width:100%;overscroll-behavior-x:none}
+body{background:var(--ink);color:var(--cream);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.55;overflow-x:hidden;max-width:100%;width:100%;position:relative;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased}
+.ticker,.strip{max-width:100%}
+.ticker div,.strip div{will-change:transform}
+body.rtl{direction:rtl;font-family:'Cairo',sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+/* grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.mono{font-family:'JetBrains Mono',monospace}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+body.rtl .serif{font-family:'Cairo',sans-serif;font-style:normal;font-weight:900}
+
+/* ticker */
+.ticker{background:var(--acid);color:#0A0A0B;overflow:hidden;white-space:nowrap;padding:9px 0;font-weight:600;font-size:13px;letter-spacing:.02em}
+.ticker div{display:inline-block;animation:slide 32s linear infinite}
+.ticker span{padding:0 26px}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* nav */
+header{position:sticky;top:0;z-index:100;background:rgba(10,10,11,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em}
+.logo i{width:26px;height:26px;border-radius:7px;background:var(--acid);display:grid;place-items:center;font-style:normal;color:#0A0A0B;font-size:14px;font-weight:700}
+.nl{display:flex;align-items:center;gap:26px}
+.nl a{color:var(--dim);font-size:14.5px}
+.nl a:hover{color:var(--cream)}
+@media(max-width:880px){.nl .hm{display:none}}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;flex:none}
+.lang button{background:none;border:0;color:var(--dim);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;
+ min-width:34px;height:32px;display:flex;align-items:center;justify-content:center;padding:0 8px;cursor:pointer;line-height:1}
+.lang button#b_ar{font-family:'Cairo','Segoe UI',sans-serif;font-size:16px;font-weight:700}
+.lang button.on{background:var(--cream);color:#0A0A0B}
+.cta{background:var(--acid);color:#0A0A0B;font-weight:700;padding:11px 20px;border-radius:99px;font-size:14px;transition:.18s;display:inline-block}
+.cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(204,255,46,.28)}
+.cta.big{padding:17px 34px;font-size:16.5px}
+.cta.out{background:transparent;color:var(--cream);border:1px solid var(--line)}
+.cta.out:hover{box-shadow:none;border-color:var(--cream)}
+
+/* hero */
+.hero{padding:78px 0 90px;position:relative;overflow:hidden}
+.final{overflow:hidden}
+.hero::before{content:"";position:absolute;top:-160px;left:12%;width:620px;height:420px;border-radius:50%;
+ background:radial-gradient(circle,rgba(204,255,46,.13),transparent 68%);filter:blur(50px);pointer-events:none}
+.hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;position:relative}
+@media(max-width:1000px){.hgrid{grid-template-columns:1fr;gap:44px}}
+.kicker{display:inline-flex;align-items:center;gap:9px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acid);margin-bottom:26px}
+.kicker s{width:26px;height:1px;background:var(--acid);display:block}
+body.rtl .kicker{letter-spacing:0;font-family:'Cairo',sans-serif}
+h1{font-size:clamp(40px,5.6vw,74px);line-height:.99;letter-spacing:-.035em;font-weight:700;margin-bottom:24px}
+body.rtl h1{letter-spacing:0;line-height:1.25}
+h1 em{color:var(--acid)}
+.sub{color:var(--dim);font-size:clamp(16px,1.7vw,19px);max-width:520px;margin-bottom:34px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.note{margin-top:22px;font:500 12.5px 'JetBrains Mono',monospace;color:var(--dim)}
+body.rtl .note{font-family:'Cairo',sans-serif}
+
+/* live chat demo */
+.demo{background:var(--ink2);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+.demo .bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line);background:#0D0D10}
+.demo .bar i{width:9px;height:9px;border-radius:50%;background:#2A2A30;display:block}
+.demo .bar .eng{margin-inline-start:auto;font:500 11.5px 'JetBrains Mono',monospace;color:var(--dim);display:flex;align-items:center;gap:7px}
+.demo .bar .eng b{width:6px;height:6px;border-radius:50%;background:var(--cool);display:block;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.demo .body{padding:22px;min-height:326px;display:flex;flex-direction:column;gap:16px}
+.bubble{max-width:88%;padding:13px 16px;border-radius:15px;font-size:14.6px;line-height:1.6}
+.bubble.you{align-self:flex-end;background:#22222A;border-bottom-right-radius:5px}
+body.rtl .bubble.you{border-bottom-right-radius:15px;border-bottom-left-radius:5px}
+.bubble.ai{align-self:flex-start;background:#0C1A16;border:1px solid rgba(91,231,196,.22);border-bottom-left-radius:5px;min-height:46px}
+body.rtl .bubble.ai{border-bottom-left-radius:15px;border-bottom-right-radius:5px}
+.bubble .cursor{display:inline-block;width:7px;height:15px;background:var(--cool);vertical-align:-2px;animation:blink .8s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+mark.win{background:rgba(204,255,46,.19);color:var(--acid);border-radius:4px;padding:1px 5px;font-weight:600}
+mark.lose{background:rgba(255,92,62,.16);color:var(--hot);border-radius:4px;padding:1px 5px;font-weight:600}
+.verdict{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);
+ font:500 12.5px 'JetBrains Mono',monospace;opacity:0;transition:opacity .5s}
+body.rtl .verdict{font-family:'Cairo',sans-serif}
+.verdict.show{opacity:1}
+.verdict .pill{padding:5px 11px;border-radius:99px;font-weight:700}
+.pill.ok{background:rgba(204,255,46,.14);color:var(--acid)}
+.pill.no{background:rgba(255,92,62,.14);color:var(--hot)}
+
+/* logos strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;white-space:nowrap}
+.strip div{display:inline-block;animation:slide 26s linear infinite}
+.strip span{padding:0 34px;color:var(--dim);font:500 15px 'JetBrains Mono',monospace;letter-spacing:-.01em}
+
+/* sections */
+section.s{padding:96px 0}
+.head{max-width:660px;margin-bottom:54px}
+.head .kicker{margin-bottom:18px}
+h2{font-size:clamp(30px,3.8vw,48px);line-height:1.06;letter-spacing:-.03em;font-weight:700;margin-bottom:16px}
+body.rtl h2{letter-spacing:0;line-height:1.35}
+.head p{color:var(--dim);font-size:17px}
+
+/* bar race */
+.race{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px}
+.race .rw{margin-bottom:20px}
+.race .rl{display:flex;justify-content:space-between;font-size:14.5px;margin-bottom:9px}
+.race .rl b{font-family:'JetBrains Mono',monospace;font-weight:700}
+body.rtl .race .rl b{font-family:'Cairo',sans-serif}
+.track{height:11px;background:#232329;border-radius:99px;overflow:hidden}
+.fill{display:block;height:100%;width:0;border-radius:99px;transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.fill.me{background:linear-gradient(90deg,var(--acid),#9BE000)}
+.fill.c1{background:#4A4A55}.fill.c2{background:#3A3A44}.fill.c3{background:#2E2E36}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+@media(max-width:980px){.bento{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.bento{grid-template-columns:1fr}}
+.b{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;transition:.25s;position:relative;overflow:hidden}
+.b:hover{border-color:rgba(204,255,46,.35);transform:translateY(-3px)}
+.b.w3{grid-column:span 3}.b.w2{grid-column:span 2}.b.w4{grid-column:span 4}
+@media(max-width:980px){.b.w3,.b.w2,.b.w4{grid-column:span 1}}
+.b .n{font:500 11.5px 'JetBrains Mono',monospace;color:var(--dim);margin-bottom:16px;display:block}
+body.rtl .b .n{font-family:'Cairo',sans-serif}
+.b h3{font-size:20px;letter-spacing:-.02em;margin-bottom:9px;font-weight:600}
+body.rtl .b h3{letter-spacing:0}
+.b p{color:var(--dim);font-size:14.8px}
+.b.hero-card{background:linear-gradient(145deg,#1B2410,#141419);border-color:rgba(204,255,46,.28)}
+.b.hero-card h3{color:var(--acid)}
+.flags{display:flex;gap:8px;margin-top:18px}
+.flags span{font:600 12px 'JetBrains Mono',monospace;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:#0E0E11}
+body.rtl .flags span{font-family:'Cairo',sans-serif}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+@media(max-width:880px){.steps{grid-template-columns:1fr}}
+.stp{padding:34px 30px;border-inline-end:1px solid var(--line);background:var(--panel)}
+.stp:last-child{border:0}
+@media(max-width:880px){.stp{border-inline-end:0;border-bottom:1px solid var(--line)}}
+.stp .num{font-family:'Instrument Serif',serif;font-style:italic;font-size:52px;line-height:1;color:var(--acid);margin-bottom:16px;display:block}
+body.rtl .stp .num{font-family:'Cairo',sans-serif;font-style:normal;font-weight:900;font-size:44px}
+.stp h3{font-size:19px;margin-bottom:8px;font-weight:600}
+.stp p{color:var(--dim);font-size:14.8px}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:980px){.plans{grid-template-columns:1fr}}
+.pl{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column}
+.pl.top{background:linear-gradient(160deg,#1C2410,#141418);border-color:var(--acid);position:relative}
+.pl .badge{position:absolute;top:16px;inset-inline-end:16px;background:var(--acid);color:#0A0A0B;font:700 10.5px 'JetBrains Mono',monospace;padding:4px 10px;border-radius:99px;letter-spacing:.05em}
+body.rtl .pl .badge{font-family:'Cairo',sans-serif;letter-spacing:0}
+.pl h3{font-size:15px;color:var(--dim);font-weight:500;margin-bottom:12px;letter-spacing:.04em;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+body.rtl .pl h3{font-family:'Cairo',sans-serif;letter-spacing:0}
+.pl .price{font-size:52px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:26px;font-family:'JetBrains Mono',monospace}
+body.rtl .pl .price{font-family:'Cairo',sans-serif}
+.pl .price small{font-size:15px;color:var(--dim);font-weight:400;letter-spacing:0}
+.pl ul{list-style:none;margin-bottom:28px;flex:1}
+.pl li{padding:8px 0;font-size:14.6px;color:var(--dim);display:flex;gap:10px;align-items:flex-start}
+.pl li::before{content:"→";color:var(--acid);font-weight:700}
+
+/* faq */
+.faq{max-width:820px}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;list-style:none;padding:20px 0;font-size:18px;font-weight:600;display:flex;justify-content:space-between;gap:16px;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--acid);font-size:24px;font-weight:400;line-height:1}
+details[open] summary::after{content:"−"}
+details p{color:var(--dim);padding:0 0 22px;font-size:15.4px;max-width:92%}
+
+/* final */
+.final{background:linear-gradient(150deg,#1A2210,#101014);border:1px solid rgba(204,255,46,.24);border-radius:26px;padding:64px 42px;text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;top:-90px;left:50%;transform:translateX(-50%);width:520px;height:300px;
+ background:radial-gradient(circle,rgba(204,255,46,.17),transparent 70%);filter:blur(44px)}
+.final h2{max-width:640px;margin:0 auto 14px;position:relative}
+.final p{color:var(--dim);max-width:500px;margin:0 auto 32px;position:relative}
+form{display:flex;gap:10px;max-width:470px;margin:0 auto;flex-wrap:wrap;justify-content:center;position:relative}
+form input{flex:1;min-width:230px;background:#0C0C0F;border:1px solid var(--line);color:var(--cream);
+ padding:16px 20px;border-radius:99px;font:400 15px 'Space Grotesk',sans-serif}
+body.rtl form input{font-family:'Cairo',sans-serif}
+form input:focus{outline:none;border-color:var(--acid)}
+form button{border:0;cursor:pointer;font-family:inherit}
+
+footer{border-top:1px solid var(--line);padding:38px 0;margin-top:80px}
+.ft{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--dim);font-size:13.5px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+/* ===== DASHBOARD PREVIEW (light zone = "real product" look) ===== */
+.dashwrap{background:linear-gradient(180deg,#F5F1E8,#E9E4D6);border-radius:24px;padding:14px;box-shadow:0 50px 120px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06)}
+.dash{background:#FBFAF6;border-radius:16px;overflow:hidden;color:#14141a;font-family:'Space Grotesk',sans-serif}
+.dash .top{display:flex;align-items:center;gap:9px;padding:14px 18px;border-bottom:1px solid #E7E3D8;background:#fff}
+.dash .top i{width:9px;height:9px;border-radius:50%;background:#D8D2C4;display:block}
+.dash .top .ttl{margin-inline-start:8px;font-weight:600;font-size:14px}
+.dash .top .live{margin-inline-start:auto;font:600 11px 'JetBrains Mono',monospace;color:#16a34a;display:flex;align-items:center;gap:6px}
+.dash .top .live b{width:6px;height:6px;border-radius:50%;background:#16a34a;display:block;animation:pulse 1.6s infinite}
+.dgrid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;padding:20px}
+@media(max-width:820px){.dgrid{grid-template-columns:1fr}}
+.dcard{background:#fff;border:1px solid #ECE8DD;border-radius:13px;padding:16px 18px}
+.dcard .lab{font:600 11px 'JetBrains Mono',monospace;color:#8a8577;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+body.rtl .dcard .lab{font-family:'Cairo',sans-serif;letter-spacing:0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:#fff;border:1px solid #ECE8DD;border-radius:13px;padding:14px 16px}
+.kpi .big{font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.kpi .big.up{color:#16a34a}.kpi .big.acid{color:#5a7d00}
+.kpi .sub{font-size:11.5px;color:#8a8577;margin-top:5px}
+.kpi .big .arw{font-size:14px}
+/* line chart */
+.chartbox{height:150px;position:relative;margin-top:6px}
+.chartbox svg{width:100%;height:100%;overflow:visible}
+.gline{fill:none;stroke:#7A5CFF;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.garea{fill:url(#ag)}
+.gdot{fill:#7A5CFF}
+.gx{font:500 9px 'JetBrains Mono',monospace;fill:#a8a293}
+/* share of voice bars */
+.sov .row{margin-bottom:13px}
+.sov .row:last-child{margin-bottom:0}
+.sov .rl{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;font-weight:500}
+.sov .rl b{font-family:'JetBrains Mono',monospace}
+body.rtl .sov .rl b{font-family:'Cairo',sans-serif}
+.sbar{height:9px;background:#EFEBE0;border-radius:99px;overflow:hidden}
+.sbar span{display:block;height:100%;width:0;border-radius:99px;transition:width 1.3s cubic-bezier(.22,1,.36,1)}
+.sbar span.me{background:linear-gradient(90deg,#7A5CFF,#9B7Bff)}
+.sbar span.c{background:#CFC8B6}
+/* engine chips */
+.dsources{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+.srow{display:flex;align-items:center;gap:9px;font-size:12.5px}
+.srow .fav{width:20px;height:20px;border-radius:5px;background:#EFEBE0;display:grid;place-items:center;font-size:11px;flex:none}
+.srow .pct{margin-inline-start:auto;font:600 11px 'JetBrains Mono',monospace;color:#8a8577}
+.langtabs{display:flex;gap:6px;margin-bottom:14px}
+.langtabs span{font:600 10.5px 'JetBrains Mono',monospace;padding:4px 10px;border-radius:99px;background:#EFEBE0;color:#8a8577}
+.langtabs span.on{background:#14141a;color:#CCFF2E}
+body.rtl .langtabs span{font-family:'Cairo',sans-serif}
+/* ===== COMPARISON TABLE ===== */
+.cmp{max-width:760px;margin:0 auto;overflow-x:auto}
+.cmptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cmptable th,.cmptable td{padding:16px 18px;text-align:start;font-size:14.8px;border-bottom:1px solid var(--line)}
+.cmptable thead th{font-weight:700;font-size:15px}
+.cmptable th.us{color:#0A0A0B;background:var(--acid);text-align:center;width:120px}
+.cmptable th.them{color:var(--dim);text-align:center;width:120px}
+.cmptable td.us{text-align:center;font-weight:700;color:var(--cream)}
+.cmptable td.them{text-align:center;color:var(--dim)}
+.cmptable tbody tr:last-child td{border-bottom:0}
+.cmptable td b.y{color:#2ee6a8;font-size:18px}
+.cmptable td b.n{color:#ff5c3e;font-size:18px}
+.cmptable td:first-child{font-weight:500}
+</style>
+</head>
+<body>
+
+<div class="ticker"><div>
+ <span data-i="tk1"></span><span>◆</span><span data-i="tk2"></span><span>◆</span><span data-i="tk3"></span><span>◆</span>
+ <span data-i="tk1"></span><span>◆</span><span data-i="tk2"></span><span>◆</span><span data-i="tk3"></span><span>◆</span>
+</div></div>
+
+<header><div class="wrap"><nav>
+  <div class="logo"><i>◈</i>AIVisib</div>
+  <div class="nl">
+    <a href="#how" class="hm" data-i="n1"></a>
+    <a href="#feat" class="hm" data-i="n2"></a>
+    <a href="#price" class="hm" data-i="n3"></a>
+    <div class="lang">
+      <button id="b_en" onclick="setLang('en')">EN</button>
+      <button id="b_fr" onclick="setLang('fr')">FR</button>
+      <button id="b_ar" onclick="setLang('ar')">ع</button>
+    </div>
+    <a href="#join" class="cta" data-i="n4"></a>
+  </div>
+</nav></div></header>
+
+<!-- HERO -->
+<section class="hero"><div class="wrap"><div class="hgrid">
+  <div>
+    <div class="kicker"><s></s><span data-i="kick"></span></div>
+    <h1 data-i-html="h1"></h1>
+    <p class="sub" data-i="sub"></p>
+    <div class="btns">
+      <a href="#join" class="cta big" data-i="c1"></a>
+      <a href="#how" class="cta big out" data-i="c2"></a>
+    </div>
+    <div class="note" data-i="note"></div>
+  </div>
+
+  <div class="demo rv">
+    <div class="bar"><i></i><i></i><i></i>
+      <span class="eng"><b></b><span id="engName">ChatGPT</span> · <span id="engLang">EN</span></span>
+    </div>
+    <div class="body">
+      <div class="bubble you" id="q"></div>
+      <div class="bubble ai" id="a"></div>
+      <div class="verdict" id="v">
+        <span class="pill ok" id="vp"></span>
+        <span id="vt" style="color:var(--dim)"></span>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+
+<div class="strip"><div>
+  <span>ChatGPT</span><span>◆</span><span>Google Gemini</span><span>◆</span><span>Perplexity</span><span>◆</span><span>Claude</span><span>◆</span><span>+ more engines</span><span>◆</span>
+  <span>ChatGPT</span><span>◆</span><span>Google Gemini</span><span>◆</span><span>Perplexity</span><span>◆</span><span>Claude</span><span>◆</span><span>+ more engines</span><span>◆</span>
+</div></div>
+
+<!-- DASHBOARD PREVIEW -->
+<section class="s" id="dash" style="padding-top:20px"><div class="wrap">
+  <div class="head" style="margin-bottom:34px"><div class="kicker"><s></s><span data-i="d_k"></span></div><h2 data-i="d_t"></h2><p data-i="d_p"></p></div>
+  <div class="dashwrap rv" id="dashwrap">
+    <div class="dash" id="dashInner">
+      <div class="top"><i></i><i></i><i></i><span class="ttl">AIVisib — <span data-i="d_brand"></span></span>
+        <span class="live"><b></b><span data-i="d_live"></span></span></div>
+      <div style="padding:20px">
+        <div class="langtabs"><span class="on">العربية</span><span>English</span><span>Français</span></div>
+        <div class="kpis">
+          <div class="kpi"><div class="big up">62%<span class="arw">↑</span></div><div class="sub" data-i="d_kpi1"></div></div>
+          <div class="kpi"><div class="big">#2</div><div class="sub" data-i="d_kpi2"></div></div>
+          <div class="kpi"><div class="big acid">+18%</div><div class="sub" data-i="d_kpi3"></div></div>
+        </div>
+      </div>
+      <div class="dgrid" style="padding-top:0">
+        <div class="dcard">
+          <div class="lab" data-i="d_c1"></div>
+          <div class="chartbox">
+            <svg viewBox="0 0 320 130" preserveAspectRatio="none">
+              <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A5CFF" stop-opacity=".22"/><stop offset="1" stop-color="#7A5CFF" stop-opacity="0"/></linearGradient></defs>
+              <path class="garea" d="M0,105 45,92 90,96 135,74 180,60 225,52 270,34 320,26 L320,130 L0,130 Z"></path>
+              <polyline class="gline" points="0,105 45,92 90,96 135,74 180,60 225,52 270,34 320,26"></polyline>
+              <circle class="gdot" cx="320" cy="26" r="4"></circle>
+            </svg>
+            <div style="display:flex;justify-content:space-between"><span class="gx">W1</span><span class="gx">W3</span><span class="gx">W5</span><span class="gx">W7</span></div>
+          </div>
+        </div>
+        <div class="dcard sov">
+          <div class="lab" data-i="d_c2"></div>
+          <div class="row"><div class="rl"><span data-i="d_you"></span><b>62%</b></div><div class="sbar"><span class="me" data-w="62" style="width:62%"></span></div></div>
+          <div class="row"><div class="rl"><span data-i="d_r1"></span><b>38%</b></div><div class="sbar"><span class="c" data-w="38" style="width:38%"></span></div></div>
+          <div class="row"><div class="rl"><span data-i="d_r2"></span><b>21%</b></div><div class="sbar"><span class="c" data-w="21" style="width:21%"></span></div></div>
+        </div>
+        <div class="dcard">
+          <div class="lab" data-i="d_c3"></div>
+          <div class="dsources">
+            <div class="srow"><span class="fav">🤖</span>ChatGPT<span class="pct">71%</span></div>
+            <div class="srow"><span class="fav">✨</span>Gemini<span class="pct">54%</span></div>
+            <div class="srow"><span class="fav">🔍</span>Perplexity<span class="pct">60%</span></div>
+            <div class="srow"><span class="fav">🟣</span>Claude<span class="pct">48%</span></div>
+          </div>
+        </div>
+        <div class="dcard">
+          <div class="lab" data-i="d_c4"></div>
+          <div class="dsources">
+            <div class="srow"><span class="fav">🌐</span>google.com/maps<span class="pct">32%</span></div>
+            <div class="srow"><span class="fav">⭐</span>tripadvisor<span class="pct">24%</span></div>
+            <div class="srow"><span class="fav">📖</span>timeout<span class="pct">17%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PROBLEM / RACE -->
+<section class="s"><div class="wrap">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center" class="two">
+    <div class="head" style="margin-bottom:0">
+      <div class="kicker"><s></s><span data-i="pr_k"></span></div>
+      <h2 data-i-html="pr_t"></h2>
+      <p data-i="pr_p"></p>
+    </div>
+    <div class="race rv" id="race">
+      <div class="rw"><div class="rl"><span data-i="r_me"></span><b class="mono" style="color:var(--acid)">62%</b></div><div class="track"><span class="fill me" data-w="62"></span></div></div>
+      <div class="rw"><div class="rl"><span data-i="r_c1"></span><b class="mono">38%</b></div><div class="track"><span class="fill c1" data-w="38"></span></div></div>
+      <div class="rw"><div class="rl"><span data-i="r_c2"></span><b class="mono">21%</b></div><div class="track"><span class="fill c2" data-w="21"></span></div></div>
+      <div class="rw" style="margin-bottom:0"><div class="rl"><span data-i="r_c3"></span><b class="mono">9%</b></div><div class="track"><span class="fill c3" data-w="9"></span></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- HOW -->
+<section class="s" id="how" style="padding-top:20px"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="h_k"></span></div><h2 data-i="h_t"></h2><p data-i="h_p"></p></div>
+  <div class="steps rv">
+    <div class="stp"><span class="num">01</span><h3 data-i="s1t"></h3><p data-i="s1p"></p></div>
+    <div class="stp"><span class="num">02</span><h3 data-i="s2t"></h3><p data-i="s2p"></p></div>
+    <div class="stp"><span class="num">03</span><h3 data-i="s3t"></h3><p data-i="s3p"></p></div>
+  </div>
+</div></section>
+
+<!-- BENTO -->
+<section class="s" id="feat"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="f_k"></span></div><h2 data-i="f_t"></h2><p data-i="f_p"></p></div>
+  <div class="bento">
+    <div class="b w3 hero-card rv"><span class="n">01 / ⚑</span><h3 data-i="f1t"></h3><p data-i="f1p"></p>
+      <div class="flags"><span>EN</span><span>FR</span><span>العربية</span></div></div>
+    <div class="b w3 rv"><span class="n">02 / ⚔</span><h3 data-i="f2t"></h3><p data-i="f2p"></p></div>
+    <div class="b w2 rv"><span class="n">03 / ⛓</span><h3 data-i="f3t"></h3><p data-i="f3p"></p></div>
+    <div class="b w2 rv"><span class="n">04 / ☺</span><h3 data-i="f4t"></h3><p data-i="f4p"></p></div>
+    <div class="b w2 rv"><span class="n">05 / ✎</span><h3 data-i="f5t"></h3><p data-i="f5p"></p></div>
+    <div class="b w4 rv"><span class="n">06 / ⌁</span><h3 data-i="f6t"></h3><p data-i="f6p"></p></div>
+    <div class="b w2 rv"><span class="n">07 / ⏱</span><h3 data-i="f7t"></h3><p data-i="f7p"></p></div>
+  </div>
+</div></section>
+
+<!-- COMPARISON -->
+<section class="s" id="compare"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="cmp_k"></span></div><h2 data-i="cmp_t"></h2><p data-i="cmp_p"></p></div>
+  <div class="cmp rv">
+    <table class="cmptable">
+      <thead><tr><th data-i="cmp_feat"></th><th class="us">AIVisib</th><th class="them" data-i="cmp_them"></th></tr></thead>
+      <tbody>
+        <tr><td data-i="cmp_r1"></td><td class="us"><b class="y">✓</b></td><td class="them"><b class="n">✗</b></td></tr>
+        <tr><td data-i="cmp_r2"></td><td class="us" data-i="cmp_r2u"></td><td class="them" data-i="cmp_r2t"></td></tr>
+        <tr><td data-i="cmp_r3"></td><td class="us"><b class="y">✓</b></td><td class="them" data-i="cmp_r3t"></td></tr>
+        <tr><td data-i="cmp_r4"></td><td class="us"><b class="y">✓</b></td><td class="them"><b class="y">✓</b></td></tr>
+        <tr><td data-i="cmp_r5"></td><td class="us" data-i="cmp_r5u"></td><td class="them" data-i="cmp_r5t"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- PRICING -->
+<section class="s" id="price"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="p_k"></span></div><h2 data-i="p_t"></h2><p data-i="p_p"></p></div>
+  <div class="plans">
+    <div class="pl rv"><h3>Starter</h3><div class="price">$29<small data-i="mo"></small></div>
+      <ul><li data-i="p1a"></li><li data-i="p1b"></li><li data-i="p1c"></li><li data-i="p1d"></li></ul>
+      <a href="#join" class="cta out" style="text-align:center" data-i="p_c"></a></div>
+    <div class="pl top rv"><span class="badge" data-i="p_pop"></span><h3>Pro</h3><div class="price">$79<small data-i="mo"></small></div>
+      <ul><li data-i="p2a"></li><li data-i="p2b"></li><li data-i="p2c"></li><li data-i="p2d"></li></ul>
+      <a href="#join" class="cta" style="text-align:center" data-i="p_c"></a></div>
+    <div class="pl rv"><h3 data-i="p3n"></h3><div class="price">$149<small data-i="mo"></small></div>
+      <ul><li data-i="p3a"></li><li data-i="p3b"></li><li data-i="p3c"></li><li data-i="p3d"></li></ul>
+      <a href="#join" class="cta out" style="text-align:center" data-i="p_c"></a></div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="s"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="q_k"></span></div><h2 data-i="q_t"></h2></div>
+  <div class="faq rv">
+    <details><summary data-i="q1"></summary><p data-i="a1"></p></details>
+    <details><summary data-i="q2"></summary><p data-i="a2"></p></details>
+    <details><summary data-i="q3"></summary><p data-i="a3"></p></details>
+    <details><summary data-i="q4"></summary><p data-i="a4"></p></details>
+  </div>
+</div></section>
+
+<!-- JOIN -->
+<section class="s" id="join" style="padding-top:0"><div class="wrap">
+  <div class="final rv">
+    <h2 data-i="j_t"></h2>
+    <p data-i="j_p"></p>
+    <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="waitlist">
+      <p style="display:none"><label>skip <input name="bot-field"></label></p>
+      <input type="email" name="email" data-i-ph="j_ph" required>
+      <button type="submit" class="cta big" data-i="j_c"></button>
+    </form>
+    <div class="note" style="margin-top:20px;position:relative" data-i="j_n"></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><div class="ft">
+  <div>© 2026 AIVisib — a Norstrol product</div>
+  <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="mailto:hello@aivisib.com">hello@aivisib.com</a></div>
+</div></div></footer>
+
+<script>
+const T={
+en:{tk1:"Your customers now ask AI, not Google",tk2:"Is your brand in the answer?",tk3:"The only AI-visibility tool that speaks Arabic",
+n1:"How it works",n2:"Features",n3:"Pricing",n4:"Early access",
+kick:"AI search visibility · EN / FR / AR",
+h1:'When AI is asked,<br>does it name <em>you</em><br>or your rival?',
+sub:"Millions now ask ChatGPT instead of Googling. AIVisib runs your buyers' real questions through the top AI engines every week — in English, French and Arabic — and shows you exactly where you win, where you lose, and what to fix.",
+c1:"Get early access",c2:"See how it works",note:"No credit card · 4 engines · weekly · 3 languages",
+pr_k:"The new battlefield",pr_t:'Share of voice,<br>but inside the <em>answer</em>.',
+pr_p:"Ranking #1 on Google means nothing if the AI names someone else. AIVisib measures how often each brand is recommended, per engine and per language — so you finally see the real scoreboard.",
+r_me:"Your brand",r_c1:"Competitor A",r_c2:"Competitor B",r_c3:"Competitor C",
+h_k:"Three steps",h_t:"Set up once. Insights every week.",h_p:"No training, no jargon, no consultant needed.",
+s1t:"Add your brand",s1p:"Your name, your rivals, your industry. AIVisib auto-writes the real questions your buyers ask AI.",
+s2t:"We interrogate the AIs",s2p:"Every week we run those questions through ChatGPT, Gemini, Perplexity and Claude — in three languages.",
+s3t:"You see, then you win",s3p:"A clear scoreboard: who gets named, which sources the AIs trust, and the actions that move you up.",
+f_k:"What's inside",f_t:"Everything you need. Nothing you'll never open.",f_p:"The complete AI-visibility toolkit, for a fraction of what the big platforms charge.",
+f1t:"Arabic. Actually.",f1p:"Your Gulf customers ask AI in Arabic — and every English-only tool is blind to those answers. We test real Arabic prompts. Nobody else does.",
+f2t:"Competitor share of voice",f2p:"See precisely who gets recommended instead of you — per question, per engine, per language.",
+f3t:"The sources behind the answer",f3p:"Find which sites the AIs quote in your industry, so you know exactly where to appear.",
+f4t:"Sentiment",f4p:"Praised, ignored, or described with outdated facts? Catch it before your customers do.",
+f5t:"White-label reports",f5p:"Monthly PDF with your agency's logo, in AR / FR / EN. Bill it to your clients.",
+f6t:"An action plan, not a data dump",f6p:"Every month: a short list of concrete moves that raise your odds of being recommended. Written in plain language, ready to hand to your team.",
+f7t:"Weekly tracking",f7p:"AI answers shift constantly. We watch them so you don't have to.",
+p_k:"Pricing",p_t:"Fair pricing. Arabic included.",p_p:"Simple, transparent plans — with Arabic built in, and no enterprise lock-in.",
+mo:"/mo",p_pop:"POPULAR",p_c:"Join early access",
+p1a:"1 brand · 25 prompts",p1b:"4 AI engines, weekly",p1c:"3 languages incl. Arabic",p1d:"Dashboard + email digest",
+p2a:"3 brands · 100 prompts",p2b:"Everything in Starter",p2c:"White-label PDF reports",p2d:"Priority support",
+p3n:"Agency",p3a:"10 brands · 400 prompts",p3b:"Everything in Pro",p3c:"Unlimited seats",p3d:"Client-ready reporting",
+q_k:"FAQ",q_t:"Frequently asked questions",
+q1:"How does AIVisib help me get recommended by AI?",a1:"AIVisib shows you your real share of visibility in the new AI era — how often the AIs recommend you versus your competitors — and gives you concrete actions to improve your position and raise your chances of appearing in AI answers and recommendations.",
+q2:"Why does Arabic matter so much?",a2:"Millions of buyers across the Gulf and MENA ask AI in Arabic. English-only tools never see those answers — so a brand can look healthy in English and be invisible in Arabic. AIVisib runs real Arabic prompts, which is why agencies in the region can finally report on their actual market.",
+q3:"Which AI engines do you cover?",a3:"ChatGPT, Google Gemini, Perplexity and Claude — queried every week, in Arabic, French and English. We keep adding engines as the AI landscape grows.",
+q4:"Can I cancel anytime?",a4:"One click, no contract, no lock-in. And early members get a special reduced price.",
+j_t:"Be early in the AI search era.",j_p:"Join the early-access list — early members get a special reduced price.",
+j_ph:"you@company.com",j_c:"Join the list",j_n:"🔒 No spam, ever · Limited early-access spots",
+d_k:"Inside the product",d_t:"Your AI visibility, at a glance.",d_p:"A clean dashboard that turns AI answers into a scoreboard you actually understand.",
+d_brand:"Your Brand · Dubai",d_live:"Live",d_kpi1:"AI visibility score",d_kpi2:"Avg. position in answers",d_kpi3:"vs last month",
+d_c1:"Visibility trend (7 weeks)",d_c2:"Share of voice vs competitors",d_you:"You",d_r1:"Competitor A",d_r2:"Competitor B",
+d_c3:"Visibility by AI engine",d_c4:"Top cited sources",
+cmp_k:"AIVisib vs the others",cmp_t:"Why AIVisib, and not the other tools?",cmp_p:"The AIVisib team specializes in your market and obsesses over accuracy — every report is precise, professional, and truly built for your language.",
+cmp_feat:"Feature",cmp_them:"Other tools",
+cmp_r1:"Arabic prompts & dashboard",cmp_r2:"Starting price",cmp_r2u:"$29",cmp_r2t:"$29–99+",
+cmp_r3:"Built for Gulf & Maghreb",cmp_r3t:"✗",cmp_r4:"Weekly tracking · 4 engines",cmp_r5:"White-label reports",cmp_r5u:"✓ included",cmp_r5t:"paid add-on",
+},
+fr:{tk1:"Vos clients demandent à l'IA, plus à Google",tk2:"Votre marque est-elle dans la réponse ?",tk3:"Le seul outil de visibilité IA qui parle arabe",
+n1:"Fonctionnement",n2:"Fonctionnalités",n3:"Tarifs",n4:"Accès anticipé",
+kick:"Visibilité dans les IA · FR / EN / AR",
+h1:"Quand on demande à l'IA,<br>cite-t-elle <em>vous</em><br>ou votre concurrent ?",
+sub:"Des millions de clients interrogent ChatGPT au lieu de Google. AIVisib pose chaque semaine les vraies questions de vos acheteurs aux principaux moteurs IA — en français, anglais et arabe — et vous montre où vous gagnez, où vous perdez, et quoi corriger.",
+c1:"Obtenir l'accès anticipé",c2:"Voir le fonctionnement",note:"Sans carte bancaire · 4 moteurs · hebdomadaire · 3 langues",
+pr_k:"Le nouveau terrain de jeu",pr_t:"La part de voix,<br>mais dans <em>la réponse</em>.",
+pr_p:"Être n°1 sur Google ne sert à rien si l'IA cite quelqu'un d'autre. AIVisib mesure la fréquence à laquelle chaque marque est recommandée, par moteur et par langue — le vrai tableau de bord, enfin.",
+r_me:"Votre marque",r_c1:"Concurrent A",r_c2:"Concurrent B",r_c3:"Concurrent C",
+h_k:"Trois étapes",h_t:"Configuré une fois. Des insights chaque semaine.",h_p:"Sans formation, sans jargon, sans consultant.",
+s1t:"Ajoutez votre marque",s1p:"Votre nom, vos concurrents, votre secteur. AIVisib rédige automatiquement les vraies questions posées aux IA.",
+s2t:"Nous interrogeons les IA",s2p:"Chaque semaine, ces questions passent par ChatGPT, Gemini, Perplexity et Claude — en trois langues.",
+s3t:"Vous voyez, puis vous gagnez",s3p:"Un tableau clair : qui est cité, quelles sources les IA utilisent, et les actions qui vous font monter.",
+f_k:"Ce qu'il y a dedans",f_t:"Tout le nécessaire. Rien d'inutile.",f_p:"La boîte à outils complète de visibilité IA, à une fraction du prix des grandes plateformes.",
+f1t:"L'arabe. Pour de vrai.",f1p:"Vos clients du Golfe interrogent l'IA en arabe — et tous les outils anglophones sont aveugles sur ces réponses. Nous testons de vrais prompts arabes. Personne d'autre ne le fait.",
+f2t:"Part de voix concurrentielle",f2p:"Voyez précisément qui est recommandé à votre place — par question, par moteur, par langue.",
+f3t:"Les sources derrière la réponse",f3p:"Découvrez quels sites les IA citent dans votre secteur, pour savoir exactement où apparaître.",
+f4t:"Sentiment",f4p:"Vanté, ignoré, ou décrit avec des infos obsolètes ? Détectez-le avant vos clients.",
+f5t:"Rapports marque blanche",f5p:"PDF mensuel au logo de votre agence, en AR / FR / EN. Facturez-le à vos clients.",
+f6t:"Un plan d'action, pas un tas de données",f6p:"Chaque mois : une courte liste d'actions concrètes qui augmentent vos chances d'être recommandé. En français clair, prête à transmettre à votre équipe.",
+f7t:"Suivi hebdomadaire",f7p:"Les réponses des IA changent sans cesse. Nous les surveillons à votre place.",
+p_k:"Tarifs",p_t:"Un prix juste. Arabe inclus.",p_p:"Des offres simples et transparentes — avec l'arabe intégré, sans engagement entreprise.",
+mo:"/mois",p_pop:"POPULAIRE",p_c:"Rejoindre l'accès anticipé",
+p1a:"1 marque · 25 prompts",p1b:"4 moteurs IA, chaque semaine",p1c:"3 langues dont l'arabe",p1d:"Dashboard + résumé email",
+p2a:"3 marques · 100 prompts",p2b:"Tout Starter inclus",p2c:"Rapports PDF marque blanche",p2d:"Support prioritaire",
+p3n:"Agence",p3a:"10 marques · 400 prompts",p3b:"Tout Pro inclus",p3c:"Utilisateurs illimités",p3d:"Reporting prêt pour vos clients",
+q_k:"FAQ",q_t:"Questions fréquentes",
+q1:"Comment AIVisib m'aide à être recommandé par l'IA ?",a1:"AIVisib vous montre votre part réelle de visibilité dans la nouvelle ère de l'IA — à quelle fréquence les IA vous recommandent face à vos concurrents — et vous donne des actions concrètes pour améliorer votre position et augmenter vos chances d'apparaître dans les réponses et recommandations des IA.",
+q2:"Pourquoi l'arabe est-il si important ?",a2:"Des millions d'acheteurs du Golfe et de la région MENA interrogent l'IA en arabe. Les outils anglophones ne voient jamais ces réponses — une marque peut sembler en pleine forme en anglais et être invisible en arabe. AIVisib teste de vrais prompts arabes, ce qui permet enfin aux agences de la région de reporter sur leur marché réel.",
+q3:"Quels moteurs IA couvrez-vous ?",a3:"ChatGPT, Google Gemini, Perplexity et Claude — interrogés chaque semaine, en arabe, français et anglais. Nous ajoutons régulièrement de nouveaux moteurs à mesure que l'IA évolue.",
+q4:"Puis-je annuler à tout moment ?",a4:"En un clic, sans contrat ni engagement. Et les premiers inscrits bénéficient d'un tarif spécial réduit.",
+j_t:"Prenez de l'avance dans l'ère de la recherche IA.",j_p:"Rejoignez la liste d'accès anticipé — les premiers inscrits bénéficient d'un tarif spécial réduit.",
+j_ph:"vous@entreprise.com",j_c:"Rejoindre la liste",j_n:"🔒 Zéro spam · Places d'accès anticipé limitées",
+d_k:"À l'intérieur du produit",d_t:"Votre visibilité IA, en un coup d'œil.",d_p:"Un tableau de bord clair qui transforme les réponses des IA en un score que vous comprenez vraiment.",
+d_brand:"Votre marque · Dubaï",d_live:"En direct",d_kpi1:"Score de visibilité IA",d_kpi2:"Position moyenne",d_kpi3:"vs mois dernier",
+d_c1:"Tendance de visibilité (7 semaines)",d_c2:"Part de voix vs concurrents",d_you:"Vous",d_r1:"Concurrent A",d_r2:"Concurrent B",
+d_c3:"Visibilité par moteur IA",d_c4:"Sources les plus citées",
+cmp_k:"AIVisib vs les autres",cmp_t:"Pourquoi AIVisib, et pas les autres outils ?",cmp_p:"L'équipe AIVisib est spécialisée dans votre marché et veille à la précision et au professionnalisme de chaque rapport — dans votre langue, avec une vraie compréhension de votre région.",
+cmp_feat:"Fonctionnalité",cmp_them:"Autres outils",
+cmp_r1:"Prompts & dashboard en arabe",cmp_r2:"Prix de départ",cmp_r2u:"29 $",cmp_r2t:"29–99 $+",
+cmp_r3:"Pensé pour Golfe & Maghreb",cmp_r3t:"✗",cmp_r4:"Suivi hebdo · 4 moteurs",cmp_r5:"Rapports marque blanche",cmp_r5u:"✓ inclus",cmp_r5t:"option payante",
+},
+ar:{tk1:"عملاؤك يسألون الذكاء الاصطناعي، لا Google",tk2:"هل علامتك داخل الإجابة؟",tk3:"الأداة الوحيدة لقياس الظهور التي تتحدث العربية",
+n1:"كيف يعمل",n2:"المميزات",n3:"الأسعار",n4:"سجّل الآن",
+kick:"الظهور في الذكاء الاصطناعي · عربي / إنجليزي / فرنسي",
+h1:"حين يُسأل الذكاء الاصطناعي،<br>هل يذكرك <em>أنت</em><br>أم منافسك؟",
+sub:"ملايين العملاء صاروا يسألون ChatGPT بدل Google. AIVisib يطرح أسئلة عملائك الحقيقية على أقوى محركات الذكاء الاصطناعي كل أسبوع — بالعربية والإنجليزية والفرنسية — ويريك أين تفوز، وأين تخسر، وما الذي يجب إصلاحه.",
+c1:"سجّل الآن",c2:"شاهد كيف يعمل",note:"بدون بطاقة بنكية · 4 محركات · أسبوعياً · 3 لغات",
+pr_k:"ساحة المنافسة الجديدة",pr_t:"داخل إجابات الذكاء الاصطناعي:<br>هل يُوصى <em>بك</em> أم بمنافسك؟",
+pr_p:"أن تكون الأول في Google لا يعني شيئاً إذا ذكر الذكاء الاصطناعي غيرك. AIVisib يقيس كم مرة يُوصى بعلامتك التجارية مقارنةً بمنافسيك، لكل محرك ولكل لغة — لترى أخيراً موقعك الحقيقي.",
+r_me:"علامتك التجارية",r_c1:"منافس أ",r_c2:"منافس ب",r_c3:"منافس ج",
+h_k:"ثلاث خطوات",h_t:"إعداد واحد. رؤى كل أسبوع.",h_p:"بدون تدريب، بدون تعقيد، بدون استشاري.",
+s1t:"أضف علامتك التجارية",s1p:"اسمك، منافسوك، قطاعك. وAIVisib يكتب تلقائياً الأسئلة الحقيقية التي يطرحها عملاؤك.",
+s2t:"نحن نسأل المحركات",s2p:"كل أسبوع نمرّر هذه الأسئلة على ChatGPT وGemini وPerplexity وClaude — بثلاث لغات.",
+s3t:"ترى، ثم تفوز",s3p:"لوحة واضحة: من يُذكر، وما المصادر التي تثق بها المحركات، وما الإجراءات التي ترفع ترتيبك.",
+f_k:"ما بداخلها",f_t:"كل ما تحتاجه لتتصدّر في الذكاء الاصطناعي.",f_p:"مجموعة أدوات كاملة لقياس وتحسين تقييمك، بواجهة عربية بسيطة وواضحة.",
+f1t:"العربية. فعلياً.",f1p:"عملاؤك في الخليج يسألون الذكاء الاصطناعي بالعربية — وكل الأدوات الإنجليزية عمياء عن تلك الإجابات. نحن نختبر أسئلة عربية حقيقية. لا أحد غيرنا يفعل ذلك.",
+f2t:"نصيبك من التوصيات مقابل المنافسين",f2p:"شاهد بدقة من يُوصى به بدلاً منك — لكل سؤال، ولكل محرك، ولكل لغة.",
+f3t:"المصادر خلف الإجابة",f3p:"اكتشف المواقع التي تعتمد عليها المحركات في قطاعك، لتعرف أين يجب أن تظهر بالضبط.",
+f4t:"تحليل الانطباع",f4p:"مُشاد به، متجاهَل، أم موصوف بمعلومات قديمة؟ اكتشف ذلك قبل عملائك.",
+f5t:"تقارير بشعارك أنت",f5p:"تقرير PDF شهري يحمل شعار وكالتك، بالعربية أو الإنجليزية أو الفرنسية. قدّمه لعملائك كأنه من عملك.",
+f6t:"خطة عمل واضحة، بدون تعقيد",f6p:"كل شهر: قائمة قصيرة بإجراءات ملموسة ترفع فرص التوصية بك. بلغة واضحة، جاهزة لتسليمها لفريقك.",
+f7t:"متابعة أسبوعية",f7p:"إجابات الذكاء الاصطناعي تتغير باستمرار. نحن نراقبها بدلاً عنك.",
+p_k:"الأسعار",p_t:"أسعار عادلة. والعربية مشمولة.",p_p:"باقات بسيطة وواضحة — مع العربية بشكل أساسي، وبدون عقود معقدة.",
+mo:"/شهرياً",p_pop:"الأكثر طلباً",p_c:"سجّل الآن",
+p1a:"علامة واحدة · 25 سؤالاً",p1b:"4 محركات، أسبوعياً",p1c:"3 لغات منها العربية",p1d:"لوحة تحكم + ملخص بريدي",
+p2a:"3 علامات · 100 سؤال",p2b:"كل مميزات Starter",p2c:"تقارير PDF بعلامتك",p2d:"دعم بأولوية",
+p3n:"وكالة",p3a:"10 علامات · 400 سؤال",p3b:"كل مميزات Pro",p3c:"مقاعد غير محدودة",p3d:"تقارير جاهزة للعملاء",
+q_k:"أسئلة",q_t:"الأسئلة الشائعة",
+q1:"كيف يساعدني AIVisib على الظهور في توصيات الذكاء الاصطناعي؟",a1:"يريك AIVisib نصيبك الحقيقي من الظهور في عصر الذكاء الاصطناعي الجديد — كم مرة توصي بك المحركات مقارنةً بمنافسيك — ويمنحك خطوات عملية لتحسين موقعك وزيادة فرص ظهورك في إجابات الذكاء الاصطناعي وتوصياته.",
+q2:"لماذا العربية مهمة؟",a2:"ملايين العملاء في الخليج والمنطقة يسألون الذكاء الاصطناعي بالعربية. الأدوات الإنجليزية لا ترى تلك الإجابات — فقد تبدو العلامة بحالة ممتازة بالإنجليزية بينما هي غائبة بالعربية. AIVisib يختبر أسئلة عربية حقيقية، ولهذا تستطيع وكالات المنطقة أخيراً أن تقدّم تقارير عن سوقها الحقيقي.",
+q3:"ما محركات الذكاء الاصطناعي التي تغطونها؟",a3:"ChatGPT وGoogle Gemini وPerplexity وClaude — تُسأل كل أسبوع، بالعربية والفرنسية والإنجليزية. ونضيف محركات جديدة باستمرار مع تطوّر الذكاء الاصطناعي.",
+q4:"هل يمكنني الإلغاء في أي وقت؟",a4:"بنقرة واحدة، بدون عقد أو التزام. والمنضمّون مبكراً يحصلون على سعر خاص مخفّض.",
+j_t:"كن من الأوائل في عصر البحث بالذكاء الاصطناعي.",j_p:"انضم لقائمة الوصول المبكر — المنضمّون مبكراً يحصلون على سعر خاص مخفّض.",
+j_ph:"you@company.com",j_c:"انضم للقائمة",j_n:"🔒 لا رسائل مزعجة · أماكن الوصول المبكر محدودة",
+d_k:"داخل المنتج",d_t:"تقييمك في الذكاء الاصطناعي، بنظرة واحدة.",d_p:"لوحة تحكم واضحة تُحوّل إجابات الذكاء الاصطناعي إلى نتيجة تفهمها فعلياً.",
+d_brand:"علامتك · دبي",d_live:"مباشر",d_kpi1:"نسبة الظهور في الذكاء الاصطناعي",d_kpi2:"متوسط الترتيب في الإجابات",d_kpi3:"مقارنة بالشهر الماضي",
+d_c1:"منحنى الظهور (7 أسابيع)",d_c2:"نصيبك من التوصيات مقابل المنافسين",d_you:"أنت",d_r1:"منافس أ",d_r2:"منافس ب",
+d_c3:"الظهور حسب محرك الذكاء الاصطناعي",d_c4:"المصادر التي تعتمدها المحركات",
+cmp_k:"AIVisib مقابل الآخرين",cmp_t:"لماذا AIVisib وليس الأدوات الأخرى؟",cmp_p:"فريق AIVisib متخصّص في السوق العربي ويحرص على الدقة والاحترافية في كل تقرير — بلغتك، وبفهمٍ حقيقي لسوقك.",
+cmp_feat:"الميزة",cmp_them:"الأدوات الأخرى",
+cmp_r1:"أسئلة ولوحة تحكم بالعربية",cmp_r2:"سعر البداية",cmp_r2u:"29$",cmp_r2t:"29–99$+",
+cmp_r3:"مصمّم للخليج والمغرب العربي",cmp_r3t:"✗",cmp_r4:"متابعة أسبوعية · 4 محركات",cmp_r5:"تقارير بشعارك أنت",cmp_r5u:"✓ مشمول",cmp_r5t:"إضافة مدفوعة",
+}};
+
+/* ---------- live AI answer simulation ---------- */
+const SC={
+en:[
+ {eng:"ChatGPT",lg:"EN",q:"I'm visiting Dubai next week — where can I find really authentic Moroccan food, nice atmosphere, not a tourist trap?",
+  a:[["For genuine Moroccan cuisine in Dubai, I'd recommend ",0],["Tagine House",1],[", and locals also love ",0],["Marrakech Lounge",2],[" for a warm, non-touristy vibe.",0]],
+  ok:1,vp:"MENTIONED · #1",vt:"You're recommended first in this answer."},
+ {eng:"Gemini",lg:"EN",q:"Which dental clinic in Dubai is best for veneers — good reviews, English-speaking, not too expensive?",
+  a:[["Highly rated options include ",0],["Perfect Smile Clinic",2],[" and ",0],["Marina Dental",2],[", both praised for veneers and English-speaking staff.",0]],
+  ok:0,vp:"NOT MENTIONED",vt:"Two rivals were named. You weren't."},
+ {eng:"Gemini",lg:"EN",q:"I'm in New York this weekend — recommend a great omakase sushi spot, top quality, worth booking ahead?",
+  a:[["For a memorable omakase, I'd suggest ",0],["Sushi Nakamura",1],[", and food lovers also rate ",0],["Blue Fin Omakase",2],[" highly.",0]],
+  ok:1,vp:"MENTIONED · #1",vt:"You're recommended first in this answer."},
+ {eng:"ChatGPT",lg:"EN",q:"Best real estate agency in Abu Dhabi to buy an apartment as an investment, with good follow-up service?",
+  a:[["A reliable choice is ",0],["Capital Homes Realty",1],[", along with ",0],["Yas Properties",2],[" for investment follow-up.",0]],
+  ok:1,vp:"MENTIONED · #1",vt:"You're recommended first in this answer."},
+ {eng:"Perplexity",lg:"EN",q:"Who's a good accountant in London for freelancers and small limited companies, reasonable fees?",
+  a:[["Well-reviewed options include ",0],["Crunch Accounting",2],[" and ",0],["Mazuma London",2],[", both good for freelancers.",0]],
+  ok:0,vp:"NOT MENTIONED",vt:"Two rivals were named. You weren't."},
+ {eng:"Gemini",lg:"EN",q:"Looking for a reputable med spa in Miami for skin treatments — great reviews and not overpriced?",
+  a:[["Top-rated picks include ",0],["Glow Med Spa",2],[" and ",0],["Riviera Aesthetics",2],[", both praised for skin treatments.",0]],
+  ok:0,vp:"NOT MENTIONED",vt:"Two rivals were named. You weren't."}
+],
+fr:[
+ {eng:"Perplexity",lg:"FR",q:"Je cherche une agence immobilière fiable à Paris pour acheter un appartement, avec un bon suivi — laquelle recommandez-vous ?",
+  a:[["Parmi les plus fiables, on cite souvent ",0],["Prestige Immobilier Paris",1],[", ainsi que ",0],["Résidences Haussmann",2],[" pour leur accompagnement.",0]],
+  ok:1,vp:"CITÉ · N°1",vt:"Vous êtes recommandé en premier."},
+ {eng:"ChatGPT",lg:"FR",q:"Quel est le meilleur salon de coiffure à Lyon pour un balayage, propre et avec du bon matériel ?",
+  a:[["Les salons les plus recommandés sont ",0],["Studio Hair Lyon",2],[" et ",0],["L'Atelier Coiffure",2],[", réputés pour le balayage.",0]],
+  ok:0,vp:"NON CITÉ",vt:"Deux concurrents cités. Pas vous."},
+ {eng:"Gemini",lg:"FR",q:"On part en week-end à Genève, tu peux me conseiller un hôtel de charme, calme et bien noté, avec un bon spa ?",
+  a:[["Pour un séjour au calme, je recommande ",0],["Hôtel Le Léman",1],[", et aussi ",0],["Rive Gauche Boutique",2],[" pour son spa.",0]],
+  ok:1,vp:"CITÉ · N°1",vt:"Vous êtes recommandé en premier."},
+ {eng:"ChatGPT",lg:"FR",q:"Un bon restaurant de fruits de mer à Nice avec vue sur mer, propre et pas touristique ?",
+  a:[["Pour des fruits de mer avec vue, essayez ",0],["La Table du Port",1],[", très apprécié aussi ",0],["Le Bleu Marine",2],[".",0]],
+  ok:1,vp:"CITÉ · N°1",vt:"Vous êtes recommandé en premier."},
+ {eng:"Perplexity",lg:"FR",q:"Meilleure clinique dentaire à Genève pour des implants, avec de bons avis et un suivi sérieux ?",
+  a:[["Les cliniques les mieux notées sont ",0],["Clinique Dentaire du Lac",2],[" et ",0],["Smile Center Genève",2],[", réputées pour les implants.",0]],
+  ok:0,vp:"NON CITÉ",vt:"Deux concurrents cités. Pas vous."},
+ {eng:"Gemini",lg:"FR",q:"Je cherche une salle de sport à Marseille, bien équipée, avec coach, ouverte tôt le matin ?",
+  a:[["Les salles les plus recommandées sont ",0],["Fitness Park Marseille",2],[" et ",0],["Iron Gym Vieux-Port",2],[", bien équipées avec coachs.",0]],
+  ok:0,vp:"NON CITÉ",vt:"Deux concurrents cités. Pas vous."}
+],
+ar:[
+ {eng:"ChatGPT",lg:"AR",q:"أبغى متجر إلكتروني موثوق يبيع عطور أصلية في السعودية، توصيل سريع وأسعار كويسة، وش تنصحوني؟",
+  a:[["من المتاجر الموثوقة أنصحك بـ ",0],["متجر عبير",1],["، وأيضاً ",0],["دار العطور",2],[" لسرعة التوصيل وأصالة المنتجات.",0]],
+  ok:1,vp:"مذكور · الأول",vt:"متجرك يظهر أولاً في هذه الإجابة."},
+ {eng:"Gemini",lg:"AR",q:"وين ألقى أحسن عيادة جلدية في الرياض لعلاج البشرة، سمعتها زينة وخدمة ممتازة؟",
+  a:[["من أفضل العيادات ",0],["عيادة النضارة",2],[" و",0],["مركز البشرة",2],["، وكلاهما بسمعة ممتازة.",0]],
+  ok:0,vp:"غير مذكور",vt:"ذُكرت عيادتان منافستان. ولم تُذكر أنت."},
+ {eng:"ChatGPT",lg:"AR",q:"أنا في جدة، أبحث عن مطعم عائلي راقٍ ونظيف لعشاء مميز بأجواء هادئة، ماذا تقترح؟",
+  a:[["أنصحك بـ ",0],["مطعم دار الأصالة",1],["، وكذلك ",0],["مطعم النخيل",2],[" لأجوائه العائلية الراقية.",0]],
+  ok:1,vp:"مذكور · الأول",vt:"مطعمك يظهر أولاً في هذه الإجابة."},
+ {eng:"Perplexity",lg:"AR",q:"أبغى أفضل عيادة أسنان في الدوحة لتركيب الفينير، تقييمات ممتازة وأسعار معقولة؟",
+  a:[["من أفضل العيادات ",0],["عيادة الابتسامة الذهبية",1],["، وأيضاً ",0],["مركز الدوحة لطب الأسنان",2],[" لتركيب الفينير.",0]],
+  ok:1,vp:"مذكور · الأول",vt:"عيادتك تظهر أولاً في هذه الإجابة."},
+ {eng:"Gemini",lg:"AR",q:"أدور شركة عقارية موثوقة في دبي لشراء شقة للاستثمار، متابعة ممتازة، وش تنصح؟",
+  a:[["من الشركات الموثوقة ",0],["عقارات الإمارات",2],[" و",0],["دار الاستثمار العقاري",2],["، بمتابعة ممتازة.",0]],
+  ok:0,vp:"غير مذكور",vt:"ذُكرت شركتان منافستان. ولم تُذكر أنت."},
+ {eng:"ChatGPT",lg:"AR",q:"أنا في الكويت، أدور على أفضل صالون تجميل للعرائس، شغل احترافي وسمعة ممتازة، وش تنصحوني؟",
+  a:[["من أشهر الصالونات ",0],["صالون لمسة الجمال",2],[" و",0],["صالون الأميرة",2],["، بسمعة ممتازة.",0]],
+  ok:0,vp:"غير مذكور",vt:"ذُكر صالونان منافسان. ولم تُذكر أنت."}
+]};
+let lang='en',idx=0,timers=[];
+const qEl=()=>document.getElementById('q'),aEl=()=>document.getElementById('a');
+function clearT(){timers.forEach(clearTimeout);timers=[]}
+function wait(ms){return new Promise(r=>timers.push(setTimeout(r,ms)))}
+async function runDemo(){
+  clearT();
+  const list=SC[lang], s=list[idx%list.length];
+  document.getElementById('engName').textContent=s.eng;
+  document.getElementById('engLang').textContent=s.lg;
+  document.getElementById('v').classList.remove('show');
+  qEl().textContent=''; aEl().innerHTML='<span class="cursor"></span>';
+  for(let i=0;i<s.q.length;i++){ qEl().textContent=s.q.slice(0,i+1); await wait(26); }
+  await wait(560);
+  let html='';
+  for(const [txt,kind] of s.a){
+    const words=txt.split(' ');
+    for(let w=0;w<words.length;w++){
+      const piece=words.slice(0,w+1).join(' ');
+      const tag = kind===1?`<mark class="win">${piece}</mark>`:kind===2?`<mark class="lose">${piece}</mark>`:piece;
+      aEl().innerHTML=html+tag+'<span class="cursor"></span>';
+      await wait(kind?70:46);
+    }
+    html += kind===1?`<mark class="win">${txt}</mark>`:kind===2?`<mark class="lose">${txt}</mark>`:txt;
+  }
+  aEl().innerHTML=html;
+  const vp=document.getElementById('vp');
+  vp.className='pill '+(s.ok?'ok':'no'); vp.textContent=s.vp;
+  document.getElementById('vt').textContent=s.vt;
+  document.getElementById('v').classList.add('show');
+  await wait(3400); idx++; runDemo();
+}
+function setLang(l){
+  lang=l;
+  document.body.classList.toggle('rtl',l==='ar');
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(T[l][k]!==undefined)e.textContent=T[l][k]});
+  document.querySelectorAll('[data-i-html]').forEach(e=>{const k=e.getAttribute('data-i-html');if(T[l][k]!==undefined)e.innerHTML=T[l][k]});
+  document.querySelectorAll('[data-i-ph]').forEach(e=>{const k=e.getAttribute('data-i-ph');if(T[l][k]!==undefined)e.placeholder=T[l][k]});
+  ['en','fr','ar'].forEach(x=>document.getElementById('b_'+x).classList.toggle('on',x===l));
+  try{localStorage.setItem('lang',l)}catch(e){}
+  idx=0; runDemo();
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('in');
+    if(e.target.id==='race') e.target.querySelectorAll('.fill').forEach((f,i)=>setTimeout(()=>f.style.width=f.dataset.w+'%',i*160));
+    if(e.target.id==='dashwrap'){const di=document.getElementById('dashInner');if(di)di.classList.add('animate');e.target.querySelectorAll('.sbar span').forEach((f,i)=>setTimeout(()=>f.style.width=f.dataset.w+'%',300+i*160));}
+    io.unobserve(e.target);
+  }}),{threshold:.18});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+setLang((()=>{try{return localStorage.getItem('lang')||'en'}catch(e){return 'en'}})());
+</script>
+<style>@media(max-width:900px){.two{grid-template-columns:1fr!important;gap:34px!important}}</style>
+</body>
+</html>
