@@ -283,6 +283,11 @@ body.rtl .langtabs span{font-family:'Cairo',sans-serif}
 body.rtl .rcard .quote{font-style:normal}
 .rcard .pbadge{position:absolute;top:20px;inset-inline-end:20px;padding:3px 9px;border-radius:99px;background:var(--acid);color:#0A0A0B;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.05em}
 body.rtl .rcard .pbadge{font-family:'Cairo',sans-serif;letter-spacing:0}
+/* ===== REAL REPORT SCREENSHOT ===== */
+.shotframe{max-width:840px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.shotframe img{width:100%;display:block}
+.shotcap{text-align:center;color:var(--dim);font:500 13px 'JetBrains Mono',monospace;margin-top:18px}
+body.rtl .shotcap{font-family:'Cairo',sans-serif}
 /* ===== COMPARISON TABLE ===== */
 .cmp{max-width:760px;margin:0 auto;overflow-x:auto}
 .cmptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
@@ -446,6 +451,13 @@ body.rtl .rcard .pbadge{font-family:'Cairo',sans-serif;letter-spacing:0}
   </div>
 </div></section>
 
+<!-- REAL REPORT SCREENSHOT -->
+<section class="s" id="realreport" style="padding-top:20px"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="rr_k"></span></div><h2 data-i="rr_t"></h2><p data-i="rr_p"></p></div>
+  <div class="shotframe rv"><img src="/dashboard-preview.png" width="1600" height="2289" loading="lazy" alt="AIVisib dashboard showing a real AI-visibility report for a dental clinic in Dubai: visibility score, share of voice, per-language visibility, analysis and action plan."></div>
+  <div class="shotcap" data-i="rr_c"></div>
+</div></section>
+
 <!-- BENTO -->
 <section class="s" id="feat"><div class="wrap">
   <div class="head"><div class="kicker"><s></s><span data-i="f_k"></span></div><h2 data-i="f_t"></h2><p data-i="f_p"></p></div>
@@ -544,6 +556,7 @@ rp_k:"Your report",rp_t:"Exactly what you get",rp_p:"Not just numbers — a clea
 rp1t:"A visibility score",rp1p:"Your share of voice against rivals, per AI engine and per language.",
 rp2t:"Plain-language interpretation",rp2p:"“You dominate in English but you're invisible in Arabic — a gap worth closing.”",
 rp3t:"A prioritized action plan",rp3p:"Concrete actions ranked by impact and effort, so AI recommends you more often.",
+rr_k:"The real thing",rr_t:"This is the report you actually get.",rr_p:"Not a mockup — the real AIVisib dashboard: visibility score, share of voice, per-language visibility, plain-language analysis and a prioritized action plan.",rr_c:"Example — dental clinic, Dubai",
 f_k:"What's inside",f_t:"Everything you need. Nothing you'll never open.",f_p:"The complete AI-visibility toolkit, for a fraction of what the big platforms charge.",
 f1t:"Arabic. Actually.",f1p:"Your Gulf customers ask AI in Arabic — and every English-only tool is blind to those answers. We test real Arabic prompts. Nobody else does.",
 f2t:"Competitor share of voice",f2p:"See precisely who gets recommended instead of you — per question, per engine, per language.",
@@ -590,6 +603,7 @@ rp_k:"Ton rapport",rp_t:"Exactement ce que tu reçois",rp_p:"Pas juste des chiff
 rp1t:"Un score de visibilité",rp1p:"Ta part de voix face à tes concurrents, par moteur IA et par langue.",
 rp2t:"Une interprétation en clair",rp2p:"« Tu domines en anglais mais tu es invisible en arabe — un manque à combler. »",
 rp3t:"Un plan d'action priorisé",rp3p:"Des actions concrètes classées par impact et effort, pour être recommandé plus souvent.",
+rr_k:"Le vrai produit",rr_t:"Voici le rapport que tu reçois vraiment.",rr_p:"Pas une maquette — le vrai tableau de bord AIVisib : score de visibilité, part de voix, visibilité par langue, analyse en clair et plan d'action priorisé.",rr_c:"Exemple — clinique dentaire, Dubaï",
 f_k:"Ce qu'il y a dedans",f_t:"Tout le nécessaire. Rien d'inutile.",f_p:"La boîte à outils complète de visibilité IA, à une fraction du prix des grandes plateformes.",
 f1t:"L'arabe. Pour de vrai.",f1p:"Vos clients du Golfe interrogent l'IA en arabe — et tous les outils anglophones sont aveugles sur ces réponses. Nous testons de vrais prompts arabes. Personne d'autre ne le fait.",
 f2t:"Part de voix concurrentielle",f2p:"Voyez précisément qui est recommandé à votre place — par question, par moteur, par langue.",
@@ -636,6 +650,7 @@ rp_k:"تقريرك",rp_t:"بالضبط ما تحصل عليه",rp_p:"ليست م
 rp1t:"درجة ظهور واضحة",rp1p:"حصتك من الصوت مقابل منافسيك، لكل محرك ذكاء اصطناعي ولكل لغة.",
 rp2t:"تفسير بلغة بسيطة",rp2p:"«أنت متصدّر بالإنجليزية لكنك غير مرئي بالعربية — فجوة تستحق المعالجة.»",
 rp3t:"خطة عمل حسب الأولوية",rp3p:"إجراءات ملموسة مرتبة حسب الأثر والجهد، لتُوصي بك المحركات أكثر.",
+rr_k:"المنتج الحقيقي",rr_t:"هذا هو التقرير الذي تحصل عليه فعلاً.",rr_p:"ليست واجهة تجريبية — لوحة تحكم AIVisib الحقيقية: درجة الظهور، حصة الصوت، الظهور حسب اللغة، تحليل واضح وخطة عمل حسب الأولوية.",rr_c:"مثال — عيادة أسنان، دبي",
 f_k:"ما بداخلها",f_t:"كل ما تحتاجه لتتصدّر في الذكاء الاصطناعي.",f_p:"مجموعة أدوات كاملة لقياس وتحسين تقييمك، بواجهة عربية بسيطة وواضحة.",
 f1t:"العربية. فعلياً.",f1p:"عملاؤك في الخليج يسألون الذكاء الاصطناعي بالعربية — وكل الأدوات الإنجليزية عمياء عن تلك الإجابات. نحن نختبر أسئلة عربية حقيقية. لا أحد غيرنا يفعل ذلك.",
 f2t:"نصيبك من التوصيات مقابل المنافسين",f2p:"شاهد بدقة من يُوصى به بدلاً منك — لكل سؤال، ولكل محرك، ولكل لغة.",
