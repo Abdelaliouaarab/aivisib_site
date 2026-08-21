@@ -284,12 +284,46 @@ body.rtl .rcard .quote{font-style:normal}
 .rcard .pbadge{position:absolute;top:20px;inset-inline-end:20px;padding:3px 9px;border-radius:99px;background:var(--acid);color:#0A0A0B;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.05em}
 body.rtl .rcard .pbadge{font-family:'Cairo',sans-serif;letter-spacing:0}
 /* ===== REAL REPORT SCREENSHOT ===== */
-.shotframe{max-width:840px;margin:0 auto;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.6)}
-.shotframe a{display:block}
-.shotframe img{width:100%;display:block;cursor:zoom-in}
-.shotcap{text-align:center;color:var(--dim);font:500 13px 'JetBrains Mono',monospace;margin-top:18px}
-.rr-zoom{color:var(--acid)}
-body.rtl .shotcap{font-family:'Cairo',sans-serif}
+.ercwrap{max-width:680px;margin:0 auto;background:linear-gradient(180deg,#F5F1E8,#E9E4D6);border-radius:22px;padding:12px;box-shadow:0 40px 100px rgba(0,0,0,.55)}
+.erc{background:#fff;color:#14141a;border-radius:15px;overflow:hidden;text-align:start}
+.erc-banner{background:#14141a;color:var(--acid);font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;text-align:center;padding:8px}
+body.rtl .erc-banner{font-family:'Cairo',sans-serif;letter-spacing:0}
+.erc-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #ECE8DD;background:#FBFAF6;gap:10px}
+.erc-brand{display:flex;align-items:center;gap:10px}
+.erc-lg{width:34px;height:34px;border-radius:8px;background:#14141a;color:var(--acid);display:grid;place-items:center;font-weight:700;flex:none}
+.erc-brand b{font-size:16px;display:block}.erc-brand span{font-size:12px;color:#8a8577}
+.erc-logo{display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#14141a}
+.erc-logo i{width:20px;height:20px;border-radius:5px;background:var(--acid);display:grid;place-items:center;color:#0A0A0B;font-size:11px;font-style:normal}
+.erc-body{padding:18px}
+.erc-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.erc-kpi{background:#fff;border:1px solid #ECE8DD;border-radius:11px;padding:12px 8px;text-align:center}
+.erc-kpi .v{font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.erc-kpi .v.up{color:#16a34a}.erc-kpi .v.vi{color:#7A5CFF}
+.erc-kpi .l{font-size:10.5px;color:#8a8577;margin-top:5px;line-height:1.3}
+.erc-sec{font:700 11px 'JetBrains Mono',monospace;color:#8a8577;text-transform:uppercase;letter-spacing:.04em;margin:20px 0 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+body.rtl .erc-sec{font-family:'Cairo',sans-serif;letter-spacing:0}
+.erc-row{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;color:#14141a;margin-bottom:6px}
+.erc-row b,.erc-lang b{font-family:'JetBrains Mono',monospace}
+body.rtl .erc-row b,body.rtl .erc-lang b{font-family:'Cairo',sans-serif}
+.erc-track{height:9px;background:#EFEBE0;border-radius:99px;overflow:hidden;margin-bottom:11px}
+.erc-track i{display:block;height:100%;border-radius:99px}
+.erc-track i.me{background:linear-gradient(90deg,#7A5CFF,#9B7Bff)}.erc-track i.c{background:#CFC8B6}
+.erc-lang{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.erc-lang .fav{width:22px;height:22px;border-radius:6px;background:#EFEBE0;display:grid;place-items:center;font:700 9px 'JetBrains Mono',monospace;color:#5a7d00;flex:none}
+.erc-lang .erc-track{flex:1;margin-bottom:0}
+.erc-lang b{font-size:12px;color:#8a8577;width:38px;text-align:end}
+.erc-interp{background:#F7F5EF;border:1px solid #ECE8DD;border-radius:12px;padding:14px 16px;font-size:13.5px;color:#3c4043;line-height:1.7}
+.erc-recos{list-style:none;margin:0;padding:0;counter-reset:erc}
+.erc-recos li{counter-increment:erc;position:relative;padding:10px 14px 10px 42px;background:#fff;border:1px solid #ECE8DD;border-radius:11px;margin-bottom:8px;font-size:13.5px;color:#3c4043}
+.erc-recos li::before{content:counter(erc);position:absolute;left:11px;top:10px;width:20px;height:20px;border-radius:6px;background:#14141a;color:var(--acid);display:grid;place-items:center;font:700 11px 'JetBrains Mono',monospace}
+body.rtl .erc-recos li{padding:10px 42px 10px 14px}body.rtl .erc-recos li::before{left:auto;right:11px}
+.erc-prem{background:#14141a;color:var(--acid);font:700 9px 'JetBrains Mono',monospace;padding:2px 8px;border-radius:99px;letter-spacing:.05em}
+.erc-pitem{background:#fff;border:1px solid #ECE8DD;border-inline-start:4px solid #d93025;border-radius:11px;padding:13px 15px}
+.erc-pitem b{font-size:14px;color:#14141a;display:block;margin-bottom:5px}
+.erc-pitem p{font-size:12.5px;color:#6b6f76;line-height:1.55}
+.erc-foot{padding:14px 18px;border-top:1px solid #ECE8DD;background:#FBFAF6;font-size:11.5px;color:#8a8577;text-align:end}
+.erc-ok{color:#16a34a;font-weight:600}
+@media(max-width:560px){.erc-kpi .v{font-size:20px}.erc-body{padding:15px}}
 /* ===== FREE AUDIT ===== */
 .auditbox{max-width:720px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px}
 .af-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
@@ -503,8 +537,34 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
 <!-- REAL REPORT SCREENSHOT -->
 <section class="s" id="realreport" style="padding-top:20px"><div class="wrap">
   <div class="head"><div class="kicker"><s></s><span data-i="rr_k"></span></div><h2 data-i="rr_t"></h2><p data-i="rr_p"></p></div>
-  <div class="shotframe rv"><a href="/dashboard-preview.png" target="_blank" rel="noopener" aria-label="Enlarge sample report"><img src="/dashboard-preview.png" width="1600" height="2314" loading="lazy" alt="Illustrative sample of the AIVisib dashboard: an AI-visibility report with score, share of voice, per-language visibility, analysis and a prioritized action plan (fictional data)."></a></div>
-  <div class="shotcap"><span data-i="rr_c"></span> <span class="rr-zoom" data-i="rr_zoom"></span></div>
+  <div class="ercwrap rv"><div class="erc">
+    <div class="erc-banner" data-i="er_sample"></div>
+    <div class="erc-head">
+      <div class="erc-brand"><div class="erc-lg">N</div><div><b>Novadent Clinic</b><span data-i="er_sector"></span></div></div>
+      <div class="erc-logo"><i>◈</i>AIVisib</div>
+    </div>
+    <div class="erc-body">
+      <div class="erc-kpis">
+        <div class="erc-kpi"><div class="v up">67%</div><div class="l" data-i="er_kpi1"></div></div>
+        <div class="erc-kpi"><div class="v vi">48%</div><div class="l" data-i="er_kpi2"></div></div>
+        <div class="erc-kpi"><div class="v">92%</div><div class="l" data-i="er_kpi3"></div></div>
+      </div>
+      <div class="erc-sec" data-i="er_sov"></div>
+      <div class="erc-row"><span>Novadent Clinic ⬅</span><b>48%</b></div><div class="erc-track"><i class="me" style="width:48%"></i></div>
+      <div class="erc-row"><span data-i="er_compA"></span><b>30%</b></div><div class="erc-track"><i class="c" style="width:30%"></i></div>
+      <div class="erc-row"><span data-i="er_compB"></span><b>22%</b></div><div class="erc-track"><i class="c" style="width:22%"></i></div>
+      <div class="erc-sec" data-i="er_lang"></div>
+      <div class="erc-lang"><span class="fav">EN</span><div class="erc-track"><i class="me" style="width:100%"></i></div><b>100%</b></div>
+      <div class="erc-lang"><span class="fav">AR</span><div class="erc-track"><i class="me" style="width:33%"></i></div><b>33%</b></div>
+      <div class="erc-sec" data-i="er_interp_t"></div>
+      <div class="erc-interp" data-i="er_interp"></div>
+      <div class="erc-sec" data-i="er_reco_t"></div>
+      <ol class="erc-recos"><li data-i="er_r1"></li><li data-i="er_r2"></li></ol>
+      <div class="erc-sec">🎯 <span data-i="er_plan_t"></span><span class="erc-prem">PREMIUM</span></div>
+      <div class="erc-pitem"><b data-i="er_p1_t"></b><p data-i="er_p1_d"></p></div>
+    </div>
+    <div class="erc-foot"><span class="erc-ok" data-i="er_verified"></span> · aivisib.com</div>
+  </div></div>
 </div></section>
 
 <!-- BENTO -->
@@ -612,6 +672,7 @@ rp1t:"A visibility score",rp1p:"Your share of voice against rivals, per AI engin
 rp2t:"Plain-language interpretation",rp2p:"“You dominate in English but you're invisible in Arabic — a gap worth closing.”",
 rp3t:"A prioritized action plan",rp3p:"Concrete actions ranked by impact and effort, so AI recommends you more often.",
 rr_k:"The real thing",rr_t:"This is the report you actually get.",rr_p:"The actual AIVisib dashboard: visibility score, share of voice, per-language visibility, plain-language analysis and a prioritized action plan.",rr_c:"Illustrative sample · fictional data",rr_zoom:"👆 tap to enlarge",
+er_sample:"SAMPLE · illustrative data",er_sector:"Dental clinic · Dubai",er_kpi1:"AI visibility score",er_kpi2:"Share of voice",er_kpi3:"Confidence",er_sov:"Who AI recommends",er_compA:"Competitor A",er_compB:"Competitor B",er_lang:"Visibility by language",er_interp_t:"Analysis",er_interp:"Novadent leads share of voice (48%) but is invisible in Arabic — exactly where many Gulf patients ask. A high-value gap to close.",er_reco_t:"Priority actions",er_r1:"Publish Arabic pages so AI can cite you in Arabic.",er_r2:"Earn citations on the health directories AI trusts.",er_plan_t:"Action plan",er_p1_t:"Launch an Arabic version of your key pages",er_p1_d:"High priority · medium effort → more visibility in Arabic AI answers, more Gulf patients.",er_verified:"✓ AI-verified",
 f_k:"What's inside",f_t:"Everything you need. Nothing you'll never open.",f_p:"The complete AI-visibility toolkit, for a fraction of what the big platforms charge.",
 f1t:"Arabic. Actually.",f1p:"Your Gulf customers ask AI in Arabic — and every English-only tool is blind to those answers. We test real Arabic prompts. Nobody else does.",
 f2t:"Competitor share of voice",f2p:"See precisely who gets recommended instead of you — per question, per engine, per language.",
@@ -665,6 +726,7 @@ rp1t:"Un score de visibilité",rp1p:"Ta part de voix face à tes concurrents, pa
 rp2t:"Une interprétation en clair",rp2p:"« Tu domines en anglais mais tu es invisible en arabe — un manque à combler. »",
 rp3t:"Un plan d'action priorisé",rp3p:"Des actions concrètes classées par impact et effort, pour être recommandé plus souvent.",
 rr_k:"Le vrai produit",rr_t:"Voici le rapport que tu reçois vraiment.",rr_p:"Le vrai tableau de bord AIVisib : score de visibilité, part de voix, visibilité par langue, analyse en clair et plan d'action priorisé.",rr_c:"Exemple illustratif · données fictives",rr_zoom:"👆 appuie pour agrandir",
+er_sample:"EXEMPLE · données fictives",er_sector:"Clinique dentaire · Dubaï",er_kpi1:"Score de visibilité IA",er_kpi2:"Part de voix",er_kpi3:"Confiance",er_sov:"Qui l'IA recommande",er_compA:"Concurrent A",er_compB:"Concurrent B",er_lang:"Visibilité par langue",er_interp_t:"Analyse",er_interp:"Novadent domine la part de voix (48%) mais est invisible en arabe — là où beaucoup de patients du Golfe posent leurs questions. Un manque à combler.",er_reco_t:"Actions prioritaires",er_r1:"Publier des pages en arabe pour que l'IA te cite en arabe.",er_r2:"Obtenir des citations sur les annuaires santé de confiance.",er_plan_t:"Plan d'action",er_p1_t:"Lancer une version arabe de tes pages clés",er_p1_d:"Priorité haute · effort moyen → plus de visibilité dans les réponses arabes, plus de patients du Golfe.",er_verified:"✓ Vérifié par IA",
 f_k:"Ce qu'il y a dedans",f_t:"Tout le nécessaire. Rien d'inutile.",f_p:"La boîte à outils complète de visibilité IA, à une fraction du prix des grandes plateformes.",
 f1t:"L'arabe. Pour de vrai.",f1p:"Vos clients du Golfe interrogent l'IA en arabe — et tous les outils anglophones sont aveugles sur ces réponses. Nous testons de vrais prompts arabes. Personne d'autre ne le fait.",
 f2t:"Part de voix concurrentielle",f2p:"Voyez précisément qui est recommandé à votre place — par question, par moteur, par langue.",
@@ -718,6 +780,7 @@ rp1t:"درجة ظهور واضحة",rp1p:"حصتك من الصوت مقابل م
 rp2t:"تفسير بلغة بسيطة",rp2p:"«أنت متصدّر بالإنجليزية لكنك غير مرئي بالعربية — فجوة تستحق المعالجة.»",
 rp3t:"خطة عمل حسب الأولوية",rp3p:"إجراءات ملموسة مرتبة حسب الأثر والجهد، لتُوصي بك المحركات أكثر.",
 rr_k:"المنتج الحقيقي",rr_t:"هذا هو التقرير الذي تحصل عليه فعلاً.",rr_p:"لوحة تحكم AIVisib الحقيقية: درجة الظهور، حصة الصوت، الظهور حسب اللغة، تحليل واضح وخطة عمل حسب الأولوية.",rr_c:"مثال توضيحي · بيانات افتراضية",rr_zoom:"👆 اضغط للتكبير",
+er_sample:"مثال · بيانات توضيحية",er_sector:"عيادة أسنان · دبي",er_kpi1:"درجة الظهور في الذكاء الاصطناعي",er_kpi2:"حصة الصوت",er_kpi3:"الثقة",er_sov:"من يوصي به الذكاء الاصطناعي",er_compA:"منافس أ",er_compB:"منافس ب",er_lang:"الظهور حسب اللغة",er_interp_t:"التحليل",er_interp:"تتصدّر Novadent حصة الصوت (48%) لكنها غير مرئية بالعربية — حيث يسأل كثير من مرضى الخليج. فجوة تستحق المعالجة.",er_reco_t:"إجراءات ذات أولوية",er_r1:"انشر صفحات بالعربية ليذكرك الذكاء الاصطناعي بالعربية.",er_r2:"احصل على استشهادات من أدلة الصحة الموثوقة.",er_plan_t:"خطة العمل",er_p1_t:"أطلق نسخة عربية من صفحاتك الرئيسية",er_p1_d:"أولوية عالية · جهد متوسط ← ظهور أكبر في الإجابات العربية، ومرضى أكثر من الخليج.",er_verified:"✓ موثّق بالذكاء الاصطناعي",
 f_k:"ما بداخلها",f_t:"كل ما تحتاجه لتتصدّر في الذكاء الاصطناعي.",f_p:"مجموعة أدوات كاملة لقياس وتحسين تقييمك، بواجهة عربية بسيطة وواضحة.",
 f1t:"العربية. فعلياً.",f1p:"عملاؤك في الخليج يسألون الذكاء الاصطناعي بالعربية — وكل الأدوات الإنجليزية عمياء عن تلك الإجابات. نحن نختبر أسئلة عربية حقيقية. لا أحد غيرنا يفعل ذلك.",
 f2t:"نصيبك من التوصيات مقابل المنافسين",f2p:"شاهد بدقة من يُوصى به بدلاً منك — لكل سؤال، ولكل محرك، ولكل لغة.",
