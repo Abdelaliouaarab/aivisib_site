@@ -186,6 +186,8 @@ body.rtl .stp .num{font-family:'Cairo',sans-serif;font-style:normal;font-weight:
 .stp p{color:var(--dim);font-size:14.8px}
 
 /* pricing */
+.agcta{margin-top:26px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 28px}
+.agcta p{color:var(--dim);font-size:15px;max-width:640px}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media(max-width:980px){.plans{grid-template-columns:1fr}}
 .pl{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column}
@@ -381,6 +383,7 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
     <a href="#how" class="hm" data-i="n1"></a>
     <a href="#feat" class="hm" data-i="n2"></a>
     <a href="#price" class="hm" data-i="n3"></a>
+    <a href="#agences" class="hm" data-i="n5"></a>
     <div class="lang">
       <button id="b_en" onclick="setLang('en')">EN</button>
       <button id="b_fr" onclick="setLang('fr')">FR</button>
@@ -600,6 +603,18 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
 </div></section>
 
 <!-- PRICING -->
+<!-- POUR LES AGENCES -->
+<section class="s" id="agences"><div class="wrap">
+  <div class="head"><div class="kicker"><s></s><span data-i="ag_k"></span></div><h2 data-i="ag_t"></h2><p data-i="ag_p"></p></div>
+  <div class="bento">
+    <div class="b w3 rv"><span class="n">☗</span><h3 data-i="ag1t"></h3><p data-i="ag1p"></p></div>
+    <div class="b w3 rv"><span class="n">✎</span><h3 data-i="ag2t"></h3><p data-i="ag2p"></p></div>
+    <div class="b w3 rv"><span class="n">⛓</span><h3 data-i="ag3t"></h3><p data-i="ag3p"></p></div>
+    <div class="b w3 rv"><span class="n">☺</span><h3 data-i="ag4t"></h3><p data-i="ag4p"></p></div>
+  </div>
+  <div class="agcta rv"><p data-i="ag_note"></p><a href="https://app.aivisib.com" class="cta" data-i="ag_c"></a></div>
+</div></section>
+
 <section class="s" id="price"><div class="wrap">
   <div class="head"><div class="kicker"><s></s><span data-i="p_k"></span></div><h2 data-i="p_t"></h2><p data-i="p_p"></p></div>
   <div class="plans">
@@ -644,7 +659,7 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
 <script>
 const T={
 en:{tk1:"Your customers now ask AI, not Google",tk2:"Is your brand in the answer?",tk3:"Simple, reliable, affordable AI visibility",
-n1:"How it works",n2:"Features",n3:"Pricing",n4:"Log in",
+n1:"How it works",n2:"Features",n3:"Pricing",n4:"Log in",n5:"Agencies",ag_k:"For agencies",ag_t:"One platform. An agency mode built for how you work.",ag_p:"Your clients ask you whether AI recommends them. Answer every week, under your own name, without building anything.",ag1t:"Client spaces",ag1p:"Each client has its own space: brands, competitors, questions, reports. Your whole team works in one account — unlimited seats.",ag2t:"Native white label — included",ag2p:"Your name and logo on every report, PDF and shared page. No third-party dashboard tool, no extra fee: it's built in from the Pro plan.",ag3t:"One link per client, always up to date",ag3p:"A read-only link shows your client the latest report, white-labelled, without an account. Every weekly report can also reach their inbox automatically.",ag4t:"Reports clients actually read",ag4p:"A written executive summary, what moved since last week, a prioritized action plan — in English, French or Arabic. Deliverables, not screenshots.",ag_note:"Most AI-visibility tools charge 245–795 $/month for their agency tiers and still send you to Looker Studio for branding. AIVisib Agency: 149 $/month, white label built in.",ag_c:"Start the Agency plan",
 kick:"AI search visibility · Multilingual",
 h1:'When AI is asked,<br>does it name <em>you</em><br>or your rival?',
 sub:"Millions now ask ChatGPT instead of Googling. AIVisib runs your buyers' real questions through the top AI engines every week — in your customers' language (Arabic, English, French, Spanish and more) — and shows you exactly where you win, where you lose, and what to fix. $29/mo, no salesperson.",
@@ -680,7 +695,7 @@ p_k:"Pricing",p_t:"Fair pricing. Arabic included.",p_p:"Simple, transparent plan
 mo:"/mo",p_pop:"POPULAR",p_c:"Get started",
 p1a:"1 brand · 25 prompts",p1b:"4 AI engines, weekly",p1c:"3 languages incl. Arabic",p1d:"Dashboard + email digest",
 p2a:"3 brands · 100 prompts",p2b:"Everything in Starter",p2c:"White-label PDF reports",p2d:"Priority support",
-p3n:"Agency",p3a:"10 brands · 400 prompts",p3b:"Everything in Pro",p3c:"Unlimited seats",p3d:"Client-ready reporting",
+p3n:"Agency",p3a:"10 brands · 400 prompts",p3b:"Client spaces · unlimited team seats",p3c:"Shareable client links · automatic report emails",p3d:"Native white label (your name, your logo)",
 q_k:"FAQ",q_t:"Frequently asked questions",
 q1:"How does AIVisib help me get recommended by AI?",a1:"AIVisib shows you your real share of visibility in the new AI era — how often the AIs recommend you versus your competitors — and gives you concrete actions to improve your position and raise your chances of appearing in AI answers and recommendations.",
 q2:"Why does Arabic matter so much?",a2:"Millions of buyers across the Gulf and MENA ask AI in Arabic. English-only tools never see those answers — so a brand can look healthy in English and be invisible in Arabic. AIVisib runs real Arabic prompts, which is why agencies in the region can finally report on their actual market.",
@@ -698,7 +713,7 @@ cmp_r1:"Multilingual prompts (Arabic, French & more)",cmp_r2:"Starting price",cm
 cmp_r3:"Self-serve · no sales call",cmp_r3t:"✗",cmp_r4:"Weekly tracking · 4 engines",cmp_r5:"White-label reports",cmp_r5u:"✓ included",cmp_r5t:"paid add-on",
 },
 fr:{tk1:"Vos clients demandent à l'IA, plus à Google",tk2:"Votre marque est-elle dans la réponse ?",tk3:"Visibilité IA simple, fiable et abordable",
-n1:"Fonctionnement",n2:"Fonctionnalités",n3:"Tarifs",n4:"Connexion",
+n1:"Fonctionnement",n2:"Fonctionnalités",n3:"Tarifs",n4:"Connexion",n5:"Agences",ag_k:"Pour les agences",ag_t:"Une seule plateforme. Un mode agence pensé pour votre façon de travailler.",ag_p:"Vos clients vous demandent si l'IA les recommande. Répondez chaque semaine, sous votre propre nom, sans rien construire.",ag1t:"Des espaces clients",ag1p:"Chaque client a son espace : marques, concurrents, questions, rapports. Toute votre équipe travaille dans un seul compte — sièges illimités.",ag2t:"Marque blanche native — incluse",ag2p:"Votre nom et votre logo sur chaque rapport, PDF et page partagée. Aucun outil tiers, aucun supplément : c'est intégré dès le plan Pro.",ag3t:"Un lien par client, toujours à jour",ag3p:"Un lien en lecture seule montre à votre client le dernier rapport, en marque blanche, sans compte. Chaque rapport hebdomadaire peut aussi lui parvenir automatiquement par email.",ag4t:"Des rapports que vos clients lisent vraiment",ag4p:"Un résumé exécutif rédigé, ce qui a bougé depuis la semaine dernière, un plan d'action priorisé — en français, en anglais ou en arabe. Des livrables, pas des captures d'écran.",ag_note:"La plupart des outils de visibilité IA facturent leurs paliers agence 245 à 795 $/mois et vous renvoient vers Looker Studio pour le branding. AIVisib Agency : 149 $/mois, marque blanche intégrée.",ag_c:"Démarrer le plan Agency",
 kick:"Visibilité dans les IA · Multilingue",
 h1:"Quand on demande à l'IA,<br>cite-t-elle <em>vous</em><br>ou votre concurrent ?",
 sub:"Des millions de clients interrogent ChatGPT au lieu de Google. AIVisib pose chaque semaine les vraies questions de vos acheteurs aux principaux moteurs IA — dans la langue de vos clients (arabe, anglais, français, espagnol et plus) — et vous montre où vous gagnez, où vous perdez, et quoi corriger. 29$/mois, sans commercial.",
@@ -734,7 +749,7 @@ p_k:"Tarifs",p_t:"Un prix juste. Arabe inclus.",p_p:"Des offres simples et trans
 mo:"/mois",p_pop:"POPULAIRE",p_c:"Commencer",
 p1a:"1 marque · 25 prompts",p1b:"4 moteurs IA, chaque semaine",p1c:"3 langues dont l'arabe",p1d:"Dashboard + résumé email",
 p2a:"3 marques · 100 prompts",p2b:"Tout Starter inclus",p2c:"Rapports PDF marque blanche",p2d:"Support prioritaire",
-p3n:"Agence",p3a:"10 marques · 400 prompts",p3b:"Tout Pro inclus",p3c:"Utilisateurs illimités",p3d:"Reporting prêt pour vos clients",
+p3n:"Agence",p3a:"10 marques · 400 prompts",p3b:"Espaces clients · équipe illimitée",p3c:"Liens clients partageables · envoi automatique des rapports",p3d:"Marque blanche native (votre nom, votre logo)",
 q_k:"FAQ",q_t:"Questions fréquentes",
 q1:"Comment AIVisib m'aide à être recommandé par l'IA ?",a1:"AIVisib vous montre votre part réelle de visibilité dans la nouvelle ère de l'IA — à quelle fréquence les IA vous recommandent face à vos concurrents — et vous donne des actions concrètes pour améliorer votre position et augmenter vos chances d'apparaître dans les réponses et recommandations des IA.",
 q2:"Pourquoi l'arabe est-il si important ?",a2:"Des millions d'acheteurs du Golfe et de la région MENA interrogent l'IA en arabe. Les outils anglophones ne voient jamais ces réponses — une marque peut sembler en pleine forme en anglais et être invisible en arabe. AIVisib teste de vrais prompts arabes, ce qui permet enfin aux agences de la région de reporter sur leur marché réel.",
@@ -752,7 +767,7 @@ cmp_r1:"Prompts multilingues (arabe, français & plus)",cmp_r2:"Prix de départ"
 cmp_r3:"Libre-service · sans commercial",cmp_r3t:"✗",cmp_r4:"Suivi hebdo · 4 moteurs",cmp_r5:"Rapports marque blanche",cmp_r5u:"✓ inclus",cmp_r5t:"option payante",
 },
 ar:{tk1:"عملاؤك يسألون الذكاء الاصطناعي، لا Google",tk2:"هل علامتك داخل الإجابة؟",tk3:"قياس بسيط وموثوق للظهور في الذكاء الاصطناعي، وبسعر في المتناول",
-n1:"كيف يعمل",n2:"المميزات",n3:"الأسعار",n4:"تسجيل الدخول",
+n1:"كيف يعمل",n2:"المميزات",n3:"الأسعار",n4:"تسجيل الدخول",n5:"الوكالات",ag_k:"للوكالات",ag_t:"منصة واحدة. ووضع خاص بالوكالات مصمَّم لطريقة عملكم.",ag_p:"يسألكم عملاؤكم هل يوصي بهم الذكاء الاصطناعي. أجيبوهم كل أسبوع، باسمكم أنتم، دون أن تبنوا شيئًا.",ag1t:"مساحات للعملاء",ag1p:"لكل عميل مساحته: العلامات، المنافسون، الأسئلة، التقارير. يعمل فريقكم كله في حساب واحد — مقاعد غير محدودة.",ag2t:"علامة بيضاء أصلية — مضمّنة",ag2p:"اسمكم وشعاركم على كل تقرير وملف PDF وصفحة مشاركة. لا أدوات خارجية ولا رسوم إضافية: الميزة مدمجة بدءًا من باقة Pro.",ag3t:"رابط واحد لكل عميل، محدَّث دائمًا",ag3p:"رابط للقراءة فقط يعرض لعميلكم أحدث تقرير بعلامتكم ودون حساب. ويمكن أن يصله كل تقرير أسبوعي تلقائيًا عبر البريد.",ag4t:"تقارير يقرؤها عملاؤكم فعلًا",ag4p:"ملخص تنفيذي مكتوب، وما تغيّر منذ الأسبوع الماضي، وخطة عمل مرتّبة بالأولوية — بالعربية أو الإنجليزية أو الفرنسية. مخرجات حقيقية، لا لقطات شاشة.",ag_note:"تفرض معظم أدوات قياس الظهور في الذكاء الاصطناعي 245 إلى 795 دولارًا شهريًا على باقات الوكالات، ثم تحيلكم إلى Looker Studio لوضع علامتكم. باقة AIVisib Agency: 149 دولارًا شهريًا، والعلامة البيضاء مدمجة.",ag_c:"ابدأ باقة Agency",
 kick:"الظهور في الذكاء الاصطناعي · متعدد اللغات",
 h1:"حين يُسأل الذكاء الاصطناعي،<br>هل يذكرك <em>أنت</em><br>أم منافسك؟",
 sub:"ملايين العملاء صاروا يسألون ChatGPT بدل Google. كل أسبوع، يطرح AIVisib أسئلة عملائك الحقيقية على أقوى محركات الذكاء الاصطناعي — بلغتهم (العربية والإنجليزية والفرنسية والإسبانية وغيرها) — ويريك أين تفوز، وأين تخسر، وما الذي يجب إصلاحه. 29 دولاراً شهرياً، وبدون مندوب مبيعات.",
@@ -788,7 +803,7 @@ p_k:"الأسعار",p_t:"أسعار عادلة. والعربية مشمولة."
 mo:"/شهر",p_pop:"الأكثر طلباً",p_c:"ابدأ الآن",
 p1a:"علامة واحدة · 25 سؤالاً",p1b:"4 محركات، أسبوعياً",p1c:"3 لغات منها العربية",p1d:"لوحة تحكم + ملخص بالبريد الإلكتروني",
 p2a:"3 علامات · 100 سؤال",p2b:"كل مميزات Starter",p2c:"تقارير PDF بشعارك أنت",p2d:"دعم ذو أولوية",
-p3n:"Agency",p3a:"10 علامات · 400 سؤال",p3b:"كل مميزات Pro",p3c:"مستخدمون غير محدودون",p3d:"تقارير جاهزة للعملاء",
+p3n:"Agency",p3a:"10 علامات · 400 سؤال",p3b:"مساحات للعملاء · فريق غير محدود",p3c:"روابط مشاركة للعملاء · إرسال تلقائي للتقارير",p3d:"علامة بيضاء أصلية (اسمكم وشعاركم)",
 q_k:"أسئلة",q_t:"الأسئلة الشائعة",
 q1:"كيف يساعدني AIVisib على الظهور في توصيات الذكاء الاصطناعي؟",a1:"يريك AIVisib حصتك الحقيقية من الظهور في عصر الذكاء الاصطناعي الجديد — كم مرة توصي بك المحركات مقارنةً بمنافسيك — ويمنحك خطوات عملية لتحسين مكانتك وزيادة فرص ظهورك في إجابات الذكاء الاصطناعي وتوصياته.",
 q2:"لماذا العربية مهمة؟",a2:"ملايين العملاء في الخليج والمنطقة يسألون الذكاء الاصطناعي بالعربية. الأدوات الإنجليزية لا ترى تلك الإجابات — فقد تبدو العلامة بحالة ممتازة بالإنجليزية بينما هي غائبة بالعربية. AIVisib يختبر أسئلة عربية حقيقية، ولهذا تستطيع وكالات المنطقة أخيراً أن تقدّم تقارير عن سوقها الحقيقي.",
