@@ -292,7 +292,24 @@ body.rtl .pl .price{font-family:'Cairo',sans-serif}
 .pl .price small{font-size:15px;color:var(--dim);font-weight:400;letter-spacing:0}
 .pl ul{list-style:none;margin-bottom:28px;flex:1}
 .pl li{padding:8px 0;font-size:14.6px;color:var(--dim);display:flex;gap:10px;align-items:flex-start}
-.pl li::before{content:"→";color:var(--acid-ink);font-weight:700}
+.pl li::before{content:"✓";color:var(--acid-ink);font-weight:700}
+/* tarifs v2 */
+.pl .who{font-size:13.5px;color:var(--dim);margin:-14px 0 18px;min-height:40px}
+.pl .meas{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:18px}
+.pl .meas .mk-lab{margin-bottom:6px}
+.pl .meas b{display:block;font-size:13.5px;font-weight:600;color:var(--cream);line-height:1.4}
+.pl .meas span{display:block;font:600 12px 'JetBrains Mono',monospace;color:var(--acid-ink);margin-top:6px}
+body.rtl .pl .meas span{font-family:'Cairo',sans-serif}
+.pl.top .meas{background:var(--input-bg)}
+.pvs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+@media(max-width:980px){.pvs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pvs{grid-template-columns:1fr}}
+.pv{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.pv b{display:block;font-size:14.5px;font-weight:600;margin-bottom:6px}
+.pv b::before{content:"✓ ";color:var(--acid-ink)}
+.pv p{font-size:13px;color:var(--dim);line-height:1.5}
+.pvk{margin-top:30px;font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+body.rtl .pvk{font-family:'Cairo',sans-serif;letter-spacing:0}
 
 /* faq */
 .faq{max-width:820px}
@@ -780,15 +797,26 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
 <section class="s" id="price"><div class="wrap">
   <div class="head"><div class="kicker"><s></s><span data-i="p_k"></span></div><h2 data-i="p_t"></h2><p data-i="p_p"></p></div>
   <div class="plans">
-    <div class="pl rv"><h3>Starter</h3><div class="price">$29<small data-i="mo"></small></div>
+    <div class="pl rv"><h3>Starter</h3><div class="price">$29<small data-i="mo"></small></div><p class="who" data-i="p1w"></p>
+      <div class="meas"><div class="mk-lab" data-i="pm_l"></div><b data-i="pm1"></b><span data-i="pm1n"></span></div>
       <ul><li data-i="p1a"></li><li data-i="p1b"></li><li data-i="p1c"></li><li data-i="p1d"></li></ul>
       <a href="https://app.aivisib.com" class="cta out" style="text-align:center" data-i="p_c"></a></div>
-    <div class="pl top rv"><span class="badge" data-i="p_pop"></span><h3>Pro</h3><div class="price">$79<small data-i="mo"></small></div>
+    <div class="pl top rv"><span class="badge" data-i="p_pop"></span><h3>Pro</h3><div class="price">$79<small data-i="mo"></small></div><p class="who" data-i="p2w"></p>
+      <div class="meas"><div class="mk-lab" data-i="pm_l"></div><b data-i="pm2"></b><span data-i="pm2n"></span></div>
       <ul><li data-i="p2a"></li><li data-i="p2b"></li><li data-i="p2c"></li><li data-i="p2d"></li></ul>
       <a href="https://app.aivisib.com" class="cta" style="text-align:center" data-i="p_c"></a></div>
-    <div class="pl rv"><h3 data-i="p3n"></h3><div class="price">$149<small data-i="mo"></small></div>
+    <div class="pl rv"><h3 data-i="p3n"></h3><div class="price">$149<small data-i="mo"></small></div><p class="who" data-i="p3w"></p>
+      <div class="meas"><div class="mk-lab" data-i="pm_l"></div><b data-i="pm3"></b><span data-i="pm3n"></span></div>
       <ul><li data-i="p3a"></li><li data-i="p3b"></li><li data-i="p3c"></li><li data-i="p3d"></li></ul>
       <a href="https://app.aivisib.com" class="cta out" style="text-align:center" data-i="p_c"></a></div>
+  </div>
+  <div class="hwtrust rv"><span data-i="pt1"></span><span data-i="pt2"></span><span data-i="pt3"></span><span data-i="pt4"></span></div>
+  <div class="pvk rv" data-i="pv_k"></div>
+  <div class="pvs rv">
+    <div class="pv"><b data-i="pv1t"></b><p data-i="pv1"></p></div>
+    <div class="pv"><b data-i="pv2t"></b><p data-i="pv2"></p></div>
+    <div class="pv"><b data-i="pv3t"></b><p data-i="pv3"></p></div>
+    <div class="pv"><b data-i="pv4t"></b><p data-i="pv4"></p></div>
   </div>
 </div></section>
 
@@ -802,6 +830,9 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
     <details><summary data-i="q4"></summary><p data-i="a4"></p></details>
     <details><summary data-i="q5"></summary><p data-i="a5"></p></details>
     <details><summary data-i="q6"></summary><p data-i="a6"></p></details>
+    <details><summary data-i="q7"></summary><p data-i="a7"></p></details>
+    <details><summary data-i="q8"></summary><p data-i="a8"></p></details>
+    <details><summary data-i="q9"></summary><p data-i="a9"></p></details>
   </div>
 </div></section>
 
@@ -857,16 +888,16 @@ f5t:"Sell it under your name",f5p:"White-label PDF reports with your agency's lo
 f6t:"Get a plan, not a data dump",f6p:"Every report ends with a short list of concrete moves that raise your odds of being recommended — in plain language, ready to hand to your team.",
 f7t:"Measure reality, every week",f7p:"Live web search: the answers your buyers get today, not what the models memorised months ago. Re-measured weekly, so you see movement, not snapshots.",
 fm_prec:"AI visibility · precision ± 12 pts",fm_conf:"Confidence index",fm_agency:"Your Agency",fm_p3:"Get listed on the two directories the AIs quote most in Muscat",fm_w1:"Week 1",fm_w7:"Week 7",
-p_k:"Pricing",p_t:"Fair pricing. Arabic included.",p_p:"Simple, transparent plans — with Arabic built in, and no enterprise lock-in.",
+p_k:"Pricing",p_t:"Fair pricing. Everything included.",p_p:"Three monthly plans, no add-ons, no credits, no enterprise call. Claude and Gemini, Arabic and white label are included — not sold separately.",p1w:"For one business that wants to know where it stands with AI.",p2w:"For a growing brand, or a consultant with a few clients.",p3w:"For agencies reporting to many clients, under their own name.",pm_l:"What you measure",pm1:"1 brand · 25 questions · 4 engines · 3 passes · every week",pm1n:"≈ 1,200 AI answers analysed / month",pm2:"3 brands · 100 questions · 4 engines · 3 passes · every week",pm2n:"≈ 4,800 AI answers analysed / month",pm3:"10 brands · 400 questions · 4 engines · 3 passes · every week",pm3n:"≈ 19,200 AI answers analysed / month · ≈ $15 per brand",pt1:"Cancel anytime, one click",pt2:"Secure payment by Stripe",pt3:"No add-ons, no credits, no hidden fees",pt4:"Free instant audit first, no card needed",pv_k:"Compared with the market · September 2026",pv1t:"Claude and Gemini",pv1:"Included in every plan. Elsewhere: $29–439/month add-ons, or Enterprise only.",pv2t:"White label",pv2:"Included from Pro. Elsewhere: on request, or not available.",pv3t:"Agency tier",pv3:"$149 for 10 brands, price shown. Elsewhere: $245–1,000+/month, often on quote.",pv4t:"Arabic",pv4:"Native Modern Standard Arabic, no extra charge. Elsewhere: not covered.",q7:"What counts as a question?",a7:"A question (prompt) is one real customer query, e.g. “best dental clinic in Muscat for families?”. Each one is asked to the four engines, several times, every week. Starter includes 25, Pro 100, Agency 400 — enough to cover services, neighbourhoods, prices and languages.",q8:"Are there add-ons, credits or hidden fees?",a8:"No. The price shown is the full price: all four engines, all languages, PDF exports and weekly measurements are included. No credits to buy, no per-engine surcharge.",q9:"Can I change plan, and can the invoice show my agency's name?",a9:"Yes. Upgrade or downgrade anytime from your billing portal; Stripe prorates the change. Invoices carry the company name you enter, so agencies can bill their own clients freely.",
 mo:"/mo",p_pop:"POPULAR",p_c:"Get started",
-p1a:"1 brand · 25 prompts",p1b:"4 AI engines, weekly",p1c:"3 languages incl. Arabic",p1d:"Dashboard + email digest",
-p2a:"3 brands · 100 prompts",p2b:"Everything in Starter",p2c:"White-label PDF reports",p2d:"Priority support",
-p3n:"Agency",p3a:"10 brands · 400 prompts",p3b:"Client spaces · unlimited team seats",p3c:"Shareable client links · automatic report emails",p3d:"Native white label (your name, your logo)",
+p1a:"ChatGPT, Gemini, Perplexity and Claude — all included",p1b:"English, French and Arabic (Modern Standard)",p1c:"Weekly report with the precision of every score",p1d:"Sources, action plan, PDF export",
+p2a:"Everything in Starter",p2b:"White-label PDF and shared pages (your name, your logo)",p2c:"Read-only share links for your clients",p2d:"Priority support",
+p3n:"Agency",p3a:"Everything in Pro",p3b:"Client spaces · unlimited team seats",p3c:"Automatic weekly report emails to each client",p3d:"Native white label on everything, per client",
 q_k:"FAQ",q_t:"Frequently asked questions",
 q1:"How does AIVisib help me get recommended by AI?",a1:"AIVisib shows you your real share of visibility in the new AI era — how often the AIs recommend you versus your competitors — and gives you concrete actions to improve your position and raise your chances of appearing in AI answers and recommendations.",
 q2:"Why does Arabic matter so much?",a2:"Millions of buyers across the Gulf and MENA ask AI in Arabic. English-only tools never see those answers — so a brand can look healthy in English and be invisible in Arabic. AIVisib runs real Arabic prompts, which is why agencies in the region can finally report on their actual market.",
 q3:"Which AI engines do you cover?",a3:"ChatGPT, Google Gemini, Perplexity and Claude — queried every week, in Arabic, French and English. We keep adding engines as the AI landscape grows.",
-q4:"Can I cancel anytime?",a4:"One click, no contract, no lock-in. And early members get a special reduced price.",q5:"How do I know if ChatGPT recommends my business?",a5:"That is exactly what AIVisib measures. We ask ChatGPT, Gemini, Perplexity and Claude the real questions your customers ask, and show you whether your brand is named, how often, and who gets recommended instead — with the precision of each score printed on the report.",q6:"How can I appear in AI answers like ChatGPT and Gemini?",a6:"First you need to know where you stand, then what to fix. AIVisib gives you both: a weekly measurement of your visibility in AI answers, plus a prioritized action plan (content, sources, languages) to get recommended more often — this is what people call GEO or AEO (AI / generative engine optimization).",
+q4:"Can I cancel anytime?",a4:"One click, from your billing portal — no contract, no lock-in. You keep access until the end of the period you paid for.",q5:"How do I know if ChatGPT recommends my business?",a5:"That is exactly what AIVisib measures. We ask ChatGPT, Gemini, Perplexity and Claude the real questions your customers ask, and show you whether your brand is named, how often, and who gets recommended instead — with the precision of each score printed on the report.",q6:"How can I appear in AI answers like ChatGPT and Gemini?",a6:"First you need to know where you stand, then what to fix. AIVisib gives you both: a weekly measurement of your visibility in AI answers, plus a prioritized action plan (content, sources, languages) to get recommended more often — this is what people call GEO or AEO (AI / generative engine optimization).",
 j_t:"Start winning the AI search era.",j_p:"Create your account, add your brand, and get your first report in minutes. From $29/mo — cancel anytime.",
 j_ph:"you@company.com",j_c:"Create my account",j_n:"🔒 Secure payment by Stripe · Cancel anytime",
 d_k:"Inside the product",d_t:"Your AI visibility, at a glance.",d_p:"A clean dashboard that turns AI answers into a scoreboard you actually understand.",
@@ -913,16 +944,16 @@ f5t:"Vendez-le sous votre nom",f5p:"Rapports PDF en marque blanche avec le logo 
 f6t:"Un plan d'action, pas un tas de données",f6p:"Chaque rapport se termine par une courte liste d'actions concrètes qui augmentent vos chances d'être recommandé — en langage clair, prête à transmettre à votre équipe.",
 f7t:"Mesurez la réalité, chaque semaine",f7p:"Recherche web active : les réponses que vos acheteurs obtiennent aujourd'hui, pas ce que les modèles ont mémorisé il y a des mois. Re-mesuré chaque semaine : vous voyez le mouvement, pas des instantanés.",
 fm_prec:"Visibilité IA · précision ± 12 pts",fm_conf:"Indice de confiance",fm_agency:"Votre Agence",fm_p3:"Être référencé sur les deux annuaires que les IA citent le plus à Mascate",fm_w1:"Semaine 1",fm_w7:"Semaine 7",
-p_k:"Tarifs",p_t:"Un prix juste. Arabe inclus.",p_p:"Des offres simples et transparentes — avec l'arabe intégré, sans engagement entreprise.",
+p_k:"Tarifs",p_t:"Un prix juste. Tout compris.",p_p:"Trois offres mensuelles, sans option payante, sans crédits, sans appel commercial. Claude et Gemini, l'arabe et la marque blanche sont inclus — pas vendus à part.",p1w:"Pour une entreprise qui veut savoir où elle en est face à l'IA.",p2w:"Pour une marque qui grandit, ou un consultant avec quelques clients.",p3w:"Pour les agences qui reportent à plusieurs clients, sous leur propre nom.",pm_l:"Ce que vous mesurez",pm1:"1 marque · 25 questions · 4 moteurs · 3 passages · chaque semaine",pm1n:"≈ 1 200 réponses IA analysées / mois",pm2:"3 marques · 100 questions · 4 moteurs · 3 passages · chaque semaine",pm2n:"≈ 4 800 réponses IA analysées / mois",pm3:"10 marques · 400 questions · 4 moteurs · 3 passages · chaque semaine",pm3n:"≈ 19 200 réponses IA analysées / mois · ≈ 15 $ par marque",pt1:"Annulable à tout moment, en un clic",pt2:"Paiement sécurisé par Stripe",pt3:"Sans option payante, sans crédits, sans frais cachés",pt4:"Audit gratuit instantané d'abord, sans carte",pv_k:"Face au marché · septembre 2026",pv1t:"Claude et Gemini",pv1:"Inclus dans chaque offre. Ailleurs : options à 29–439 $/mois, ou réservés à l'Enterprise.",pv2t:"Marque blanche",pv2:"Incluse dès Pro. Ailleurs : sur demande, ou inexistante.",pv3t:"Palier agence",pv3:"149 $ pour 10 marques, prix affiché. Ailleurs : 245 à 1 000 $+/mois, souvent sur devis.",pv4t:"Arabe",pv4:"Arabe standard natif, sans supplément. Ailleurs : non couvert.",q7:"Qu'est-ce qui compte comme une question ?",a7:"Une question (prompt) est une vraie requête client, par exemple « meilleure clinique dentaire à Mascate pour les familles ? ». Chacune est posée aux quatre moteurs, plusieurs fois, chaque semaine. Starter en inclut 25, Pro 100, Agency 400 — de quoi couvrir services, quartiers, prix et langues.",q8:"Y a-t-il des options payantes, des crédits ou des frais cachés ?",a8:"Non. Le prix affiché est le prix complet : les quatre moteurs, toutes les langues, les exports PDF et les mesures hebdomadaires sont inclus. Aucun crédit à acheter, aucun supplément par moteur.",q9:"Puis-je changer d'offre, et la facture peut-elle porter le nom de mon agence ?",a9:"Oui. Passez à l'offre supérieure ou inférieure à tout moment depuis votre portail de facturation ; Stripe calcule le prorata. Les factures portent le nom d'entreprise que vous saisissez, les agences facturent donc librement leurs propres clients.",
 mo:"/mois",p_pop:"POPULAIRE",p_c:"Commencer",
-p1a:"1 marque · 25 prompts",p1b:"4 moteurs IA, chaque semaine",p1c:"3 langues dont l'arabe",p1d:"Dashboard + résumé email",
-p2a:"3 marques · 100 prompts",p2b:"Tout Starter inclus",p2c:"Rapports PDF marque blanche",p2d:"Support prioritaire",
-p3n:"Agence",p3a:"10 marques · 400 prompts",p3b:"Espaces clients · équipe illimitée",p3c:"Liens clients partageables · envoi automatique des rapports",p3d:"Marque blanche native (votre nom, votre logo)",
+p1a:"ChatGPT, Gemini, Perplexity et Claude — tous inclus",p1b:"Français, anglais et arabe (standard)",p1c:"Rapport hebdomadaire avec la précision de chaque score",p1d:"Sources, plan d'action, export PDF",
+p2a:"Tout Starter inclus",p2b:"PDF et pages partagées en marque blanche (votre nom, votre logo)",p2c:"Liens de partage en lecture seule pour vos clients",p2d:"Support prioritaire",
+p3n:"Agence",p3a:"Tout Pro inclus",p3b:"Espaces clients · sièges illimités",p3c:"Envoi automatique du rapport hebdo à chaque client",p3d:"Marque blanche native sur tout, client par client",
 q_k:"FAQ",q_t:"Questions fréquentes",
 q1:"Comment AIVisib m'aide à être recommandé par l'IA ?",a1:"AIVisib vous montre votre part réelle de visibilité dans la nouvelle ère de l'IA — à quelle fréquence les IA vous recommandent face à vos concurrents — et vous donne des actions concrètes pour améliorer votre position et augmenter vos chances d'apparaître dans les réponses et recommandations des IA.",
 q2:"Pourquoi l'arabe est-il si important ?",a2:"Des millions d'acheteurs du Golfe et de la région MENA interrogent l'IA en arabe. Les outils anglophones ne voient jamais ces réponses — une marque peut sembler en pleine forme en anglais et être invisible en arabe. AIVisib teste de vrais prompts arabes, ce qui permet enfin aux agences de la région de reporter sur leur marché réel.",
 q3:"Quels moteurs IA couvrez-vous ?",a3:"ChatGPT, Google Gemini, Perplexity et Claude — interrogés chaque semaine, en arabe, français et anglais. Nous ajoutons régulièrement de nouveaux moteurs à mesure que l'IA évolue.",
-q4:"Puis-je annuler à tout moment ?",a4:"En un clic, sans contrat ni engagement. Et les premiers inscrits bénéficient d'un tarif spécial réduit.",q5:"Comment savoir si ChatGPT recommande mon entreprise ?",a5:"C'est précisément ce que mesure AIVisib. Nous posons à ChatGPT, Gemini, Perplexity et Claude les vraies questions de vos clients, et vous montrons si votre marque est citée, à quelle fréquence, et qui est recommandé à votre place — avec la précision de chaque score affichée sur le rapport.",q6:"Comment apparaître dans les réponses des IA comme ChatGPT et Gemini ?",a6:"Il faut d'abord savoir où vous en êtes, puis quoi corriger. AIVisib vous donne les deux : une mesure hebdomadaire de votre visibilité dans les réponses IA, et un plan d'action priorisé (contenu, sources, langues) pour être recommandé plus souvent — c'est ce qu'on appelle le GEO ou l'AEO (optimisation pour les moteurs génératifs).",
+q4:"Puis-je annuler à tout moment ?",a4:"En un clic, depuis votre portail de facturation — sans contrat ni engagement. Vous gardez l'accès jusqu'à la fin de la période déjà payée.",q5:"Comment savoir si ChatGPT recommande mon entreprise ?",a5:"C'est précisément ce que mesure AIVisib. Nous posons à ChatGPT, Gemini, Perplexity et Claude les vraies questions de vos clients, et vous montrons si votre marque est citée, à quelle fréquence, et qui est recommandé à votre place — avec la précision de chaque score affichée sur le rapport.",q6:"Comment apparaître dans les réponses des IA comme ChatGPT et Gemini ?",a6:"Il faut d'abord savoir où vous en êtes, puis quoi corriger. AIVisib vous donne les deux : une mesure hebdomadaire de votre visibilité dans les réponses IA, et un plan d'action priorisé (contenu, sources, langues) pour être recommandé plus souvent — c'est ce qu'on appelle le GEO ou l'AEO (optimisation pour les moteurs génératifs).",
 j_t:"Commencez à gagner l'ère de la recherche IA.",j_p:"Créez votre compte, ajoutez votre marque, et recevez votre premier rapport en quelques minutes. À partir de 29 $/mois — annulable à tout moment.",
 j_ph:"vous@entreprise.com",j_c:"Créer mon compte",j_n:"🔒 Paiement sécurisé par Stripe · Annulable à tout moment",
 d_k:"À l'intérieur du produit",d_t:"Votre visibilité IA, en un coup d'œil.",d_p:"Un tableau de bord clair qui transforme les réponses des IA en un score que vous comprenez vraiment.",
@@ -969,16 +1000,16 @@ f5t:"قدّمه باسمك",f5p:"تقارير PDF بشعار وكالتك، با
 f6t:"خطة عمل، لا كومة بيانات",f6p:"ينتهي كل تقرير بقائمة قصيرة من الإجراءات الملموسة التي ترفع فرص التوصية بك — بلغة واضحة، جاهزة لتسليمها لفريقك.",
 f7t:"قِس الواقع، كل أسبوع",f7p:"بحث مباشر في الويب: الإجابات التي يحصل عليها المشترون اليوم، لا ما حفظته النماذج قبل أشهر. يُعاد القياس أسبوعياً لترى الحركة، لا لقطات جامدة.",
 fm_prec:"الظهور في الذكاء الاصطناعي · الدقة ± 12 نقطة",fm_conf:"مؤشر الثقة",fm_agency:"وكالتك",fm_p3:"التسجيل في الدليلين الأكثر استشهاداً من الذكاء الاصطناعي في مسقط",fm_w1:"الأسبوع 1",fm_w7:"الأسبوع 7",
-p_k:"الأسعار",p_t:"أسعار عادلة. والعربية مشمولة.",p_p:"باقات بسيطة وواضحة — العربية مشمولة في كل باقة، وبدون عقود معقدة.",
+p_k:"الأسعار",p_t:"أسعار عادلة. كل شيء مشمول.",p_p:"ثلاث باقات شهرية، بلا إضافات مدفوعة ولا أرصدة ولا مكالمات مبيعات. Claude، Gemini، والعربية، والعلامة البيضاء كلها مشمولة — لا تُباع على حدة.",p1w:"لنشاط تجاري واحد يريد أن يعرف موقعه لدى الذكاء الاصطناعي.",p2w:"لعلامة تنمو، أو لمستشار لديه بضعة عملاء.",p3w:"للوكالات التي تقدّم التقارير لعملاء كثر باسمها.",pm_l:"ما الذي تقيسه",pm1:"علامة واحدة · 25 سؤالاً · 4 محركات · 3 جولات · كل أسبوع",pm1n:"≈ 1200 إجابة ذكاء اصطناعي محلَّلة / شهر",pm2:"3 علامات · 100 سؤال · 4 محركات · 3 جولات · كل أسبوع",pm2n:"≈ 4800 إجابة ذكاء اصطناعي محلَّلة / شهر",pm3:"10 علامات · 400 سؤال · 4 محركات · 3 جولات · كل أسبوع",pm3n:"≈ 19200 إجابة محلَّلة / شهر · ≈ 15 دولاراً لكل علامة",pt1:"إلغاء في أي وقت بنقرة واحدة",pt2:"دفع آمن عبر Stripe",pt3:"بلا إضافات مدفوعة ولا أرصدة ولا رسوم خفية",pt4:"تدقيق مجاني فوري أولاً، بلا بطاقة",pv_k:"مقارنةً بالسوق · سبتمبر 2026",pv1t:"Claude · Gemini",pv1:"مشمولان في كل باقة. لدى الآخرين: إضافات بـ 29–439 دولاراً شهرياً، أو حصراً لباقة Enterprise.",pv2t:"العلامة البيضاء",pv2:"مشمولة بدءاً من Pro. لدى الآخرين: عند الطلب، أو غير متاحة.",pv3t:"باقة الوكالات",pv3:"149 دولاراً لعشر علامات، بسعر معلن. لدى الآخرين: 245 إلى أكثر من 1000 دولار شهرياً، وغالباً بعرض سعر.",pv4t:"العربية",pv4:"عربية فصحى أصلية دون رسوم إضافية. لدى الآخرين: غير مغطاة.",q7:"ما الذي يُحتسب سؤالاً؟",a7:"السؤال هو استفسار حقيقي لعميل، مثل «ما أفضل عيادة أسنان في مسقط للعائلات؟». يُطرح كل سؤال على المحركات الأربعة عدة مرات كل أسبوع. تتضمن Starter خمسة وعشرين سؤالاً، وPro مئة، وAgency أربعمئة — ما يكفي لتغطية الخدمات والأحياء والأسعار واللغات.",q8:"هل هناك إضافات مدفوعة أو أرصدة أو رسوم خفية؟",a8:"لا. السعر المعلن هو السعر الكامل: المحركات الأربعة، وكل اللغات، وتصدير PDF، والقياسات الأسبوعية كلها مشمولة. لا أرصدة تُشترى، ولا رسوم إضافية لكل محرك.",q9:"هل يمكنني تغيير الباقة؟ وهل تحمل الفاتورة اسم وكالتي؟",a9:"نعم. يمكنك الترقية أو التخفيض في أي وقت من بوابة الفوترة، ويحتسب Stripe الفرق تناسبياً. تحمل الفواتير اسم الشركة الذي تُدخله، فتُصدر الوكالات فواتيرها لعملائها بحرية.",
 mo:"/شهر",p_pop:"الأكثر طلباً",p_c:"ابدأ الآن",
-p1a:"علامة واحدة · 25 سؤالاً",p1b:"4 محركات، أسبوعياً",p1c:"3 لغات منها العربية",p1d:"لوحة تحكم + ملخص بالبريد الإلكتروني",
-p2a:"3 علامات · 100 سؤال",p2b:"كل مميزات Starter",p2c:"تقارير PDF بشعارك أنت",p2d:"دعم ذو أولوية",
-p3n:"Agency",p3a:"10 علامات · 400 سؤال",p3b:"مساحات للعملاء · فريق غير محدود",p3c:"روابط مشاركة للعملاء · إرسال تلقائي للتقارير",p3d:"علامة بيضاء أصلية (اسمكم وشعاركم)",
+p1a:"ChatGPT، Gemini، Perplexity، Claude — كلها مشمولة",p1b:"العربية (الفصحى) والإنجليزية والفرنسية",p1c:"تقرير أسبوعي مع دقة كل درجة",p1d:"المصادر، خطة العمل، تصدير PDF",
+p2a:"كل مميزات Starter",p2b:"تقارير PDF وصفحات مشاركة بعلامتك (اسمك وشعارك)",p2c:"روابط مشاركة للقراءة فقط لعملائك",p2d:"دعم ذو أولوية",
+p3n:"Agency",p3a:"كل مميزات Pro",p3b:"مساحات للعملاء · مقاعد غير محدودة",p3c:"إرسال تلقائي للتقرير الأسبوعي إلى كل عميل",p3d:"علامة بيضاء أصلية على كل شيء، لكل عميل",
 q_k:"أسئلة",q_t:"الأسئلة الشائعة",
 q1:"كيف يساعدني AIVisib على الظهور في توصيات الذكاء الاصطناعي؟",a1:"يريك AIVisib حصتك الحقيقية من الظهور في عصر الذكاء الاصطناعي الجديد — كم مرة توصي بك المحركات مقارنةً بمنافسيك — ويمنحك خطوات عملية لتحسين مكانتك وزيادة فرص ظهورك في إجابات الذكاء الاصطناعي وتوصياته.",
 q2:"لماذا العربية مهمة؟",a2:"ملايين العملاء في الخليج والمنطقة يسألون الذكاء الاصطناعي بالعربية. الأدوات الإنجليزية لا ترى تلك الإجابات — فقد تبدو العلامة بحالة ممتازة بالإنجليزية بينما هي غائبة بالعربية. AIVisib يختبر أسئلة عربية حقيقية، ولهذا تستطيع وكالات المنطقة أخيراً أن تقدّم تقارير عن سوقها الحقيقي.",
 q3:"ما محركات الذكاء الاصطناعي التي تغطونها؟",a3:"ChatGPT، Google Gemini، Perplexity، Claude — تُسأل كل أسبوع، بالعربية والفرنسية والإنجليزية. ونضيف محركات جديدة باستمرار مع تطوّر الذكاء الاصطناعي.",
-q4:"هل يمكنني الإلغاء في أي وقت؟",a4:"بنقرة واحدة، بدون عقد أو التزام. والمشتركون الأوائل يحصلون على سعر خاص مخفّض.",q5:"كيف أعرف إن كان ChatGPT يوصي بنشاطي التجاري؟",a5:"هذا بالضبط ما يقيسه AIVisib. نطرح على ChatGPT وGemini وPerplexity وClaude الأسئلة الحقيقية التي يطرحها عملاؤك، ونُظهر لك هل تُذكر علامتك وكم مرة ومن يُوصى به بدلًا منك — مع عرض دقة كل رقم في التقرير.",q6:"كيف أظهر في إجابات الذكاء الاصطناعي مثل ChatGPT وGemini؟",a6:"عليك أولًا معرفة موقعك، ثم ما الذي ينبغي تحسينه. يمنحك AIVisib الاثنين معًا: قياسًا أسبوعيًا لظهورك في إجابات الذكاء الاصطناعي، وخطة عمل مرتّبة بالأولوية (المحتوى، المصادر، اللغات) لتُوصى به أكثر — وهذا ما يُسمّى GEO أو AEO (تحسين محركات الذكاء الاصطناعي التوليدية).",
+q4:"هل يمكنني الإلغاء في أي وقت؟",a4:"بنقرة واحدة من بوابة الفوترة — بلا عقد ولا التزام. ويستمر وصولك حتى نهاية الفترة المدفوعة.",q5:"كيف أعرف إن كان ChatGPT يوصي بنشاطي التجاري؟",a5:"هذا بالضبط ما يقيسه AIVisib. نطرح على ChatGPT وGemini وPerplexity وClaude الأسئلة الحقيقية التي يطرحها عملاؤك، ونُظهر لك هل تُذكر علامتك وكم مرة ومن يُوصى به بدلًا منك — مع عرض دقة كل رقم في التقرير.",q6:"كيف أظهر في إجابات الذكاء الاصطناعي مثل ChatGPT وGemini؟",a6:"عليك أولًا معرفة موقعك، ثم ما الذي ينبغي تحسينه. يمنحك AIVisib الاثنين معًا: قياسًا أسبوعيًا لظهورك في إجابات الذكاء الاصطناعي، وخطة عمل مرتّبة بالأولوية (المحتوى، المصادر، اللغات) لتُوصى به أكثر — وهذا ما يُسمّى GEO أو AEO (تحسين محركات الذكاء الاصطناعي التوليدية).",
 j_t:"ابدأ الفوز في عصر البحث بالذكاء الاصطناعي.",j_p:"أنشئ حسابك، أضف علامتك التجارية، واحصل على أول تقرير خلال دقائق. الباقات من 29 دولاراً شهرياً — يمكنك الإلغاء في أي وقت.",
 j_ph:"you@company.com",j_c:"أنشئ حسابي",j_n:"🔒 دفع آمن عبر Stripe · إلغاء في أي وقت",
 d_k:"داخل المنتج",d_t:"ظهورك في الذكاء الاصطناعي، بنظرة واحدة.",d_p:"لوحة تحكم واضحة تُحوّل إجابات الذكاء الاصطناعي إلى نتيجة تفهمها فعلياً.",
