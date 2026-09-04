@@ -224,6 +224,56 @@ body.rtl .stp .num{font-family:'Cairo',sans-serif;font-style:normal;font-weight:
 .stp h3{font-size:19px;margin-bottom:8px;font-weight:600}
 .stp p{color:var(--dim);font-size:14.8px}
 
+/* how it works v2 : 4 étapes texte + mini-capture */
+.hw{display:grid;gap:14px}
+.hwr{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:30px 34px;transition:.25s}
+.hwr:hover{border-color:rgba(204,255,46,.35)}
+.hwr:nth-child(even){grid-template-columns:.95fr 1.05fr}
+.hwr:nth-child(even) .hwm{order:-1}
+@media(max-width:880px){.hwr{grid-template-columns:1fr!important;gap:22px;padding:24px 22px}.hwr:nth-child(even) .hwm{order:0}}
+.hwn{font-family:'Instrument Serif',serif;font-style:italic;font-size:46px;line-height:1;color:var(--acid-ink);display:block}
+body.rtl .hwn{font-family:'Cairo',sans-serif;font-style:normal;font-weight:900;font-size:38px}
+.hwt h3{font-size:22px;letter-spacing:-.02em;margin:12px 0 8px;font-weight:600}
+body.rtl .hwt h3{letter-spacing:0}
+.hwt p{color:var(--dim);font-size:15px}
+.hwchip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font:600 12px 'JetBrains Mono',monospace;padding:7px 13px;border-radius:99px;border:1px solid var(--line);background:var(--input-bg);color:var(--acid-ink)}
+body.rtl .hwchip{font-family:'Cairo',sans-serif}
+.hwm{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:16px;font-size:13px;min-width:0}
+.mk-lab{font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+body.rtl .mk-lab{font-family:'Cairo',sans-serif;letter-spacing:0}
+.mk-in{border:1px solid var(--line);background:var(--input-bg);border-radius:10px;padding:9px 12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mk-in b{font-weight:600}
+.mk-chips{display:flex;flex-wrap:wrap;gap:6px}
+.mk-chip{font:600 11.5px 'JetBrains Mono',monospace;padding:5px 10px;border-radius:99px;border:1px solid var(--line);background:var(--input-bg);color:var(--cream)}
+.mk-chip.on{border-color:var(--acid-ink);color:var(--acid-ink)}
+body.rtl .mk-chip{font-family:'Cairo',sans-serif}
+.mk-q{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.mk-q:last-child{border-bottom:0}
+.mk-q span{unicode-bidi:plaintext}
+.mk-ok{font:600 10.5px 'JetBrains Mono',monospace;color:#1E7F4F;background:rgba(30,127,79,.12);padding:3px 8px;border-radius:99px;white-space:nowrap}
+body.dark .mk-ok{color:#7ED9A5}
+.mk-eng{display:flex;align-items:center;gap:10px;padding:7px 0}
+.mk-eng b{width:78px;font-weight:600;flex:none}
+.mk-track{flex:1;height:7px;border-radius:99px;background:var(--track);overflow:hidden}
+.mk-track i{display:block;height:100%;border-radius:99px;background:var(--acid-ink)}
+.mk-eng small{font:600 11px 'JetBrains Mono',monospace;color:var(--dim);width:44px;text-align:end;flex:none}
+.mk-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.mk-kpi{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--input-bg)}
+.mk-kpi .v{font-size:24px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.mk-kpi .v small{font-size:12px;font-weight:600;color:var(--dim);letter-spacing:0;margin-inline-start:4px}
+.mk-kpi .l{font-size:11px;color:var(--dim);margin-top:3px}
+body.rtl .mk-kpi .v{direction:ltr;unicode-bidi:isolate;text-align:right}
+.mk-plan{display:flex;gap:8px;align-items:flex-start;padding:6px 0;color:var(--cream)}
+.mk-plan i{flex:none;width:18px;height:18px;border-radius:6px;background:var(--acid-ink);color:#0A0A0B;font:700 11px 'JetBrains Mono',monospace;display:grid;place-items:center;font-style:normal;margin-top:1px}
+.hwtrust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-top:26px;font:500 13px 'JetBrains Mono',monospace;color:var(--dim)}
+.hwtrust span::before{content:"✓";color:var(--acid-ink);margin-inline-end:7px;font-weight:700}
+body.rtl .hwtrust{font-family:'Cairo',sans-serif}
+/* features v2 : mini-preuve dans chaque carte */
+.fx{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px}
+.fx .mk-eng b{width:auto;min-width:96px}
+.fx svg{width:100%;height:46px;display:block}
+.fx .mk-track{height:6px}
+
 /* pricing */
 .augdpr{font-size:11.5px;color:var(--dim);margin-top:8px;line-height:1.5}
 .augdpr a{color:var(--dim);text-decoration:underline}
@@ -575,11 +625,49 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
 <!-- HOW -->
 <section class="s" id="how" style="padding-top:20px"><div class="wrap">
   <div class="head"><div class="kicker"><s></s><span data-i="h_k"></span></div><h2 data-i="h_t"></h2><p data-i="h_p"></p></div>
-  <div class="steps rv">
-    <div class="stp"><span class="num">01</span><h3 data-i="s1t"></h3><p data-i="s1p"></p></div>
-    <div class="stp"><span class="num">02</span><h3 data-i="s2t"></h3><p data-i="s2p"></p></div>
-    <div class="stp"><span class="num">03</span><h3 data-i="s3t"></h3><p data-i="s3p"></p></div>
+  <div class="hw">
+    <div class="hwr rv">
+      <div class="hwt"><span class="hwn">01</span><h3 data-i="s1t"></h3><p data-i="s1p"></p><span class="hwchip">⏱ <span data-i="s1c"></span></span></div>
+      <div class="hwm">
+        <div class="mk-lab" data-i="hm_brand"></div>
+        <div class="mk-in"><b>Orvia Dental Clinic</b><span class="mk-chip">Muscat</span></div>
+        <div class="mk-lab" data-i="hm_comp"></div>
+        <div class="mk-chips"><span class="mk-chip">Muscat Private Hospital</span><span class="mk-chip">Bluedent Clinic</span><span class="mk-chip">Shining Dental</span><span class="mk-chip on">+</span></div>
+      </div>
+    </div>
+    <div class="hwr rv">
+      <div class="hwt"><span class="hwn">02</span><h3 data-i="s2t"></h3><p data-i="s2p"></p><span class="hwchip">✎ <span data-i="s2c"></span></span></div>
+      <div class="hwm">
+        <div class="mk-lab" data-i="hm_qs"></div>
+        <div class="mk-q"><span data-i="hm_q1"></span><span class="mk-ok" data-i="hm_ok"></span></div>
+        <div class="mk-q"><span>ما هي أفضل عيادة أسنان في مسقط للعائلات؟</span><span class="mk-ok" data-i="hm_ok"></span></div>
+        <div class="mk-q"><span data-i="hm_q3"></span><span class="mk-ok" data-i="hm_ok"></span></div>
+      </div>
+    </div>
+    <div class="hwr rv">
+      <div class="hwt"><span class="hwn">03</span><h3 data-i="s3t"></h3><p data-i="s3p"></p><span class="hwchip">⟳ <span data-i="s3c"></span></span></div>
+      <div class="hwm">
+        <div class="mk-lab"><span data-i="hm_live"></span> · 16 × 4 × 3</div>
+        <div class="mk-eng"><b>ChatGPT</b><div class="mk-track"><i style="width:100%"></i></div><small>48/48</small></div>
+        <div class="mk-eng"><b>Gemini</b><div class="mk-track"><i style="width:100%"></i></div><small>48/48</small></div>
+        <div class="mk-eng"><b>Perplexity</b><div class="mk-track"><i style="width:100%"></i></div><small>48/48</small></div>
+        <div class="mk-eng"><b>Claude</b><div class="mk-track"><i style="width:62%"></i></div><small>30/48</small></div>
+      </div>
+    </div>
+    <div class="hwr rv">
+      <div class="hwt"><span class="hwn">04</span><h3 data-i="s4t"></h3><p data-i="s4p"></p><span class="hwchip">⬇ <span data-i="s4c"></span></span></div>
+      <div class="hwm">
+        <div class="mk-kpis">
+          <div class="mk-kpi"><div class="v">67%<small>± 12</small></div><div class="l" data-i="hm_score"></div></div>
+          <div class="mk-kpi"><div class="v">48%</div><div class="l" data-i="hm_share"></div></div>
+        </div>
+        <div class="mk-lab" data-i="hm_plan"></div>
+        <div class="mk-plan"><i>1</i><span data-i="hm_p1"></span></div>
+        <div class="mk-plan"><i>2</i><span data-i="hm_p2"></span></div>
+      </div>
+    </div>
   </div>
+  <div class="hwtrust rv"><span data-i="ht1"></span><span data-i="ht2"></span><span data-i="ht3"></span><span data-i="ht4"></span><span data-i="ht5"></span></div>
 </div></section>
 
 <!-- REPORT PREVIEW : ce que le client reçoit -->
@@ -630,13 +718,20 @@ body.rtl .au-ai{font-family:'Cairo',sans-serif}
   <div class="head"><div class="kicker"><s></s><span data-i="f_k"></span></div><h2 data-i="f_t"></h2><p data-i="f_p"></p></div>
   <div class="bento">
     <div class="b w3 hero-card rv"><span class="n">01 / ⚑</span><h3 data-i="f1t"></h3><p data-i="f1p"></p>
-      <div class="flags"><span>EN</span><span>FR</span><span>العربية</span></div></div>
-    <div class="b w3 rv"><span class="n">02 / ⚔</span><h3 data-i="f2t"></h3><p data-i="f2p"></p></div>
-    <div class="b w2 rv"><span class="n">03 / ⛓</span><h3 data-i="f3t"></h3><p data-i="f3p"></p></div>
-    <div class="b w2 rv"><span class="n">04 / ☺</span><h3 data-i="f4t"></h3><p data-i="f4p"></p></div>
-    <div class="b w2 rv"><span class="n">05 / ✎</span><h3 data-i="f5t"></h3><p data-i="f5p"></p></div>
-    <div class="b w4 rv"><span class="n">06 / ⌁</span><h3 data-i="f6t"></h3><p data-i="f6p"></p></div>
-    <div class="b w2 rv"><span class="n">07 / ⏱</span><h3 data-i="f7t"></h3><p data-i="f7p"></p></div>
+      <div class="flags"><span>EN</span><span>FR</span><span>العربية</span></div>
+      <div class="fx"><div class="mk-q"><span>ما هي أفضل عيادة أسنان في مسقط؟</span><span class="mk-ok">AR · 33%</span></div><div class="mk-q"><span>Best dental clinic in Muscat?</span><span class="mk-ok">EN · 100%</span></div></div></div>
+    <div class="b w3 rv"><span class="n">02 / ⚔</span><h3 data-i="f2t"></h3><p data-i="f2p"></p>
+      <div class="fx"><div class="mk-eng"><b>Orvia Dental ⬅</b><div class="mk-track"><i style="width:48%"></i></div><small>48%</small></div><div class="mk-eng"><b data-i="er_compA"></b><div class="mk-track"><i style="width:30%;background:var(--bar1)"></i></div><small>30%</small></div><div class="mk-eng"><b data-i="er_compB"></b><div class="mk-track"><i style="width:22%;background:var(--bar2)"></i></div><small>22%</small></div></div></div>
+    <div class="b w2 rv"><span class="n">03 / ⛓</span><h3 data-i="f3t"></h3><p data-i="f3p"></p>
+      <div class="fx"><div class="mk-chips"><span class="mk-chip">google.com/maps <b style="color:var(--acid-ink)">×32</b></span><span class="mk-chip">tripadvisor.com <b style="color:var(--acid-ink)">×24</b></span><span class="mk-chip">whatclinic.com <b style="color:var(--acid-ink)">×17</b></span></div></div></div>
+    <div class="b w2 rv"><span class="n">04 / ☺</span><h3 data-i="f4t"></h3><p data-i="f4p"></p>
+      <div class="fx"><div class="mk-kpis" style="margin:0"><div class="mk-kpi"><div class="v">67%<small>± 12</small></div><div class="l" data-i="fm_prec"></div></div><div class="mk-kpi"><div class="v">92%</div><div class="l" data-i="fm_conf"></div></div></div></div></div>
+    <div class="b w2 rv"><span class="n">05 / ✎</span><h3 data-i="f5t"></h3><p data-i="f5p"></p>
+      <div class="fx"><div class="mk-in"><b><span data-i="fm_agency"></span> — Orvia Dental.pdf</b><span class="mk-chip on">PDF</span></div><div class="mk-chips"><span class="mk-chip">العربية</span><span class="mk-chip">Français</span><span class="mk-chip">English</span></div></div></div>
+    <div class="b w4 rv"><span class="n">06 / ⌁</span><h3 data-i="f6t"></h3><p data-i="f6p"></p>
+      <div class="fx"><div class="mk-plan"><i>1</i><span data-i="hm_p1"></span></div><div class="mk-plan"><i>2</i><span data-i="hm_p2"></span></div><div class="mk-plan"><i>3</i><span data-i="fm_p3"></span></div></div></div>
+    <div class="b w2 rv"><span class="n">07 / ⏱</span><h3 data-i="f7t"></h3><p data-i="f7p"></p>
+      <div class="fx" style="direction:ltr"><svg viewBox="0 0 320 46" preserveAspectRatio="none"><polyline fill="none" stroke="var(--acid-ink)" stroke-width="2.5" stroke-linejoin="round" points="0,38 46,30 92,33 138,22 184,18 230,12 276,9 320,4"/><circle cx="320" cy="4" r="3.5" fill="var(--acid-ink)"/></svg><div style="display:flex;justify-content:space-between;font:600 10.5px 'JetBrains Mono',monospace;color:var(--dim);margin-top:4px"><span data-i="fm_w1"></span><span data-i="fm_w7"></span></div></div></div>
   </div>
 </div></section>
 
@@ -730,10 +825,11 @@ au_email_req:"Please enter a valid email to get your free audit.",au_brand_req:"
 pr_k:"The new battlefield",pr_t:'Share of voice,<br>but inside the <em>answer</em>.',
 pr_p:"Ranking #1 on Google means nothing if the AI names someone else. AIVisib measures how often each brand is recommended, per engine and per language — so you finally see the real scoreboard.",
 r_me:"Your brand",r_c1:"Competitor A",r_c2:"Competitor B",r_c3:"Competitor C",
-h_k:"Three steps",h_t:"Set up once. Insights every week.",h_p:"No training, no jargon, no consultant needed.",
-s1t:"Add your brand",s1p:"Your name, your rivals, your industry. AIVisib writes the real questions your buyers ask AI — and every question is vetted against reality before it counts.",
-s2t:"We interrogate the AIs",s2p:"Every week we ask ChatGPT, Gemini, Perplexity and Claude — with live web search, several passes per question, in three languages. We record what your buyers actually see.",
-s3t:"You see, then you win",s3p:"A clear scoreboard with its precision printed on it: who gets named, what changed since last week, which sources the AIs trust — and the actions that move you up.",
+h_k:"How it works",h_t:"Set up in two minutes. Measured every week.",h_p:"Four steps, no training, no consultant. This is exactly what happens between your sign-up and your first report.",s1c:"About 2 minutes",s2c:"16 questions · EN / FR / AR",s3c:"4 engines × 3 passes · every week",s4c:"On screen or as a white-label PDF",hm_brand:"Your brand",hm_comp:"Competitors to track",hm_qs:"Questions your buyers ask AI",hm_q1:"Best dental clinic in Muscat for families?",hm_q3:"Can you recommend a good place for teeth whitening near me?",hm_ok:"✓ checked",hm_live:"Live web search",hm_score:"AI visibility · precision",hm_share:"Share of AI recommendations",hm_plan:"Action plan",hm_p1:"Create structured pages on the sites the AIs quote (whatclinic.com, sfc-oman.com)",hm_p2:"Add an Arabic FAQ answering the questions where you are absent",ht1:"From $29/month, cancel anytime",ht2:"First report in about 2 minutes",ht3:"Precision printed on every score",ht4:"Arabic, French, English",ht5:"Try the free audit first — no account needed",
+s1t:"Add your brand and your rivals",s1p:"Name, sector, city, and the competitors you want to beat. Optional: your agency logo, so every report goes out under your name.",
+s2t:"Approve the questions your buyers ask",s2p:"AIVisib drafts the real questions customers type into AI, in your languages — Arabic included. You keep, edit or add. Every question is checked against reality before it counts.",
+s3t:"We interrogate the four AIs, live",s3p:"ChatGPT, Gemini, Perplexity and Claude, with live web search, several passes per question. We record what your buyers actually see today — then re-measure every week, automatically.",
+s4t:"You get the score, the sources and the plan",s4p:"Who gets recommended, in which language, from which sources — with the precision of every number printed next to it, and a short action plan your team can start on Monday.",
 rp_k:"Your report",rp_t:"Exactly what you get",rp_p:"Not just numbers — a clear read and a plan you can act on.",
 rp1t:"A visibility score",rp1p:"Your share of voice against rivals, per AI engine and per language.",
 rp2t:"Plain-language interpretation",rp2p:"“You dominate in English but you're invisible in Arabic — a gap worth closing.”",
@@ -741,13 +837,14 @@ rp3t:"A prioritized action plan",rp3p:"Concrete actions ranked by impact and eff
 rr_k:"The real thing",rr_t:"This is the report you actually get.",rr_p:"The actual AIVisib dashboard: visibility score, share of voice, per-language visibility, plain-language analysis and a prioritized action plan.",rr_c:"Illustrative sample · fictional data",rr_zoom:"👆 tap to enlarge",
 er_sample:"SAMPLE · illustrative data",er_sector:"Dental clinic · Dubai",er_kpi1:"AI visibility score",er_kpi2:"Share of voice",er_kpi3:"Confidence",er_sov:"Who AI recommends",er_compA:"Competitor A",er_compB:"Competitor B",er_lang:"Visibility by language",er_interp_t:"Analysis",er_interp:"Orvia Dental leads share of voice (48%) but is invisible in Arabic — exactly where many Gulf patients ask. A high-value gap to close.",er_reco_t:"Priority actions",er_r1:"Publish Arabic pages so AI can cite you in Arabic.",er_r2:"Earn citations on the health directories AI trusts.",er_plan_t:"Action plan",er_p1_t:"Launch an Arabic version of your key pages",er_p1_d:"High priority · medium effort → more visibility in Arabic AI answers, more Gulf patients.",er_verified:"✓ Verified by AIVisib",
 f_k:"What's inside",f_t:"Everything you need. Nothing you'll never open.",f_p:"The complete AI-visibility toolkit, for a fraction of what the big platforms charge.",
-f1t:"Arabic. Actually.",f1p:"Your Gulf customers ask AI in Arabic — and every English-only tool is blind to those answers. We test real Modern Standard Arabic prompts, natively — where most tools stop at English.",
-f2t:"Competitor share of voice",f2p:"See precisely who gets recommended instead of you — and how you are described when you appear — per question, per engine, per language.",
-f3t:"The sources behind the answer",f3p:"Find which sites the AIs quote in your industry, so you know exactly where to appear.",
-f4t:"Numbers you can defend",f4p:"Every score goes through our in-house statistical filters and anti-hallucination guards before it reaches your report — and ships with its precision printed next to it. Under the hood, your question set is the statistical sample: repeated runs and multiple engines add robustness, and the confidence index reflects how stable your score is across the questions themselves. No other tool shows you that.",
-f5t:"White-label reports",f5p:"Monthly PDF with your agency's logo, in AR / FR / EN. Bill it to your clients.",
-f6t:"An action plan, not a data dump",f6p:"Every month: a short list of concrete moves that raise your odds of being recommended. Written in plain language, ready to hand to your team.",
-f7t:"Measured in real conditions",f7p:"We query the engines with live web search — the same answers your buyers get today, not what the models memorised months ago. And we re-measure every week, so you see movement, not snapshots.",
+f1t:"Track Arabic. Natively.",f1p:"Your Gulf customers ask AI in Arabic — and English-only tools are blind to those answers. We test real Modern Standard Arabic questions, natively. Here, the same clinic is visible in English and nearly invisible in Arabic: that is the gap you fix first.",
+f2t:"See who gets recommended instead of you",f2p:"Your share of AI recommendations versus the competitors you track — per question, per engine, per language — and how you are described when you do appear.",
+f3t:"Find the sources behind the answer",f3p:"The sites the AIs quote in your sector, counted. You know exactly where to appear to be cited.",
+f4t:"Defend every number",f4p:"Each score ships with its precision (±) and a confidence index that says how stable it is: several passes, four engines, anti-hallucination checks. No other tool prints that next to the number.",
+f5t:"Sell it under your name",f5p:"White-label PDF reports with your agency's logo, in Arabic, French or English. Bill them to your clients.",
+f6t:"Get a plan, not a data dump",f6p:"Every report ends with a short list of concrete moves that raise your odds of being recommended — in plain language, ready to hand to your team.",
+f7t:"Measure reality, every week",f7p:"Live web search: the answers your buyers get today, not what the models memorised months ago. Re-measured weekly, so you see movement, not snapshots.",
+fm_prec:"AI visibility · precision ± 12 pts",fm_conf:"Confidence index",fm_agency:"Your Agency",fm_p3:"Get listed on the two directories the AIs quote most in Muscat",fm_w1:"Week 1",fm_w7:"Week 7",
 p_k:"Pricing",p_t:"Fair pricing. Arabic included.",p_p:"Simple, transparent plans — with Arabic built in, and no enterprise lock-in.",
 mo:"/mo",p_pop:"POPULAR",p_c:"Get started",
 p1a:"1 brand · 25 prompts",p1b:"4 AI engines, weekly",p1c:"3 languages incl. Arabic",p1d:"Dashboard + email digest",
@@ -784,10 +881,11 @@ au_email_req:"Entrez un email valide pour recevoir votre audit gratuit.",au_bran
 pr_k:"Le nouveau terrain de jeu",pr_t:"Votre part des recommandations,<br>dans <em>la réponse</em> elle-même.",
 pr_p:"Être n°1 sur Google ne sert à rien si l'IA cite quelqu'un d'autre. AIVisib mesure la fréquence à laquelle chaque marque est recommandée, par moteur et par langue — le vrai tableau de bord, enfin.",
 r_me:"Votre marque",r_c1:"Concurrent A",r_c2:"Concurrent B",r_c3:"Concurrent C",
-h_k:"Trois étapes",h_t:"Configuré une fois. Des insights chaque semaine.",h_p:"Sans formation, sans jargon, sans consultant.",
-s1t:"Ajoutez votre marque",s1p:"Votre nom, vos concurrents, votre secteur. AIVisib rédige les vraies questions que vos acheteurs posent aux IA — et chaque question est contrôlée face au réel avant de compter.",
-s2t:"Nous interrogeons les IA",s2p:"Chaque semaine, nous interrogeons ChatGPT, Gemini, Perplexity et Claude — avec recherche web active, plusieurs passages par question, en trois langues. Nous enregistrons ce que vos acheteurs voient réellement.",
-s3t:"Vous voyez, puis vous gagnez",s3p:"Un tableau clair, avec sa précision affichée : qui est cité, ce qui a changé depuis la semaine dernière, quelles sources les IA utilisent — et les actions qui vous font monter.",
+h_k:"Comment ça marche",h_t:"Configuré en deux minutes. Mesuré chaque semaine.",h_p:"Quatre étapes, sans formation ni consultant. Voici exactement ce qui se passe entre votre inscription et votre premier rapport.",s1c:"Environ 2 minutes",s2c:"16 questions · FR / EN / AR",s3c:"4 moteurs × 3 passages · chaque semaine",s4c:"À l'écran ou en PDF marque blanche",hm_brand:"Votre marque",hm_comp:"Concurrents à suivre",hm_qs:"Questions que vos clients posent aux IA",hm_q1:"Quelle est la meilleure clinique dentaire à Mascate pour les familles ?",hm_q3:"Pouvez-vous me recommander un bon endroit pour un blanchiment dentaire près de chez moi ?",hm_ok:"✓ contrôlée",hm_live:"Recherche web active",hm_score:"Visibilité IA · précision",hm_share:"Part des recommandations IA",hm_plan:"Plan d'action",hm_p1:"Créer des pages structurées sur les sites que les IA citent (whatclinic.com, sfc-oman.com)",hm_p2:"Ajouter une FAQ en arabe répondant aux questions où vous êtes absent",ht1:"Dès 29 $/mois, annulable à tout moment",ht2:"Premier rapport en 2 minutes environ",ht3:"Précision affichée sur chaque score",ht4:"Arabe, français, anglais",ht5:"Testez d'abord l'audit gratuit — sans compte",
+s1t:"Ajoutez votre marque et vos concurrents",s1p:"Nom, secteur, ville, et les concurrents que vous voulez dépasser. En option : le logo de votre agence, pour que chaque rapport parte sous votre nom.",
+s2t:"Validez les questions que posent vos clients",s2p:"AIVisib rédige les vraies questions que les clients tapent dans les IA, dans vos langues — arabe compris. Vous gardez, modifiez ou ajoutez. Chaque question est contrôlée face au réel avant de compter.",
+s3t:"Nous interrogeons les quatre IA, en direct",s3p:"ChatGPT, Gemini, Perplexity et Claude, avec recherche web active, plusieurs passages par question. Nous enregistrons ce que vos acheteurs voient réellement aujourd'hui — puis nous re-mesurons chaque semaine, automatiquement.",
+s4t:"Vous recevez le score, les sources et le plan",s4p:"Qui est recommandé, dans quelle langue, à partir de quelles sources — avec la précision de chaque chiffre affichée à côté, et un court plan d'action que votre équipe peut démarrer lundi.",
 rp_k:"Votre rapport",rp_t:"Exactement ce que vous recevez",rp_p:"Pas juste des chiffres — une lecture claire et un plan concret.",
 rp1t:"Un score de visibilité",rp1p:"Votre part des recommandations IA face à vos concurrents, par moteur IA et par langue.",
 rp2t:"Une interprétation en clair",rp2p:"« Vous dominez en anglais mais vous êtes invisible en arabe — un manque à combler. »",
@@ -795,13 +893,14 @@ rp3t:"Un plan d'action priorisé",rp3p:"Des actions concrètes classées par imp
 rr_k:"Le vrai produit",rr_t:"Voici le rapport que vous recevez vraiment.",rr_p:"Le vrai tableau de bord AIVisib : score de visibilité, part des recommandations IA, visibilité par langue, analyse en clair et plan d'action priorisé.",rr_c:"Exemple illustratif · données fictives",rr_zoom:"👆 appuyez pour agrandir",
 er_sample:"EXEMPLE · données fictives",er_sector:"Clinique dentaire · Dubaï",er_kpi1:"Score de visibilité IA",er_kpi2:"Part des recommandations",er_kpi3:"Confiance",er_sov:"Qui l'IA recommande",er_compA:"Concurrent A",er_compB:"Concurrent B",er_lang:"Visibilité par langue",er_interp_t:"Analyse",er_interp:"Orvia Dental reçoit 48% des recommandations IA mais est invisible en arabe — là où beaucoup de patients du Golfe posent leurs questions. Un manque à combler.",er_reco_t:"Actions prioritaires",er_r1:"Publier des pages en arabe pour que l'IA vous cite en arabe.",er_r2:"Obtenir des citations sur les annuaires santé de confiance.",er_plan_t:"Plan d'action",er_p1_t:"Lancer une version arabe de vos pages clés",er_p1_d:"Priorité haute · effort moyen → plus de visibilité dans les réponses arabes, plus de patients du Golfe.",er_verified:"✓ Vérifié par AIVisib",
 f_k:"Ce qu'il y a dedans",f_t:"Tout le nécessaire. Rien d'inutile.",f_p:"La boîte à outils complète de visibilité IA, à une fraction du prix des grandes plateformes.",
-f1t:"L'arabe. Pour de vrai.",f1p:"Vos clients du Golfe interrogent l'IA en arabe — et tous les outils anglophones sont aveugles sur ces réponses. Nous testons de vrais prompts en arabe standard, nativement — là où la plupart des outils s'arrêtent à l'anglais.",
-f2t:"Part des recommandations vs concurrents",f2p:"Voyez précisément qui est recommandé à votre place — et comment on parle de vous quand vous apparaissez — par question, par moteur, par langue.",
-f3t:"Les sources derrière la réponse",f3p:"Découvrez quels sites les IA citent dans votre secteur, pour savoir exactement où apparaître.",
-f4t:"Des chiffres que vous pouvez défendre",f4p:"Chaque score passe par nos filtres statistiques et nos garde-fous anti-hallucination maison avant d'atteindre votre rapport — et s'affiche avec sa marge de précision. Sous le capot, votre jeu de questions constitue l'échantillon statistique : les répétitions et les moteurs multiples apportent la robustesse, et l'indice de confiance reflète la stabilité de votre score à travers les questions elles-mêmes. Aucun autre outil ne vous montre ça.",
-f5t:"Rapports marque blanche",f5p:"PDF mensuel au logo de votre agence, en AR / FR / EN. Facturez-le à vos clients.",
-f6t:"Un plan d'action, pas un tas de données",f6p:"Chaque mois : une courte liste d'actions concrètes qui augmentent vos chances d'être recommandé. En français clair, prête à transmettre à votre équipe.",
-f7t:"Mesuré en conditions réelles",f7p:"Nous interrogeons les moteurs avec recherche web active — les réponses que vos acheteurs obtiennent aujourd'hui, pas ce que les modèles ont mémorisé il y a des mois. Et nous re-mesurons chaque semaine : vous voyez le mouvement, pas des instantanés.",
+f1t:"L'arabe. Nativement.",f1p:"Vos clients du Golfe interrogent l'IA en arabe — et les outils anglophones sont aveugles sur ces réponses. Nous testons de vraies questions en arabe standard, nativement. Ici, la même clinique est visible en anglais et presque invisible en arabe : c'est l'écart à combler en premier.",
+f2t:"Voyez qui est recommandé à votre place",f2p:"Votre part des recommandations IA face aux concurrents que vous suivez — par question, par moteur, par langue — et comment on parle de vous quand vous apparaissez.",
+f3t:"Trouvez les sources derrière la réponse",f3p:"Les sites que les IA citent dans votre secteur, comptés. Vous savez exactement où apparaître pour être cité.",
+f4t:"Défendez chaque chiffre",f4p:"Chaque score s'affiche avec sa précision (±) et un indice de confiance qui dit à quel point il est stable : plusieurs passages, quatre moteurs, garde-fous anti-hallucination. Aucun autre outil n'imprime ça à côté du chiffre.",
+f5t:"Vendez-le sous votre nom",f5p:"Rapports PDF en marque blanche avec le logo de votre agence, en arabe, français ou anglais. Facturez-les à vos clients.",
+f6t:"Un plan d'action, pas un tas de données",f6p:"Chaque rapport se termine par une courte liste d'actions concrètes qui augmentent vos chances d'être recommandé — en langage clair, prête à transmettre à votre équipe.",
+f7t:"Mesurez la réalité, chaque semaine",f7p:"Recherche web active : les réponses que vos acheteurs obtiennent aujourd'hui, pas ce que les modèles ont mémorisé il y a des mois. Re-mesuré chaque semaine : vous voyez le mouvement, pas des instantanés.",
+fm_prec:"Visibilité IA · précision ± 12 pts",fm_conf:"Indice de confiance",fm_agency:"Votre Agence",fm_p3:"Être référencé sur les deux annuaires que les IA citent le plus à Mascate",fm_w1:"Semaine 1",fm_w7:"Semaine 7",
 p_k:"Tarifs",p_t:"Un prix juste. Arabe inclus.",p_p:"Des offres simples et transparentes — avec l'arabe intégré, sans engagement entreprise.",
 mo:"/mois",p_pop:"POPULAIRE",p_c:"Commencer",
 p1a:"1 marque · 25 prompts",p1b:"4 moteurs IA, chaque semaine",p1c:"3 langues dont l'arabe",p1d:"Dashboard + résumé email",
@@ -838,10 +937,11 @@ au_email_req:"أدخل بريداً إلكترونياً صحيحاً لتصلك
 pr_k:"ساحة المنافسة الجديدة",pr_t:"داخل إجابات الذكاء الاصطناعي:<br>هل يُوصى <em>بك</em> أم بمنافسك؟",
 pr_p:"أن تكون الأول في Google لا يعني شيئاً إذا ذكر الذكاء الاصطناعي غيرك. AIVisib يقيس كم مرة يُوصى بعلامتك التجارية مقارنةً بمنافسيك، لكل محرك ولكل لغة — لترى أخيراً مكانتك الحقيقية.",
 r_me:"علامتك التجارية",r_c1:"منافس أ",r_c2:"منافس ب",r_c3:"منافس ج",
-h_k:"ثلاث خطوات",h_t:"إعداد واحد. رؤى كل أسبوع.",h_p:"بدون تدريب، بدون تعقيد، بدون استشاري.",
-s1t:"أضف علامتك التجارية",s1p:"اسم علامتك، منافسوك، قطاعك — يكتب AIVisib الأسئلة الحقيقية التي يطرحها عملاؤك على الذكاء الاصطناعي، ويُدقَّق كل سؤال على أرض الواقع قبل أن يُحتسب.",
-s2t:"نحن نسأل المحركات",s2p:"كل أسبوع نسأل ChatGPT وGemini وPerplexity وClaude — مع بحث مباشر في الويب، وعدة جولات لكل سؤال، وبثلاث لغات. نسجّل ما يراه المشترون فعلًا.",
-s3t:"ترى، ثم تفوز",s3p:"لوحة واضحة مع دقتها المعلنة: من يُذكر، وما الذي تغيّر منذ الأسبوع الماضي، وما المصادر التي تثق بها المحركات — وما الإجراءات التي ترفع ترتيبك.",
+h_k:"كيف يعمل",h_t:"إعداد في دقيقتين. قياس كل أسبوع.",h_p:"أربع خطوات، بلا تدريب ولا استشاري. هذا بالضبط ما يحدث بين تسجيلك وتقريرك الأول.",s1c:"نحو دقيقتين",s2c:"16 سؤالاً · AR / EN / FR",s3c:"4 محركات × 3 جولات · كل أسبوع",s4c:"على الشاشة أو بصيغة PDF بشعارك",hm_brand:"علامتك التجارية",hm_comp:"المنافسون المتابَعون",hm_qs:"الأسئلة التي يطرحها عملاؤك على الذكاء الاصطناعي",hm_q1:"Best dental clinic in Muscat for families?",hm_q3:"Can you recommend a good place for teeth whitening near me?",hm_ok:"✓ مُدقَّق",hm_live:"بحث مباشر في الويب",hm_score:"الظهور في الذكاء الاصطناعي · الدقة",hm_share:"نصيبك من توصيات الذكاء الاصطناعي",hm_plan:"خطة العمل",hm_p1:"إنشاء صفحات منظّمة على المواقع التي يستشهد بها الذكاء الاصطناعي (whatclinic.com، sfc-oman.com)",hm_p2:"إضافة أسئلة شائعة بالعربية تجيب عن الأسئلة التي تغيب عنها",ht1:"ابتداءً من 29 دولاراً في الشهر، مع إمكانية الإلغاء في أي وقت",ht2:"التقرير الأول خلال دقيقتين تقريباً",ht3:"الدقة معروضة مع كل درجة",ht4:"العربية والفرنسية والإنجليزية",ht5:"جرّب التدقيق المجاني أولاً — بلا حساب",
+s1t:"أضف علامتك التجارية ومنافسيك",s1p:"الاسم، القطاع، المدينة، والمنافسون الذين تريد التفوق عليهم. اختيارياً: شعار وكالتك، ليصدر كل تقرير باسمك.",
+s2t:"اعتمد الأسئلة التي يطرحها عملاؤك",s2p:"يصوغ AIVisib الأسئلة الحقيقية التي يكتبها العملاء للذكاء الاصطناعي، بلغاتك — والعربية منها. تُبقي أو تعدّل أو تضيف. ويُدقَّق كل سؤال على أرض الواقع قبل أن يُحتسب.",
+s3t:"نسأل المحركات الأربعة مباشرةً",s3p:"ChatGPT، Gemini، Perplexity، Claude — مع بحث مباشر في الويب وعدة جولات لكل سؤال. نسجّل ما يراه المشترون فعلاً اليوم — ثم نعيد القياس كل أسبوع تلقائياً.",
+s4t:"تحصل على الدرجة والمصادر والخطة",s4p:"من يُوصى به، وبأي لغة، ومن أي مصادر — مع دقة كل رقم معروضة بجانبه، وخطة عمل قصيرة يستطيع فريقك البدء بها فوراً.",
 rp_k:"تقريرك",rp_t:"بالضبط ما تحصل عليه",rp_p:"ليست مجرد أرقام — قراءة واضحة وخطة قابلة للتنفيذ.",
 rp1t:"درجة ظهور واضحة",rp1p:"نصيبك من توصيات الذكاء الاصطناعي مقابل منافسيك، لكل محرك ولكل لغة.",
 rp2t:"تفسير بلغة بسيطة",rp2p:"«أنت متصدّر بالإنجليزية لكنك غير مرئي بالعربية — فجوة تستحق المعالجة.»",
@@ -849,13 +949,14 @@ rp3t:"خطة عمل حسب الأولوية",rp3p:"إجراءات ملموسة �
 rr_k:"المنتج الحقيقي",rr_t:"هذا هو التقرير الذي تحصل عليه فعلاً.",rr_p:"لوحة تحكم AIVisib الحقيقية: درجة الظهور، نصيبك من التوصيات، الظهور حسب اللغة، تحليل واضح وخطة عمل حسب الأولوية.",rr_c:"مثال توضيحي · بيانات افتراضية",rr_zoom:"👆 اضغط للتكبير",
 er_sample:"مثال · بيانات توضيحية",er_sector:"عيادة أسنان · دبي",er_kpi1:"درجة الظهور في الذكاء الاصطناعي",er_kpi2:"نصيب التوصيات",er_kpi3:"الثقة",er_sov:"من يوصي به الذكاء الاصطناعي",er_compA:"منافس أ",er_compB:"منافس ب",er_lang:"الظهور حسب اللغة",er_interp_t:"التحليل",er_interp:"تحصل Orvia Dental على 48% من توصيات الذكاء الاصطناعي لكنها غير مرئية بالعربية — وهي اللغة التي يسأل بها كثير من مرضى الخليج. فجوة تستحق المعالجة.",er_reco_t:"إجراءات ذات أولوية",er_r1:"انشر صفحات بالعربية ليذكرك الذكاء الاصطناعي بالعربية.",er_r2:"احصل على ذكر في الأدلة الصحية الموثوقة.",er_plan_t:"خطة العمل",er_p1_t:"أطلق نسخة عربية من صفحاتك الرئيسية",er_p1_d:"أولوية عالية · جهد متوسط ← ظهور أكبر في الإجابات العربية، ومرضى أكثر من الخليج.",er_verified:"✓ موثّق من AIVisib",
 f_k:"ما الذي تحصل عليه",f_t:"كل ما تحتاجه لتتصدّر في الذكاء الاصطناعي.",f_p:"مجموعة أدوات كاملة لقياس ظهورك في الذكاء الاصطناعي وتحسينه، بواجهة عربية بسيطة وواضحة.",
-f1t:"العربية. فعلياً.",f1p:"عملاؤك في الخليج يسألون الذكاء الاصطناعي بالعربية — والأدوات الإنجليزية لا ترى تلك الإجابات أصلاً. نحن نختبر أسئلة حقيقية بالعربية الفصحى، أصلاً في المنتج — حيث تتوقف معظم الأدوات عند الإنجليزية.",
-f2t:"نصيب التوصيات مقابل المنافسين",f2p:"شاهد بدقة من يُوصى به بدلاً منك — وكيف يوصَف اسمك عندما تظهر — لكل سؤال، ولكل محرك، ولكل لغة.",
-f3t:"المصادر خلف الإجابة",f3p:"اكتشف المواقع التي تعتمد عليها المحركات في قطاعك، لتعرف أين يجب أن تظهر بالضبط.",
-f4t:"أرقام يمكنك الدفاع عنها",f4p:"يمرّ كل رقم عبر مرشحاتنا الإحصائية وضوابطنا الخاصة ضد الهلوسة قبل أن يصل إلى تقريرك — ويُعرض مع هامش دقته. ومن الناحية المنهجية، تشكّل مجموعة أسئلتك العيّنة الإحصائية: تضيف الجولات المتكررة والمحركات المتعددة المتانة، ويعكس مؤشر الثقة مدى استقرار نتيجتك عبر الأسئلة نفسها. لا توجد أداة أخرى تريك ذلك.",
-f5t:"تقارير بشعارك أنت",f5p:"تقرير PDF شهري يحمل شعار وكالتك، بالعربية أو الإنجليزية أو الفرنسية. قدّمه لعملائك باسمك.",
-f6t:"خطة عمل واضحة، بدون تعقيد",f6p:"كل شهر: قائمة قصيرة بإجراءات ملموسة ترفع فرص التوصية بك. بلغة واضحة، جاهزة لتسليمها لفريقك.",
-f7t:"قياس في ظروف حقيقية",f7p:"نسأل المحركات مع بحث مباشر في الويب — الإجابات نفسها التي يحصل عليها المشترون اليوم، لا ما حفظته النماذج قبل أشهر. ونعيد القياس كل أسبوع لترى الحركة، لا لقطات جامدة.",
+f1t:"العربية. أصلاً في المنتج.",f1p:"عملاؤك في الخليج يسألون الذكاء الاصطناعي بالعربية — والأدوات الإنجليزية لا ترى تلك الإجابات. نحن نختبر أسئلة حقيقية بالعربية الفصحى، أصلاً في المنتج. هنا، العيادة نفسها ظاهرة بالإنجليزية وشبه غائبة بالعربية: هذه هي الفجوة التي تُعالَج أولاً.",
+f2t:"اعرف من يُوصى به بدلاً منك",f2p:"نصيبك من توصيات الذكاء الاصطناعي مقارنةً بالمنافسين الذين تتابعهم — لكل سؤال، ولكل محرك، ولكل لغة — وكيف يوصَف اسمك عندما تظهر.",
+f3t:"اكتشف المصادر خلف الإجابة",f3p:"المواقع التي يستشهد بها الذكاء الاصطناعي في قطاعك، مع عدد مرات الاستشهاد. تعرف بالضبط أين يجب أن تظهر لتُذكر.",
+f4t:"دافع عن كل رقم",f4p:"تُعرض كل درجة مع دقتها (±) ومؤشر ثقة يبيّن مدى استقرارها: عدة جولات، أربعة محركات، وضوابط ضد الهلوسة. لا توجد أداة أخرى تعرض ذلك بجانب الرقم.",
+f5t:"قدّمه باسمك",f5p:"تقارير PDF بشعار وكالتك، بالعربية أو الفرنسية أو الإنجليزية. قدّمها لعملائك باسمك.",
+f6t:"خطة عمل، لا كومة بيانات",f6p:"ينتهي كل تقرير بقائمة قصيرة من الإجراءات الملموسة التي ترفع فرص التوصية بك — بلغة واضحة، جاهزة لتسليمها لفريقك.",
+f7t:"قِس الواقع، كل أسبوع",f7p:"بحث مباشر في الويب: الإجابات التي يحصل عليها المشترون اليوم، لا ما حفظته النماذج قبل أشهر. يُعاد القياس أسبوعياً لترى الحركة، لا لقطات جامدة.",
+fm_prec:"الظهور في الذكاء الاصطناعي · الدقة ± 12 نقطة",fm_conf:"مؤشر الثقة",fm_agency:"وكالتك",fm_p3:"التسجيل في الدليلين الأكثر استشهاداً من الذكاء الاصطناعي في مسقط",fm_w1:"الأسبوع 1",fm_w7:"الأسبوع 7",
 p_k:"الأسعار",p_t:"أسعار عادلة. والعربية مشمولة.",p_p:"باقات بسيطة وواضحة — العربية مشمولة في كل باقة، وبدون عقود معقدة.",
 mo:"/شهر",p_pop:"الأكثر طلباً",p_c:"ابدأ الآن",
 p1a:"علامة واحدة · 25 سؤالاً",p1b:"4 محركات، أسبوعياً",p1c:"3 لغات منها العربية",p1d:"لوحة تحكم + ملخص بالبريد الإلكتروني",
