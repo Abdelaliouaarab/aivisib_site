@@ -1335,10 +1335,13 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 // Pages dédiées : /agences, /comparatif, /faq (réécrites par Netlify vers ?view=…) → on n'affiche que la section demandée
 (()=>{
   const map={agences:'agences',compare:'compare',faq:'faq'};
-  let v=null; try{v=map[new URLSearchParams(location.search).get('view')]||null;}catch(e){}
+  const paths={'/agences':'agences','/agencies':'agences','/comparatif':'compare','/compare':'compare','/faq':'faq'};
+  let v=null; try{v=map[new URLSearchParams(location.search).get('view')]||paths[location.pathname.replace(/\/+$/,'').toLowerCase()]||null;}catch(e){}
   if(!v) return;
   const sec=document.getElementById(v); if(!sec) return;
   document.body.dataset.view=v; sec.classList.add('vshow');
+  // sur une page dédiée, les ancres (#how, #price, #audit…) renvoient vers l'accueil
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.setAttribute('href','/'+a.getAttribute('href')));
   const bar=document.createElement('div'); bar.className='vback'; bar.innerHTML='<a href="/" data-i="v_back"></a>';
   document.querySelector('header').insertAdjacentElement('afterend',bar);
   if(v==='faq') sec.querySelectorAll('details').forEach((d,i)=>{ if(i<2) d.open=true; });
