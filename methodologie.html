@@ -895,6 +895,17 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 @media(prefers-reduced-motion:reduce){.hping{display:none}}
 .pyear{font:500 12.5px 'JetBrains Mono',monospace;color:var(--acid-ink);margin:-8px 0 12px}
 body.rtl .pyear{font-family:'Cairo',sans-serif}
+
+/* cartes tarifs : « Tout X, plus : » + bandeau commun */
+.pl li{font-size:14px;padding:7px 0}
+.pl li.plus{font-weight:700;color:var(--cream);padding-top:10px}
+.pl li.plus::before{content:"+";background:var(--cream);color:var(--ink)}
+.pall{margin:22px 0 4px;border:1px solid var(--line);border-radius:18px;padding:16px 18px;background:var(--panel);display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.pall-k{font:600 11.5px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acid-ink);padding-top:6px;flex:none}
+body.rtl .pall-k{font-family:'Cairo',sans-serif;letter-spacing:0}
+.pall-c{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+.pall-c span{font-size:13px;color:var(--cream);border:1px solid var(--line);border-radius:99px;padding:6px 12px;background:var(--ink2)}
+.pall-c span::before{content:"✓ ";color:var(--acid-ink);font-weight:700}
 </style>
 <style>
 .mth{max-width:820px;margin:0 auto;padding:54px 26px 90px}
