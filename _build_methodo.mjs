@@ -85,7 +85,7 @@ body.rtl .mth ul,body.rtl .mth ol{margin:0 22px 14px 0}
 .mtoc{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:18px 0 6px;font-size:14px}
 .mtoc a{display:inline-block;margin:3px 12px 3px 0;color:var(--dim);text-decoration:underline;text-underline-offset:3px}.mtoc a:hover{color:var(--cream)}
 .msign{margin-top:26px;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--dim)}
-.msign img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--acid)}
+.msign .mmark{width:40px;height:40px;border-radius:12px;background:var(--acid);color:#0A0A0B;display:grid;place-items:center;font-style:normal;font-size:20px;flex:none}
 .mpdf{display:inline-block;margin-top:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:var(--cream)}
 </style>
 </head>
@@ -95,13 +95,13 @@ ${header}
 <div class="vback"><a href="/" data-i="v_back"></a></div>
 <main class="mth">
 ${["en", "fr", "ar"].map((l) => `<div class="mlang" id="ml_${l}" ${l === "ar" ? 'dir="rtl"' : ""}>${L[l]}</div>`).join("\n")}
-<div class="msign"><img src="/brand/team_ilyas.jpg" alt="Ilyas"><span id="msign"></span></div>
+<div class="msign"><i class="mmark">◈</i><span id="msign"></span></div>
 <a class="mpdf" href="/brand/AIVisib_Presentation_Technique_2026-09.pdf" target="_blank" rel="noopener" id="mpdf"></a>
 </main>
 ${footer}
 <script>
 const NAV=${JSON.stringify(NAV)};const META=${JSON.stringify(META)};
-const SIGN={en:"Method reviewed by Ilyas, scientific advisor.",fr:"Méthode relue par Ilyas, conseiller scientifique.",ar:"روجعت المنهجية من إلياس، المستشار العلمي."};
+const SIGN={en:"Method validated by the AIVisib team.",fr:"Méthode validée par l'équipe AIVisib.",ar:"المنهجية معتمدة من فريق AIVisib."};
 const PDF={en:"Technical overview (PDF, 2 pages) →",fr:"Présentation technique (PDF, 2 pages) →",ar:"العرض التقني (PDF، صفحتان) ←"};
 let lang='fr';
 function setLang(l){lang=l;document.body.classList.toggle('rtl',l==='ar');document.documentElement.lang=l;document.title=META[l].t;document.querySelector('meta[name=description]').setAttribute('content',META[l].d);
