@@ -980,240 +980,240 @@ body.rtl .mth ul,body.rtl .mth ol{margin:0 22px 14px 0}
 </div></header>
 <div class="vback"><a href="/" data-i="v_back"></a></div>
 <main class="mth">
-<div class="mlang" id="ml_en" ><h1>Methodology</h1>
-<p>AIVisib measures whether ChatGPT, Gemini, Perplexity and Claude recommend your business. We publish this page so you can judge our numbers on their merits, not on our word.</p>
-<h2 id="s2">1. The questions</h2>
-<h3>How questions are generated</h3>
-<p>Questions are generated for each brand from three inputs: its sector, its city and its languages. The list is built in several steps.</p>
-<ol><li><b>Neighbourhoods.</b> GPT-4o proposes neighbourhoods of the city. Each one is verified against OpenStreetMap (Nominatim, bounded to the city). Unverified places are dropped.</li><li><b>Drafts.</b> GPT-4o-mini (temperature 0.9) writes candidate questions, with 40% more than needed. The set mixes broad, city-level questions and long-tail questions naming a real neighbourhood or a precise need.</li><li><b>Alphabet guard.</b> Arabic questions contain no Latin letters, and Latin-script questions contain no Arabic letters.</li><li><b>Review.</b> GPT-4o (temperature 0) rejects questions that are unrealistic, outside the sector or that name a place not in the verified list.</li><li><b>De-duplication.</b> Each question is embedded with text-embedding-3-small. Two questions with cosine similarity above 0.85 are treated as paraphrases, and one is removed.</li></ol>
-<h3>Your control</h3>
-<p>You can edit or delete every question before saving. Nothing is measured without your approval of the list.</p>
-<h3>Head and long-tail</h3>
-<p>Each question is tagged "head" (broad, city-level) or "long-tail" (specific neighbourhood or need). Metrics are reported for both scopes.</p>
-<h2 id="s10">2. The engines and how we ask</h2>
-<h3>Engines and settings</h3>
-<div class="mtbl"><table><thead><tr><th>Engine</th><th>Model and configuration</th></tr></thead><tbody><tr><td>ChatGPT</td><td>OpenAI Responses API with web search, search context size "low", approximate user location set to your city and country</td></tr><tr><td>Gemini</td><td>Gemini 2.5 Flash with Google Search grounding, temperature 0.6</td></tr><tr><td>Perplexity</td><td>Sonar, live web search, temperature 0.6</td></tr><tr><td>Claude</td><td>Claude Haiku 4.5 with web search (at most 2 searches), temperature 0.6, 1024 output tokens</td></tr></tbody></table></div>
-<h3>The same instruction for every engine</h3>
-<p>All four engines receive the same neutral system prompt: answer naturally, name real businesses, reply in the language of the question.</p>
-<h3>Neutral state</h3>
-<p>There is no memory, no personalisation and no logged-in account. Each question starts from a clean state, close to what a new user would see.</p>
-<h3>Passes and schedule</h3>
-<p>Every question is asked 3 times per engine, every week. For a typical brand, 16 questions × 4 engines × 3 passes give 192 answers per report.</p>
-<p>Calls run in parallel (pool of 6), with 3 retries on temporary errors.</p>
-<h3>When we refuse to report</h3>
-<p>If fewer than 50% of calls succeed, no report is issued. We never publish a false 0%. An engine with zero successful answers is shown as "not measured", never as 0%.</p>
-<h2 id="s22">3. How we count a mention</h2>
-<h3>The analyser</h3>
-<p>Each answer is read by GPT-4o-mini at temperature 0. It returns structured JSON: brand mentioned (yes/no), rank from 1 to 10 among named businesses, tracked competitors mentioned, other brands, cited sources, and sentiment (positive, neutral, negative).</p>
-<h3>Two deterministic guards</h3>
-<p>The analyser's output is never trusted alone. Two rules apply after it.</p>
-<ol><li><b>Literal presence.</b> The brand name must appear literally in the answer text. If it does not, the mention is discarded.</li><li><b>Homonym guard.</b> The analyser receives the business identity: sector, city, country, and website if provided. A mention that clearly refers to a different business with the same name elsewhere is not counted.</li></ol>
-<h3>Competitors</h3>
-<p>A tracked competitor counts at most once per answer, however many times it is named.</p>
-<h2 id="s30">4. The metrics and their formulas</h2>
-<h3>Visibility</h3>
-<p>Visibility = answers mentioning the brand ÷ measured answers × 100.</p>
-<p>It is computed overall, per engine, per question and per scope (head / long-tail). Visibility per language is the mean of the visibilities of the questions in that language.</p>
-<h3>Share of AI recommendations</h3>
-<p>Share = answers citing the brand ÷ total citations of the brand and its tracked competitors × 100.</p>
-<p>This share is computed only among the competitors you track. It is not a share of the whole market.</p>
-<h3>Average position</h3>
-<p>Average position = mean rank of the brand in the answers where it is cited. 1 means the brand is named first. If the brand is never cited, the value is null, not 0.</p>
-<h3>Sentiment</h3>
-<p>Sentiment = mean of 100 (positive), 50 (neutral) and 0 (negative), over the answers where the brand is cited.</p>
-<h3>Top sources</h3>
-<p>Top sources = frequency of the domains cited by the engines. Only URLs actually cited count. Redirect URLs are resolved to their final domain.</p>
-<h2 id="s43">5. Precision and confidence</h2>
-<h3>Why answers vary</h3>
-<p>The same question asked twice can produce different answers. This is normal for these engines. That is why we ask each question 3 times and attach a confidence interval to the results.</p>
-<h3>Per question: Wilson interval</h3>
-<p>For each question, we compute a Wilson 95% interval (z = 1.96) on its mention rate. Confidence = 100 × (1 − interval width). A narrow interval means a stable result.</p>
-<h3>Per report: bootstrap</h3>
-<p>For the overall score, we resample the questions 1,000 times with replacement (bootstrap, fixed seed 20260830, so the result is reproducible). We compute the score for each resample.</p>
-<p>Width = 2 × 1.96 × standard deviation of the resampled scores. Confidence = 100 × (1 − width).</p>
-<h3>Why ± is shown at report level</h3>
-<p>The ± shown in the dashboard describes the report score, not a single question. A single question has too few answers for a meaningful ± on its own. The report-level interval reflects how much the score would move if the question set had been slightly different.</p>
-<h2 id="s53">6. Texts of the report and anti-hallucination</h2>
-<h3>Insights</h3>
-<p>Insights are written by GPT-4o-mini (temperature 0.4). They are written only from the computed numbers, and only about measured engines.</p>
-<h3>Verification</h3>
-<p>A second pass (temperature 0) checks every engine name and figure in the text against the data. If something is wrong, the text is regenerated once.</p>
-<h3>Action plan</h3>
-<p>The action plan (temperature 0.5) is anchored on your sector, your city and the top sources observed.</p>
-<h3>Deterministic filters</h3>
-<p>After generation, deterministic filters remove any mention of an engine that was not measured in the report.</p>
-<h3>Executive summary</h3>
-<p>The 5-line executive summary is computed directly from the data, not by a language model.</p>
-<h2 id="s64">7. What we do not measure (yet)</h2>
-<p>We prefer to state limits plainly.</p>
-<ul><li><b>Engines not covered.</b> Google AI Overviews and AI Mode, Copilot and Grok are not measured today.</li><li><b>Natural variation.</b> Answers vary between passes. Three passes and a confidence interval reduce this effect but do not remove it.</li><li><b>Homonyms in the same city.</b> Two businesses with the same name, in the same city and sector, cannot be told apart without a website.</li><li><b>Prompt volumes.</b> We do not estimate how many real users ask each question.</li><li><b>Frequency.</b> Measurements are weekly, not daily.</li></ul>
-<h2 id="s67">8. Data and security</h2>
-<h3>History</h3>
-<p>Every report and every raw answer is stored. The dashboard compares each report to the previous one (change threshold: 1 point; 0.2 for position) and shows trends over the last 12 reports.</p>
-<h3>Free audit</h3>
-<p>The free audit on the website asks 3 template questions to 2 engines (ChatGPT, Gemini), once each. A city is required. It is an indication, not a report.</p>
-<h3>Security</h3>
-<ul><li>We use official APIs only.</li><li>Client data is isolated per account with row-level security.</li><li>We do not resell data.</li><li>You can cancel in one click.</li></ul>
-<h2 id="s74">9. Versions</h2>
-<p><b>Version dated 12 September 2026.</b> This page changes when the method changes.</p>
+<div class="mlang" id="ml_en" ><h1>Methodology</h1>
+<p>AIVisib measures whether ChatGPT, Gemini, Perplexity and Claude recommend your business. We publish this page so you can judge our numbers on their merits, not on our word.</p>
+<h2 id="s2">1. The questions</h2>
+<h3>How questions are generated</h3>
+<p>Questions are generated for each brand from three inputs: its sector, its city and its languages. The list is built in several steps.</p>
+<ol><li><b>Neighbourhoods.</b> GPT-4o proposes neighbourhoods of the city. Each one is verified against OpenStreetMap (Nominatim, bounded to the city). Unverified places are dropped.</li><li><b>Drafts.</b> GPT-4o-mini (temperature 0.9) writes candidate questions, with 40% more than needed. The set mixes broad, city-level questions and long-tail questions naming a real neighbourhood or a precise need.</li><li><b>Alphabet guard.</b> Arabic questions contain no Latin letters, and Latin-script questions contain no Arabic letters.</li><li><b>Review.</b> GPT-4o (temperature 0) rejects questions that are unrealistic, outside the sector or that name a place not in the verified list.</li><li><b>De-duplication.</b> Each question is embedded with text-embedding-3-small. Two questions with cosine similarity above 0.85 are treated as paraphrases, and one is removed.</li></ol>
+<h3>Your control</h3>
+<p>You can edit or delete every question before saving. Nothing is measured without your approval of the list.</p>
+<h3>Head and long-tail</h3>
+<p>Each question is tagged "head" (broad, city-level) or "long-tail" (specific neighbourhood or need). Metrics are reported for both scopes.</p>
+<h2 id="s10">2. The engines and how we ask</h2>
+<h3>Engines and settings</h3>
+<div class="mtbl"><table><thead><tr><th>Engine</th><th>Model and configuration</th><th></th></tr></thead><tbody><tr><td>ChatGPT</td><td>OpenAI Responses API with web search, search context size "low", approximate user location set to your city and country</td><td></td></tr><tr><td>Gemini</td><td>Gemini 2.5 Flash with Google Search grounding, temperature 0.6</td><td></td></tr><tr><td>Perplexity</td><td>Sonar, live web search, temperature 0.6</td><td></td></tr><tr><td>Claude</td><td>Claude Haiku 4.5 with web search (at most 2 searches), temperature 0.6, 1024 output tokens</td><td></td></tr></tbody></table></div>
+<h3>The same instruction for every engine</h3>
+<p>All four engines receive the same neutral system prompt: answer naturally, name real businesses, reply in the language of the question.</p>
+<h3>Neutral state</h3>
+<p>There is no memory, no personalisation and no logged-in account. Each question starts from a clean state, close to what a new user would see.</p>
+<h3>Passes and schedule</h3>
+<p>Every question is asked 3 times per engine, every week. For a typical brand, 16 questions × 4 engines × 3 passes give 192 answers per report.</p>
+<p>Calls run in parallel (pool of 6), with 3 retries on temporary errors.</p>
+<h3>When we refuse to report</h3>
+<p>If fewer than 50% of calls succeed, no report is issued. We never publish a false 0%. An engine with zero successful answers is shown as "not measured", never as 0%.</p>
+<h2 id="s22">3. How we count a mention</h2>
+<h3>The analyser</h3>
+<p>Each answer is read by GPT-4o-mini at temperature 0. It returns structured JSON: brand mentioned (yes/no), rank from 1 to 10 among named businesses, tracked competitors mentioned, other brands, cited sources, and sentiment (positive, neutral, negative).</p>
+<h3>Two deterministic guards</h3>
+<p>The analyser's output is never trusted alone. Two rules apply after it.</p>
+<ol><li><b>Literal presence.</b> The brand name must appear literally in the answer text. If it does not, the mention is discarded.</li><li><b>Homonym guard.</b> The analyser receives the business identity: sector, city, country, and website if provided. A mention that clearly refers to a different business with the same name elsewhere is not counted.</li></ol>
+<h3>Competitors</h3>
+<p>A tracked competitor counts at most once per answer, however many times it is named.</p>
+<h2 id="s30">4. The metrics and their formulas</h2>
+<h3>Visibility</h3>
+<p>Visibility = answers mentioning the brand ÷ measured answers × 100.</p>
+<p>It is computed overall, per engine, per question and per scope (head / long-tail). Visibility per language is the mean of the visibilities of the questions in that language.</p>
+<h3>Share of AI recommendations</h3>
+<p>Share = answers citing the brand ÷ total citations of the brand and its tracked competitors × 100.</p>
+<p>This share is computed only among the competitors you track. It is not a share of the whole market.</p>
+<h3>Average position</h3>
+<p>Average position = mean rank of the brand in the answers where it is cited. 1 means the brand is named first. If the brand is never cited, the value is null, not 0.</p>
+<h3>Sentiment</h3>
+<p>Sentiment = mean of 100 (positive), 50 (neutral) and 0 (negative), over the answers where the brand is cited.</p>
+<h3>Top sources</h3>
+<p>Top sources = frequency of the domains cited by the engines. Only URLs actually cited count. Redirect URLs are resolved to their final domain.</p>
+<h2 id="s43">5. Precision and confidence</h2>
+<h3>Why answers vary</h3>
+<p>The same question asked twice can produce different answers. This is normal for these engines. That is why we ask each question 3 times and attach a confidence interval to the results.</p>
+<h3>Per question: Wilson interval</h3>
+<p>For each question, we compute a Wilson 95% interval (z = 1.96) on its mention rate. Confidence = 100 × (1 − interval width). A narrow interval means a stable result.</p>
+<h3>Per report: bootstrap</h3>
+<p>For the overall score, we resample the questions 1,000 times with replacement (bootstrap, fixed seed 20260830, so the result is reproducible). We compute the score for each resample.</p>
+<p>Width = 2 × 1.96 × standard deviation of the resampled scores. Confidence = 100 × (1 − width).</p>
+<h3>Why ± is shown at report level</h3>
+<p>The ± shown in the dashboard describes the report score, not a single question. A single question has too few answers for a meaningful ± on its own. The report-level interval reflects how much the score would move if the question set had been slightly different.</p>
+<h2 id="s53">6. Texts of the report and anti-hallucination</h2>
+<h3>Insights</h3>
+<p>Insights are written by GPT-4o-mini (temperature 0.4). They are written only from the computed numbers, and only about measured engines.</p>
+<h3>Verification</h3>
+<p>A second pass (temperature 0) checks every engine name and figure in the text against the data. If something is wrong, the text is regenerated once.</p>
+<h3>Action plan</h3>
+<p>The action plan (temperature 0.5) is anchored on your sector, your city and the top sources observed.</p>
+<h3>Deterministic filters</h3>
+<p>After generation, deterministic filters remove any mention of an engine that was not measured in the report.</p>
+<h3>Executive summary</h3>
+<p>The 5-line executive summary is computed directly from the data, not by a language model.</p>
+<h2 id="s64">7. What we do not measure (yet)</h2>
+<p>We prefer to state limits plainly.</p>
+<ul><li><b>Engines not covered.</b> Google AI Overviews and AI Mode, Copilot and Grok are not measured today.</li><li><b>Natural variation.</b> Answers vary between passes. Three passes and a confidence interval reduce this effect but do not remove it.</li><li><b>Homonyms in the same city.</b> Two businesses with the same name, in the same city and sector, cannot be told apart without a website.</li><li><b>Prompt volumes.</b> We do not estimate how many real users ask each question.</li><li><b>Frequency.</b> Measurements are weekly, not daily.</li></ul>
+<h2 id="s67">8. Data and security</h2>
+<h3>History</h3>
+<p>Every report and every raw answer is stored. The dashboard compares each report to the previous one (change threshold: 1 point; 0.2 for position) and shows trends over the last 12 reports.</p>
+<h3>Free audit</h3>
+<p>The free audit on the website asks 3 template questions to 2 engines (ChatGPT, Gemini), once each. A city is required. It is an indication, not a report.</p>
+<h3>Security</h3>
+<ul><li>We use official APIs only.</li><li>Client data is isolated per account with row-level security.</li><li>We do not resell data.</li><li>You can cancel in one click.</li></ul>
+<h2 id="s74">9. Versions</h2>
+<p><b>Version dated 12 September 2026.</b> This page changes when the method changes.</p>
 <hr>
-<p>Method reviewed by Ilyas, scientific advisor (mathematical modelling engineer, Grenoble INP-Ensimag · MSc AI, Université Grenoble Alpes).</p></div>
-<div class="mlang" id="ml_fr" ><h1>Méthodologie</h1>
-<p>AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise. Nous publions cette page pour que vous puissiez juger nos chiffres sur pièces, pas sur parole.</p>
-<h2 id="s2">1. Les questions</h2>
-<h3>Comment les questions sont générées</h3>
-<p>Les questions sont générées pour chaque marque à partir de trois éléments : son secteur, sa ville et ses langues. La liste se construit en plusieurs étapes.</p>
-<ol><li><b>Quartiers.</b> GPT-4o propose des quartiers de la ville. Chacun est vérifié dans OpenStreetMap (Nominatim, recherche limitée à la ville). Les lieux non vérifiés sont écartés.</li><li><b>Brouillons.</b> GPT-4o-mini (température 0,9) rédige des questions candidates, avec 40 % de plus que nécessaire. L'ensemble mélange des questions larges à l'échelle de la ville et des questions de longue traîne citant un vrai quartier ou un besoin précis.</li><li><b>Garde-fou d'alphabet.</b> Les questions en arabe ne contiennent aucune lettre latine, et les questions en alphabet latin aucune lettre arabe.</li><li><b>Relecture.</b> GPT-4o (température 0) rejette les questions irréalistes, hors secteur, ou citant un lieu absent de la liste vérifiée.</li><li><b>Dédoublonnage.</b> Chaque question est encodée avec text-embedding-3-small. Deux questions dont la similarité cosinus dépasse 0,85 sont considérées comme des paraphrases, et l'une est supprimée.</li></ol>
-<h3>Votre contrôle</h3>
-<p>Vous pouvez modifier ou supprimer chaque question avant l'enregistrement. Rien n'est mesuré sans votre validation de la liste.</p>
-<h3>Head et longue traîne</h3>
-<p>Chaque question est étiquetée « head » (large, échelle de la ville) ou « longue traîne » (quartier ou besoin précis). Les métriques sont fournies pour les deux périmètres.</p>
-<h2 id="s10">2. Les moteurs et la façon d'interroger</h2>
-<h3>Moteurs et réglages</h3>
-<div class="mtbl"><table><thead><tr><th>Moteur</th><th>Modèle et configuration</th></tr></thead><tbody><tr><td>ChatGPT</td><td>OpenAI Responses API avec recherche web, taille de contexte de recherche « low », localisation approximative réglée sur votre ville et votre pays</td></tr><tr><td>Gemini</td><td>Gemini 2.5 Flash avec ancrage Google Search, température 0,6</td></tr><tr><td>Perplexity</td><td>Sonar, recherche web en direct, température 0,6</td></tr><tr><td>Claude</td><td>Claude Haiku 4.5 avec recherche web (2 recherches au maximum), température 0,6, 1024 tokens de sortie</td></tr></tbody></table></div>
-<h3>La même consigne pour tous les moteurs</h3>
-<p>Les quatre moteurs reçoivent le même prompt système neutre : répondre naturellement, nommer des entreprises réelles, répondre dans la langue de la question.</p>
-<h3>État neutre</h3>
-<p>Il n'y a ni mémoire, ni personnalisation, ni compte connecté. Chaque question part d'un état vierge, proche de ce que verrait un nouvel utilisateur.</p>
-<h3>Passes et rythme</h3>
-<p>Chaque question est posée 3 fois par moteur, chaque semaine. Pour une marque type, 16 questions × 4 moteurs × 3 passes donnent 192 réponses par rapport.</p>
-<p>Les appels sont exécutés en parallèle (6 à la fois), avec 3 nouvelles tentatives en cas d'erreur temporaire.</p>
-<h3>Quand nous refusons de publier</h3>
-<p>Si moins de 50 % des appels réussissent, aucun rapport n'est émis. Nous ne publions jamais un faux 0 %. Un moteur sans aucune réponse réussie est affiché « non mesuré », jamais 0 %.</p>
-<h2 id="s22">3. Comment nous comptons une mention</h2>
-<h3>L'analyseur</h3>
-<p>Chaque réponse est lue par GPT-4o-mini à température 0. Il renvoie un JSON structuré : marque mentionnée (oui/non), rang de 1 à 10 parmi les entreprises nommées, concurrents suivis mentionnés, autres marques, sources citées, et sentiment (positif, neutre, négatif).</p>
-<h3>Deux garde-fous déterministes</h3>
-<p>La sortie de l'analyseur n'est jamais prise seule. Deux règles s'appliquent ensuite.</p>
-<ol><li><b>Présence littérale.</b> Le nom de la marque doit apparaître littéralement dans le texte de la réponse. Sinon, la mention est écartée.</li><li><b>Garde-fou des homonymes.</b> L'analyseur reçoit l'identité de l'entreprise : secteur, ville, pays, et site web s'il est fourni. Une mention qui désigne clairement une autre entreprise du même nom, ailleurs, n'est pas comptée.</li></ol>
-<h3>Concurrents</h3>
-<p>Un concurrent suivi compte au plus une fois par réponse, quel que soit le nombre de fois où il est nommé.</p>
-<h2 id="s30">4. Les métriques et leurs formules</h2>
-<h3>Visibilité</h3>
-<p>Visibilité = réponses mentionnant la marque ÷ réponses mesurées × 100.</p>
-<p>Elle est calculée globalement, par moteur, par question et par périmètre (head / longue traîne). La visibilité par langue est la moyenne des visibilités des questions de cette langue.</p>
-<h3>Part des recommandations IA</h3>
-<p>Part = réponses citant la marque ÷ total des citations de la marque et de ses concurrents suivis × 100.</p>
-<p>Cette part est calculée uniquement parmi les concurrents que vous suivez. Ce n'est pas une part de l'ensemble du marché.</p>
-<h3>Position moyenne</h3>
-<p>Position moyenne = rang moyen de la marque dans les réponses où elle est citée. 1 signifie que la marque est nommée en premier. Si la marque n'est jamais citée, la valeur est vide, pas 0.</p>
-<h3>Sentiment</h3>
-<p>Sentiment = moyenne de 100 (positif), 50 (neutre) et 0 (négatif), sur les réponses où la marque est citée.</p>
-<h3>Sources principales</h3>
-<p>Sources principales = fréquence des domaines cités par les moteurs. Seules les URL réellement citées comptent. Les URL de redirection sont résolues vers leur domaine final.</p>
-<h2 id="s43">5. Précision et confiance</h2>
-<h3>Pourquoi les réponses varient</h3>
-<p>La même question posée deux fois peut produire deux réponses différentes. C'est normal pour ces moteurs. C'est pourquoi nous posons chaque question 3 fois et associons un intervalle de confiance aux résultats.</p>
-<h3>Par question : intervalle de Wilson</h3>
-<p>Pour chaque question, nous calculons un intervalle de Wilson à 95 % (z = 1,96) sur son taux de mention. Confiance = 100 × (1 − largeur de l'intervalle). Un intervalle étroit signifie un résultat stable.</p>
-<h3>Par rapport : bootstrap</h3>
-<p>Pour le score global, nous rééchantillonnons les questions 1 000 fois avec remise (bootstrap, graine fixe 20260830, donc résultat reproductible). Nous calculons le score pour chaque rééchantillon.</p>
-<p>Largeur = 2 × 1,96 × écart-type des scores rééchantillonnés. Confiance = 100 × (1 − largeur).</p>
-<h3>Pourquoi le ± est affiché au niveau du rapport</h3>
-<p>Le ± affiché dans le tableau de bord décrit le score du rapport, pas une question isolée. Une question seule a trop peu de réponses pour un ± significatif. L'intervalle au niveau du rapport indique de combien le score bougerait si le jeu de questions avait été légèrement différent.</p>
-<h2 id="s53">6. Textes du rapport et anti-hallucination</h2>
-<h3>Analyses</h3>
-<p>Les analyses sont rédigées par GPT-4o-mini (température 0,4). Elles sont écrites uniquement à partir des chiffres calculés, et uniquement sur les moteurs mesurés.</p>
-<h3>Vérification</h3>
-<p>Une seconde passe (température 0) contrôle chaque nom de moteur et chaque chiffre du texte par rapport aux données. En cas d'erreur, le texte est régénéré une fois.</p>
-<h3>Plan d'action</h3>
-<p>Le plan d'action (température 0,5) s'appuie sur votre secteur, votre ville et les sources principales observées.</p>
-<h3>Filtres déterministes</h3>
-<p>Après génération, des filtres déterministes suppriment toute mention d'un moteur non mesuré dans le rapport.</p>
-<h3>Résumé exécutif</h3>
-<p>Le résumé exécutif en 5 lignes est calculé directement à partir des données, pas par un modèle de langage.</p>
-<h2 id="s64">7. Ce que nous ne mesurons pas (encore)</h2>
-<p>Nous préférons énoncer nos limites clairement.</p>
-<ul><li><b>Moteurs non couverts.</b> Google AI Overviews et AI Mode, Copilot et Grok ne sont pas mesurés aujourd'hui.</li><li><b>Variation naturelle.</b> Les réponses varient d'une passe à l'autre. Trois passes et un intervalle de confiance réduisent cet effet sans le supprimer.</li><li><b>Homonymes dans la même ville.</b> Deux entreprises du même nom, dans la même ville et le même secteur, ne peuvent pas être distinguées sans site web.</li><li><b>Volumes de requêtes.</b> Nous n'estimons pas combien d'utilisateurs réels posent chaque question.</li><li><b>Fréquence.</b> Les mesures sont hebdomadaires, pas quotidiennes.</li></ul>
-<h2 id="s67">8. Données et sécurité</h2>
-<h3>Historique</h3>
-<p>Chaque rapport et chaque réponse brute sont conservés. Le tableau de bord compare chaque rapport au précédent (seuil de variation : 1 point ; 0,2 pour la position) et affiche les tendances sur les 12 derniers rapports.</p>
-<h3>Audit gratuit</h3>
-<p>L'audit gratuit du site pose 3 questions types à 2 moteurs (ChatGPT, Gemini), une fois chacune. La ville est obligatoire. C'est une indication, pas un rapport.</p>
-<h3>Sécurité</h3>
-<ul><li>Nous utilisons uniquement les API officielles.</li><li>Les données de chaque client sont isolées par compte (sécurité au niveau des lignes).</li><li>Nous ne revendons aucune donnée.</li><li>Vous pouvez résilier en un clic.</li></ul>
-<h2 id="s74">9. Versions</h2>
-<p><b>Version du 12 septembre 2026.</b> Cette page change quand la méthode change.</p>
+<p>Method validated by the AIVisib team.</p></div>
+<div class="mlang" id="ml_fr" ><h1>Méthodologie</h1>
+<p>AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise. Nous publions cette page pour que vous puissiez juger nos chiffres sur pièces, pas sur parole.</p>
+<h2 id="s2">1. Les questions</h2>
+<h3>Comment les questions sont générées</h3>
+<p>Les questions sont générées pour chaque marque à partir de trois éléments : son secteur, sa ville et ses langues. La liste se construit en plusieurs étapes.</p>
+<ol><li><b>Quartiers.</b> GPT-4o propose des quartiers de la ville. Chacun est vérifié dans OpenStreetMap (Nominatim, recherche limitée à la ville). Les lieux non vérifiés sont écartés.</li><li><b>Brouillons.</b> GPT-4o-mini (température 0,9) rédige des questions candidates, avec 40 % de plus que nécessaire. L'ensemble mélange des questions larges à l'échelle de la ville et des questions de longue traîne citant un vrai quartier ou un besoin précis.</li><li><b>Garde-fou d'alphabet.</b> Les questions en arabe ne contiennent aucune lettre latine, et les questions en alphabet latin aucune lettre arabe.</li><li><b>Relecture.</b> GPT-4o (température 0) rejette les questions irréalistes, hors secteur, ou citant un lieu absent de la liste vérifiée.</li><li><b>Dédoublonnage.</b> Chaque question est encodée avec text-embedding-3-small. Deux questions dont la similarité cosinus dépasse 0,85 sont considérées comme des paraphrases, et l'une est supprimée.</li></ol>
+<h3>Votre contrôle</h3>
+<p>Vous pouvez modifier ou supprimer chaque question avant l'enregistrement. Rien n'est mesuré sans votre validation de la liste.</p>
+<h3>Head et longue traîne</h3>
+<p>Chaque question est étiquetée « head » (large, échelle de la ville) ou « longue traîne » (quartier ou besoin précis). Les métriques sont fournies pour les deux périmètres.</p>
+<h2 id="s10">2. Les moteurs et la façon d'interroger</h2>
+<h3>Moteurs et réglages</h3>
+<div class="mtbl"><table><thead><tr><th>Moteur</th><th>Modèle et configuration</th><th></th></tr></thead><tbody><tr><td>ChatGPT</td><td>OpenAI Responses API avec recherche web, taille de contexte de recherche « low », localisation approximative réglée sur votre ville et votre pays</td><td></td></tr><tr><td>Gemini</td><td>Gemini 2.5 Flash avec ancrage Google Search, température 0,6</td><td></td></tr><tr><td>Perplexity</td><td>Sonar, recherche web en direct, température 0,6</td><td></td></tr><tr><td>Claude</td><td>Claude Haiku 4.5 avec recherche web (2 recherches au maximum), température 0,6, 1024 tokens de sortie</td><td></td></tr></tbody></table></div>
+<h3>La même consigne pour tous les moteurs</h3>
+<p>Les quatre moteurs reçoivent le même prompt système neutre : répondre naturellement, nommer des entreprises réelles, répondre dans la langue de la question.</p>
+<h3>État neutre</h3>
+<p>Il n'y a ni mémoire, ni personnalisation, ni compte connecté. Chaque question part d'un état vierge, proche de ce que verrait un nouvel utilisateur.</p>
+<h3>Passes et rythme</h3>
+<p>Chaque question est posée 3 fois par moteur, chaque semaine. Pour une marque type, 16 questions × 4 moteurs × 3 passes donnent 192 réponses par rapport.</p>
+<p>Les appels sont exécutés en parallèle (6 à la fois), avec 3 nouvelles tentatives en cas d'erreur temporaire.</p>
+<h3>Quand nous refusons de publier</h3>
+<p>Si moins de 50 % des appels réussissent, aucun rapport n'est émis. Nous ne publions jamais un faux 0 %. Un moteur sans aucune réponse réussie est affiché « non mesuré », jamais 0 %.</p>
+<h2 id="s22">3. Comment nous comptons une mention</h2>
+<h3>L'analyseur</h3>
+<p>Chaque réponse est lue par GPT-4o-mini à température 0. Il renvoie un JSON structuré : marque mentionnée (oui/non), rang de 1 à 10 parmi les entreprises nommées, concurrents suivis mentionnés, autres marques, sources citées, et sentiment (positif, neutre, négatif).</p>
+<h3>Deux garde-fous déterministes</h3>
+<p>La sortie de l'analyseur n'est jamais prise seule. Deux règles s'appliquent ensuite.</p>
+<ol><li><b>Présence littérale.</b> Le nom de la marque doit apparaître littéralement dans le texte de la réponse. Sinon, la mention est écartée.</li><li><b>Garde-fou des homonymes.</b> L'analyseur reçoit l'identité de l'entreprise : secteur, ville, pays, et site web s'il est fourni. Une mention qui désigne clairement une autre entreprise du même nom, ailleurs, n'est pas comptée.</li></ol>
+<h3>Concurrents</h3>
+<p>Un concurrent suivi compte au plus une fois par réponse, quel que soit le nombre de fois où il est nommé.</p>
+<h2 id="s30">4. Les métriques et leurs formules</h2>
+<h3>Visibilité</h3>
+<p>Visibilité = réponses mentionnant la marque ÷ réponses mesurées × 100.</p>
+<p>Elle est calculée globalement, par moteur, par question et par périmètre (head / longue traîne). La visibilité par langue est la moyenne des visibilités des questions de cette langue.</p>
+<h3>Part des recommandations IA</h3>
+<p>Part = réponses citant la marque ÷ total des citations de la marque et de ses concurrents suivis × 100.</p>
+<p>Cette part est calculée uniquement parmi les concurrents que vous suivez. Ce n'est pas une part de l'ensemble du marché.</p>
+<h3>Position moyenne</h3>
+<p>Position moyenne = rang moyen de la marque dans les réponses où elle est citée. 1 signifie que la marque est nommée en premier. Si la marque n'est jamais citée, la valeur est vide, pas 0.</p>
+<h3>Sentiment</h3>
+<p>Sentiment = moyenne de 100 (positif), 50 (neutre) et 0 (négatif), sur les réponses où la marque est citée.</p>
+<h3>Sources principales</h3>
+<p>Sources principales = fréquence des domaines cités par les moteurs. Seules les URL réellement citées comptent. Les URL de redirection sont résolues vers leur domaine final.</p>
+<h2 id="s43">5. Précision et confiance</h2>
+<h3>Pourquoi les réponses varient</h3>
+<p>La même question posée deux fois peut produire deux réponses différentes. C'est normal pour ces moteurs. C'est pourquoi nous posons chaque question 3 fois et associons un intervalle de confiance aux résultats.</p>
+<h3>Par question : intervalle de Wilson</h3>
+<p>Pour chaque question, nous calculons un intervalle de Wilson à 95 % (z = 1,96) sur son taux de mention. Confiance = 100 × (1 − largeur de l'intervalle). Un intervalle étroit signifie un résultat stable.</p>
+<h3>Par rapport : bootstrap</h3>
+<p>Pour le score global, nous rééchantillonnons les questions 1 000 fois avec remise (bootstrap, graine fixe 20260830, donc résultat reproductible). Nous calculons le score pour chaque rééchantillon.</p>
+<p>Largeur = 2 × 1,96 × écart-type des scores rééchantillonnés. Confiance = 100 × (1 − largeur).</p>
+<h3>Pourquoi le ± est affiché au niveau du rapport</h3>
+<p>Le ± affiché dans le tableau de bord décrit le score du rapport, pas une question isolée. Une question seule a trop peu de réponses pour un ± significatif. L'intervalle au niveau du rapport indique de combien le score bougerait si le jeu de questions avait été légèrement différent.</p>
+<h2 id="s53">6. Textes du rapport et anti-hallucination</h2>
+<h3>Analyses</h3>
+<p>Les analyses sont rédigées par GPT-4o-mini (température 0,4). Elles sont écrites uniquement à partir des chiffres calculés, et uniquement sur les moteurs mesurés.</p>
+<h3>Vérification</h3>
+<p>Une seconde passe (température 0) contrôle chaque nom de moteur et chaque chiffre du texte par rapport aux données. En cas d'erreur, le texte est régénéré une fois.</p>
+<h3>Plan d'action</h3>
+<p>Le plan d'action (température 0,5) s'appuie sur votre secteur, votre ville et les sources principales observées.</p>
+<h3>Filtres déterministes</h3>
+<p>Après génération, des filtres déterministes suppriment toute mention d'un moteur non mesuré dans le rapport.</p>
+<h3>Résumé exécutif</h3>
+<p>Le résumé exécutif en 5 lignes est calculé directement à partir des données, pas par un modèle de langage.</p>
+<h2 id="s64">7. Ce que nous ne mesurons pas (encore)</h2>
+<p>Nous préférons énoncer nos limites clairement.</p>
+<ul><li><b>Moteurs non couverts.</b> Google AI Overviews et AI Mode, Copilot et Grok ne sont pas mesurés aujourd'hui.</li><li><b>Variation naturelle.</b> Les réponses varient d'une passe à l'autre. Trois passes et un intervalle de confiance réduisent cet effet sans le supprimer.</li><li><b>Homonymes dans la même ville.</b> Deux entreprises du même nom, dans la même ville et le même secteur, ne peuvent pas être distinguées sans site web.</li><li><b>Volumes de requêtes.</b> Nous n'estimons pas combien d'utilisateurs réels posent chaque question.</li><li><b>Fréquence.</b> Les mesures sont hebdomadaires, pas quotidiennes.</li></ul>
+<h2 id="s67">8. Données et sécurité</h2>
+<h3>Historique</h3>
+<p>Chaque rapport et chaque réponse brute sont conservés. Le tableau de bord compare chaque rapport au précédent (seuil de variation : 1 point ; 0,2 pour la position) et affiche les tendances sur les 12 derniers rapports.</p>
+<h3>Audit gratuit</h3>
+<p>L'audit gratuit du site pose 3 questions types à 2 moteurs (ChatGPT, Gemini), une fois chacune. La ville est obligatoire. C'est une indication, pas un rapport.</p>
+<h3>Sécurité</h3>
+<ul><li>Nous utilisons uniquement les API officielles.</li><li>Les données de chaque client sont isolées par compte (sécurité au niveau des lignes).</li><li>Nous ne revendons aucune donnée.</li><li>Vous pouvez résilier en un clic.</li></ul>
+<h2 id="s74">9. Versions</h2>
+<p><b>Version du 12 septembre 2026.</b> Cette page change quand la méthode change.</p>
 <hr>
-<p>Méthode relue par Ilyas, conseiller scientifique (ingénieur en modélisation mathématique, Grenoble INP-Ensimag · MSc IA, Université Grenoble Alpes).</p></div>
-<div class="mlang" id="ml_ar" dir="rtl"><h1>المنهجية</h1>
-<p>يقيس AIVisib ما إذا كانت محركات ChatGPT، Gemini، Perplexity، Claude توصي بمؤسستك. ننشر هذه الصفحة لتحكموا على أرقامنا بالدليل، لا بالكلام.</p>
-<h2 id="s2">1. الأسئلة</h2>
-<h3>كيف تُولَّد الأسئلة</h3>
-<p>تُولَّد الأسئلة لكل علامة تجارية من ثلاثة عناصر: قطاعها، مدينتها، لغاتها. وتُبنى القائمة على عدة مراحل.</p>
-<ol><li><b>الأحياء.</b> يقترح GPT-4o أحياء المدينة. يُتحقق من كل حي في OpenStreetMap (خدمة Nominatim، مع حصر البحث داخل المدينة). تُستبعد الأماكن غير المتحقق منها.</li><li><b>المسودات.</b> يكتب GPT-4o-mini (درجة الحرارة 0.9) أسئلة مرشحة، بزيادة 40 % عن الحاجة. تمزج المجموعة أسئلة عامة على مستوى المدينة مع أسئلة الذيل الطويل التي تذكر حيًا حقيقيًا أو حاجة محددة.</li><li><b>حارس الأبجدية.</b> لا تحتوي الأسئلة العربية على أي حرف لاتيني، ولا تحتوي الأسئلة اللاتينية على أي حرف عربي.</li><li><b>المراجعة.</b> يرفض GPT-4o (درجة الحرارة 0) الأسئلة غير الواقعية، أو الخارجة عن القطاع، أو التي تذكر مكانًا غير موجود في القائمة المتحقق منها.</li><li><b>إزالة التكرار.</b> يُرمَّز كل سؤال بنموذج text-embedding-3-small. إذا تجاوز تشابه جيب التمام بين سؤالين 0.85 عُدّا صياغتين لمعنى واحد، ويُحذف أحدهما.</li></ol>
-<h3>تحكمكم</h3>
-<p>يمكنكم تعديل كل سؤال أو حذفه قبل الحفظ. لا يُقاس شيء دون موافقتكم على القائمة.</p>
-<h3>الأسئلة العامة وأسئلة الذيل الطويل</h3>
-<p>يوسم كل سؤال بـ«عام» (head، على مستوى المدينة) أو «ذيل طويل» (حي أو حاجة محددة). تُعرض المقاييس للنطاقين معًا.</p>
-<h2 id="s10">2. المحركات وطريقة السؤال</h2>
-<h3>المحركات والإعدادات</h3>
-<div class="mtbl"><table><thead><tr><th>المحرك</th><th>النموذج والإعدادات</th></tr></thead><tbody><tr><td>ChatGPT</td><td>واجهة OpenAI Responses API مع بحث الويب، حجم سياق البحث «low»، موقع تقريبي مضبوط على مدينتكم وبلدكم</td></tr><tr><td>Gemini</td><td>نموذج Gemini 2.5 Flash مع تأريض Google Search، درجة الحرارة 0.6</td></tr><tr><td>Perplexity</td><td>نموذج Sonar، بحث ويب مباشر، درجة الحرارة 0.6</td></tr><tr><td>Claude</td><td>نموذج Claude Haiku 4.5 مع بحث الويب (بحثان على الأكثر)، درجة الحرارة 0.6، سقف الإخراج 1024 رمزًا</td></tr></tbody></table></div>
-<h3>التعليمة نفسها لكل المحركات</h3>
-<p>تتلقى المحركات الأربعة موجه النظام المحايد نفسه: أجب بشكل طبيعي، اذكر مؤسسات حقيقية، أجب بلغة السؤال.</p>
-<h3>الحالة المحايدة</h3>
-<p>لا توجد ذاكرة، ولا تخصيص، ولا حساب مسجل الدخول. يبدأ كل سؤال من حالة نظيفة، قريبة مما يراه مستخدم جديد.</p>
-<h3>الجولات والوتيرة</h3>
-<p>يُطرح كل سؤال 3 مرات على كل محرك، كل أسبوع. لعلامة تجارية نموذجية، تعطي 16 سؤالًا × 4 محركات × 3 جولات 192 إجابة لكل تقرير.</p>
-<p>تُنفذ الطلبات بالتوازي (6 في الوقت نفسه)، مع 3 محاولات إضافية عند الأخطاء المؤقتة.</p>
-<h3>متى نرفض إصدار التقرير</h3>
-<p>إذا نجح أقل من 50 % من الطلبات، لا يصدر أي تقرير. لا ننشر أبدًا نسبة 0 % زائفة. يُعرض المحرك الذي لم تنجح له أي إجابة بعبارة «غير مقيس»، لا بنسبة 0 %.</p>
-<h2 id="s22">3. كيف نحتسب الذكر</h2>
-<h3>المحلل</h3>
-<p>يقرأ GPT-4o-mini كل إجابة بدرجة حرارة 0. ويعيد JSON منظمًا: ذُكرت العلامة (نعم/لا)، الرتبة من 1 إلى 10 بين المؤسسات المذكورة، المنافسون المتابَعون المذكورون، علامات أخرى، المصادر المستشهد بها، والانطباع (إيجابي، محايد، سلبي).</p>
-<h3>حارسان حتميان</h3>
-<p>لا يُعتمد على مخرجات المحلل وحدها. تُطبق بعده قاعدتان.</p>
-<ol><li><b>الوجود الحرفي.</b> يجب أن يظهر اسم العلامة حرفيًا في نص الإجابة. وإلا يُستبعد الذكر.</li><li><b>حارس الأسماء المتشابهة.</b> يتلقى المحلل هوية المؤسسة: القطاع، المدينة، البلد، والموقع الإلكتروني إن قُدّم. الذكر الذي يشير بوضوح إلى مؤسسة أخرى تحمل الاسم نفسه في مكان آخر لا يُحتسب.</li></ol>
-<h3>المنافسون</h3>
-<p>يُحتسب المنافس المتابَع مرة واحدة على الأكثر في كل إجابة، مهما تكرر ذكره.</p>
-<h2 id="s30">4. المقاييس وصيغها</h2>
-<h3>الظهور</h3>
-<p>الظهور = الإجابات التي تذكر العلامة ÷ الإجابات المقيسة × 100.</p>
-<p>يُحسب إجمالًا، ولكل محرك، ولكل سؤال، ولكل نطاق (عام / ذيل طويل). الظهور لكل لغة هو متوسط ظهور أسئلة تلك اللغة.</p>
-<h3>حصة توصيات الذكاء الاصطناعي</h3>
-<p>الحصة = الإجابات التي تستشهد بالعلامة ÷ مجموع الاستشهادات بالعلامة ومنافسيها المتابَعين × 100.</p>
-<p>تُحسب هذه الحصة فقط بين المنافسين الذين تتابعونهم. وهي ليست حصة من السوق كله.</p>
-<h3>الموضع المتوسط</h3>
-<p>الموضع المتوسط = متوسط رتبة العلامة في الإجابات التي تُذكر فيها. الرقم 1 يعني أن العلامة ذُكرت أولًا. إذا لم تُذكر العلامة أبدًا، تكون القيمة فارغة، لا 0.</p>
-<h3>الانطباع</h3>
-<p>الانطباع = متوسط 100 (إيجابي)، 50 (محايد)، 0 (سلبي)، على الإجابات التي تُذكر فيها العلامة.</p>
-<h3>أهم المصادر</h3>
-<p>أهم المصادر = تكرار النطاقات التي تستشهد بها المحركات. تُحتسب الروابط المستشهد بها فعلًا فقط. تُحل روابط إعادة التوجيه إلى نطاقها النهائي.</p>
-<h2 id="s43">5. الدقة والثقة</h2>
-<h3>لماذا تتغير الإجابات</h3>
-<p>قد ينتج السؤال نفسه، إذا طُرح مرتين، إجابتين مختلفتين. هذا طبيعي في هذه المحركات. لذلك نطرح كل سؤال 3 مرات ونرفق النتائج بفاصل ثقة.</p>
-<h3>لكل سؤال: فاصل Wilson</h3>
-<p>لكل سؤال، نحسب فاصل Wilson بمستوى 95 % (z = 1.96) على معدل الذكر. الثقة = 100 × (1 − عرض الفاصل). الفاصل الضيق يعني نتيجة مستقرة.</p>
-<h3>لكل تقرير: إعادة المعاينة (bootstrap)</h3>
-<p>للنتيجة الإجمالية، نعيد معاينة الأسئلة 1000 مرة مع الإرجاع (bootstrap، ببذرة ثابتة 20260830، فتكون النتيجة قابلة لإعادة الإنتاج). ونحسب النتيجة لكل عينة.</p>
-<p>العرض = 2 × 1.96 × الانحراف المعياري للنتائج المعاد معاينتها. الثقة = 100 × (1 − العرض).</p>
-<h3>لماذا يُعرض ± على مستوى التقرير</h3>
-<p>يصف الرمز ± المعروض في لوحة التحكم نتيجة التقرير، لا سؤالًا واحدًا. السؤال الواحد يحوي إجابات أقل من أن تعطي ± ذا معنى وحده. يعكس الفاصل على مستوى التقرير مقدار تحرك النتيجة لو كانت مجموعة الأسئلة مختلفة قليلًا.</p>
-<h2 id="s53">6. نصوص التقرير ومنع الهلوسة</h2>
-<h3>التحليلات</h3>
-<p>يكتب التحليلات GPT-4o-mini (درجة الحرارة 0.4). تُكتب فقط من الأرقام المحسوبة، وفقط عن المحركات المقيسة.</p>
-<h3>التحقق</h3>
-<p>تراجع جولة ثانية (درجة الحرارة 0) كل اسم محرك وكل رقم في النص مقابل البيانات. عند وجود خطأ، يُعاد توليد النص مرة واحدة.</p>
-<h3>خطة العمل</h3>
-<p>ترتكز خطة العمل (درجة الحرارة 0.5) على قطاعكم، ومدينتكم، وأهم المصادر الملاحَظة.</p>
-<h3>مرشحات حتمية</h3>
-<p>بعد التوليد، تحذف مرشحات حتمية أي ذكر لمحرك لم يُقَس في التقرير.</p>
-<h3>الملخص التنفيذي</h3>
-<p>يُحسب الملخص التنفيذي المكون من 5 أسطر مباشرة من البيانات، لا بواسطة نموذج لغوي.</p>
-<h2 id="s64">7. ما لا نقيسه (بعد)</h2>
-<p>نفضل ذكر حدودنا بوضوح.</p>
-<ul><li><b>محركات غير مغطاة.</b> لا تُقاس اليوم Google AI Overviews، AI Mode، Copilot، Grok.</li><li><b>التغير الطبيعي.</b> تتغير الإجابات بين الجولات. ثلاث جولات وفاصل ثقة يقللان هذا الأثر دون إزالته.</li><li><b>الأسماء المتشابهة في المدينة نفسها.</b> لا يمكن التمييز بين مؤسستين بالاسم نفسه، في المدينة والقطاع نفسيهما، دون موقع إلكتروني.</li><li><b>أحجام الطلبات.</b> لا نقدّر عدد المستخدمين الحقيقيين الذين يطرحون كل سؤال.</li><li><b>الوتيرة.</b> القياسات أسبوعية، لا يومية.</li></ul>
-<h2 id="s67">8. البيانات والأمان</h2>
-<h3>السجل</h3>
-<p>يُحفظ كل تقرير وكل إجابة خام. تقارن لوحة التحكم كل تقرير بالسابق (عتبة التغير: نقطة واحدة؛ 0.2 للموضع) وتعرض الاتجاهات على آخر 12 تقريرًا.</p>
-<h3>التدقيق المجاني</h3>
-<p>يطرح التدقيق المجاني على الموقع 3 أسئلة نموذجية على محركين (ChatGPT، Gemini)، مرة واحدة لكل منهما. المدينة إلزامية. وهو مؤشر، لا تقرير.</p>
-<h3>الأمان</h3>
-<ul><li>نستخدم الواجهات البرمجية الرسمية فقط.</li><li>بيانات كل عميل معزولة حسب الحساب (أمان على مستوى الصفوف).</li><li>لا نعيد بيع أي بيانات.</li><li>يمكنكم الإلغاء بنقرة واحدة.</li></ul>
-<h2 id="s74">9. الإصدارات</h2>
-<p><b>إصدار 12 سبتمبر 2026.</b> تتغير هذه الصفحة عندما تتغير المنهجية.</p>
+<p>Méthode validée par l'équipe AIVisib.</p></div>
+<div class="mlang" id="ml_ar" dir="rtl"><h1>المنهجية</h1>
+<p>يقيس AIVisib ما إذا كانت محركات ChatGPT، Gemini، Perplexity، Claude توصي بمؤسستك. ننشر هذه الصفحة لتحكموا على أرقامنا بالدليل، لا بالكلام.</p>
+<h2 id="s2">1. الأسئلة</h2>
+<h3>كيف تُولَّد الأسئلة</h3>
+<p>تُولَّد الأسئلة لكل علامة تجارية من ثلاثة عناصر: قطاعها، مدينتها، لغاتها. وتُبنى القائمة على عدة مراحل.</p>
+<ol><li><b>الأحياء.</b> يقترح GPT-4o أحياء المدينة. يُتحقق من كل حي في OpenStreetMap (خدمة Nominatim، مع حصر البحث داخل المدينة). تُستبعد الأماكن غير المتحقق منها.</li><li><b>المسودات.</b> يكتب GPT-4o-mini (درجة الحرارة 0.9) أسئلة مرشحة، بزيادة 40 % عن الحاجة. تمزج المجموعة أسئلة عامة على مستوى المدينة مع أسئلة الذيل الطويل التي تذكر حيًا حقيقيًا أو حاجة محددة.</li><li><b>حارس الأبجدية.</b> لا تحتوي الأسئلة العربية على أي حرف لاتيني، ولا تحتوي الأسئلة اللاتينية على أي حرف عربي.</li><li><b>المراجعة.</b> يرفض GPT-4o (درجة الحرارة 0) الأسئلة غير الواقعية، أو الخارجة عن القطاع، أو التي تذكر مكانًا غير موجود في القائمة المتحقق منها.</li><li><b>إزالة التكرار.</b> يُرمَّز كل سؤال بنموذج text-embedding-3-small. إذا تجاوز تشابه جيب التمام بين سؤالين 0.85 عُدّا صياغتين لمعنى واحد، ويُحذف أحدهما.</li></ol>
+<h3>تحكمكم</h3>
+<p>يمكنكم تعديل كل سؤال أو حذفه قبل الحفظ. لا يُقاس شيء دون موافقتكم على القائمة.</p>
+<h3>الأسئلة العامة وأسئلة الذيل الطويل</h3>
+<p>يوسم كل سؤال بـ«عام» (head، على مستوى المدينة) أو «ذيل طويل» (حي أو حاجة محددة). تُعرض المقاييس للنطاقين معًا.</p>
+<h2 id="s10">2. المحركات وطريقة السؤال</h2>
+<h3>المحركات والإعدادات</h3>
+<div class="mtbl"><table><thead><tr><th>المحرك</th><th>النموذج والإعدادات</th><th></th></tr></thead><tbody><tr><td>ChatGPT</td><td>واجهة OpenAI Responses API مع بحث الويب، حجم سياق البحث «low»، موقع تقريبي مضبوط على مدينتكم وبلدكم</td><td></td></tr><tr><td>Gemini</td><td>نموذج Gemini 2.5 Flash مع تأريض Google Search، درجة الحرارة 0.6</td><td></td></tr><tr><td>Perplexity</td><td>نموذج Sonar، بحث ويب مباشر، درجة الحرارة 0.6</td><td></td></tr><tr><td>Claude</td><td>نموذج Claude Haiku 4.5 مع بحث الويب (بحثان على الأكثر)، درجة الحرارة 0.6، سقف الإخراج 1024 رمزًا</td><td></td></tr></tbody></table></div>
+<h3>التعليمة نفسها لكل المحركات</h3>
+<p>تتلقى المحركات الأربعة موجه النظام المحايد نفسه: أجب بشكل طبيعي، اذكر مؤسسات حقيقية، أجب بلغة السؤال.</p>
+<h3>الحالة المحايدة</h3>
+<p>لا توجد ذاكرة، ولا تخصيص، ولا حساب مسجل الدخول. يبدأ كل سؤال من حالة نظيفة، قريبة مما يراه مستخدم جديد.</p>
+<h3>الجولات والوتيرة</h3>
+<p>يُطرح كل سؤال 3 مرات على كل محرك، كل أسبوع. لعلامة تجارية نموذجية، تعطي 16 سؤالًا × 4 محركات × 3 جولات 192 إجابة لكل تقرير.</p>
+<p>تُنفذ الطلبات بالتوازي (6 في الوقت نفسه)، مع 3 محاولات إضافية عند الأخطاء المؤقتة.</p>
+<h3>متى نرفض إصدار التقرير</h3>
+<p>إذا نجح أقل من 50 % من الطلبات، لا يصدر أي تقرير. لا ننشر أبدًا نسبة 0 % زائفة. يُعرض المحرك الذي لم تنجح له أي إجابة بعبارة «غير مقيس»، لا بنسبة 0 %.</p>
+<h2 id="s22">3. كيف نحتسب الذكر</h2>
+<h3>المحلل</h3>
+<p>يقرأ GPT-4o-mini كل إجابة بدرجة حرارة 0. ويعيد JSON منظمًا: ذُكرت العلامة (نعم/لا)، الرتبة من 1 إلى 10 بين المؤسسات المذكورة، المنافسون المتابَعون المذكورون، علامات أخرى، المصادر المستشهد بها، والانطباع (إيجابي، محايد، سلبي).</p>
+<h3>حارسان حتميان</h3>
+<p>لا يُعتمد على مخرجات المحلل وحدها. تُطبق بعده قاعدتان.</p>
+<ol><li><b>الوجود الحرفي.</b> يجب أن يظهر اسم العلامة حرفيًا في نص الإجابة. وإلا يُستبعد الذكر.</li><li><b>حارس الأسماء المتشابهة.</b> يتلقى المحلل هوية المؤسسة: القطاع، المدينة، البلد، والموقع الإلكتروني إن قُدّم. الذكر الذي يشير بوضوح إلى مؤسسة أخرى تحمل الاسم نفسه في مكان آخر لا يُحتسب.</li></ol>
+<h3>المنافسون</h3>
+<p>يُحتسب المنافس المتابَع مرة واحدة على الأكثر في كل إجابة، مهما تكرر ذكره.</p>
+<h2 id="s30">4. المقاييس وصيغها</h2>
+<h3>الظهور</h3>
+<p>الظهور = الإجابات التي تذكر العلامة ÷ الإجابات المقيسة × 100.</p>
+<p>يُحسب إجمالًا، ولكل محرك، ولكل سؤال، ولكل نطاق (عام / ذيل طويل). الظهور لكل لغة هو متوسط ظهور أسئلة تلك اللغة.</p>
+<h3>حصة توصيات الذكاء الاصطناعي</h3>
+<p>الحصة = الإجابات التي تستشهد بالعلامة ÷ مجموع الاستشهادات بالعلامة ومنافسيها المتابَعين × 100.</p>
+<p>تُحسب هذه الحصة فقط بين المنافسين الذين تتابعونهم. وهي ليست حصة من السوق كله.</p>
+<h3>الموضع المتوسط</h3>
+<p>الموضع المتوسط = متوسط رتبة العلامة في الإجابات التي تُذكر فيها. الرقم 1 يعني أن العلامة ذُكرت أولًا. إذا لم تُذكر العلامة أبدًا، تكون القيمة فارغة، لا 0.</p>
+<h3>الانطباع</h3>
+<p>الانطباع = متوسط 100 (إيجابي)، 50 (محايد)، 0 (سلبي)، على الإجابات التي تُذكر فيها العلامة.</p>
+<h3>أهم المصادر</h3>
+<p>أهم المصادر = تكرار النطاقات التي تستشهد بها المحركات. تُحتسب الروابط المستشهد بها فعلًا فقط. تُحل روابط إعادة التوجيه إلى نطاقها النهائي.</p>
+<h2 id="s43">5. الدقة والثقة</h2>
+<h3>لماذا تتغير الإجابات</h3>
+<p>قد ينتج السؤال نفسه، إذا طُرح مرتين، إجابتين مختلفتين. هذا طبيعي في هذه المحركات. لذلك نطرح كل سؤال 3 مرات ونرفق النتائج بفاصل ثقة.</p>
+<h3>لكل سؤال: فاصل Wilson</h3>
+<p>لكل سؤال، نحسب فاصل Wilson بمستوى 95 % (z = 1.96) على معدل الذكر. الثقة = 100 × (1 − عرض الفاصل). الفاصل الضيق يعني نتيجة مستقرة.</p>
+<h3>لكل تقرير: إعادة المعاينة (bootstrap)</h3>
+<p>للنتيجة الإجمالية، نعيد معاينة الأسئلة 1000 مرة مع الإرجاع (bootstrap، ببذرة ثابتة 20260830، فتكون النتيجة قابلة لإعادة الإنتاج). ونحسب النتيجة لكل عينة.</p>
+<p>العرض = 2 × 1.96 × الانحراف المعياري للنتائج المعاد معاينتها. الثقة = 100 × (1 − العرض).</p>
+<h3>لماذا يُعرض ± على مستوى التقرير</h3>
+<p>يصف الرمز ± المعروض في لوحة التحكم نتيجة التقرير، لا سؤالًا واحدًا. السؤال الواحد يحوي إجابات أقل من أن تعطي ± ذا معنى وحده. يعكس الفاصل على مستوى التقرير مقدار تحرك النتيجة لو كانت مجموعة الأسئلة مختلفة قليلًا.</p>
+<h2 id="s53">6. نصوص التقرير ومنع الهلوسة</h2>
+<h3>التحليلات</h3>
+<p>يكتب التحليلات GPT-4o-mini (درجة الحرارة 0.4). تُكتب فقط من الأرقام المحسوبة، وفقط عن المحركات المقيسة.</p>
+<h3>التحقق</h3>
+<p>تراجع جولة ثانية (درجة الحرارة 0) كل اسم محرك وكل رقم في النص مقابل البيانات. عند وجود خطأ، يُعاد توليد النص مرة واحدة.</p>
+<h3>خطة العمل</h3>
+<p>ترتكز خطة العمل (درجة الحرارة 0.5) على قطاعكم، ومدينتكم، وأهم المصادر الملاحَظة.</p>
+<h3>مرشحات حتمية</h3>
+<p>بعد التوليد، تحذف مرشحات حتمية أي ذكر لمحرك لم يُقَس في التقرير.</p>
+<h3>الملخص التنفيذي</h3>
+<p>يُحسب الملخص التنفيذي المكون من 5 أسطر مباشرة من البيانات، لا بواسطة نموذج لغوي.</p>
+<h2 id="s64">7. ما لا نقيسه (بعد)</h2>
+<p>نفضل ذكر حدودنا بوضوح.</p>
+<ul><li><b>محركات غير مغطاة.</b> لا تُقاس اليوم Google AI Overviews، AI Mode، Copilot، Grok.</li><li><b>التغير الطبيعي.</b> تتغير الإجابات بين الجولات. ثلاث جولات وفاصل ثقة يقللان هذا الأثر دون إزالته.</li><li><b>الأسماء المتشابهة في المدينة نفسها.</b> لا يمكن التمييز بين مؤسستين بالاسم نفسه، في المدينة والقطاع نفسيهما، دون موقع إلكتروني.</li><li><b>أحجام الطلبات.</b> لا نقدّر عدد المستخدمين الحقيقيين الذين يطرحون كل سؤال.</li><li><b>الوتيرة.</b> القياسات أسبوعية، لا يومية.</li></ul>
+<h2 id="s67">8. البيانات والأمان</h2>
+<h3>السجل</h3>
+<p>يُحفظ كل تقرير وكل إجابة خام. تقارن لوحة التحكم كل تقرير بالسابق (عتبة التغير: نقطة واحدة؛ 0.2 للموضع) وتعرض الاتجاهات على آخر 12 تقريرًا.</p>
+<h3>التدقيق المجاني</h3>
+<p>يطرح التدقيق المجاني على الموقع 3 أسئلة نموذجية على محركين (ChatGPT، Gemini)، مرة واحدة لكل منهما. المدينة إلزامية. وهو مؤشر، لا تقرير.</p>
+<h3>الأمان</h3>
+<ul><li>نستخدم الواجهات البرمجية الرسمية فقط.</li><li>بيانات كل عميل معزولة حسب الحساب (أمان على مستوى الصفوف).</li><li>لا نعيد بيع أي بيانات.</li><li>يمكنكم الإلغاء بنقرة واحدة.</li></ul>
+<h2 id="s74">9. الإصدارات</h2>
+<p><b>إصدار 12 سبتمبر 2026.</b> تتغير هذه الصفحة عندما تتغير المنهجية.</p>
 <hr>
-<p>راجع المنهجية إلياس، المستشار العلمي (مهندس نمذجة رياضية، Grenoble INP-Ensimag · ماجستير في الذكاء الاصطناعي، Université Grenoble Alpes).</p></div>
+<p>المنهجية معتمدة من فريق AIVisib.</p></div>
 <div class="msign"><i class="mmark">◈</i><span id="msign"></span></div>
 <a class="mpdf" href="/brand/AIVisib_Presentation_Technique_2026-09.pdf" target="_blank" rel="noopener" id="mpdf"></a>
 </main>

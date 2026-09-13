@@ -1,6 +1,6 @@
 // Génère methodologie.html (trilingue) à partir des 3 fichiers markdown + le style/header/footer d'index.html : node _build_methodo.mjs
 import { readFileSync, writeFileSync } from "node:fs";
-const SP = "C:/Users/ouaar/AppData/Local/Temp/claude/C--Users-ouaar-myprojectsclaude/464f5a61-f2a5-4a7e-8c91-30bd8326801c/scratchpad/";
+const SP = "./_methodo_src/"; // textes sources de la page (EN/FR/AR), versionnés dans le dépôt
 const idx = readFileSync("index.html", "utf8");
 const style = idx.match(/<style>[\s\S]*?<\/style>/)[0];
 const fonts = idx.match(/<link href="https:\/\/fonts\.googleapis\.com[^>]+>/)[0];
