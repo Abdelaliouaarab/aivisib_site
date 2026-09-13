@@ -884,12 +884,6 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 @media(max-width:1000px){.hg5.hdark{padding:40px 30px 34px}}
 @media(max-width:560px){.hg5.hdark{padding:30px 18px 26px;border-radius:20px}}
 @media(prefers-reduced-motion:reduce){.hg5.hdark .jorb{animation:none}}
-
-/* ===== Fond de points vivant (canvas) : houle lente + halo vert sous le curseur ; remplace la grille statique ===== */
-.dots-live{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;
- -webkit-mask-image:radial-gradient(ellipse 78% 88% at 45% 42%,#000 25%,transparent 100%);mask-image:radial-gradient(ellipse 78% 88% at 45% 42%,#000 25%,transparent 100%)}
-.hg5.hdark.live::before,.final.v5.live::before{display:none}
-@media print{.dots-live{display:none}}
 </style>
 <style>
 .mth{max-width:820px;margin:0 auto;padding:54px 26px 90px}

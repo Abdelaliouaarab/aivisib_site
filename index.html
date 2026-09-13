@@ -941,12 +941,6 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 @media(max-width:1000px){.hg5.hdark{padding:40px 30px 34px}}
 @media(max-width:560px){.hg5.hdark{padding:30px 18px 26px;border-radius:20px}}
 @media(prefers-reduced-motion:reduce){.hg5.hdark .jorb{animation:none}}
-
-/* ===== Fond de points vivant (canvas) : houle lente + halo vert sous le curseur ; remplace la grille statique ===== */
-.dots-live{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;
- -webkit-mask-image:radial-gradient(ellipse 78% 88% at 45% 42%,#000 25%,transparent 100%);mask-image:radial-gradient(ellipse 78% 88% at 45% 42%,#000 25%,transparent 100%)}
-.hg5.hdark.live::before,.final.v5.live::before{display:none}
-@media print{.dots-live{display:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -1003,7 +997,6 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 <!-- HERO -->
 <section class="hero v5" id="hero"><div class="wrap">
   <div class="hg5 hdark">
-    <canvas class="dots-live" aria-hidden="true"></canvas>
     <div class="jorb jorb1"></div><div class="jorb jorb2"></div>
     <div class="hcopy">
       <div class="kicker"><s><i></i><i></i><i></i></s><span data-i="kick"></span></div>
@@ -1221,7 +1214,6 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 <!-- JOIN -->
 <section class="s" id="join" style="padding-top:0"><div class="wrap">
   <div class="final v5 rv">
-    <canvas class="dots-live" aria-hidden="true"></canvas>
     <div class="jorb jorb1"></div><div class="jorb jorb2"></div>
     <div class="kicker jk"><s><i></i><i></i><i></i></s><span data-i="j_k"></span></div>
     <h2 data-i="j_t"></h2>
@@ -1344,36 +1336,6 @@ async function runDemo(){
   document.getElementById('v').classList.add('show');
   await wait(3400); idx++; runDemo();
 }
-/* ===== Fond de points vivant : chaque point respire sur une houle lente, se déplace d'un ou deux pixels,
-   et s'allume en vert acide quand le curseur passe. Désactivé si l'utilisateur refuse les animations. ===== */
-(function(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  document.querySelectorAll('.dots-live').forEach(cv=>{
-    const host=cv.parentElement,ctx=cv.getContext('2d'),G=22;host.classList.add('live');
-    let W=0,H=0,cols=0,rows=0,mx=-1e4,my=-1e4,tx=-1e4,ty=-1e4,visible=true,t0=performance.now();
-    function size(){const dpr=Math.min(2,window.devicePixelRatio||1);W=host.clientWidth;H=host.clientHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cols=Math.ceil(W/G)+1;rows=Math.ceil(H/G)+1;}
-    size();addEventListener('resize',size);
-    host.addEventListener('pointermove',e=>{const r=host.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;});
-    host.addEventListener('pointerleave',()=>{tx=-1e4;ty=-1e4;});
-    if('IntersectionObserver' in window)new IntersectionObserver(es=>{visible=es[0].isIntersecting;},{threshold:0}).observe(host);
-    function frame(now){
-      requestAnimationFrame(frame);if(!visible||!W)return;
-      const t=(now-t0)/1000;mx+=(tx-mx)*.08;my+=(ty-my)*.08;
-      ctx.clearRect(0,0,W,H);
-      for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){
-        const x0=i*G+G/2,y0=j*G+G/2;
-        const w=(Math.sin(x0*.018+t*.9)+Math.cos(y0*.024-t*.7)+2)/4;       /* houle 0..1 */
-        const dx=x0-mx,dy=y0-my,near=Math.max(0,1-Math.sqrt(dx*dx+dy*dy)/190); /* proximité du curseur 0..1 */
-        const x=x0+Math.sin(t*.8+y0*.03)*2.2,y=y0+Math.cos(t*.7+x0*.03)*2.2;
-        const a=Math.min(1,.09+w*.17+near*.45),r=.9+w*.8+near*1.3;
-        ctx.beginPath();ctx.arc(x,y,r,0,6.2832);
-        ctx.fillStyle=near>.04?'rgba(204,255,46,'+a.toFixed(3)+')':'rgba(244,241,232,'+a.toFixed(3)+')';
-        ctx.fill();
-      }
-    }
-    requestAnimationFrame(frame);
-  });
-})();
 /* ===== Hero v5 : moteur qui tourne + carte « réponse mesurée » (données réelles du benchmark) ===== */
 var HENG=[['openai','ChatGPT'],['gemini','Gemini'],['perplexity','Perplexity'],['anthropic','Claude']],hI=0,HD=null,HWIDE=['skoda','lexus','landrover'];
 function hcRender(){
