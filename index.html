@@ -684,6 +684,28 @@ body.rtl .mrig span:first-child{font-family:'Cairo',sans-serif;letter-spacing:0}
 .mcout small{display:block;color:var(--dim);font-size:11.5px;font-family:'JetBrains Mono',monospace;margin-bottom:3px}.mcout b{font-size:22px;letter-spacing:-.02em}
 body.rtl .mcout small{font-family:'Cairo',sans-serif}
 .mcnote{font-size:13px!important;color:var(--dim)}
+
+/* ===== diagramme SVG ===== */
+.mflow{overflow-x:auto;padding:4px 0 8px}
+.mflow svg{width:100%;min-width:760px;display:block;direction:ltr}
+.ml{fill:none;stroke:var(--line);stroke-width:1.4}
+.ml.thick{stroke-width:2.2}
+.md{fill:var(--acid-ink)}
+.mnode rect{fill:var(--ink2);stroke:var(--line);stroke-width:1.2;transition:.18s;cursor:pointer}
+.mnode:hover rect{stroke:var(--cream)}
+.mnode.on rect{fill:var(--acid);stroke:var(--acid)}
+.mnode.on .mgroup{fill:rgba(204,255,46,.18)}
+.mnode text{cursor:pointer;pointer-events:none}
+.mt1{font:700 17px 'Space Grotesk',system-ui,sans-serif;fill:var(--cream);letter-spacing:-.01em}
+.mt1s{font:600 15px 'Space Grotesk',system-ui,sans-serif;fill:var(--cream)}
+.mt2{font:500 11.5px 'JetBrains Mono',monospace;fill:var(--dim)}
+.mnode.on .mt1,.mnode.on .mt2{fill:#0A0A0B}
+.mgroup{fill:var(--panel);stroke:var(--line);stroke-dasharray:4 4}
+.meng2 rect{fill:var(--ink2);stroke:var(--line)}
+.mnode.on .meng2 rect{fill:var(--acid);stroke:var(--acid)}
+.mnode.on .mt1s{fill:#0A0A0B}
+.mtag,.mx3{font:700 12px 'JetBrains Mono',monospace;fill:var(--acid-ink)}
+body.rtl .mt1,body.rtl .mt2,body.rtl .mgl{font-family:'Cairo',sans-serif}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -773,13 +795,16 @@ body.rtl .mcout small{font-family:'Cairo',sans-serif}
 <section class="s" id="how" style="padding-top:20px"><div class="wrap">
   <div class="head"><div class="kicker"><s></s><span data-i="mt_k"></span></div><h2 data-i="mt_t"></h2><p data-i="mt_p"></p></div>
   <div class="mdiag rv" id="mdiag">
-    <div class="mflow" role="tablist">
-      <button class="mnode on" data-n="1" onclick="mdSel(1)" role="tab"><i>1</i><b data-i="dg1l"></b><small data-i="dg1s"></small></button><span class="marr">→</span>
-      <button class="mnode" data-n="2" onclick="mdSel(2)" role="tab"><i>2</i><b data-i="dg2l"></b><small data-i="dg2s"></small></button><span class="marr">→</span>
-      <button class="mnode" data-n="3" onclick="mdSel(3)" role="tab"><i>3</i><b data-i="dg3l"></b><small data-i="dg3s"></small></button><span class="marr">→</span>
-      <button class="mnode" data-n="4" onclick="mdSel(4)" role="tab"><i>4</i><b data-i="dg4l"></b><small data-i="dg4s"></small></button><span class="marr">→</span>
-      <button class="mnode" data-n="5" onclick="mdSel(5)" role="tab"><i>5</i><b data-i="dg5l"></b><small data-i="dg5s"></small></button>
-    </div>
+    <div class="mflow"><svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" aria-label="AIVisib measurement pipeline">
+  <g class="mlines"><path d="M160,182 C200,182 200,50 240,50" class="ml"/><path d="M160,190 C200,190 200,58 240,58" class="ml"/><path d="M160,198 C200,198 200,66 240,66" class="ml"/><path d="M160,182 C200,182 200,140 240,140" class="ml"/><path d="M160,190 C200,190 200,148 240,148" class="ml"/><path d="M160,198 C200,198 200,156 240,156" class="ml"/><path d="M160,182 C200,182 200,230 240,230" class="ml"/><path d="M160,190 C200,190 200,238 240,238" class="ml"/><path d="M160,198 C200,198 200,246 240,246" class="ml"/><path d="M160,182 C200,182 200,320 240,320" class="ml"/><path d="M160,190 C200,190 200,328 240,328" class="ml"/><path d="M160,198 C200,198 200,336 240,336" class="ml"/><path d="M390,58 C435,58 435,190 480,190" class="ml"/><path d="M390,148 C435,148 435,190 480,190" class="ml"/><path d="M390,238 C435,238 435,190 480,190" class="ml"/><path d="M390,328 C435,328 435,190 480,190" class="ml"/><path d="M630,190 L710,190" class="ml thick"/><path d="M860,190 L940,190" class="ml thick"/></g>
+  <g class="mnode on" data-n="1" onclick="mdSel(1)" role="tab" tabindex="0"><rect x="10" y="150" width="150" height="80" rx="16"/><text x="24" y="180" class="mt1" data-i="dg1l"></text><text x="24" y="204" class="mt2" data-i="dg1s"></text></g>
+  <g class="mnode" data-n="2" onclick="mdSel(2)" role="tab" tabindex="0"><rect x="228" y="16" width="174" height="356" rx="20" class="mgroup"/><text x="240" y="366" class="mt2 mgl" data-i="dg2s"></text><g class="meng2"><rect x="240" y="30" width="150" height="56" rx="12"/><text x="254" y="64" class="mt1s">ChatGPT</text></g><g class="meng2"><rect x="240" y="120" width="150" height="56" rx="12"/><text x="254" y="154" class="mt1s">Gemini</text></g><g class="meng2"><rect x="240" y="210" width="150" height="56" rx="12"/><text x="254" y="244" class="mt1s">Perplexity</text></g><g class="meng2"><rect x="240" y="300" width="150" height="56" rx="12"/><text x="254" y="334" class="mt1s">Claude</text></g></g>
+  <g class="mnode" data-n="3" onclick="mdSel(3)" role="tab" tabindex="0"><rect x="480" y="150" width="150" height="80" rx="16"/><text x="494" y="180" class="mt1" data-i="dg3l"></text><text x="494" y="204" class="mt2" data-i="dg3s"></text></g>
+  <g class="mnode" data-n="4" onclick="mdSel(4)" role="tab" tabindex="0"><rect x="710" y="150" width="150" height="80" rx="16"/><text x="724" y="180" class="mt1" data-i="dg4l"></text><text x="724" y="204" class="mt2" data-i="dg4s"></text><text x="846" y="140" class="mtag" text-anchor="end">65 % ± 12</text></g>
+  <g class="mnode" data-n="5" onclick="mdSel(5)" role="tab" tabindex="0"><rect x="940" y="150" width="150" height="80" rx="16"/><text x="954" y="180" class="mt1" data-i="dg5l"></text><text x="954" y="204" class="mt2" data-i="dg5s"></text></g>
+  <text x="205" y="120" class="mx3" text-anchor="middle">× 3</text>
+  <g class="mdots"><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.20s" begin="0.00s" repeatCount="indefinite" path="M160,182 C200,182 200,50 240,50"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.45s" begin="0.37s" repeatCount="indefinite" path="M160,190 C200,190 200,58 240,58"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.70s" begin="0.74s" repeatCount="indefinite" path="M160,198 C200,198 200,66 240,66"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.95s" begin="1.11s" repeatCount="indefinite" path="M160,182 C200,182 200,140 240,140"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="3.20s" begin="1.48s" repeatCount="indefinite" path="M160,190 C200,190 200,148 240,148"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.20s" begin="1.85s" repeatCount="indefinite" path="M160,198 C200,198 200,156 240,156"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.45s" begin="2.22s" repeatCount="indefinite" path="M160,182 C200,182 200,230 240,230"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.70s" begin="0.09s" repeatCount="indefinite" path="M160,190 C200,190 200,238 240,238"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.95s" begin="0.46s" repeatCount="indefinite" path="M160,198 C200,198 200,246 240,246"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="3.20s" begin="0.83s" repeatCount="indefinite" path="M160,182 C200,182 200,320 240,320"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.20s" begin="1.20s" repeatCount="indefinite" path="M160,190 C200,190 200,328 240,328"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2.45s" begin="1.57s" repeatCount="indefinite" path="M160,198 C200,198 200,336 240,336"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2s" begin="0.92s" repeatCount="indefinite" path="M390,58 C435,58 435,190 480,190"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2s" begin="1.33s" repeatCount="indefinite" path="M390,148 C435,148 435,190 480,190"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2s" begin="1.74s" repeatCount="indefinite" path="M390,238 C435,238 435,190 480,190"/></circle><circle r="3.2" cx="-30" cy="-30" class="md"><animateMotion dur="2s" begin="0.15s" repeatCount="indefinite" path="M390,328 C435,328 435,190 480,190"/></circle><circle r="4" cx="-30" cy="-30" class="md"><animateMotion dur="1.6s" repeatCount="indefinite" path="M630,190 L710,190"/></circle><circle r="4" cx="-30" cy="-30" class="md"><animateMotion dur="1.6s" repeatCount="indefinite" path="M860,190 L940,190"/></circle></g>
+</svg></div>
     <div class="mpanel">
       <div class="mp" data-p="1"><h3 data-i="dg1t"></h3><p data-i="dg1d"></p><div class="mrig"><span data-i="mt_rig"></span><span data-i="dg1r"></span></div></div>
       <div class="mp" data-p="2" hidden><h3 data-i="dg2t"></h3><p data-i="dg2d"></p>
