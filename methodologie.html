@@ -830,9 +830,11 @@ body.rtl .jeng,body.rtl .jtrust{font-family:'Cairo',sans-serif;letter-spacing:0}
 
 /* ===== Hero v5 ===== */
 .hero.v5{padding:56px 0 36px}
-.hg5{display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center;position:relative}
+.hg5{display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:start;position:relative}
+.hcard{margin-top:54px}
+@media(max-width:1000px){.hcard{margin-top:0}}
 @media(max-width:1000px){.hg5{grid-template-columns:1fr;gap:36px}}
-.hcopy h1{font-size:clamp(38px,4.7vw,64px)}
+.hcopy h1{font-size:clamp(34px,4.1vw,56px)}
 .hcopy .sub{max-width:560px}
 h1 em.rot{font-style:normal;color:var(--acid-ink);display:inline-block;position:relative;white-space:nowrap;padding:0 .06em}
 h1 em.rot span{display:inline-block;transition:transform .38s cubic-bezier(.2,.7,.2,1),opacity .3s}
