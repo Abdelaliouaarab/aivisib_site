@@ -892,6 +892,28 @@ body.rtl .hc-row{animation-name:hcinr}@keyframes hcinr{from{opacity:0;transform:
 .hc-foot span:first-child::before{content:'✓ ';color:var(--acid-ink);font-weight:700}
 body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-family:'Cairo',sans-serif}
 @media(max-width:560px){.hero.v5{padding:40px 0 24px}.hc-row{grid-template-columns:18px minmax(30px,auto) 1fr 84px}.hc-bar{display:none}.hcard{padding:16px 14px 12px}}
+
+/* ===== Hero v5 : même fond que la section finale ===== */
+.hero.v5::before{display:none}
+.hg5.hdark{background:#0E1110;border:1px solid rgba(204,255,46,.22);border-radius:26px;padding:56px 48px 48px;overflow:hidden;isolation:isolate;color:#F4F1E8}
+.hg5.hdark::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(244,241,232,.13) 1px,transparent 1.4px);background-size:22px 22px;
+ -webkit-mask-image:radial-gradient(ellipse 70% 80% at 40% 40%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 70% 80% at 40% 40%,#000 30%,transparent 100%);z-index:-2;pointer-events:none}
+.hg5.hdark .jorb{position:absolute;border-radius:50%;filter:blur(70px);z-index:-1;pointer-events:none;opacity:.55}
+.hg5.hdark .jorb1{width:560px;height:560px;background:#CCFF2E;top:-300px;left:-160px;animation:jdrift 14s ease-in-out infinite}
+.hg5.hdark .jorb2{width:440px;height:440px;background:#4DA3FF;bottom:-280px;right:-140px;opacity:.28;animation:jdrift 18s ease-in-out infinite reverse}
+.hg5.hdark h1{color:#F4F1E8}
+.hg5.hdark h1 em.rot{color:#CCFF2E}
+.hg5.hdark .sub{color:rgba(244,241,232,.74)}
+.hg5.hdark .kicker{background:rgba(204,255,46,.12);border-color:rgba(204,255,46,.35);color:#CCFF2E}
+.hg5.hdark .kicker s i{background:#CCFF2E}
+.hg5.hdark .cta.out{color:#F4F1E8;border-color:rgba(244,241,232,.28)}
+.hg5.hdark .cta.out:hover{border-color:#CCFF2E;color:#CCFF2E}
+.hg5.hdark .tstrip{color:rgba(244,241,232,.72)}
+.hg5.hdark .tstrip span::before{color:#CCFF2E}
+.hg5.hdark .hcard{box-shadow:0 30px 80px rgba(0,0,0,.45);color:var(--cream)}
+@media(max-width:1000px){.hg5.hdark{padding:40px 30px 34px}}
+@media(max-width:560px){.hg5.hdark{padding:30px 18px 26px;border-radius:20px}}
+@media(prefers-reduced-motion:reduce){.hg5.hdark .jorb{animation:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -947,7 +969,8 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 
 <!-- HERO -->
 <section class="hero v5" id="hero"><div class="wrap">
-  <div class="hg5">
+  <div class="hg5 hdark">
+    <div class="jorb jorb1"></div><div class="jorb jorb2"></div>
     <div class="hcopy">
       <div class="kicker"><s><i></i><i></i><i></i></s><span data-i="kick"></span></div>
       <h1 id="h1"></h1>
