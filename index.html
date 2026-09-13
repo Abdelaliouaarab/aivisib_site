@@ -150,8 +150,13 @@ body.dark .tswitch .ti-moon{transform:rotate(90deg) scale(.4);opacity:0}
  background:radial-gradient(circle,rgba(204,255,46,.13),transparent 68%);filter:blur(50px);pointer-events:none}
 .hgrid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;position:relative}
 @media(max-width:1000px){.hgrid{grid-template-columns:1fr;gap:44px}}
-.kicker{display:inline-flex;align-items:center;gap:9px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acid-ink);margin-bottom:26px}
-.kicker s{width:26px;height:1px;background:var(--acid-ink);display:block}
+.kicker{display:inline-flex;align-items:center;gap:9px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acid-ink);margin-bottom:26px;padding-block:6px;padding-inline:10px 13px;border-radius:99px;background:rgba(200,255,0,.13);border:1px solid rgba(200,255,0,.35)}
+body.dark .kicker{background:rgba(200,255,0,.09);border-color:rgba(200,255,0,.25)}
+.kicker s{display:flex;align-items:flex-end;gap:2.5px;height:13px;text-decoration:none;direction:ltr}
+.kicker s i{display:block;width:3px;border-radius:2px;background:var(--acid-ink);transform-origin:bottom;animation:kbar 1.8s ease-in-out infinite}
+.kicker s i:nth-child(1){height:5px}.kicker s i:nth-child(2){height:9px;animation-delay:.25s}.kicker s i:nth-child(3){height:13px;animation-delay:.5s}
+@keyframes kbar{0%,100%{transform:scaleY(1);opacity:.65}50%{transform:scaleY(.45);opacity:1}}
+@media(prefers-reduced-motion:reduce){.kicker s i{animation:none}}
 body.rtl .kicker{letter-spacing:0;font-family:'Cairo',sans-serif}
 h1{font-size:clamp(40px,5.6vw,74px);line-height:.99;letter-spacing:-.035em;font-weight:700;margin-bottom:24px}
 body.rtl h1{letter-spacing:0;line-height:1.25}
@@ -861,14 +866,14 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 <!-- HERO -->
 <section class="hero v4" id="hero"><div class="wrap">
   <div class="hcenter">
-    <div class="kicker"><s></s><span data-i="kick"></span></div>
+    <div class="kicker"><s><i></i><i></i><i></i></s><span data-i="kick"></span></div>
     <h1 data-i="h1v3"></h1>
     <p class="sub" data-i="subv4"></p>
     <div class="btns"><a href="#audit" class="cta big" data-i="cta1"></a><a href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1" class="cta out" data-i="cta2"></a></div>
     <div class="tstrip"><span data-i="ts1"></span><span data-i="ts2"></span><span data-i="ts3"></span><span data-i="ts4"></span></div>
   </div>
   <div class="bench rv" id="bench" data-loaded="0">
-    <div class="bh"><div><div class="kicker"><s></s><span data-i="bw_k"></span></div><h2 data-i="bw_t"></h2><p data-i="bw_p"></p></div><div class="bmeta" id="bwMeta"></div></div>
+    <div class="bh"><div><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="bw_k"></span></div><h2 data-i="bw_t"></h2><p data-i="bw_p"></p></div><div class="bmeta" id="bwMeta"></div></div>
     <div class="blogos" id="bwBrands"><button class="bl" data-b="mercedes" onclick="bwSel('mercedes')"><img src="/brand/logos/mercedes.svg" alt="mercedes"><span></span></button><button class="bl" data-b="bmw" onclick="bwSel('bmw')"><img src="/brand/logos/bmw.svg" alt="bmw"><span></span></button><button class="bl" data-b="audi" onclick="bwSel('audi')"><img src="/brand/logos/audi.svg" alt="audi"><span></span></button><button class="bl" data-b="skoda" onclick="bwSel('skoda')"><img src="/brand/logos/skoda.svg" alt="skoda"><span></span></button><button class="bl" data-b="volkswagen" onclick="bwSel('volkswagen')"><img src="/brand/logos/volkswagen.svg" alt="volkswagen"><span></span></button><button class="bl" data-b="lexus" onclick="bwSel('lexus')"><img src="/brand/logos/lexus.svg" alt="lexus"><span></span></button><button class="bl" data-b="volvo" onclick="bwSel('volvo')"><img src="/brand/logos/volvo.svg" alt="volvo"><span></span></button><button class="bl" data-b="landrover" onclick="bwSel('landrover')"><img src="/brand/logos/landrover.svg" alt="landrover"><span></span></button></div>
     <div class="bfilters">
       <label><span data-i="bw_country"></span><select id="bwCountry" onchange="bwRender()"></select></label>
@@ -895,7 +900,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 
 <!-- MÉTHODE (diagramme interactif) -->
 <section class="s" id="how" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span data-i="mt_k"></span></div><h2 data-i="mt_t"></h2><p data-i="mt_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="mt_k"></span></div><h2 data-i="mt_t"></h2><p data-i="mt_p"></p></div>
   <div class="mdiag rv" id="mdiag">
     <div class="mflow"><svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" aria-label="AIVisib measurement pipeline">
   <g class="mlines"><path d="M160,182 C200,182 200,50 240,50" class="ml"/><path d="M160,190 C200,190 200,58 240,58" class="ml"/><path d="M160,198 C200,198 200,66 240,66" class="ml"/><path d="M160,182 C200,182 200,140 240,140" class="ml"/><path d="M160,190 C200,190 200,148 240,148" class="ml"/><path d="M160,198 C200,198 200,156 240,156" class="ml"/><path d="M160,182 C200,182 200,230 240,230" class="ml"/><path d="M160,190 C200,190 200,238 240,238" class="ml"/><path d="M160,198 C200,198 200,246 240,246" class="ml"/><path d="M160,182 C200,182 200,320 240,320" class="ml"/><path d="M160,190 C200,190 200,328 240,328" class="ml"/><path d="M160,198 C200,198 200,336 240,336" class="ml"/><path d="M390,58 C435,58 435,190 480,190" class="ml"/><path d="M390,148 C435,148 435,190 480,190" class="ml"/><path d="M390,238 C435,238 435,190 480,190" class="ml"/><path d="M390,328 C435,328 435,190 480,190" class="ml"/><path d="M630,190 L710,190" class="ml thick"/><path d="M860,190 L940,190" class="ml thick"/></g>
@@ -931,7 +936,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 
 <!-- CE QUE VOUS RECEVEZ : le vrai rapport (BoursoBank), flouté en bas, cliquable -->
 <section class="s" id="feat" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span data-i="f_k"></span></div><h2 data-i="wg_t"></h2><p data-i="rd_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="f_k"></span></div><h2 data-i="wg_t"></h2><p data-i="rd_p"></p></div>
   <a class="rshot rv" href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1">
     <img src="/brand/screens/report_boursobank.png" alt="AIVisib — rapport BoursoBank" width="1440" height="2000" loading="lazy">
     <span class="rfade"></span>
@@ -941,7 +946,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 
 <!-- GALERIE DE MESURES RÉELLES -->
 <section class="s" id="mesures" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span>ChatGPT · Gemini · 09/2026</span></div><h2 data-i="m_t"></h2><p data-i="m_p2"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span>ChatGPT · Gemini · 09/2026</span></div><h2 data-i="m_t"></h2><p data-i="m_p2"></p></div>
   <div class="gal gal2 rv">
     <a href="/brand/linkedin/li_post2_airline.png" target="_blank" rel="noopener"><img src="/brand/screens/g_li_post2_airline.jpg" alt="Paris–Dubai airline" loading="lazy"></a>
     <a href="/brand/linkedin/li2_post5_hotel_marrakech.png" target="_blank" rel="noopener"><img src="/brand/screens/g_li2_post5_hotel_marrakech.jpg" alt="Hôtels à Marrakech — ChatGPT vs Gemini" loading="lazy"></a>
@@ -952,7 +957,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 
 <!-- AUDIT GRATUIT -->
 <section class="s" id="auditsec" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span data-i="au_k"></span></div><h2 data-i="au_t"></h2><p data-i="au_p2"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="au_k"></span></div><h2 data-i="au_t"></h2><p data-i="au_p2"></p></div>
   <div class="auditbox wide" id="audit">
     <div class="af-row4"><input id="au_brand" data-i-ph="au_brand_ph" autocomplete="off" required><input id="au_sector" data-i-ph="au_sector_ph" autocomplete="off"><input id="au_city" data-i-ph="au_city_ph" autocomplete="off"><input id="au_email" type="email" data-i-ph="au_email_ph" autocomplete="email"><input id="au_web" type="url" data-i-ph="au_web_ph" autocomplete="url"></div>
     <div class="augdpr" id="auGdpr"></div>
@@ -965,7 +970,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 </div></section>
 
 <section class="s" id="compare"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span data-i="cmp_k"></span></div><h2 data-i="cmp_t"></h2><p data-i="cmp_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="cmp_k"></span></div><h2 data-i="cmp_t"></h2><p data-i="cmp_p"></p></div>
   <div class="cmpscroll rv" data-i="cmp_scroll"></div>
   <div class="cmp rv">
     <table class="cmptable">
@@ -991,7 +996,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 <!-- PRICING -->
 <!-- POUR LES AGENCES -->
 <section class="s" id="agences"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span data-i="ag_k"></span></div><h2 data-i="ag_t"></h2><p data-i="ag_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="ag_k"></span></div><h2 data-i="ag_t"></h2><p data-i="ag_p"></p></div>
   <div class="bento">
     <div class="b w3 rv"><span class="n">01</span><h3 data-i="ag1t"></h3><p data-i="ag1p"></p>
       <div class="fx"><div class="mk-lab" data-i="am_clients"></div>
@@ -1014,7 +1019,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 </div></section>
 
 <section class="s" id="price"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span data-i="p_k"></span></div><h2 data-i="p_t"></h2><p data-i="p_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="p_k"></span></div><h2 data-i="p_t"></h2><p data-i="p_p"></p></div>
   <div class="plans">
     <div class="pl rv"><h3>Starter</h3><div class="price">$29<small data-i="mo"></small></div><p class="who" data-i="p1w"></p>
       <div class="meas"><div class="mk-lab" data-i="pm_l"></div><b data-i="pm1"></b><span data-i="pm1n"></span></div>
@@ -1042,7 +1047,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
 
 <!-- FAQ -->
 <section class="s" id="faq"><div class="wrap">
-  <div class="head"><div class="kicker"><s></s><span data-i="q_k"></span></div><h2 data-i="q_t"></h2><p data-i="q_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="q_k"></span></div><h2 data-i="q_t"></h2><p data-i="q_p"></p></div>
   <div class="faq rv">
     <div class="faqh" data-i="fh1"></div>
     <details><summary data-i="fq1"></summary><p data-i="fa1"></p></details>
