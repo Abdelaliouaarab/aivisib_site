@@ -941,6 +941,15 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 @media(max-width:1000px){.hg5.hdark{padding:40px 30px 34px}}
 @media(max-width:560px){.hg5.hdark{padding:30px 18px 26px;border-radius:20px}}
 @media(prefers-reduced-motion:reduce){.hg5.hdark .jorb{animation:none}}
+
+/* ===== Hero : halos teintés selon le moteur + onde de mesure (sonar) au changement ===== */
+.hg5.hdark .jorb1{background:var(--orbc,#CCFF2E);transition:background-color 1.6s ease}
+.hg5.hdark .jorb2{background:var(--orbc2,#4DA3FF);transition:background-color 1.6s ease}
+.hcard .hc-dot{background:var(--engc,var(--acid));box-shadow:0 0 0 0 var(--engc,var(--acid));transition:background-color .8s}
+.hg5.hdark .hcopy,.hg5.hdark .hcard{position:relative;z-index:1}
+.hping{position:absolute;width:60px;height:60px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid var(--orbc,#CCFF2E);opacity:0;pointer-events:none;z-index:0;animation:hping 3s cubic-bezier(.15,.6,.2,1) forwards}
+@keyframes hping{0%{width:60px;height:60px;opacity:.65}100%{width:1600px;height:1600px;opacity:0}}
+@media(prefers-reduced-motion:reduce){.hping{display:none}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -1338,9 +1347,17 @@ async function runDemo(){
 }
 /* ===== Hero v5 : moteur qui tourne + carte « réponse mesurée » (données réelles du benchmark) ===== */
 var HENG=[['openai','ChatGPT'],['gemini','Gemini'],['perplexity','Perplexity'],['anthropic','Claude']],hI=0,HD=null,HWIDE=['skoda','lexus','landrover'];
+/* Couleur du fond selon le moteur affiché (halo principal, halo secondaire) + onde de mesure au changement */
+var HCOL={openai:['#CCFF2E','#4DA3FF'],gemini:['#4DA3FF','#CCFF2E'],perplexity:['#20D3C2','#4DA3FF'],anthropic:['#F0A070','#4DA3FF']};
+function heroTint(){const host=document.querySelector('.hg5.hdark'),card=document.getElementById('hcard'),c=HCOL[HENG[hI][0]];if(!host||!c)return;
+  host.style.setProperty('--orbc',c[0]);host.style.setProperty('--orbc2',c[1]);if(card)card.style.setProperty('--engc',c[0]);}
+function heroPing(){const host=document.querySelector('.hg5.hdark'),card=document.getElementById('hcard');if(!host||!card)return;
+  const hr=host.getBoundingClientRect(),cr=card.getBoundingClientRect(),cx=cr.left-hr.left+cr.width/2,cy=cr.top-hr.top+cr.height/2;
+  for(let k=0;k<2;k++){const r=document.createElement('i');r.className='hping';r.style.left=cx+'px';r.style.top=cy+'px';r.style.animationDelay=(k*.45)+'s';host.insertBefore(r,host.firstChild);setTimeout(()=>r.remove(),3600);}}
 function hcRender(){
   const l=document.documentElement.lang||'fr',t=T[l]||T.fr,card=document.getElementById('hcard');if(!card)return;
   const [eid,ename]=HENG[hI];document.getElementById('hcEng').textContent=ename;
+  heroTint();
   if(!HD||!HD.history||!HD.history.length)return;
   const snap=HD.history[HD.history.length-1],cc={en:'uk',fr:'fr',ar:'ae'}[l]||'fr',cd=snap.data[cc]||snap.data.fr;if(!cd)return;
   const cls=cd.suv?'suv':Object.keys(cd)[0],combo=cd[cls],m=combo[eid]||combo.all||{};
@@ -1357,7 +1374,7 @@ function hcRender(){
 function hcTick(){
   const em=document.querySelector('#h1 em.rot'),card=document.getElementById('hcard');
   if(em)em.classList.add('out');if(card)card.classList.add('sw');
-  setTimeout(()=>{hI=(hI+1)%HENG.length;const sp=document.getElementById('heng');if(sp)sp.textContent=HENG[hI][1];hcRender();if(em)em.classList.remove('out');if(card)card.classList.remove('sw');},380);
+  setTimeout(()=>{hI=(hI+1)%HENG.length;const sp=document.getElementById('heng');if(sp)sp.textContent=HENG[hI][1];hcRender();heroPing();if(em)em.classList.remove('out');if(card)card.classList.remove('sw');},380);
 }
 fetch('/data/bench_cars.json').then(r=>r.json()).then(j=>{HD=j;hcRender();}).catch(()=>{});
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(hcTick,3600);
