@@ -120,13 +120,21 @@ nav{display:flex;align-items:center;justify-content:space-between;height:72px;ga
  min-width:34px;height:32px;display:flex;align-items:center;justify-content:center;padding:0 8px;cursor:pointer;line-height:1}
 .lang button#b_ar{font-family:'Cairo','Segoe UI',sans-serif;font-size:16px;font-weight:700}
 .lang button.on{background:var(--cream);color:var(--ink)}
-.tswitch{width:34px;height:34px;border-radius:99px;border:1px solid var(--line);background:none;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none;line-height:1;transition:.18s}
-.tswitch:hover{border-color:var(--cream)}
+.tswitch{position:relative;width:34px;height:34px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden;transition:border-color .18s,color .18s}
+.tswitch .tsk{position:absolute;inset:0;border-radius:99px;background:var(--acid);transform:scale(0);transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+.tswitch .ti{position:absolute;width:17px;height:17px;transition:transform .42s cubic-bezier(.2,.8,.2,1),opacity .25s}
+.tswitch .ti-sun{transform:rotate(-90deg) scale(.4);opacity:0}
+.tswitch .ti-moon{transform:rotate(0) scale(1);opacity:1}
+body.dark .tswitch .ti-sun{transform:rotate(0) scale(1);opacity:1}
+body.dark .tswitch .ti-moon{transform:rotate(90deg) scale(.4);opacity:0}
+.tswitch:hover{border-color:transparent;color:var(--ink)}
+.tswitch:hover .tsk{transform:scale(1)}
+.tswitch:active .ti{transform:scale(.85)}
 @media(max-width:560px){
   nav{gap:8px}.nl{gap:9px}
   .lang button{min-width:27px;padding:0 5px;font-size:11.5px}
   .lang button#b_ar{font-size:14px}
-  .tswitch{width:29px;height:29px;font-size:13px}
+  .tswitch{width:29px;height:29px}.tswitch .ti{width:15px;height:15px}
   .cta{padding:10px 13px;font-size:13px}
 }
 .cta{background:var(--acid);color:#0A0A0B;font-weight:700;padding:11px 20px;border-radius:99px;font-size:14px;transition:.18s;display:inline-block}
@@ -833,7 +841,7 @@ body.rtl .ftcol a:hover{transform:translateX(-3px)}
       <button id="b_fr" onclick="setLang('fr')">FR</button>
       <button id="b_ar" onclick="setLang('ar')">ع</button>
     </div>
-    <button id="themeBtn" class="tswitch" onclick="toggleTheme()" aria-label="Dark / light mode">🌙</button>
+    <button id="themeBtn" class="tswitch" onclick="toggleTheme()" aria-label="Dark / light mode"><span class="tsk"></span><svg class="ti ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M5.4 18.6 7 17M17 7l1.6-1.6"/></svg><svg class="ti ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8Z"/><path d="M17.5 3.5v3M16 5h3" stroke-width="1.6"/></svg></button>
     <a href="https://app.aivisib.com" class="hm" data-i="n4"></a>
     <a href="#audit" class="cta" data-i="n_test"></a>
     <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
@@ -1509,7 +1517,7 @@ bwLoad();
 function toggleMenu(){const b=document.getElementById('burgerBtn'),m=document.getElementById('mmenu');const open=!m.classList.contains('open');m.classList.toggle('open',open);b.setAttribute('aria-expanded',open?'true':'false');}
 document.querySelectorAll('#mmenu a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('mmenu').classList.remove('open');document.getElementById('burgerBtn').setAttribute('aria-expanded','false');}));
 /* ===== Bascule clair / sombre ===== */
-function refreshThemeBtn(){const b=document.getElementById('themeBtn');if(b)b.textContent=document.body.classList.contains('dark')?'☀️':'🌙';}
+function refreshThemeBtn(){const b=document.getElementById('themeBtn');if(b)b.setAttribute('aria-label',document.body.classList.contains('dark')?'Light mode':'Dark mode');}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   try{localStorage.setItem('aiv_theme',document.body.classList.contains('dark')?'dark':'light')}catch(e){}
