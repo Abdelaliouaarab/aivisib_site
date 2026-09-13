@@ -35,11 +35,16 @@ function md2html(md) {
   return out.join("\n");
 }
 const L = { en: md2html(readFileSync(SP + "methodo_en.md", "utf8")), fr: md2html(readFileSync(SP + "methodo_fr.md", "utf8")), ar: md2html(readFileSync(SP + "methodo_ar.md", "utf8")) };
+// clés du pied de page et de la nav lues dans l'objet T d'index.html (même source de vérité)
+const FOOT_KEYS = ["f_company","fl_meas","fl_cmp","ft_prod","ft_res","ft_cmp","ft_co","ft_get","ft_bench","ft_test","ft_signup","ft_tech","ft_annex","ft_examples","ft_sample","ft_vs","ft_benchcars","ft_about","ft_contact","ft_sec","ft_privacy","ft_terms"];
+const segs = { en: idx.slice(idx.indexOf("en:{tk1"), idx.indexOf("fr:{tk1")), fr: idx.slice(idx.indexOf("fr:{tk1"), idx.indexOf("ar:{tk1")), ar: idx.slice(idx.indexOf("ar:{tk1")) };
+const pick = (l, k) => { const m = segs[l].match(new RegExp("(?:^|[,{])" + k + ':"((?:[^"\\\\]|\\\\.)*)"')); return m ? JSON.parse('"' + m[1] + '"') : ""; };
 const NAV = {
   en: { n1: "How it works", n2: "Features", n3: "Pricing", n4: "Log in", n5: "Agencies", n6: "Methodology", n7: "FAQ", n_test: "Free test", v_back: "← Back to home" },
   fr: { n1: "Fonctionnement", n2: "Fonctionnalités", n3: "Tarifs", n4: "Connexion", n5: "Agences", n6: "Méthodologie", n7: "FAQ", n_test: "Test gratuit", v_back: "← Retour à l'accueil" },
   ar: { n1: "كيف يعمل", n2: "المميزات", n3: "الأسعار", n4: "تسجيل الدخول", n5: "الوكالات", n6: "المنهجية", n7: "الأسئلة الشائعة", n_test: "فحص مجاني", v_back: "← العودة إلى الرئيسية" },
 };
+for (const l of ["en", "fr", "ar"]) for (const k of FOOT_KEYS) NAV[l][k] = pick(l, k);
 const META = {
   en: { t: "AIVisib methodology — how we measure AI visibility", d: "Engines, models, 3 passes per question, Wilson and bootstrap confidence, anti-hallucination guards, and what we do not measure. Published in full." },
   fr: { t: "Méthodologie AIVisib — comment nous mesurons la visibilité IA", d: "Moteurs, modèles, 3 passages par question, confiance de Wilson et bootstrap, garde-fous anti-hallucination, et ce que nous ne mesurons pas. Publié en entier." },
