@@ -36,7 +36,7 @@ function md2html(md) {
 }
 const L = { en: md2html(readFileSync(SP + "methodo_en.md", "utf8")), fr: md2html(readFileSync(SP + "methodo_fr.md", "utf8")), ar: md2html(readFileSync(SP + "methodo_ar.md", "utf8")) };
 // clés du pied de page et de la nav lues dans l'objet T d'index.html (même source de vérité)
-const FOOT_KEYS = ["f_company","fl_meas","fl_cmp","ft_prod","ft_res","ft_cmp","ft_co","ft_get","ft_bench","ft_test","ft_signup","ft_tech","ft_annex","ft_examples","ft_sample","ft_vs","ft_benchcars","ft_about","ft_contact","ft_sec","ft_privacy","ft_terms"];
+const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_cmp3","ft_about","ft_privacy","ft_terms"];
 const segs = { en: idx.slice(idx.indexOf("en:{tk1"), idx.indexOf("fr:{tk1")), fr: idx.slice(idx.indexOf("fr:{tk1"), idx.indexOf("ar:{tk1")), ar: idx.slice(idx.indexOf("ar:{tk1")) };
 const pick = (l, k) => { const m = segs[l].match(new RegExp("(?:^|[,{])" + k + ':"((?:[^"\\\\]|\\\\.)*)"')); return m ? JSON.parse('"' + m[1] + '"') : ""; };
 const NAV = {
