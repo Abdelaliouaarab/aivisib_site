@@ -5,30 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page not found — AIVisib</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0A0A0B">
+<meta name="theme-color" content="#F7F4EC">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
+:root{--ink:#F7F4EC;--panel:#FFFFFF;--line:rgba(20,20,26,.12);--cream:#14141A;--dim:#5F5F68;--acid:#CCFF2E;--acid-ink:#5C8A00}
+body.dark{--ink:#0A0A0B;--panel:#161619;--line:rgba(255,255,255,.09);--cream:#F5F1E8;--dim:#8E8E96;--acid-ink:#CCFF2E}
 *{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;background:#0A0A0B;color:#F5F1E8;font-family:'Space Grotesk',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
-.box{max-width:520px}
-.mark{width:56px;height:56px;border-radius:14px;background:#CCFF2E;display:inline-flex;align-items:center;justify-content:center;margin-bottom:28px}
-.mark svg{width:34px;height:34px}
-.code{font:500 15px 'JetBrains Mono',monospace;color:#CCFF2E;letter-spacing:.1em}
-h1{font-size:40px;font-weight:700;letter-spacing:-.02em;margin:12px 0 14px}
-h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#CCFF2E}
-p{color:#8E8E96;font-size:17px;line-height:1.6;margin-bottom:28px}
-a.btn{display:inline-block;background:#CCFF2E;color:#0A0A0B;font-weight:700;text-decoration:none;padding:14px 26px;border-radius:12px;font-size:16px}
+body{min-height:100vh;background:var(--ink);color:var(--cream);font-family:'Space Grotesk',system-ui,sans-serif;display:flex;flex-direction:column}
+header{border-bottom:1px solid var(--line)}
+nav{max-width:1160px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px;color:inherit;text-decoration:none}
+.logo i{width:26px;height:26px;border-radius:7px;background:var(--acid);display:grid;place-items:center;font-style:normal;color:#0A0A0B;font-size:14px}
+nav a.home{font-size:14px;color:var(--dim);text-decoration:none}nav a.home:hover{color:var(--cream)}
+main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 24px}
+.box{max-width:560px}
+.code{display:inline-flex;align-items:center;gap:9px;font:500 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acid-ink);padding:6px 13px 6px 10px;border-radius:99px;background:rgba(200,255,0,.13);border:1px solid rgba(200,255,0,.35);margin-bottom:22px}
+h1{font-size:clamp(34px,5vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
+h1 em{font-style:normal;color:var(--acid-ink)}
+p{color:var(--dim);font-size:17px;line-height:1.6;margin-bottom:28px}
+a.btn{display:inline-block;background:var(--acid);color:#0A0A0B;font-weight:700;text-decoration:none;padding:15px 28px;border-radius:99px;font-size:16px}
+a.btn:hover{box-shadow:0 8px 22px rgba(204,255,46,.28)}
+footer{border-top:1px solid var(--line);padding:16px 22px;text-align:center;font-size:12.5px;color:var(--dim)}
 </style>
 </head>
 <body>
-<div class="box">
-  <div class="mark"><svg viewBox="0 0 100 100"><path d="M50 22 L78 50 L50 78 L22 50 Z" fill="none" stroke="#0A0A0B" stroke-width="8" stroke-linejoin="round"/><circle cx="50" cy="50" r="8" fill="#0A0A0B"/></svg></div>
-  <div class="code">ERROR 404</div>
+<script>(function(){try{if(localStorage.getItem('aiv_theme')==='dark')document.body.classList.add('dark');}catch(e){}})();</script>
+<header><nav><a class="logo" href="/" aria-label="AIVisib"><i>◈</i>AIVisib</a><a class="home" href="/">aivisib.com</a></nav></header>
+<main><div class="box">
+  <div class="code">Error 404</div>
   <h1>This page is <em>invisible</em>.</h1>
   <p>Even AI can't find it. The page you're looking for doesn't exist or has moved.</p>
   <a class="btn" href="/">← Back to AIVisib</a>
-</div>
+</div></main>
+<footer>© 2026 AIVisib — Norstrol LLC</footer>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4eebac051e1a4b8784bff77028e4bd7c"}'></script>
 </body>
 </html>
