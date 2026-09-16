@@ -1,0 +1,30 @@
+# AIVisib
+
+> AIVisib measures whether AI assistants recommend a brand. It asks ChatGPT, Gemini, Perplexity and Claude the questions real customers ask, several times, and reports how often the brand appears, in which position, against which competitors. Operated by Norstrol LLC (Wyoming, USA).
+
+## What it does
+- Measures brand visibility inside AI answers, per engine and per language.
+- Engines included in every plan: ChatGPT, Gemini, Perplexity, Claude.
+- Languages measured: English, French, Modern Standard Arabic.
+- Each question is asked three times per engine; every score ships with its precision and a Wilson confidence interval.
+- Weekly automatic re-measurement, history, and an action plan derived from the measured gaps.
+- For agencies: white-label PDF reports and client share links from the Pro plan.
+
+## Pricing (USD, per month, no commitment)
+- Starter $59 — 1 brand, 25 questions.
+- Pro $149 — 3 brands, 100 questions, white label.
+- Agency $399 — 10 brands, 400 questions, unlimited seats. Extra brand $39.
+- Free AI visibility check, no account and no credit card: six generated customer questions across three engines.
+
+## Key pages
+- Homepage: https://aivisib.com/
+- Comparison with Peec AI, Otterly.AI and Profound: https://aivisib.com/compare
+- Published methodology, formulas and limits: https://aivisib.com/methodologie
+- Real published measurements: https://aivisib.com/mesures
+- Application: https://app.aivisib.com/
+- Contact: hello@aivisib.com
+
+## Limits we state openly
+- AI answers vary; we measure weekly with three passes rather than once a day, and we publish the margin of error instead of hiding it.
+- A personal ChatGPT session differs from a neutral query; we query engines in a neutral state with web search enabled.
+- The free check is a snapshot on 18 answers, not a full report.
