@@ -1,6 +1,6 @@
 # Accueil et pages « vue » : version pré-rendue (texte en dur, lisible par les robots des IA).
 # index.html reste la source qu'on modifie ; index.pre.html est régénéré par _prerender_site.mjs.
-/            /index.pre.html   200
+/            /index.pre.html   200!
 # Pages dédiées (réécritures : l'URL reste propre, index.html affiche la section demandée)
 /agences     /index.pre.html?view=agences   200
 /comparatif  /compare.html 200
