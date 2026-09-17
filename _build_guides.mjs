@@ -19,6 +19,16 @@ function md2html(md) {
   };
   while (i < lines.length) {
     const l = lines[i];
+    if (/^\|/.test(l)) {                       // tableau markdown, défilable en largeur sur mobile
+      flush();
+      const rows = []; while (i < lines.length && /^\|/.test(lines[i])) { rows.push(lines[i]); i++; }
+      const cells = (r) => r.replace(/^\||\|$/g, "").split("|").map((c) => inline(c.trim()));
+      const head = cells(rows[0]); const body = rows.slice(2).map(cells);
+      out.push('<div class="gdtbl"><table><thead><tr>' + head.map((h) => `<th>${h}</th>`).join("") + "</tr></thead><tbody>"
+        + body.map((r) => "<tr>" + r.map((c, j) => (j === 0 ? `<th scope="row">${c}</th>` : `<td>${c}</td>`)).join("") + "</tr>").join("")
+        + "</tbody></table></div>");
+      continue;
+    }
     if (/^\d+\. /.test(l)) { if (ul.length) flush(); ol.push(l.replace(/^\d+\. /, "")); i++; continue; }
     if (/^- /.test(l)) { if (ol.length) flush(); ul.push(l.replace(/^- /, "")); i++; continue; }
     flush();
@@ -51,6 +61,14 @@ const GUIDES = [
     meta: {
       en: { t: "How to know whether ChatGPT recommends your brand — AIVisib", d: "The method, step by step: ask the questions your customers ask, in a neutral session, several times, and count. Why your own ChatGPT gives a false reading, and why a score without a margin of error means nothing." },
       fr: { t: "Comment savoir si ChatGPT recommande votre marque — AIVisib", d: "La méthode, étape par étape : poser les questions de vos clients, en session neutre, plusieurs fois, et compter. Pourquoi votre propre ChatGPT vous ment, et pourquoi un score sans marge d'erreur ne veut rien dire." },
+    },
+  },
+  {
+    src: "noise", file: "guide-signal-bruit.html", url: "https://aivisib.com/guide/real-change-or-noise",
+    published: "2026-09-17",
+    meta: {
+      en: { t: "AI visibility scores: how to tell a real change from noise — AIVisib", d: "On 30 answers a 23% score really means 12–41%. How many answers you need, why we use the Wilson interval, why daily tracking is not more precise, and the five questions to ask any vendor." },
+      fr: { t: "Score de visibilité IA : distinguer un vrai changement du bruit — AIVisib", d: "Sur 30 réponses, un score de 23 % veut dire 12–41 %. Combien de réponses il faut, pourquoi l'intervalle de Wilson, pourquoi le quotidien n'est pas plus précis, et cinq questions à poser à tout vendeur." },
     },
   },
 ];
@@ -107,6 +125,11 @@ body.rtl .gdw ul,body.rtl .gdw ol{margin:0 22px 16px 0}
 .gdw hr{border:0;border-top:1px solid var(--line);margin:40px 0 24px}
 .gdw hr + p{font-size:15px;background:var(--panel);border:1px solid var(--line);border-inline-start:3px solid var(--acid);border-radius:14px;padding:18px 20px}
 .gdw p:first-of-type{font-size:18.5px;color:var(--cream)}
+.gdtbl{overflow-x:auto;margin:20px 0 22px}
+.gdtbl table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:520px}
+.gdtbl th,.gdtbl td{border:1px solid var(--line);padding:9px 12px;text-align:start;color:var(--dim)}
+.gdtbl thead th{background:var(--ink2);color:var(--cream);font-weight:600}
+.gdtbl tbody th{color:var(--cream);font-weight:500;background:var(--ink2)}
 .gdlang{display:none}.gdlang.on{display:block}
 .gdcta{margin-top:34px}
 .gdcta a{display:inline-block;background:var(--acid);color:#0A0A0B;font-weight:700;padding:12px 22px;border-radius:99px;font-size:15px}
