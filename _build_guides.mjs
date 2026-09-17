@@ -71,6 +71,14 @@ const GUIDES = [
       fr: { t: "Score de visibilité IA : distinguer un vrai changement du bruit — AIVisib", d: "Sur 30 réponses, un score de 23 % veut dire 12–41 %. Combien de réponses il faut, pourquoi l'intervalle de Wilson, pourquoi le quotidien n'est pas plus précis, et cinq questions à poser à tout vendeur." },
     },
   },
+  {
+    src: "agency", file: "guide-agences.html", url: "https://aivisib.com/guide/ai-visibility-for-agencies",
+    published: "2026-09-18",
+    meta: {
+      en: { t: "AI visibility for an agency: how to track ten clients — AIVisib", d: "One project per client, twenty to forty frozen questions, weekly measurement, a report that states its margin. The economics at $40 per client, what goes in the client report, the five mistakes, and when to say no." },
+      fr: { t: "Visibilité IA en agence : suivre dix clients sans se noyer — AIVisib", d: "Un projet par client, vingt à quarante questions figées, mesure hebdomadaire, rapport avec sa marge. L'économie à 40 $ par client, le contenu du rapport, les cinq erreurs, et quand dire non." },
+    },
+  },
 ];
 
 for (const g of GUIDES) {
