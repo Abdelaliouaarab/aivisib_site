@@ -37,7 +37,7 @@ const META = {
   fr: { t: "Mesures réelles de visibilité IA — AIVisib", d: "De vraies questions posées en direct à ChatGPT et Gemini, réponses comptées, rien de simulé. Compagnies aériennes, banques, hôtels, hôpitaux, écoles, en anglais, français et arabe." },
   ar: { t: "قياسات حقيقية للظهور في الذكاء الاصطناعي — AIVisib", d: "أسئلة حقيقية طُرحت مباشرة على ChatGPT وGemini، وعُدّت الإجابات، لا شيء مُحاكى. طيران، بنوك، فنادق، مستشفيات، مدارس، بالإنجليزية والفرنسية والعربية." },
 };
-const cards = ITEMS.map(([id]) => `<figure class="msf" id="${id}"><a href="/brand/linkedin/${id}.png" data-lb="/brand/linkedin/${id}.png" data-lbcap="mi_${id}" title="" data-i-title="ms_open"><img src="/brand/linkedin/${id}.png" alt="" loading="lazy"></a><figcaption data-i="mi_${id}"></figcaption></figure>`).join("\n");
+const cards = ITEMS.map(([id]) => `<figure class="msf" id="${id}"><a href="/brand/linkedin/${id}.png" data-lb="/brand/linkedin/${id}.png" data-lbcap="mi_${id}" title="" data-i-title="ms_open"><img src="/brand/linkedin/${id}.png" alt="${(NAV.en["mi_" + id] || "").replace(/"/g, "&quot;")}" loading="lazy"></a><figcaption data-i="mi_${id}"></figcaption></figure>`).join("\n");
 const html = `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -100,5 +100,9 @@ setLang((()=>{const ok=l=>['en','fr','ar'].includes(l);try{const u=new URLSearch
 </script>
 </body>
 </html>`;
-writeFileSync("mesures.html", html);
-console.log("→ mesures.html", html.length, "caractères,", ITEMS.length, "visuels");
+// pré-rendu : texte anglais en dur dans les balises vides, réécrit par setLang au chargement
+const baked = html.replace(/(<([a-z0-9]+)\b[^>]*\bdata-i="([^"]+)"[^>]*>)<\/\2>/gi,
+  (m, open, tag, key) => (NAV.en[key] !== undefined ? open + String(NAV.en[key]).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</" + tag + ">" : m));
+writeFileSync("mesures.html", baked);
+const lisible = baked.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().length;
+console.log("→ mesures.html", baked.length, "caractères,", ITEMS.length, "visuels,", lisible, "caractères lisibles par un robot");

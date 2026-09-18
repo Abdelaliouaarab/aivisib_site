@@ -61,6 +61,7 @@ const GUIDES = [
     meta: {
       en: { t: "How to know whether ChatGPT recommends your brand — AIVisib", d: "The method, step by step: ask the questions your customers ask, in a neutral session, several times, and count. Why your own ChatGPT gives a false reading, and why a score without a margin of error means nothing." },
       fr: { t: "Comment savoir si ChatGPT recommande votre marque — AIVisib", d: "La méthode, étape par étape : poser les questions de vos clients, en session neutre, plusieurs fois, et compter. Pourquoi votre propre ChatGPT vous ment, et pourquoi un score sans marge d'erreur ne veut rien dire." },
+      ar: { t: "كيف تعرف إن كان ChatGPT يوصي بعلامتك التجارية — AIVisib", d: "الطريقة خطوة بخطوة: اطرح أسئلة عملائك في جلسة محايدة عدة مرات، ثم أحصِ. لماذا يكذب عليك حسابك الشخصي، ولماذا لا تعني نتيجة بلا هامش خطأ شيئاً." },
     },
   },
   {
@@ -69,6 +70,7 @@ const GUIDES = [
     meta: {
       en: { t: "AI visibility scores: how to tell a real change from noise — AIVisib", d: "On 30 answers a 23% score really means 12–41%. How many answers you need, why we use the Wilson interval, why daily tracking is not more precise, and the five questions to ask any vendor." },
       fr: { t: "Score de visibilité IA : distinguer un vrai changement du bruit — AIVisib", d: "Sur 30 réponses, un score de 23 % veut dire 12–41 %. Combien de réponses il faut, pourquoi l'intervalle de Wilson, pourquoi le quotidien n'est pas plus précis, et cinq questions à poser à tout vendeur." },
+      ar: { t: "نتيجة الظهور في الذكاء الاصطناعي: التغيّر الحقيقي أم الضجيج — AIVisib", d: "على 30 إجابة تعني نتيجة 23٪ في الواقع 12–41٪. كم إجابة تحتاج، ولماذا مجال ويلسون، ولماذا لا تعني المتابعة اليومية دقة أعلى، وخمسة أسئلة تطرحها على أي بائع." },
     },
   },
   {
