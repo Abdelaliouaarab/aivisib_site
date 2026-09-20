@@ -79,7 +79,7 @@ if(!l){try{l=localStorage.getItem('aiv_lang');}catch(e){} if(!l||!T[l]) l=(navig
 document.documentElement.lang=l; const t=T[l];
 document.querySelectorAll('[data-i]').forEach(e=>{const k=e.dataset.i; if(t[k]!=null){ if(k==='h') e.innerHTML=t[k]; else e.textContent=t[k]; }});
 document.title=t.title; document.querySelectorAll('.langs a').forEach(a=>a.classList.toggle('on',a.dataset.l===l));
-const vk=(l==='fr')?'fr':'en'; const v=document.getElementById('v'); v.setAttribute('poster','/video/poster-'+vk+'.jpg'); v.setAttribute('src','/video/aivisib-how-it-works-'+vk+'.mp4');
+const vk=(l==='fr')?'fr':(l==='ar')?'ar':'en'; const v=document.getElementById('v'); v.setAttribute('poster','/video/poster-'+vk+'.jpg'); v.setAttribute('src','/video/aivisib-how-it-works-'+vk+'.mp4');
 document.getElementById('c1').href='/?lang='+l+'#audit'; document.getElementById('c2').href='/?lang='+l+'#price';
 </script>
 </body>
