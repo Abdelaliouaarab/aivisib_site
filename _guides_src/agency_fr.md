@@ -28,11 +28,11 @@ Voici le calcul qui décide si c'est une activité rentable pour vous.
 
 | | |
 |---|---|
-| Dix clients sur une offre agence | 399 $ / mois |
+| Huit clients sur une offre agence | 399 $ / mois |
 | Coût par client | 40 $ |
 | Ce que le marché facture par client | 500 à 1 500 $ / mois |
 | Avec le travail réalisé en plus | 2 000 à 5 000 $ / mois |
-| Au-delà de dix clients | 39 $ par marque supplémentaire |
+| Au-delà de huit clients | 49 $ par marque supplémentaire |
 
 Ces chiffres de revente sont ceux que des agences affichent publiquement pour le suivi de visibilité IA ; votre prix ne regarde que vous. Ce qui compte, c'est la forme : la mesure est un coût faible, fixe et prévisible, et la marge vit dans l'heure passée sur le rapport.
 
@@ -78,4 +78,4 @@ Acceptez celui qui a une activité réelle, des clients réels, et un marché o�
 
 ---
 
-*L'offre Agency d'AIVisib coûte 399 $ par mois pour dix marques, soit 40 $ par client, avec rapports en marque blanche, liens de partage et sièges illimités ; chaque marque supplémentaire coûte 39 $ par mois. Notre méthode de mesure complète, limites comprises, est publiée dans notre méthodologie, et vous pouvez lancer un test gratuit sur n'importe quelle marque depuis notre page d'accueil, sans compte.*
+*L'offre Agency d'AIVisib coûte 399 $ par mois pour huit marques, soit 50 $ par client, avec rapports en marque blanche, liens de partage et sièges illimités ; chaque marque supplémentaire coûte 49 $ par mois. Notre méthode de mesure complète, limites comprises, est publiée dans notre méthodologie, et vous pouvez lancer un test gratuit sur n'importe quelle marque depuis notre page d'accueil, sans compte.*

@@ -28,11 +28,11 @@ Here is the arithmetic that decides whether this is a business for you.
 
 | | |
 |---|---|
-| Ten clients on one agency plan | $399 / month |
+| Eight clients on one agency plan | $399 / month |
 | Cost per client | $40 |
 | What the market charges per client | $500 – $1,500 / month |
 | With the work done as well | $2,000 – $5,000 / month |
-| Beyond ten clients | $39 per extra brand |
+| Beyond eight clients | $49 per extra brand |
 
 Those resale figures are what agencies publicly charge for AI-visibility monitoring; your own price is your business. What matters is the shape: the measurement is a small, fixed, predictable cost, and the margin lives in the hour you spend on the report.
 
@@ -78,4 +78,4 @@ Accept the client who has real activity, real customers, and a market where comp
 
 ---
 
-*AIVisib's Agency plan is $399 a month for ten brands, which is $40 per client, with white-label reports, client share links and unlimited seats; extra brands are $39 a month each. Our full measurement method, including its limits, is published in our methodology, and you can run a free check on any brand from our homepage without an account.*
+*AIVisib's Agency plan is $399 a month for eight brands, which is $50 per client, with white-label reports, client share links and unlimited seats; extra brands are $49 a month each. Our full measurement method, including its limits, is published in our methodology, and you can run a free check on any brand from our homepage without an account.*
