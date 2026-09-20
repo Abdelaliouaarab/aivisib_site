@@ -10,6 +10,7 @@
 <link rel="alternate" hreflang="fr" href="https://aivisib.com/demo?lang=fr">
 <link rel="alternate" hreflang="ar" href="https://aivisib.com/demo?lang=ar">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>(function(){try{var t=localStorage.getItem('aiv_theme');if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark");}catch(e){}})();</script>
 <meta property="og:title" content="AIVisib — how it works in 96 seconds">
 <meta property="og:description" content="From the free check to the weekly AI visibility report.">
 <meta property="og:image" content="https://aivisib.com/video/poster-en.jpg">
@@ -18,6 +19,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F7F5EF;--ink:#14141A;--muted:#66666F;--line:rgba(20,20,26,.12);--acid:#CCFF2E;--green:#3F6B00;--panel:#fff}
+html.dark{--bg:#0A0A0B;--ink:#F5F1E8;--muted:#A8A8B0;--line:rgba(255,255,255,.09);--green:#CCFF2E;--panel:#161619}
+html.dark .langs a.on{background:#F5F1E8;color:#0A0A0B}
+html.dark .cta.o{border-color:#F5F1E8}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 html[lang=ar] body{font-family:'Cairo','Space Grotesk',sans-serif}
@@ -73,13 +77,13 @@ html[lang=ar]{direction:rtl}
 const T={
 en:{k:'Product demo · 96 seconds',h:'How <em>AIVisib</em> works',p:'From the free check to the weekly report: your score on ChatGPT, Gemini, Perplexity and Claude, who the AIs recommend instead of you, the sources they rely on, and a plain-language action plan.',legal:'Real screens, real measurements. BoursoBank is shown as a public example and is not a customer of AIVisib.',s1k:'STEP 1',s1:'Run the free check: six real customer questions, three AIs, thirty seconds, no account.',s2k:'STEP 2',s2:'Create your project: your brand, your competitors, your sector and the languages your customers speak.',s3k:'STEP 3',s3:'Every week, the report: one score with its margin of error, your position on each AI, the sources, every answer.',s4k:'STEP 4',s4:'Act on the plan, share the report, export the PDF, show the badge. Measured again next week.',c1:'Run the free check',c2:'See pricing',back:'← Back to aivisib.com',title:'AIVisib demo — how it works in 96 seconds'},
 fr:{k:'Démo produit · 96 secondes',h:'Comment fonctionne <em>AIVisib</em>',p:'Du test gratuit au rapport hebdomadaire : votre score sur ChatGPT, Gemini, Perplexity et Claude, qui les IA recommandent à votre place, les sources sur lesquelles elles s’appuient, et un plan d’action en langage clair.',legal:'Vrais écrans, vraies mesures. BoursoBank est montré comme exemple public et n’est pas client d’AIVisib.',s1k:'ÉTAPE 1',s1:'Faites le test gratuit : six vraies questions de clients, trois IA, trente secondes, sans compte.',s2k:'ÉTAPE 2',s2:'Créez votre projet : votre marque, vos concurrents, votre secteur et les langues de vos clients.',s3k:'ÉTAPE 3',s3:'Chaque semaine, le rapport : un score avec sa marge d’erreur, votre position sur chaque IA, les sources, chaque réponse.',s4k:'ÉTAPE 4',s4:'Appliquez le plan, partagez le rapport, exportez le PDF, affichez le badge. Remesuré la semaine suivante.',c1:'Faire le test gratuit',c2:'Voir les tarifs',back:'← Retour sur aivisib.com',title:'Démo AIVisib — comment ça marche en 96 secondes'},
-ar:{k:'عرض توضيحي · 96 ثانية',h:'كيف يعمل <em>AIVisib</em>',p:'من الفحص المجاني إلى التقرير الأسبوعي: نتيجتك على ChatGPT و Gemini و Perplexity و Claude، ومن توصي به أدوات الذكاء الاصطناعي بدلاً منك، والمصادر التي تعتمد عليها، وخطة عمل بلغة واضحة.',legal:'شاشات حقيقية وقياسات حقيقية. يُعرض BoursoBank كمثال عام وليس عميلاً لدى AIVisib.',s1k:'الخطوة 1',s1:'أجرِ الفحص المجاني: ستة أسئلة حقيقية من العملاء، ثلاث أدوات ذكاء اصطناعي، ثلاثون ثانية، دون حساب.',s2k:'الخطوة 2',s2:'أنشئ مشروعك: علامتك التجارية، منافسوك، قطاعك، واللغات التي يتحدث بها عملاؤك.',s3k:'الخطوة 3',s3:'كل أسبوع، التقرير: نتيجة واحدة مع هامش الخطأ، موقعك على كل أداة، المصادر، وكل إجابة.',s4k:'الخطوة 4',s4:'نفّذ الخطة، شارك التقرير، صدّر ملف PDF، واعرض الشارة. يُقاس من جديد في الأسبوع التالي.',c1:'أجرِ الفحص المجاني',c2:'عرض الأسعار',back:'← العودة إلى aivisib.com',title:'عرض AIVisib — كيف يعمل في 96 ثانية'}};
+ar:{k:'عرض توضيحي · 96 ثانية',h:'كيف يعمل <em>AIVisib</em>',p:'من الفحص المجاني إلى التقرير الأسبوعي: نتيجتك على ChatGPT و Gemini و Perplexity و Claude، ومن توصي به أدوات الذكاء الاصطناعي بدلاً منك، والمصادر التي تعتمد عليها، وخطة عمل بلغة واضحة.',legal:'شاشات حقيقية وقياسات حقيقية. يُعرض BoursoBank كمثال عام وليس عميلاً لدى AIVisib. الفيديو متاح بالإنجليزية والفرنسية.',s1k:'الخطوة 1',s1:'أجرِ الفحص المجاني: ستة أسئلة حقيقية من العملاء، ثلاث أدوات ذكاء اصطناعي، ثلاثون ثانية، دون حساب.',s2k:'الخطوة 2',s2:'أنشئ مشروعك: علامتك التجارية، منافسوك، قطاعك، واللغات التي يتحدث بها عملاؤك.',s3k:'الخطوة 3',s3:'كل أسبوع، التقرير: نتيجة واحدة مع هامش الخطأ، موقعك على كل أداة، المصادر، وكل إجابة.',s4k:'الخطوة 4',s4:'نفّذ الخطة، شارك التقرير، صدّر ملف PDF، واعرض الشارة. يُقاس من جديد في الأسبوع التالي.',c1:'أجرِ الفحص المجاني',c2:'عرض الأسعار',back:'← العودة إلى aivisib.com',title:'عرض AIVisib — كيف يعمل في 96 ثانية'}};
 const q=new URLSearchParams(location.search).get('lang'); let l=(q&&T[q])?q:null;
-if(!l){try{l=localStorage.getItem('aiv_lang');}catch(e){} if(!l||!T[l]) l=(navigator.language||'en').slice(0,2); if(!T[l]) l='en';}
+if(!l){try{l=localStorage.getItem('lang');}catch(e){} if(!l||!T[l]) l=(navigator.language||'en').slice(0,2); if(!T[l]) l='en';}
 document.documentElement.lang=l; const t=T[l];
 document.querySelectorAll('[data-i]').forEach(e=>{const k=e.dataset.i; if(t[k]!=null){ if(k==='h') e.innerHTML=t[k]; else e.textContent=t[k]; }});
 document.title=t.title; document.querySelectorAll('.langs a').forEach(a=>a.classList.toggle('on',a.dataset.l===l));
-const vk=(l==='fr')?'fr':(l==='ar')?'ar':'en'; const v=document.getElementById('v'); v.setAttribute('poster','/video/poster-'+vk+'.jpg'); v.setAttribute('src','/video/aivisib-how-it-works-'+vk+'.mp4');
+const vk=(l==='fr')?'fr':'en'; const v=document.getElementById('v'); v.setAttribute('poster','/video/poster-'+vk+'.jpg'); v.setAttribute('src','/video/aivisib-how-it-works-'+vk+'.mp4');
 document.getElementById('c1').href='/?lang='+l+'#audit'; document.getElementById('c2').href='/?lang='+l+'#price';
 </script>
 </body>
