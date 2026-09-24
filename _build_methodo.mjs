@@ -96,7 +96,7 @@ ${header}
 <main class="mth">
 ${["en", "fr", "ar"].map((l) => `<div class="mlang" id="ml_${l}" ${l === "ar" ? 'dir="rtl"' : ""}>${L[l]}</div>`).join("\n")}
 <div class="msign"><i class="mmark">◈</i><span id="msign"></span></div>
-<a class="mpdf" href="/brand/AIVisib_Presentation_Technique_2026-09.pdf" target="_blank" rel="noopener" id="mpdf"></a>
+
 </main>
 ${footer}
 <script>
@@ -107,7 +107,7 @@ let lang='fr';
 function setLang(l){lang=l;document.body.classList.toggle('rtl',l==='ar');document.documentElement.lang=l;document.title=META[l].t;document.querySelector('meta[name=description]').setAttribute('content',META[l].d);
  document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(NAV[l][k]!==undefined)e.textContent=NAV[l][k]});
  ['en','fr','ar'].forEach(x=>{document.getElementById('ml_'+x).classList.toggle('on',x===l);const b=document.getElementById('b_'+x);if(b)b.classList.toggle('on',x===l)});
- document.getElementById('msign').textContent=SIGN[l];document.getElementById('mpdf').textContent=PDF[l];document.getElementById('mpdf').href=l==='en'?'/brand/AIVisib_Technical_Overview_2026-09.pdf':'/brand/AIVisib_Presentation_Technique_2026-09.pdf';
+ document.getElementById('msign').textContent=SIGN[l];
  try{localStorage.setItem('lang',l)}catch(e){}
  document.querySelectorAll('a[href^="https://app.aivisib.com"]').forEach(a=>{a.href='https://app.aivisib.com/?lang='+l});
  document.querySelectorAll('a[href^="#"]').forEach(a=>a.setAttribute('href','/'+a.getAttribute('href').replace(/^\\/+/,'')));}

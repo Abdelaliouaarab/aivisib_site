@@ -89,7 +89,6 @@ function setLang(l){lang=l;document.body.classList.toggle('rtl',l==='ar');docume
  ['en','fr','ar'].forEach(x=>{const b=document.getElementById('b_'+x);if(b)b.classList.toggle('on',x===l)});
  try{localStorage.setItem('lang',l)}catch(e){}
  document.querySelectorAll('a[href^="https://app.aivisib.com"]').forEach(a=>{if(!a.hasAttribute('data-keep'))a.href='https://app.aivisib.com/?lang='+l});
- document.querySelectorAll('[data-pdf]').forEach(a=>a.href=l==='en'?'/brand/AIVisib_Technical_Overview_2026-09.pdf':'/brand/AIVisib_Presentation_Technique_2026-09.pdf');
  document.querySelectorAll('a[href^="#"]').forEach(a=>a.setAttribute('href','/'+a.getAttribute('href').replace(/^\\/+/,'')));}
 function toggleMenu(){const b=document.getElementById('burgerBtn'),m=document.getElementById('mmenu');const open=!m.classList.contains('open');m.classList.toggle('open',open);b.setAttribute('aria-expanded',open?'true':'false');}
 function refreshThemeBtn(){const b=document.getElementById('themeBtn');if(b)b.setAttribute('aria-label',document.body.classList.contains('dark')?'Light mode':'Dark mode');}

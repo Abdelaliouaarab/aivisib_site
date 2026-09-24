@@ -1315,7 +1315,7 @@ body.dark .shbadge .shb-d{display:inline-block}
     <div class="ftcol"><h4 data-i="ft_prod"></h4>
       <a href="/#how" data-i="n1"></a><a href="/#price" data-i="n3"></a><a href="/agences" data-i="n5"></a><a href="/#audit" data-i="ft_test"></a><a href="https://app.aivisib.com" data-i="n4"></a></div>
     <div class="ftcol"><h4 data-i="ft_res"></h4>
-      <a href="/methodologie" data-i="n6"></a><a href="/brand/AIVisib_Presentation_Technique_2026-09.pdf" data-pdf="1" target="_blank" rel="noopener" data-i="ft_tech"></a><a href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1" data-i="ft_sample"></a><a href="/guide/chatgpt-recommends-your-brand" data-i="ft_guide1"></a><a href="/guide/real-change-or-noise" data-i="ft_guide2"></a><a href="/guide/ai-visibility-for-agencies" data-i="ft_guide3"></a><a href="/comparatif" data-i="ft_cmp3"></a><a href="/faq" data-i="n7"></a></div>
+      <a href="/methodologie" data-i="n6"></a><a href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1" data-i="ft_sample"></a><a href="/guide/chatgpt-recommends-your-brand" data-i="ft_guide1"></a><a href="/guide/real-change-or-noise" data-i="ft_guide2"></a><a href="/guide/ai-visibility-for-agencies" data-i="ft_guide3"></a><a href="/comparatif" data-i="ft_cmp3"></a><a href="/faq" data-i="n7"></a></div>
     <div class="ftcol"><h4 data-i="ft_co"></h4>
       <a href="/#audit" data-i="ft_about"></a><a href="https://www.linkedin.com/company/146271305" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@AIVisib" target="_blank" rel="noopener">YouTube</a><a href="/privacy.html" data-i="ft_privacy"></a><a href="/terms.html" data-i="ft_terms"></a></div>
   </div>
@@ -1470,7 +1470,6 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(hcTick,36
 function setLang(l){
   lang=l;
   document.body.classList.toggle('rtl',l==='ar');
-  document.querySelectorAll('[data-pdf]').forEach(a=>a.href=l==='en'?'/brand/AIVisib_Technical_Overview_2026-09.pdf':'/brand/AIVisib_Presentation_Technique_2026-09.pdf');
   document.documentElement.lang=l;
   try{const d=document.getElementById('demoLink');if(d){d.href='/demo?lang='+l;d.textContent=(l==='fr')?'▶ Voir la démo (96 s)':(l==='ar')?'▶ شاهد العرض التوضيحي (96 ثانية)':'▶ Watch the demo (96 s)';}}catch(e){}
   document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(T[l][k]!==undefined)e.textContent=T[l][k]});
