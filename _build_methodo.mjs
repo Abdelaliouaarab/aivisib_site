@@ -46,10 +46,24 @@ const NAV = {
 };
 for (const l of ["en", "fr", "ar"]) for (const k of FOOT_KEYS) NAV[l][k] = pick(l, k);
 const META = {
-  en: { t: "AIVisib methodology — how we measure AI visibility", d: "Engines, models, 3 passes per question, Wilson and bootstrap confidence, anti-hallucination guards, and what we do not measure. Published in full." },
-  fr: { t: "Méthodologie AIVisib — comment nous mesurons la visibilité IA", d: "Moteurs, modèles, 3 passages par question, confiance de Wilson et bootstrap, garde-fous anti-hallucination, et ce que nous ne mesurons pas. Publié en entier." },
-  ar: { t: "منهجية AIVisib — كيف نقيس الظهور في الذكاء الاصطناعي", d: "المحركات، النماذج، 3 جولات لكل سؤال، ثقة ويلسون والبوتستراب، ضوابط ضد الهلوسة، وما لا نقيسه. منشورة بالكامل." },
+  en: { t: "How we measure AI visibility — AIVisib methodology", d: "How AIVisib measures if ChatGPT, Gemini, Perplexity and Claude recommend your business: real customer questions, weekly passes, margin of error." },
+  fr: { t: "Comment nous mesurons la visibilité IA — méthodologie AIVisib", d: "Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur." },
+  ar: { t: "كيف نقيس الظهور في الذكاء الاصطناعي — منهجية AIVisib", d: "كيف يقيس AIVisib إن كانت ChatGPT، Gemini، Perplexity، Claude توصي بنشاطك: أسئلة عملاء حقيقيين، قياس أسبوعي، وهامش خطأ." },
 };
+// Données structurées (Article + FAQ + fil d'Ariane) : lues directement par Google et les moteurs IA.
+// La FAQ est extraite de la section « Questions fréquentes » du texte français (même source de vérité que la page).
+const frMd = readFileSync(SP + "methodo_fr.md", "utf8");
+const faqBlock = frMd.slice(frMd.indexOf("## 9. Questions fréquentes"), frMd.indexOf("## Versions"));
+const faq = [...faqBlock.matchAll(/^### (.+)\n\n([\s\S]+?)(?=\n\n###|\n*$)/gm)].map((m) => ({ "@type": "Question", name: m[1].trim(), acceptedAnswer: { "@type": "Answer", text: m[2].replace(/\*\*/g, "").trim() } }));
+const LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "TechArticle", headline: "Méthodologie : comment AIVisib mesure la visibilité de votre marque dans les réponses des IA", description: META.fr.d, inLanguage: ["fr", "en", "ar"], datePublished: "2026-09-12", dateModified: "2026-09-25", url: "https://aivisib.com/methodologie", author: { "@type": "Organization", name: "AIVisib", url: "https://aivisib.com" }, publisher: { "@type": "Organization", name: "AIVisib", url: "https://aivisib.com", logo: { "@type": "ImageObject", url: "https://aivisib.com/brand/aivisib-logo-400.png" } }, about: ["AI visibility", "Generative Engine Optimization", "ChatGPT", "Gemini", "Perplexity", "Claude"] },
+    { "@type": "FAQPage", mainEntity: faq },
+    { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "AIVisib", item: "https://aivisib.com/" }, { "@type": "ListItem", position: 2, name: "Méthodologie", item: "https://aivisib.com/methodologie" }] },
+  ],
+};
+if (faq.length < 5) throw new Error("FAQ JSON-LD : " + faq.length + " questions extraites seulement");
 const html = `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -65,6 +79,7 @@ const html = `<!DOCTYPE html>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0A0A0B">
 <meta property="og:type" content="article"><meta property="og:site_name" content="AIVisib"><meta property="og:url" content="https://aivisib.com/methodologie"><meta property="og:title" content="${META.fr.t}"><meta property="og:description" content="${META.fr.d}"><meta property="og:image" content="https://aivisib.com/og-image.png">
+<script type="application/ld+json">${JSON.stringify(LD).replace(/</g, "\\u003c")}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 ${fonts}
 ${style}
@@ -102,7 +117,6 @@ ${footer}
 <script>
 const NAV=${JSON.stringify(NAV)};const META=${JSON.stringify(META)};
 const SIGN={en:"Method validated by the AIVisib team.",fr:"Méthode validée par l'équipe AIVisib.",ar:"المنهجية معتمدة من فريق AIVisib."};
-const PDF={en:"Technical overview (PDF, 2 pages) →",fr:"Présentation technique (PDF, 2 pages) →",ar:"العرض التقني (PDF، صفحتان) ←"};
 let lang='fr';
 function setLang(l){lang=l;document.body.classList.toggle('rtl',l==='ar');document.documentElement.lang=l;document.title=META[l].t;document.querySelector('meta[name=description]').setAttribute('content',META[l].d);
  document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(NAV[l][k]!==undefined)e.textContent=NAV[l][k]});

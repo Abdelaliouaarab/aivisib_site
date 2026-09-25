@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Méthodologie AIVisib — comment nous mesurons la visibilité IA</title>
-<meta name="description" content="Moteurs, modèles, 3 passages par question, confiance de Wilson et bootstrap, garde-fous anti-hallucination, et ce que nous ne mesurons pas. Publié en entier.">
+<title>Comment nous mesurons la visibilité IA — méthodologie AIVisib</title>
+<meta name="description" content="Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur.">
 <link rel="canonical" href="https://aivisib.com/methodologie">
 <link rel="alternate" hreflang="en" href="https://aivisib.com/methodologie?lang=en">
 <link rel="alternate" hreflang="fr" href="https://aivisib.com/methodologie?lang=fr">
@@ -12,7 +12,8 @@
 <link rel="alternate" hreflang="x-default" href="https://aivisib.com/methodologie">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0A0A0B">
-<meta property="og:type" content="article"><meta property="og:site_name" content="AIVisib"><meta property="og:url" content="https://aivisib.com/methodologie"><meta property="og:title" content="Méthodologie AIVisib — comment nous mesurons la visibilité IA"><meta property="og:description" content="Moteurs, modèles, 3 passages par question, confiance de Wilson et bootstrap, garde-fous anti-hallucination, et ce que nous ne mesurons pas. Publié en entier."><meta property="og:image" content="https://aivisib.com/og-image.png">
+<meta property="og:type" content="article"><meta property="og:site_name" content="AIVisib"><meta property="og:url" content="https://aivisib.com/methodologie"><meta property="og:title" content="Comment nous mesurons la visibilité IA — méthodologie AIVisib"><meta property="og:description" content="Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur."><meta property="og:image" content="https://aivisib.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Méthodologie : comment AIVisib mesure la visibilité de votre marque dans les réponses des IA","description":"Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur.","inLanguage":["fr","en","ar"],"datePublished":"2026-09-12","dateModified":"2026-09-25","url":"https://aivisib.com/methodologie","author":{"@type":"Organization","name":"AIVisib","url":"https://aivisib.com"},"publisher":{"@type":"Organization","name":"AIVisib","url":"https://aivisib.com","logo":{"@type":"ImageObject","url":"https://aivisib.com/brand/aivisib-logo-400.png"}},"about":["AI visibility","Generative Engine Optimization","ChatGPT","Gemini","Perplexity","Claude"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Comment savoir si ChatGPT recommande mon entreprise ?","acceptedAnswer":{"@type":"Answer","text":"Poser vous-même la question ne suffit pas : ChatGPT connaît votre historique et ses réponses varient d'une fois à l'autre. Il faut poser les questions de vos clients, depuis un état neutre, plusieurs fois, et compter les réponses qui vous citent. C'est exactement ce que fait AIVisib chaque semaine, sur ChatGPT, Gemini, Perplexity et Claude."}},{"@type":"Question","name":"Pourquoi mon score change-t-il d'une semaine à l'autre ?","acceptedAnswer":{"@type":"Answer","text":"Les réponses des IA varient naturellement, et leurs sources évoluent. La marge d'erreur affichée vous indique si un changement est significatif ou s'il reste dans le bruit normal."}},{"@type":"Question","name":"Pourquoi mes résultats diffèrent-ils de ce que je vois sur mon téléphone ?","acceptedAnswer":{"@type":"Answer","text":"Sur votre compte, l'IA tient compte de votre historique, de votre position et de vos préférences. Nos mesures reproduisent un nouveau client qui ne vous connaît pas : c'est ce qui compte pour gagner de nouveaux clients."}},{"@type":"Question","name":"Pourquoi mesurer en arabe et en français ?","acceptedAnswer":{"@type":"Answer","text":"Parce que vos clients posent leurs questions dans leur langue, et que les IA ne recommandent pas toujours les mêmes entreprises selon la langue. Nous mesurons dans les langues réelles de votre marché."}},{"@type":"Question","name":"En combien de temps peut-on améliorer sa visibilité ?","acceptedAnswer":{"@type":"Answer","text":"Les premiers effets des actions apparaissent en général en 4 à 8 semaines, selon le secteur et la concurrence. Nous ne promettons jamais un classement : nous mesurons chaque semaine ce qui change réellement."}},{"@type":"Question","name":"Quelle différence avec le référencement Google ?","acceptedAnswer":{"@type":"Answer","text":"Être premier sur Google ne garantit pas d'être recommandé par une IA. Les IA s'appuient sur leurs propres sources (annuaires, avis, articles, forums). La visibilité IA se mesure et se travaille séparément."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AIVisib","item":"https://aivisib.com/"},{"@type":"ListItem","position":2,"name":"Méthodologie","item":"https://aivisib.com/methodologie"}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
@@ -1030,240 +1031,189 @@ body.rtl .mth ul,body.rtl .mth ol{margin:0 22px 14px 0}
 </div></header>
 <div class="vback"><a href="/" data-i="v_back"></a></div>
 <main class="mth">
-<div class="mlang" id="ml_en" ><h1>Methodology</h1>
-<p>AIVisib measures whether ChatGPT, Gemini, Perplexity and Claude recommend your business. We publish this page so you can judge our numbers on their merits, not on our word.</p>
-<h2 id="s2">1. The questions</h2>
-<h3>How questions are generated</h3>
-<p>Questions are generated for each brand from three inputs: its sector, its city and its languages. The list is built in several steps.</p>
-<ol><li><b>Neighbourhoods.</b> GPT-4o proposes neighbourhoods of the city. Each one is verified against OpenStreetMap (Nominatim, bounded to the city). Unverified places are dropped.</li><li><b>Drafts.</b> GPT-4o-mini (temperature 0.9) writes candidate questions, with 40% more than needed. The set mixes broad, city-level questions and long-tail questions naming a real neighbourhood or a precise need.</li><li><b>Alphabet guard.</b> Arabic questions contain no Latin letters, and Latin-script questions contain no Arabic letters.</li><li><b>Review.</b> GPT-4o (temperature 0) rejects questions that are unrealistic, outside the sector or that name a place not in the verified list.</li><li><b>De-duplication.</b> Each question is embedded with text-embedding-3-small. Two questions with cosine similarity above 0.85 are treated as paraphrases, and one is removed.</li></ol>
-<h3>Your control</h3>
-<p>You can edit or delete every question before saving. Nothing is measured without your approval of the list.</p>
-<h3>Head and long-tail</h3>
-<p>Each question is tagged "head" (broad, city-level) or "long-tail" (specific neighbourhood or need). Metrics are reported for both scopes.</p>
-<h2 id="s10">2. The engines and how we ask</h2>
-<h3>Engines and settings</h3>
-<div class="mtbl"><table><thead><tr><th>Engine</th><th>Model and configuration</th><th></th></tr></thead><tbody><tr><td>ChatGPT</td><td>OpenAI Responses API with web search, search context size "low", approximate user location set to your city and country</td><td></td></tr><tr><td>Gemini</td><td>Gemini 2.5 Flash with Google Search grounding, temperature 0.6</td><td></td></tr><tr><td>Perplexity</td><td>Sonar, live web search, temperature 0.6</td><td></td></tr><tr><td>Claude</td><td>Claude Haiku 4.5 with web search (at most 2 searches), temperature 0.6, 1024 output tokens</td><td></td></tr></tbody></table></div>
-<h3>The same instruction for every engine</h3>
-<p>All four engines receive the same neutral system prompt: answer naturally, name real businesses, reply in the language of the question.</p>
-<h3>Neutral state</h3>
-<p>There is no memory, no personalisation and no logged-in account. Each question starts from a clean state, close to what a new user would see.</p>
-<h3>Passes and schedule</h3>
-<p>Every question is asked 3 times per engine, every week. For a typical brand, 16 questions × 4 engines × 3 passes give 192 answers per report.</p>
-<p>Calls run in parallel (pool of 6), with 3 retries on temporary errors.</p>
-<h3>When we refuse to report</h3>
-<p>If fewer than 50% of calls succeed, no report is issued. We never publish a false 0%. An engine with zero successful answers is shown as "not measured", never as 0%.</p>
-<h2 id="s22">3. How we count a mention</h2>
-<h3>The analyser</h3>
-<p>Each answer is read by GPT-4o-mini at temperature 0. It returns structured JSON: brand mentioned (yes/no), rank from 1 to 10 among named businesses, tracked competitors mentioned, other brands, cited sources, and sentiment (positive, neutral, negative).</p>
-<h3>Two deterministic guards</h3>
-<p>The analyser's output is never trusted alone. Two rules apply after it.</p>
-<ol><li><b>Literal presence.</b> The brand name must appear literally in the answer text. If it does not, the mention is discarded.</li><li><b>Homonym guard.</b> The analyser receives the business identity: sector, city, country, and website if provided. A mention that clearly refers to a different business with the same name elsewhere is not counted.</li></ol>
-<h3>Competitors</h3>
-<p>A tracked competitor counts at most once per answer, however many times it is named.</p>
-<h2 id="s30">4. The metrics and their formulas</h2>
-<h3>Visibility</h3>
-<p>Visibility = answers mentioning the brand ÷ measured answers × 100.</p>
-<p>It is computed overall, per engine, per question and per scope (head / long-tail). Visibility per language is the mean of the visibilities of the questions in that language.</p>
-<h3>Share of AI recommendations</h3>
-<p>Share = answers citing the brand ÷ total citations of the brand and its tracked competitors × 100.</p>
-<p>This share is computed only among the competitors you track. It is not a share of the whole market.</p>
-<h3>Average position</h3>
-<p>Average position = mean rank of the brand in the answers where it is cited. 1 means the brand is named first. If the brand is never cited, the value is null, not 0.</p>
-<h3>Sentiment</h3>
-<p>Sentiment = mean of 100 (positive), 50 (neutral) and 0 (negative), over the answers where the brand is cited.</p>
-<h3>Top sources</h3>
-<p>Top sources = frequency of the domains cited by the engines. Only URLs actually cited count. Redirect URLs are resolved to their final domain.</p>
-<h2 id="s43">5. Precision and confidence</h2>
-<h3>Why answers vary</h3>
-<p>The same question asked twice can produce different answers. This is normal for these engines. That is why we ask each question 3 times and attach a confidence interval to the results.</p>
-<h3>Per question: Wilson interval</h3>
-<p>For each question, we compute a Wilson 95% interval (z = 1.96) on its mention rate. Confidence = 100 × (1 − interval width). A narrow interval means a stable result.</p>
-<h3>Per report: bootstrap</h3>
-<p>For the overall score, we resample the questions 1,000 times with replacement (bootstrap, fixed seed 20260830, so the result is reproducible). We compute the score for each resample.</p>
-<p>Width = 2 × 1.96 × standard deviation of the resampled scores. Confidence = 100 × (1 − width).</p>
-<h3>Why ± is shown at report level</h3>
-<p>The ± shown in the dashboard describes the report score, not a single question. A single question has too few answers for a meaningful ± on its own. The report-level interval reflects how much the score would move if the question set had been slightly different.</p>
-<h2 id="s53">6. Texts of the report and anti-hallucination</h2>
-<h3>Insights</h3>
-<p>Insights are written by GPT-4o-mini (temperature 0.4). They are written only from the computed numbers, and only about measured engines.</p>
-<h3>Verification</h3>
-<p>A second pass (temperature 0) checks every engine name and figure in the text against the data. If something is wrong, the text is regenerated once.</p>
-<h3>Action plan</h3>
-<p>The action plan (temperature 0.5) is anchored on your sector, your city and the top sources observed.</p>
-<h3>Deterministic filters</h3>
-<p>After generation, deterministic filters remove any mention of an engine that was not measured in the report.</p>
-<h3>Executive summary</h3>
-<p>The 5-line executive summary is computed directly from the data, not by a language model.</p>
-<h2 id="s64">7. What we do not measure (yet)</h2>
-<p>We prefer to state limits plainly.</p>
-<ul><li><b>Engines not covered.</b> Google AI Overviews and AI Mode, Copilot and Grok are not measured today.</li><li><b>Natural variation.</b> Answers vary between passes. Three passes and a confidence interval reduce this effect but do not remove it.</li><li><b>Homonyms in the same city.</b> Two businesses with the same name, in the same city and sector, cannot be told apart without a website.</li><li><b>Prompt volumes.</b> We do not estimate how many real users ask each question.</li><li><b>Frequency.</b> Measurements are weekly, not daily.</li></ul>
-<h2 id="s67">8. Data and security</h2>
-<h3>History</h3>
-<p>Every report and every raw answer is stored. The dashboard compares each report to the previous one (change threshold: 1 point; 0.2 for position) and shows trends over the last 12 reports.</p>
-<h3>Free audit</h3>
-<p>The free audit on the website asks 3 template questions to 2 engines (ChatGPT, Gemini), once each. A city is required. It is an indication, not a report.</p>
-<h3>Security</h3>
-<ul><li>We use official APIs only.</li><li>Client data is isolated per account with row-level security.</li><li>We do not resell data.</li><li>You can cancel in one click.</li></ul>
-<h2 id="s74">9. Versions</h2>
-<p><b>Version dated 12 September 2026.</b> This page changes when the method changes.</p>
+<div class="mlang" id="ml_en" ><h1>Methodology: how AIVisib measures your brand's visibility in AI answers</h1>
+<p>AIVisib measures how often ChatGPT, Gemini, Perplexity and Claude recommend your business when your customers ask them a question. Every week, we ask these four AI assistants the questions your customers actually ask, several times each, and we calculate your visibility score with its margin of error. This page explains our principles, so you can judge our numbers on evidence.</p>
+<h2 id="s2">At a glance</h2>
+<ul><li><b>Real customer questions</b>, tailored to your sector, your market and your languages (English, French, Arabic and more).</li><li><b>Four AI assistants queried with web search on</b>, the way a new user would, with no account and no history.</li><li><b>Every question asked several times, every week</b>, because AI assistants never answer exactly the same way twice.</li><li><b>A margin of error shown on every score</b>, so you can tell a real change from noise.</li><li><b>You approve the questions</b> before anything is measured.</li></ul>
+<h2 id="s4">1. Real customer questions, tailored to each sector</h2>
+<p>A measurement is only as good as the questions behind it. Our questions reflect how your customers really ask an AI assistant: "which dental clinic should I choose in Casablanca for implants?", "which 3D studio do you recommend for a real estate project in Geneva?".</p>
+<p>They are built from your sector, your market and your languages, and they adapt to the type of business:</p>
+<ul><li><b>Local business</b> (restaurant, clinic, hotel, salon): questions at city and neighbourhood level, the way a resident or a visitor would ask.</li><li><b>Professional services</b> (agency, firm, studio): questions at city or regional level, phrased like a decision-maker choosing a provider, with the vocabulary of their trade.</li><li><b>Product sold online</b> (software, e-commerce brand): questions about choice, comparison, price and features, with no location.</li></ul>
+<p>Each set mixes broad questions ("the best… in…") with specific ones (a need, a budget, a situation), where a specialised business has the best chance of being recommended. Every question is written naturally in its language, and Arabic questions in Modern Standard Arabic. Quality checks remove unrealistic, off-topic or duplicate questions.</p>
+<h3>You stay in control</h3>
+<p>You can edit, add or delete any question before saving. Nothing is measured without your approval.</p>
+<h2 id="s11">2. Four AI assistants, queried like a new user</h2>
+<p>We measure <b>ChatGPT, Gemini, Perplexity and Claude</b>, each with <b>web search enabled</b>, the way most people use them today.</p>
+<ul><li><b>Neutral state</b>: no signed-in account, no memory, no personalisation. Every question starts from scratch, like a new customer who does not know you. This is why our results can differ from what you see on your own account, where the assistant knows your habits.</li><li><b>The same instruction for all four assistants</b>: answer naturally, in the language of the question, naming real businesses.</li><li><b>Your market</b>: when relevant, the query is located in your city and country.</li></ul>
+<h3>Several passes, every week</h3>
+<p>Every question is asked <b>3 times to each assistant, every week</b>. For 25 questions, that is 300 answers analysed per report.</p>
+<h3>When we refuse to publish</h3>
+<p>If too many queries fail (an outage or a rate limit on an assistant's side), no report is issued. We never publish a false 0%. An assistant for which no answer could be obtained is shown as "not measured", never 0%.</p>
+<h2 id="s18">3. How a recommendation is counted</h2>
+<p>Every answer is read and analysed. A mention only counts if <b>your business name actually appears in the text</b> of the answer.</p>
+<p>We also check for <b>namesakes</b>: if the assistant is talking about another business with the same name, somewhere else or in another sector, the mention does not count. The more information you give us (sector, city, website), the more reliable this check is.</p>
+<p>A tracked competitor counts at most once per answer, however many times it is named.</p>
+<h2 id="s22">4. The metrics in your report</h2>
+<h3>AI visibility score</h3>
+<p><b>Visibility = answers that mention your brand ÷ answers analysed × 100.</b> Out of 100 AI answers to customer questions, how many recommend you? It is calculated overall, per assistant, per question and per language.</p>
+<h3>Share of AI recommendations</h3>
+<p><b>Share = mentions of your brand ÷ mentions of your brand and your tracked competitors × 100.</b> It measures your position against the competitors you chose, not against the whole market.</p>
+<h3>Average position</h3>
+<p>The average rank of your brand in the answers that cite it. 1 means it is named first. If it is never cited, the value stays empty, not 0.</p>
+<h3>Sentiment</h3>
+<p>The tone of the answers when they cite you: 100 for positive, 50 for neutral, 0 for negative, averaged.</p>
+<h3>Sources used by AI assistants</h3>
+<p>The websites the assistants cite when they answer (directories, review platforms, articles, your competitors' websites). Only sources that are actually cited count. This is your action map: be present where the assistants look.</p>
+<h2 id="s33">5. Precision: why we show a margin of error</h2>
+<p>Ask an AI assistant the same question twice and you can get two different answers. That is normal. A score measured only once would be a roll of the dice.</p>
+<p>That is why every score comes with a <b>95% confidence interval</b>, calculated with established statistical methods and reproducible. Example: <b>13% ± 4</b> means the true score is very likely between 9% and 17%.</p>
+<p>In practice: moving from 13% to 14% from one week to the next is noise. Moving from 13% to 25% is real progress. The dashboard tells you clearly which of the two you are looking at.</p>
+<h2 id="s37">6. Reports with nothing made up</h2>
+<ul><li>Analysis texts are written <b>only from the measured numbers</b>.</li><li>Every number and every assistant named in the text is <b>checked automatically</b> before publication.</li><li>An assistant that was not measured is never mentioned in the report.</li><li>The executive summary is computed directly from the data.</li><li>The action plan builds on your sector, your market and the sources actually observed.</li></ul>
+<h2 id="s39">7. What we do not measure (yet)</h2>
+<p>We would rather state our limits clearly.</p>
+<ul><li><b>Assistants not covered.</b> Google AI Overviews and AI Mode, Copilot and Grok are not measured today.</li><li><b>Natural variation.</b> Several passes and a margin of error reduce the effect of chance without removing it.</li><li><b>Namesakes in the same city.</b> Two businesses with the same name, in the same city and sector, cannot be told apart without a website.</li><li><b>Search volumes.</b> We do not estimate how many people ask each question.</li><li><b>Frequency.</b> Measurements are weekly, not daily.</li></ul>
+<h2 id="s42">8. Data and security</h2>
+<ul><li>Every report and every answer is kept. The dashboard compares each report with the previous one and shows your trends over time.</li><li>We only use the assistants' official access.</li><li>Each customer's data is isolated per account.</li><li>We never sell data, and your data is not used to train any AI.</li><li>You can cancel in one click.</li><li>The free test on our website asks a few sample questions, once: it is an indication, not a report.</li></ul>
+<h2 id="s44">9. Frequently asked questions</h2>
+<h3>How do I know if ChatGPT recommends my business?</h3>
+<p>Asking it yourself is not enough: ChatGPT knows your history and its answers vary from one time to the next. You need to ask your customers' questions, from a neutral state, several times, and count the answers that cite you. That is exactly what AIVisib does every week, on ChatGPT, Gemini, Perplexity and Claude.</p>
+<h3>Why does my score change from week to week?</h3>
+<p>AI answers vary naturally, and their sources evolve. The margin of error shown tells you whether a change is significant or within normal noise.</p>
+<h3>Why do my results differ from what I see on my phone?</h3>
+<p>On your account, the assistant takes your history, location and preferences into account. Our measurements reproduce a new customer who does not know you: that is what matters to win new customers.</p>
+<h3>Why measure in Arabic and French?</h3>
+<p>Because your customers ask in their own language, and AI assistants do not always recommend the same businesses from one language to another. We measure in the real languages of your market.</p>
+<h3>How long does it take to improve AI visibility?</h3>
+<p>The first effects of actions usually appear within 4 to 8 weeks, depending on the sector and the competition. We never promise a ranking: we measure every week what actually changes.</p>
+<h3>How is this different from Google SEO?</h3>
+<p>Ranking first on Google does not guarantee being recommended by an AI assistant. Assistants rely on their own sources (directories, reviews, articles, forums). AI visibility has to be measured and worked on separately.</p>
+<h2 id="s57">Versions</h2>
+<p><b>Version of 25 September 2026.</b> This page evolves with our method.</p>
 <hr>
-<p>Method validated by the AIVisib team.</p></div>
-<div class="mlang" id="ml_fr" ><h1>Méthodologie</h1>
-<p>AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise. Nous publions cette page pour que vous puissiez juger nos chiffres sur pièces, pas sur parole.</p>
-<h2 id="s2">1. Les questions</h2>
-<h3>Comment les questions sont générées</h3>
-<p>Les questions sont générées pour chaque marque à partir de trois éléments : son secteur, sa ville et ses langues. La liste se construit en plusieurs étapes.</p>
-<ol><li><b>Quartiers.</b> GPT-4o propose des quartiers de la ville. Chacun est vérifié dans OpenStreetMap (Nominatim, recherche limitée à la ville). Les lieux non vérifiés sont écartés.</li><li><b>Brouillons.</b> GPT-4o-mini (température 0,9) rédige des questions candidates, avec 40 % de plus que nécessaire. L'ensemble mélange des questions larges à l'échelle de la ville et des questions de longue traîne citant un vrai quartier ou un besoin précis.</li><li><b>Garde-fou d'alphabet.</b> Les questions en arabe ne contiennent aucune lettre latine, et les questions en alphabet latin aucune lettre arabe.</li><li><b>Relecture.</b> GPT-4o (température 0) rejette les questions irréalistes, hors secteur, ou citant un lieu absent de la liste vérifiée.</li><li><b>Dédoublonnage.</b> Chaque question est encodée avec text-embedding-3-small. Deux questions dont la similarité cosinus dépasse 0,85 sont considérées comme des paraphrases, et l'une est supprimée.</li></ol>
-<h3>Votre contrôle</h3>
-<p>Vous pouvez modifier ou supprimer chaque question avant l'enregistrement. Rien n'est mesuré sans votre validation de la liste.</p>
-<h3>Head et longue traîne</h3>
-<p>Chaque question est étiquetée « head » (large, échelle de la ville) ou « longue traîne » (quartier ou besoin précis). Les métriques sont fournies pour les deux périmètres.</p>
-<h2 id="s10">2. Les moteurs et la façon d'interroger</h2>
-<h3>Moteurs et réglages</h3>
-<div class="mtbl"><table><thead><tr><th>Moteur</th><th>Modèle et configuration</th><th></th></tr></thead><tbody><tr><td>ChatGPT</td><td>OpenAI Responses API avec recherche web, taille de contexte de recherche « low », localisation approximative réglée sur votre ville et votre pays</td><td></td></tr><tr><td>Gemini</td><td>Gemini 2.5 Flash avec ancrage Google Search, température 0,6</td><td></td></tr><tr><td>Perplexity</td><td>Sonar, recherche web en direct, température 0,6</td><td></td></tr><tr><td>Claude</td><td>Claude Haiku 4.5 avec recherche web (2 recherches au maximum), température 0,6, 1024 tokens de sortie</td><td></td></tr></tbody></table></div>
-<h3>La même consigne pour tous les moteurs</h3>
-<p>Les quatre moteurs reçoivent le même prompt système neutre : répondre naturellement, nommer des entreprises réelles, répondre dans la langue de la question.</p>
-<h3>État neutre</h3>
-<p>Il n'y a ni mémoire, ni personnalisation, ni compte connecté. Chaque question part d'un état vierge, proche de ce que verrait un nouvel utilisateur.</p>
-<h3>Passes et rythme</h3>
-<p>Chaque question est posée 3 fois par moteur, chaque semaine. Pour une marque type, 16 questions × 4 moteurs × 3 passes donnent 192 réponses par rapport.</p>
-<p>Les appels sont exécutés en parallèle (6 à la fois), avec 3 nouvelles tentatives en cas d'erreur temporaire.</p>
-<h3>Quand nous refusons de publier</h3>
-<p>Si moins de 50 % des appels réussissent, aucun rapport n'est émis. Nous ne publions jamais un faux 0 %. Un moteur sans aucune réponse réussie est affiché « non mesuré », jamais 0 %.</p>
-<h2 id="s22">3. Comment nous comptons une mention</h2>
-<h3>L'analyseur</h3>
-<p>Chaque réponse est lue par GPT-4o-mini à température 0. Il renvoie un JSON structuré : marque mentionnée (oui/non), rang de 1 à 10 parmi les entreprises nommées, concurrents suivis mentionnés, autres marques, sources citées, et sentiment (positif, neutre, négatif).</p>
-<h3>Deux garde-fous déterministes</h3>
-<p>La sortie de l'analyseur n'est jamais prise seule. Deux règles s'appliquent ensuite.</p>
-<ol><li><b>Présence littérale.</b> Le nom de la marque doit apparaître littéralement dans le texte de la réponse. Sinon, la mention est écartée.</li><li><b>Garde-fou des homonymes.</b> L'analyseur reçoit l'identité de l'entreprise : secteur, ville, pays, et site web s'il est fourni. Une mention qui désigne clairement une autre entreprise du même nom, ailleurs, n'est pas comptée.</li></ol>
-<h3>Concurrents</h3>
-<p>Un concurrent suivi compte au plus une fois par réponse, quel que soit le nombre de fois où il est nommé.</p>
-<h2 id="s30">4. Les métriques et leurs formules</h2>
-<h3>Visibilité</h3>
-<p>Visibilité = réponses mentionnant la marque ÷ réponses mesurées × 100.</p>
-<p>Elle est calculée globalement, par moteur, par question et par périmètre (head / longue traîne). La visibilité par langue est la moyenne des visibilités des questions de cette langue.</p>
-<h3>Part des recommandations IA</h3>
-<p>Part = réponses citant la marque ÷ total des citations de la marque et de ses concurrents suivis × 100.</p>
-<p>Cette part est calculée uniquement parmi les concurrents que vous suivez. Ce n'est pas une part de l'ensemble du marché.</p>
-<h3>Position moyenne</h3>
-<p>Position moyenne = rang moyen de la marque dans les réponses où elle est citée. 1 signifie que la marque est nommée en premier. Si la marque n'est jamais citée, la valeur est vide, pas 0.</p>
-<h3>Sentiment</h3>
-<p>Sentiment = moyenne de 100 (positif), 50 (neutre) et 0 (négatif), sur les réponses où la marque est citée.</p>
-<h3>Sources principales</h3>
-<p>Sources principales = fréquence des domaines cités par les moteurs. Seules les URL réellement citées comptent. Les URL de redirection sont résolues vers leur domaine final.</p>
-<h2 id="s43">5. Précision et confiance</h2>
-<h3>Pourquoi les réponses varient</h3>
-<p>La même question posée deux fois peut produire deux réponses différentes. C'est normal pour ces moteurs. C'est pourquoi nous posons chaque question 3 fois et associons un intervalle de confiance aux résultats.</p>
-<h3>Par question : intervalle de Wilson</h3>
-<p>Pour chaque question, nous calculons un intervalle de Wilson à 95 % (z = 1,96) sur son taux de mention. Confiance = 100 × (1 − largeur de l'intervalle). Un intervalle étroit signifie un résultat stable.</p>
-<h3>Par rapport : bootstrap</h3>
-<p>Pour le score global, nous rééchantillonnons les questions 1 000 fois avec remise (bootstrap, graine fixe 20260830, donc résultat reproductible). Nous calculons le score pour chaque rééchantillon.</p>
-<p>Largeur = 2 × 1,96 × écart-type des scores rééchantillonnés. Confiance = 100 × (1 − largeur).</p>
-<h3>Pourquoi le ± est affiché au niveau du rapport</h3>
-<p>Le ± affiché dans le tableau de bord décrit le score du rapport, pas une question isolée. Une question seule a trop peu de réponses pour un ± significatif. L'intervalle au niveau du rapport indique de combien le score bougerait si le jeu de questions avait été légèrement différent.</p>
-<h2 id="s53">6. Textes du rapport et anti-hallucination</h2>
-<h3>Analyses</h3>
-<p>Les analyses sont rédigées par GPT-4o-mini (température 0,4). Elles sont écrites uniquement à partir des chiffres calculés, et uniquement sur les moteurs mesurés.</p>
-<h3>Vérification</h3>
-<p>Une seconde passe (température 0) contrôle chaque nom de moteur et chaque chiffre du texte par rapport aux données. En cas d'erreur, le texte est régénéré une fois.</p>
-<h3>Plan d'action</h3>
-<p>Le plan d'action (température 0,5) s'appuie sur votre secteur, votre ville et les sources principales observées.</p>
-<h3>Filtres déterministes</h3>
-<p>Après génération, des filtres déterministes suppriment toute mention d'un moteur non mesuré dans le rapport.</p>
-<h3>Résumé exécutif</h3>
-<p>Le résumé exécutif en 5 lignes est calculé directement à partir des données, pas par un modèle de langage.</p>
-<h2 id="s64">7. Ce que nous ne mesurons pas (encore)</h2>
-<p>Nous préférons énoncer nos limites clairement.</p>
-<ul><li><b>Moteurs non couverts.</b> Google AI Overviews et AI Mode, Copilot et Grok ne sont pas mesurés aujourd'hui.</li><li><b>Variation naturelle.</b> Les réponses varient d'une passe à l'autre. Trois passes et un intervalle de confiance réduisent cet effet sans le supprimer.</li><li><b>Homonymes dans la même ville.</b> Deux entreprises du même nom, dans la même ville et le même secteur, ne peuvent pas être distinguées sans site web.</li><li><b>Volumes de requêtes.</b> Nous n'estimons pas combien d'utilisateurs réels posent chaque question.</li><li><b>Fréquence.</b> Les mesures sont hebdomadaires, pas quotidiennes.</li></ul>
-<h2 id="s67">8. Données et sécurité</h2>
-<h3>Historique</h3>
-<p>Chaque rapport et chaque réponse brute sont conservés. Le tableau de bord compare chaque rapport au précédent (seuil de variation : 1 point ; 0,2 pour la position) et affiche les tendances sur les 12 derniers rapports.</p>
-<h3>Audit gratuit</h3>
-<p>L'audit gratuit du site pose 3 questions types à 2 moteurs (ChatGPT, Gemini), une fois chacune. La ville est obligatoire. C'est une indication, pas un rapport.</p>
-<h3>Sécurité</h3>
-<ul><li>Nous utilisons uniquement les API officielles.</li><li>Les données de chaque client sont isolées par compte (sécurité au niveau des lignes).</li><li>Nous ne revendons aucune donnée.</li><li>Vous pouvez résilier en un clic.</li></ul>
-<h2 id="s74">9. Versions</h2>
-<p><b>Version du 12 septembre 2026.</b> Cette page change quand la méthode change.</p>
+<p>Method validated by the AIVisib team.</p></div>
+<div class="mlang" id="ml_fr" ><h1>Méthodologie : comment AIVisib mesure la visibilité de votre marque dans les réponses des IA</h1>
+<p>AIVisib mesure à quelle fréquence ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise quand vos clients leur posent une question. Chaque semaine, nous posons à ces quatre IA les questions que vos clients posent réellement, plusieurs fois chacune, et nous calculons votre score de visibilité avec sa marge d'erreur. Cette page explique nos principes, pour que vous puissiez juger nos chiffres sur pièces.</p>
+<h2 id="s2">En bref</h2>
+<ul><li><b>Des questions de vrais clients</b>, adaptées à votre secteur, à votre marché et à vos langues (anglais, français, arabe et d'autres).</li><li><b>Quatre IA interrogées avec recherche web</b>, comme le ferait un nouvel utilisateur, sans compte ni historique.</li><li><b>Chaque question posée plusieurs fois, chaque semaine</b>, parce que les IA ne répondent jamais deux fois exactement pareil.</li><li><b>Une marge d'erreur affichée sur chaque score</b>, pour distinguer une vraie évolution du simple bruit.</li><li><b>Vous validez les questions</b> avant toute mesure. Rien n'est mesuré sans votre accord.</li></ul>
+<h2 id="s4">1. Des questions de vrais clients, adaptées à chaque secteur</h2>
+<p>La qualité d'une mesure dépend d'abord des questions posées. Nos questions reproduisent la façon dont vos clients interrogent réellement une IA : « quelle clinique dentaire choisir à Casablanca pour des implants ? », « quel studio 3D recommandez-vous pour un projet immobilier à Genève ? ».</p>
+<p>Elles sont construites à partir de votre secteur, de votre marché et de vos langues, et s'adaptent au type d'activité :</p>
+<ul><li><b>Commerce local</b> (restaurant, clinique, hôtel, salon) : des questions à l'échelle de la ville et de ses quartiers, comme le ferait un habitant ou un visiteur.</li><li><b>Service aux professionnels</b> (agence, cabinet, studio) : des questions à l'échelle de la ville ou de la région, formulées comme un décideur qui choisit un prestataire, avec le vocabulaire de son métier.</li><li><b>Produit vendu en ligne</b> (logiciel, marque e-commerce) : des questions de choix, de comparaison, de prix et de fonctionnalités, sans notion de lieu.</li></ul>
+<p>Le jeu mélange des questions larges (« le meilleur… à… ») et des questions précises (un besoin, un budget, une situation), là où une entreprise spécialisée a le plus de chances d'être recommandée. Chaque question est rédigée naturellement dans sa langue, et l'arabe en arabe standard. Des contrôles de qualité écartent les questions irréalistes, hors sujet ou en double.</p>
+<h3>Votre contrôle</h3>
+<p>Vous pouvez modifier, ajouter ou supprimer chaque question avant l'enregistrement. Rien n'est mesuré sans votre validation.</p>
+<h2 id="s11">2. Quatre IA, interrogées comme un nouvel utilisateur</h2>
+<p>Nous mesurons <b>ChatGPT, Gemini, Perplexity et Claude</b>, chacun avec sa <b>recherche web activée</b>, comme l'utilisent aujourd'hui la plupart des gens.</p>
+<ul><li><b>État neutre</b> : ni compte connecté, ni mémoire, ni personnalisation. Chaque question part de zéro, comme pour un nouveau client qui ne vous connaît pas. C'est pourquoi nos résultats peuvent différer de ce que vous voyez sur votre propre compte, où l'IA connaît vos habitudes.</li><li><b>Même consigne pour les quatre IA</b> : répondre naturellement, dans la langue de la question, en nommant des entreprises réelles.</li><li><b>Votre marché</b> : quand c'est pertinent, l'interrogation est située dans votre ville et votre pays.</li></ul>
+<h3>Plusieurs passages, chaque semaine</h3>
+<p>Chaque question est posée <b>3 fois à chaque IA, chaque semaine</b>. Pour 25 questions, cela représente 300 réponses analysées par rapport.</p>
+<h3>Quand nous refusons de publier</h3>
+<p>Si trop d'interrogations échouent (panne ou limite d'une IA), aucun rapport n'est émis. Nous ne publions jamais un faux 0 %. Une IA pour laquelle aucune réponse n'a pu être obtenue est affichée « non mesurée », jamais 0 %.</p>
+<h2 id="s18">3. Comment une recommandation est comptée</h2>
+<p>Chaque réponse est lue et analysée. Une mention n'est comptée que si <b>le nom de votre entreprise apparaît réellement dans le texte</b> de la réponse.</p>
+<p>Nous vérifions aussi les <b>homonymes</b> : si l'IA parle d'une autre entreprise portant le même nom, ailleurs ou dans un autre secteur, la mention n'est pas comptée. Plus vous nous donnez d'informations (secteur, ville, site web), plus cette vérification est fiable.</p>
+<p>Un concurrent suivi compte au plus une fois par réponse, même s'il est nommé plusieurs fois.</p>
+<h2 id="s22">4. Les indicateurs du rapport</h2>
+<h3>Score de visibilité IA</h3>
+<p><b>Visibilité = réponses qui mentionnent votre marque ÷ réponses analysées × 100.</b> Sur 100 réponses des IA à des questions de clients, combien vous citent ? Elle est calculée globalement, par IA, par question et par langue.</p>
+<h3>Part des recommandations IA</h3>
+<p><b>Part = mentions de votre marque ÷ mentions de votre marque et de vos concurrents suivis × 100.</b> Elle mesure votre place face aux concurrents que vous avez choisis, pas face à tout le marché.</p>
+<h3>Position moyenne</h3>
+<p>Le rang moyen de votre marque dans les réponses où elle est citée. 1 signifie qu'elle est nommée en premier. Si elle n'est jamais citée, la valeur reste vide, pas 0.</p>
+<h3>Sentiment</h3>
+<p>Le ton des réponses quand elles vous citent : 100 pour positif, 50 pour neutre, 0 pour négatif, en moyenne.</p>
+<h3>Sources consultées par les IA</h3>
+<p>Les sites que les IA citent quand elles répondent (annuaires, plateformes d'avis, articles, sites de vos concurrents). Seules les sources réellement citées sont comptées. C'est votre carte d'action : être présent là où les IA vont chercher.</p>
+<h2 id="s33">5. Précision : pourquoi nous affichons une marge d'erreur</h2>
+<p>La même question posée deux fois à une IA peut donner deux réponses différentes. C'est normal. Un score mesuré une seule fois serait donc un coup de dés.</p>
+<p>C'est pourquoi chaque score est accompagné d'un <b>intervalle de confiance à 95 %</b>, calculé avec des méthodes statistiques reconnues, et reproductible. Exemple : <b>13 % ± 4</b> signifie que le vrai score se situe très probablement entre 9 % et 17 %.</p>
+<p>En pratique : passer de 13 % à 14 % d'une semaine à l'autre, c'est du bruit. Passer de 13 % à 25 %, c'est une vraie progression. Le tableau de bord vous indique clairement laquelle des deux situations vous vivez.</p>
+<h2 id="s37">6. Des rapports sans invention</h2>
+<ul><li>Les textes d'analyse sont rédigés <b>uniquement à partir des chiffres mesurés</b>.</li><li>Chaque chiffre et chaque nom d'IA cité dans le texte est <b>vérifié automatiquement</b> avant publication.</li><li>Une IA qui n'a pas été mesurée n'est jamais mentionnée dans le rapport.</li><li>Le résumé exécutif est calculé directement à partir des données.</li><li>Le plan d'action s'appuie sur votre secteur, votre marché et les sources réellement observées.</li></ul>
+<h2 id="s39">7. Ce que nous ne mesurons pas (encore)</h2>
+<p>Nous préférons énoncer nos limites clairement.</p>
+<ul><li><b>IA non couvertes.</b> Google AI Overviews et AI Mode, Copilot et Grok ne sont pas mesurés aujourd'hui.</li><li><b>Variation naturelle.</b> Plusieurs passages et une marge d'erreur réduisent l'effet du hasard sans le supprimer.</li><li><b>Homonymes dans la même ville.</b> Deux entreprises du même nom, dans la même ville et le même secteur, ne peuvent pas être distinguées sans site web.</li><li><b>Volumes de recherche.</b> Nous n'estimons pas combien de personnes posent chaque question.</li><li><b>Fréquence.</b> Les mesures sont hebdomadaires, pas quotidiennes.</li></ul>
+<h2 id="s42">8. Données et sécurité</h2>
+<ul><li>Chaque rapport et chaque réponse sont conservés. Le tableau de bord compare chaque rapport au précédent et affiche vos tendances dans le temps.</li><li>Nous utilisons uniquement les accès officiels des IA.</li><li>Les données de chaque client sont isolées par compte.</li><li>Nous ne revendons aucune donnée, et vos données ne servent pas à entraîner d'IA.</li><li>Vous pouvez résilier en un clic.</li><li>Le test gratuit du site pose quelques questions types, une fois : c'est une indication, pas un rapport.</li></ul>
+<h2 id="s44">9. Questions fréquentes</h2>
+<h3>Comment savoir si ChatGPT recommande mon entreprise ?</h3>
+<p>Poser vous-même la question ne suffit pas : ChatGPT connaît votre historique et ses réponses varient d'une fois à l'autre. Il faut poser les questions de vos clients, depuis un état neutre, plusieurs fois, et compter les réponses qui vous citent. C'est exactement ce que fait AIVisib chaque semaine, sur ChatGPT, Gemini, Perplexity et Claude.</p>
+<h3>Pourquoi mon score change-t-il d'une semaine à l'autre ?</h3>
+<p>Les réponses des IA varient naturellement, et leurs sources évoluent. La marge d'erreur affichée vous indique si un changement est significatif ou s'il reste dans le bruit normal.</p>
+<h3>Pourquoi mes résultats diffèrent-ils de ce que je vois sur mon téléphone ?</h3>
+<p>Sur votre compte, l'IA tient compte de votre historique, de votre position et de vos préférences. Nos mesures reproduisent un nouveau client qui ne vous connaît pas : c'est ce qui compte pour gagner de nouveaux clients.</p>
+<h3>Pourquoi mesurer en arabe et en français ?</h3>
+<p>Parce que vos clients posent leurs questions dans leur langue, et que les IA ne recommandent pas toujours les mêmes entreprises selon la langue. Nous mesurons dans les langues réelles de votre marché.</p>
+<h3>En combien de temps peut-on améliorer sa visibilité ?</h3>
+<p>Les premiers effets des actions apparaissent en général en 4 à 8 semaines, selon le secteur et la concurrence. Nous ne promettons jamais un classement : nous mesurons chaque semaine ce qui change réellement.</p>
+<h3>Quelle différence avec le référencement Google ?</h3>
+<p>Être premier sur Google ne garantit pas d'être recommandé par une IA. Les IA s'appuient sur leurs propres sources (annuaires, avis, articles, forums). La visibilité IA se mesure et se travaille séparément.</p>
+<h2 id="s57">Versions</h2>
+<p><b>Version du 25 septembre 2026.</b> Cette page évolue avec notre méthode.</p>
 <hr>
-<p>Méthode validée par l'équipe AIVisib.</p></div>
-<div class="mlang" id="ml_ar" dir="rtl"><h1>المنهجية</h1>
-<p>يقيس AIVisib ما إذا كانت محركات ChatGPT، Gemini، Perplexity، Claude توصي بمؤسستك. ننشر هذه الصفحة لتحكموا على أرقامنا بالدليل، لا بالكلام.</p>
-<h2 id="s2">1. الأسئلة</h2>
-<h3>كيف تُولَّد الأسئلة</h3>
-<p>تُولَّد الأسئلة لكل علامة تجارية من ثلاثة عناصر: قطاعها، مدينتها، لغاتها. وتُبنى القائمة على عدة مراحل.</p>
-<ol><li><b>الأحياء.</b> يقترح GPT-4o أحياء المدينة. يُتحقق من كل حي في OpenStreetMap (خدمة Nominatim، مع حصر البحث داخل المدينة). تُستبعد الأماكن غير المتحقق منها.</li><li><b>المسودات.</b> يكتب GPT-4o-mini (درجة الحرارة 0.9) أسئلة مرشحة، بزيادة 40 % عن الحاجة. تمزج المجموعة أسئلة عامة على مستوى المدينة مع أسئلة الذيل الطويل التي تذكر حيًا حقيقيًا أو حاجة محددة.</li><li><b>حارس الأبجدية.</b> لا تحتوي الأسئلة العربية على أي حرف لاتيني، ولا تحتوي الأسئلة اللاتينية على أي حرف عربي.</li><li><b>المراجعة.</b> يرفض GPT-4o (درجة الحرارة 0) الأسئلة غير الواقعية، أو الخارجة عن القطاع، أو التي تذكر مكانًا غير موجود في القائمة المتحقق منها.</li><li><b>إزالة التكرار.</b> يُرمَّز كل سؤال بنموذج text-embedding-3-small. إذا تجاوز تشابه جيب التمام بين سؤالين 0.85 عُدّا صياغتين لمعنى واحد، ويُحذف أحدهما.</li></ol>
-<h3>تحكمكم</h3>
-<p>يمكنكم تعديل كل سؤال أو حذفه قبل الحفظ. لا يُقاس شيء دون موافقتكم على القائمة.</p>
-<h3>الأسئلة العامة وأسئلة الذيل الطويل</h3>
-<p>يوسم كل سؤال بـ«عام» (head، على مستوى المدينة) أو «ذيل طويل» (حي أو حاجة محددة). تُعرض المقاييس للنطاقين معًا.</p>
-<h2 id="s10">2. المحركات وطريقة السؤال</h2>
-<h3>المحركات والإعدادات</h3>
-<div class="mtbl"><table><thead><tr><th>المحرك</th><th>النموذج والإعدادات</th><th></th></tr></thead><tbody><tr><td>ChatGPT</td><td>واجهة OpenAI Responses API مع بحث الويب، حجم سياق البحث «low»، موقع تقريبي مضبوط على مدينتكم وبلدكم</td><td></td></tr><tr><td>Gemini</td><td>نموذج Gemini 2.5 Flash مع تأريض Google Search، درجة الحرارة 0.6</td><td></td></tr><tr><td>Perplexity</td><td>نموذج Sonar، بحث ويب مباشر، درجة الحرارة 0.6</td><td></td></tr><tr><td>Claude</td><td>نموذج Claude Haiku 4.5 مع بحث الويب (بحثان على الأكثر)، درجة الحرارة 0.6، سقف الإخراج 1024 رمزًا</td><td></td></tr></tbody></table></div>
-<h3>التعليمة نفسها لكل المحركات</h3>
-<p>تتلقى المحركات الأربعة موجه النظام المحايد نفسه: أجب بشكل طبيعي، اذكر مؤسسات حقيقية، أجب بلغة السؤال.</p>
-<h3>الحالة المحايدة</h3>
-<p>لا توجد ذاكرة، ولا تخصيص، ولا حساب مسجل الدخول. يبدأ كل سؤال من حالة نظيفة، قريبة مما يراه مستخدم جديد.</p>
-<h3>الجولات والوتيرة</h3>
-<p>يُطرح كل سؤال 3 مرات على كل محرك، كل أسبوع. لعلامة تجارية نموذجية، تعطي 16 سؤالًا × 4 محركات × 3 جولات 192 إجابة لكل تقرير.</p>
-<p>تُنفذ الطلبات بالتوازي (6 في الوقت نفسه)، مع 3 محاولات إضافية عند الأخطاء المؤقتة.</p>
-<h3>متى نرفض إصدار التقرير</h3>
-<p>إذا نجح أقل من 50 % من الطلبات، لا يصدر أي تقرير. لا ننشر أبدًا نسبة 0 % زائفة. يُعرض المحرك الذي لم تنجح له أي إجابة بعبارة «غير مقيس»، لا بنسبة 0 %.</p>
-<h2 id="s22">3. كيف نحتسب الذكر</h2>
-<h3>المحلل</h3>
-<p>يقرأ GPT-4o-mini كل إجابة بدرجة حرارة 0. ويعيد JSON منظمًا: ذُكرت العلامة (نعم/لا)، الرتبة من 1 إلى 10 بين المؤسسات المذكورة، المنافسون المتابَعون المذكورون، علامات أخرى، المصادر المستشهد بها، والانطباع (إيجابي، محايد، سلبي).</p>
-<h3>حارسان حتميان</h3>
-<p>لا يُعتمد على مخرجات المحلل وحدها. تُطبق بعده قاعدتان.</p>
-<ol><li><b>الوجود الحرفي.</b> يجب أن يظهر اسم العلامة حرفيًا في نص الإجابة. وإلا يُستبعد الذكر.</li><li><b>حارس الأسماء المتشابهة.</b> يتلقى المحلل هوية المؤسسة: القطاع، المدينة، البلد، والموقع الإلكتروني إن قُدّم. الذكر الذي يشير بوضوح إلى مؤسسة أخرى تحمل الاسم نفسه في مكان آخر لا يُحتسب.</li></ol>
-<h3>المنافسون</h3>
-<p>يُحتسب المنافس المتابَع مرة واحدة على الأكثر في كل إجابة، مهما تكرر ذكره.</p>
-<h2 id="s30">4. المقاييس وصيغها</h2>
-<h3>الظهور</h3>
-<p>الظهور = الإجابات التي تذكر العلامة ÷ الإجابات المقيسة × 100.</p>
-<p>يُحسب إجمالًا، ولكل محرك، ولكل سؤال، ولكل نطاق (عام / ذيل طويل). الظهور لكل لغة هو متوسط ظهور أسئلة تلك اللغة.</p>
-<h3>حصة توصيات الذكاء الاصطناعي</h3>
-<p>الحصة = الإجابات التي تستشهد بالعلامة ÷ مجموع الاستشهادات بالعلامة ومنافسيها المتابَعين × 100.</p>
-<p>تُحسب هذه الحصة فقط بين المنافسين الذين تتابعونهم. وهي ليست حصة من السوق كله.</p>
-<h3>الموضع المتوسط</h3>
-<p>الموضع المتوسط = متوسط رتبة العلامة في الإجابات التي تُذكر فيها. الرقم 1 يعني أن العلامة ذُكرت أولًا. إذا لم تُذكر العلامة أبدًا، تكون القيمة فارغة، لا 0.</p>
-<h3>الانطباع</h3>
-<p>الانطباع = متوسط 100 (إيجابي)، 50 (محايد)، 0 (سلبي)، على الإجابات التي تُذكر فيها العلامة.</p>
-<h3>أهم المصادر</h3>
-<p>أهم المصادر = تكرار النطاقات التي تستشهد بها المحركات. تُحتسب الروابط المستشهد بها فعلًا فقط. تُحل روابط إعادة التوجيه إلى نطاقها النهائي.</p>
-<h2 id="s43">5. الدقة والثقة</h2>
-<h3>لماذا تتغير الإجابات</h3>
-<p>قد ينتج السؤال نفسه، إذا طُرح مرتين، إجابتين مختلفتين. هذا طبيعي في هذه المحركات. لذلك نطرح كل سؤال 3 مرات ونرفق النتائج بفاصل ثقة.</p>
-<h3>لكل سؤال: فاصل Wilson</h3>
-<p>لكل سؤال، نحسب فاصل Wilson بمستوى 95 % (z = 1.96) على معدل الذكر. الثقة = 100 × (1 − عرض الفاصل). الفاصل الضيق يعني نتيجة مستقرة.</p>
-<h3>لكل تقرير: إعادة المعاينة (bootstrap)</h3>
-<p>للنتيجة الإجمالية، نعيد معاينة الأسئلة 1000 مرة مع الإرجاع (bootstrap، ببذرة ثابتة 20260830، فتكون النتيجة قابلة لإعادة الإنتاج). ونحسب النتيجة لكل عينة.</p>
-<p>العرض = 2 × 1.96 × الانحراف المعياري للنتائج المعاد معاينتها. الثقة = 100 × (1 − العرض).</p>
-<h3>لماذا يُعرض ± على مستوى التقرير</h3>
-<p>يصف الرمز ± المعروض في لوحة التحكم نتيجة التقرير، لا سؤالًا واحدًا. السؤال الواحد يحوي إجابات أقل من أن تعطي ± ذا معنى وحده. يعكس الفاصل على مستوى التقرير مقدار تحرك النتيجة لو كانت مجموعة الأسئلة مختلفة قليلًا.</p>
-<h2 id="s53">6. نصوص التقرير ومنع الهلوسة</h2>
-<h3>التحليلات</h3>
-<p>يكتب التحليلات GPT-4o-mini (درجة الحرارة 0.4). تُكتب فقط من الأرقام المحسوبة، وفقط عن المحركات المقيسة.</p>
-<h3>التحقق</h3>
-<p>تراجع جولة ثانية (درجة الحرارة 0) كل اسم محرك وكل رقم في النص مقابل البيانات. عند وجود خطأ، يُعاد توليد النص مرة واحدة.</p>
-<h3>خطة العمل</h3>
-<p>ترتكز خطة العمل (درجة الحرارة 0.5) على قطاعكم، ومدينتكم، وأهم المصادر الملاحَظة.</p>
-<h3>مرشحات حتمية</h3>
-<p>بعد التوليد، تحذف مرشحات حتمية أي ذكر لمحرك لم يُقَس في التقرير.</p>
-<h3>الملخص التنفيذي</h3>
-<p>يُحسب الملخص التنفيذي المكون من 5 أسطر مباشرة من البيانات، لا بواسطة نموذج لغوي.</p>
-<h2 id="s64">7. ما لا نقيسه (بعد)</h2>
-<p>نفضل ذكر حدودنا بوضوح.</p>
-<ul><li><b>محركات غير مغطاة.</b> لا تُقاس اليوم Google AI Overviews، AI Mode، Copilot، Grok.</li><li><b>التغير الطبيعي.</b> تتغير الإجابات بين الجولات. ثلاث جولات وفاصل ثقة يقللان هذا الأثر دون إزالته.</li><li><b>الأسماء المتشابهة في المدينة نفسها.</b> لا يمكن التمييز بين مؤسستين بالاسم نفسه، في المدينة والقطاع نفسيهما، دون موقع إلكتروني.</li><li><b>أحجام الطلبات.</b> لا نقدّر عدد المستخدمين الحقيقيين الذين يطرحون كل سؤال.</li><li><b>الوتيرة.</b> القياسات أسبوعية، لا يومية.</li></ul>
-<h2 id="s67">8. البيانات والأمان</h2>
-<h3>السجل</h3>
-<p>يُحفظ كل تقرير وكل إجابة خام. تقارن لوحة التحكم كل تقرير بالسابق (عتبة التغير: نقطة واحدة؛ 0.2 للموضع) وتعرض الاتجاهات على آخر 12 تقريرًا.</p>
-<h3>التدقيق المجاني</h3>
-<p>يطرح التدقيق المجاني على الموقع 3 أسئلة نموذجية على محركين (ChatGPT، Gemini)، مرة واحدة لكل منهما. المدينة إلزامية. وهو مؤشر، لا تقرير.</p>
-<h3>الأمان</h3>
-<ul><li>نستخدم الواجهات البرمجية الرسمية فقط.</li><li>بيانات كل عميل معزولة حسب الحساب (أمان على مستوى الصفوف).</li><li>لا نعيد بيع أي بيانات.</li><li>يمكنكم الإلغاء بنقرة واحدة.</li></ul>
-<h2 id="s74">9. الإصدارات</h2>
-<p><b>إصدار 12 سبتمبر 2026.</b> تتغير هذه الصفحة عندما تتغير المنهجية.</p>
+<p>Méthode validée par l'équipe AIVisib.</p></div>
+<div class="mlang" id="ml_ar" dir="rtl"><h1>المنهجية: كيف يقيس AIVisib ظهور علامتك التجارية في إجابات الذكاء الاصطناعي</h1>
+<p>يقيس AIVisib عدد المرات التي توصي فيها المساعدات ChatGPT، Gemini، Perplexity، Claude بنشاطك التجاري عندما يطرح عليها عملاؤك سؤالًا. نطرح على هذه المساعدات الأربعة كل أسبوع الأسئلة التي يطرحها عملاؤك فعلًا، عدة مرات لكل سؤال، ثم نحسب درجة ظهورك مع هامش الخطأ الخاص بها. توضح هذه الصفحة مبادئنا، لتتمكن من الحكم على أرقامنا بالدليل.</p>
+<h2 id="s2">باختصار</h2>
+<ul><li><b>أسئلة عملاء حقيقيين</b>، مكيّفة مع قطاعك وسوقك ولغاتك (الإنجليزية، الفرنسية، العربية وغيرها).</li><li><b>أربعة مساعدات ذكاء اصطناعي تُسأل مع تفعيل البحث على الويب</b>، كما يفعل مستخدم جديد، دون حساب ودون سجل سابق.</li><li><b>يُطرح كل سؤال عدة مرات، كل أسبوع</b>، لأن المساعدات لا تجيب أبدًا بالطريقة نفسها تمامًا مرتين.</li><li><b>هامش خطأ معروض مع كل درجة</b>، للتمييز بين تغيّر حقيقي ومجرد تذبذب.</li><li><b>أنت من يعتمد الأسئلة</b> قبل أي قياس.</li></ul>
+<h2 id="s4">1. أسئلة عملاء حقيقيين، مكيّفة مع كل قطاع</h2>
+<p>جودة القياس تبدأ بجودة الأسئلة. أسئلتنا تحاكي الطريقة التي يسأل بها عملاؤك مساعد الذكاء الاصطناعي فعلًا: «أي عيادة أسنان أختار في الدار البيضاء لزراعة الأسنان؟»، «أي استوديو ثلاثي الأبعاد تنصح به لمشروع عقاري في جنيف؟».</p>
+<p>تُبنى الأسئلة انطلاقًا من قطاعك وسوقك ولغاتك، وتتكيّف مع نوع النشاط:</p>
+<ul><li><b>النشاط المحلي</b> (مطعم، عيادة، فندق، صالون): أسئلة على مستوى المدينة وأحيائها، كما يسأل أحد السكان أو الزوار.</li><li><b>الخدمات المقدَّمة للمهنيين</b> (وكالة، مكتب، استوديو): أسئلة على مستوى المدينة أو المنطقة، بصياغة صاحب قرار يختار مزوّد خدمة، وبمفردات مهنته.</li><li><b>المنتج المبيع عبر الإنترنت</b> (برنامج، علامة تجارة إلكترونية): أسئلة حول الاختيار والمقارنة والسعر والخصائص، دون ذكر مكان.</li></ul>
+<p>تجمع كل مجموعة بين أسئلة عامة («أفضل… في…») وأسئلة دقيقة (حاجة، ميزانية، وضع معيّن)، حيث تكون فرصة النشاط المتخصص في أن يُوصى به أكبر. يُصاغ كل سؤال بشكل طبيعي في لغته، والأسئلة العربية بالعربية الفصحى. وتستبعد عمليات مراقبة الجودة الأسئلة غير الواقعية أو الخارجة عن الموضوع أو المكررة.</p>
+<h3>القرار بيدك</h3>
+<p>يمكنك تعديل أي سؤال أو إضافته أو حذفه قبل الحفظ. لا يُقاس شيء دون موافقتك.</p>
+<h2 id="s11">2. أربعة مساعدات ذكاء اصطناعي، تُسأل كما يسأل مستخدم جديد</h2>
+<p>نقيس <b>ChatGPT، Gemini، Perplexity، Claude</b>، مع <b>تفعيل البحث على الويب</b> لكل منها، كما يستخدمها أغلب الناس اليوم.</p>
+<ul><li><b>حالة محايدة</b>: لا حساب مسجّل، ولا ذاكرة، ولا تخصيص. يبدأ كل سؤال من الصفر، كعميل جديد لا يعرفك. لهذا قد تختلف نتائجنا عمّا تراه في حسابك الخاص، حيث يعرف المساعد عاداتك.</li><li><b>التعليمات نفسها للمساعدات الأربعة</b>: الإجابة بشكل طبيعي، بلغة السؤال، مع ذكر مؤسسات حقيقية.</li><li><b>سوقك</b>: عند الحاجة، يُحدَّد موقع السؤال في مدينتك وبلدك.</li></ul>
+<h3>عدة جولات، كل أسبوع</h3>
+<p>يُطرح كل سؤال <b>ثلاث مرات على كل مساعد، كل أسبوع</b>. بالنسبة إلى 25 سؤالًا، يعني ذلك تحليل 300 إجابة في كل تقرير.</p>
+<h3>متى نرفض النشر</h3>
+<p>إذا فشل عدد كبير من الاستعلامات (عطل أو حدّ استخدام لدى أحد المساعدات)، لا يصدر أي تقرير. لا ننشر أبدًا نسبة 0% غير صحيحة. والمساعد الذي تعذّر الحصول منه على أي إجابة يُعرض بعبارة «لم يُقَس»، وليس 0% أبدًا.</p>
+<h2 id="s18">3. كيف تُحتسب التوصية</h2>
+<p>تُقرأ كل إجابة وتُحلَّل. ولا يُحتسب الذكر إلا إذا <b>ظهر اسم نشاطك فعلًا في نص الإجابة</b>.</p>
+<p>ونتحقق أيضًا من <b>تشابه الأسماء</b>: إذا كان المساعد يتحدث عن مؤسسة أخرى تحمل الاسم نفسه، في مكان آخر أو في قطاع آخر، فلا يُحتسب الذكر. وكلما زوّدتنا بمعلومات أكثر (القطاع، المدينة، الموقع الإلكتروني)، كان هذا التحقق أدق.</p>
+<p>يُحتسب المنافس المتابَع مرة واحدة على الأكثر في كل إجابة، مهما تكرر ذكره.</p>
+<h2 id="s22">4. مؤشرات التقرير</h2>
+<h3>درجة الظهور في الذكاء الاصطناعي</h3>
+<p><b>الظهور = الإجابات التي تذكر علامتك ÷ الإجابات المحلَّلة × 100.</b> من بين 100 إجابة لمساعدات الذكاء الاصطناعي عن أسئلة العملاء، كم إجابة توصي بك؟ تُحسب إجماليًا، ولكل مساعد، ولكل سؤال، ولكل لغة.</p>
+<h3>حصة التوصيات</h3>
+<p><b>الحصة = مرات ذكر علامتك ÷ مرات ذكر علامتك ومنافسيك المتابَعين × 100.</b> تقيس موقعك مقارنة بالمنافسين الذين اخترتهم، لا مقارنة بالسوق كله.</p>
+<h3>متوسط الترتيب</h3>
+<p>متوسط ترتيب علامتك في الإجابات التي تذكرها. الرقم 1 يعني أنها ذُكرت أولًا. إذا لم تُذكر أبدًا، تبقى القيمة فارغة، وليست 0.</p>
+<h3>الانطباع</h3>
+<p>نبرة الإجابات عندما تذكرك: 100 للإيجابية، 50 للمحايدة، 0 للسلبية، في المتوسط.</p>
+<h3>المصادر التي تعتمد عليها المساعدات</h3>
+<p>المواقع التي تستشهد بها المساعدات عند الإجابة (أدلة، منصات تقييم، مقالات، مواقع منافسيك). لا تُحتسب إلا المصادر المستشهد بها فعلًا. إنها خريطة عملك: أن تكون حاضرًا حيث تبحث المساعدات.</p>
+<h2 id="s33">5. الدقة: لماذا نعرض هامش الخطأ</h2>
+<p>إذا طرحت السؤال نفسه مرتين على مساعد ذكاء اصطناعي، فقد تحصل على إجابتين مختلفتين. هذا أمر طبيعي. لذلك فإن درجة تُقاس مرة واحدة فقط تبقى رهينة الصدفة.</p>
+<p>لهذا ترافق كل درجة <b>مجالَ ثقة بنسبة 95%</b>، يُحسب بأساليب إحصائية معتمدة، ويمكن إعادة إنتاجه. مثال: <b>13% ± 4</b> تعني أن الدرجة الحقيقية تقع على الأرجح في المجال الممتد من 9% إلى 17%.</p>
+<p>عمليًا: الانتقال من 13% إلى 14% من أسبوع إلى آخر مجرد تذبذب. أما الانتقال من 13% إلى 25% فهو تقدّم حقيقي. وتوضح لك لوحة التحكم بجلاء أيّ الحالتين تعيشها.</p>
+<h2 id="s37">6. تقارير بلا اختلاق</h2>
+<ul><li>تُكتب نصوص التحليل <b>انطلاقًا من الأرقام المقيسة وحدها</b>.</li><li>يُتحقَّق <b>آليًا</b> من كل رقم وكل اسم مساعد يرد في النص قبل النشر.</li><li>لا يُذكر في التقرير أبدًا مساعد لم يُقَس.</li><li>يُحسب الملخص التنفيذي مباشرة من البيانات.</li><li>تستند خطة العمل إلى قطاعك وسوقك والمصادر التي رُصدت فعلًا.</li></ul>
+<h2 id="s39">7. ما لا نقيسه (حتى الآن)</h2>
+<p>نفضّل أن نعلن حدودنا بوضوح.</p>
+<ul><li><b>مساعدات غير مشمولة.</b> لا نقيس اليوم Google AI Overviews ولا AI Mode ولا Copilot ولا Grok.</li><li><b>التذبذب الطبيعي.</b> تقلّل الجولات المتعددة وهامش الخطأ من أثر الصدفة دون أن تلغيه.</li><li><b>الأسماء المتشابهة في المدينة نفسها.</b> لا يمكن التمييز بين مؤسستين تحملان الاسم نفسه، في المدينة والقطاع نفسيهما، دون موقع إلكتروني.</li><li><b>أحجام البحث.</b> لا نقدّر عدد الأشخاص الذين يطرحون كل سؤال.</li><li><b>وتيرة القياس.</b> القياس أسبوعي، وليس يوميًا.</li></ul>
+<h2 id="s42">8. البيانات والأمان</h2>
+<ul><li>يُحتفظ بكل تقرير وكل إجابة. وتقارن لوحة التحكم كل تقرير بالذي سبقه، وتعرض تطوّرك عبر الزمن.</li><li>نستخدم الوصول الرسمي إلى المساعدات فقط.</li><li>بيانات كل عميل معزولة حسب الحساب.</li><li>لا نبيع أي بيانات، ولا تُستخدم بياناتك لتدريب أي ذكاء اصطناعي.</li><li>يمكنك إلغاء الاشتراك بنقرة واحدة.</li><li>يطرح الاختبار المجاني على موقعنا بعض الأسئلة النموذجية مرة واحدة: إنه مؤشر أولي، وليس تقريرًا.</li></ul>
+<h2 id="s44">9. أسئلة شائعة</h2>
+<h3>كيف أعرف إن كان ChatGPT يوصي بنشاطي التجاري؟</h3>
+<p>لا يكفي أن تسأله بنفسك: فهذا المساعد يعرف سجلك، وتختلف إجاباته من مرة إلى أخرى. يجب طرح أسئلة عملائك، من حالة محايدة، عدة مرات، ثم احتساب الإجابات التي تذكرك. وهذا بالضبط ما يقوم به AIVisib كل أسبوع على ChatGPT، Gemini، Perplexity، Claude.</p>
+<h3>لماذا تتغيّر درجتي من أسبوع إلى آخر؟</h3>
+<p>تختلف إجابات المساعدات بشكل طبيعي، وتتطوّر مصادرها. ويبيّن لك هامش الخطأ المعروض ما إذا كان التغيّر ذا دلالة أم ضمن التذبذب العادي.</p>
+<h3>لماذا تختلف نتائجي عمّا أراه على هاتفي؟</h3>
+<p>في حسابك، يأخذ المساعد في الاعتبار سجلك وموقعك وتفضيلاتك. أما قياساتنا فتحاكي عميلًا جديدًا لا يعرفك: وهذا ما يهمّ لكسب عملاء جدد.</p>
+<h3>لماذا القياس بالعربية والفرنسية؟</h3>
+<p>لأن عملاءك يطرحون أسئلتهم بلغتهم، ولأن المساعدات لا توصي دائمًا بالمؤسسات نفسها من لغة إلى أخرى. نقيس باللغات الفعلية لسوقك.</p>
+<h3>كم يستغرق تحسين الظهور في الذكاء الاصطناعي؟</h3>
+<p>تظهر الآثار الأولى للإجراءات عادة خلال 4 إلى 8 أسابيع، بحسب القطاع وحدّة المنافسة. لا نعد أبدًا بترتيب معيّن: نقيس كل أسبوع ما يتغيّر فعلًا.</p>
+<h3>ما الفرق عن تحسين الظهور في محرك Google؟</h3>
+<p>الترتيب الأول في Google لا يضمن أن يوصي بك مساعد ذكاء اصطناعي. فالمساعدات تعتمد على مصادرها الخاصة (أدلة، تقييمات، مقالات، منتديات). ولذلك يجب قياس الظهور في الذكاء الاصطناعي والعمل عليه بشكل مستقل.</p>
+<h2 id="s57">الإصدارات</h2>
+<p><b>إصدار 25 سبتمبر 2026.</b> تتطور هذه الصفحة مع تطور منهجيتنا.</p>
 <hr>
-<p>المنهجية معتمدة من فريق AIVisib.</p></div>
+<p>المنهجية معتمدة من فريق AIVisib.</p></div>
 <div class="msign"><i class="mmark">◈</i><span id="msign"></span></div>
 
 </main>
@@ -1280,9 +1230,8 @@ body.rtl .mth ul,body.rtl .mth ol{margin:0 22px 14px 0}
   <div class="ft"><div>© 2026 AIVisib — Norstrol LLC</div><div><a href="mailto:hello@aivisib.com">hello@aivisib.com</a></div></div>
 </div></footer>
 <script>
-const NAV={"en":{"n1":"How it works","n2":"Features","n3":"Pricing","n4":"Log in","n5":"Agencies","n6":"Methodology","n7":"FAQ","n_test":"Free test","v_back":"← Back to home","f_company":"AIVisib is a product of Norstrol LLC (United States). Contact hello@aivisib.com.","ft_prod":"Product","ft_res":"Resources","ft_co":"Company","ft_test":"Free AI-visibility check","ft_tech":"Technical overview (PDF)","ft_sample":"Sample report — BoursoBank","ft_cmp3":"Compared with Peec, Otterly, Profound","ft_about":"The team","ft_privacy":"Privacy policy","ft_terms":"Terms"},"fr":{"n1":"Fonctionnement","n2":"Fonctionnalités","n3":"Tarifs","n4":"Connexion","n5":"Agences","n6":"Méthodologie","n7":"FAQ","n_test":"Test gratuit","v_back":"← Retour à l'accueil","f_company":"AIVisib est un produit de Norstrol LLC (États-Unis). Contact : hello@aivisib.com.","ft_prod":"Produit","ft_res":"Ressources","ft_co":"Entreprise","ft_test":"Test de visibilité IA gratuit","ft_tech":"Présentation technique (PDF)","ft_sample":"Rapport exemple — BoursoBank","ft_cmp3":"Comparatif : Peec, Otterly, Profound","ft_about":"L'équipe","ft_privacy":"Politique de confidentialité","ft_terms":"Conditions"},"ar":{"n1":"كيف يعمل","n2":"المميزات","n3":"الأسعار","n4":"تسجيل الدخول","n5":"الوكالات","n6":"المنهجية","n7":"الأسئلة الشائعة","n_test":"فحص مجاني","v_back":"← العودة إلى الرئيسية","f_company":"AIVisib منتج من Norstrol LLC (الولايات المتحدة). للتواصل: hello@aivisib.com.","ft_prod":"المنتج","ft_res":"الموارد","ft_co":"الشركة","ft_test":"فحص مجاني للظهور في الذكاء الاصطناعي","ft_tech":"العرض التقني (PDF)","ft_sample":"تقرير نموذجي — BoursoBank","ft_cmp3":"مقارنة مع Peec، Otterly، Profound","ft_about":"الفريق","ft_privacy":"سياسة الخصوصية","ft_terms":"الشروط"}};const META={"en":{"t":"AIVisib methodology — how we measure AI visibility","d":"Engines, models, 3 passes per question, Wilson and bootstrap confidence, anti-hallucination guards, and what we do not measure. Published in full."},"fr":{"t":"Méthodologie AIVisib — comment nous mesurons la visibilité IA","d":"Moteurs, modèles, 3 passages par question, confiance de Wilson et bootstrap, garde-fous anti-hallucination, et ce que nous ne mesurons pas. Publié en entier."},"ar":{"t":"منهجية AIVisib — كيف نقيس الظهور في الذكاء الاصطناعي","d":"المحركات، النماذج، 3 جولات لكل سؤال، ثقة ويلسون والبوتستراب، ضوابط ضد الهلوسة، وما لا نقيسه. منشورة بالكامل."}};
+const NAV={"en":{"n1":"How it works","n2":"Features","n3":"Pricing","n4":"Log in","n5":"Agencies","n6":"Methodology","n7":"FAQ","n_test":"Free test","v_back":"← Back to home","f_company":"AIVisib is a product of Norstrol LLC (United States). Contact hello@aivisib.com.","ft_prod":"Product","ft_res":"Resources","ft_co":"Company","ft_test":"Free AI-visibility check","ft_tech":"Technical overview (PDF)","ft_sample":"Sample report — BoursoBank","ft_cmp3":"Compared with Peec, Otterly, Profound","ft_about":"The team","ft_privacy":"Privacy policy","ft_terms":"Terms"},"fr":{"n1":"Fonctionnement","n2":"Fonctionnalités","n3":"Tarifs","n4":"Connexion","n5":"Agences","n6":"Méthodologie","n7":"FAQ","n_test":"Test gratuit","v_back":"← Retour à l'accueil","f_company":"AIVisib est un produit de Norstrol LLC (États-Unis). Contact : hello@aivisib.com.","ft_prod":"Produit","ft_res":"Ressources","ft_co":"Entreprise","ft_test":"Test de visibilité IA gratuit","ft_tech":"Présentation technique (PDF)","ft_sample":"Rapport exemple — BoursoBank","ft_cmp3":"Comparatif : Peec, Otterly, Profound","ft_about":"L'équipe","ft_privacy":"Politique de confidentialité","ft_terms":"Conditions"},"ar":{"n1":"كيف يعمل","n2":"المميزات","n3":"الأسعار","n4":"تسجيل الدخول","n5":"الوكالات","n6":"المنهجية","n7":"الأسئلة الشائعة","n_test":"فحص مجاني","v_back":"← العودة إلى الرئيسية","f_company":"AIVisib منتج من Norstrol LLC (الولايات المتحدة). للتواصل: hello@aivisib.com.","ft_prod":"المنتج","ft_res":"الموارد","ft_co":"الشركة","ft_test":"فحص مجاني للظهور في الذكاء الاصطناعي","ft_tech":"العرض التقني (PDF)","ft_sample":"تقرير نموذجي — BoursoBank","ft_cmp3":"مقارنة مع Peec، Otterly، Profound","ft_about":"الفريق","ft_privacy":"سياسة الخصوصية","ft_terms":"الشروط"}};const META={"en":{"t":"How we measure AI visibility — AIVisib methodology","d":"How AIVisib measures if ChatGPT, Gemini, Perplexity and Claude recommend your business: real customer questions, weekly passes, margin of error."},"fr":{"t":"Comment nous mesurons la visibilité IA — méthodologie AIVisib","d":"Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur."},"ar":{"t":"كيف نقيس الظهور في الذكاء الاصطناعي — منهجية AIVisib","d":"كيف يقيس AIVisib إن كانت ChatGPT، Gemini، Perplexity، Claude توصي بنشاطك: أسئلة عملاء حقيقيين، قياس أسبوعي، وهامش خطأ."}};
 const SIGN={en:"Method validated by the AIVisib team.",fr:"Méthode validée par l'équipe AIVisib.",ar:"المنهجية معتمدة من فريق AIVisib."};
-const PDF={en:"Technical overview (PDF, 2 pages) →",fr:"Présentation technique (PDF, 2 pages) →",ar:"العرض التقني (PDF، صفحتان) ←"};
 let lang='fr';
 function setLang(l){lang=l;document.body.classList.toggle('rtl',l==='ar');document.documentElement.lang=l;document.title=META[l].t;document.querySelector('meta[name=description]').setAttribute('content',META[l].d);
  document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(NAV[l][k]!==undefined)e.textContent=NAV[l][k]});

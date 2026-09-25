@@ -1,171 +1,141 @@
-# Méthodologie
+# Méthodologie : comment AIVisib mesure la visibilité de votre marque dans les réponses des IA
 
-AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise. Nous publions cette page pour que vous puissiez juger nos chiffres sur pièces, pas sur parole.
+AIVisib mesure à quelle fréquence ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise quand vos clients leur posent une question. Chaque semaine, nous posons à ces quatre IA les questions que vos clients posent réellement, plusieurs fois chacune, et nous calculons votre score de visibilité avec sa marge d'erreur. Cette page explique nos principes, pour que vous puissiez juger nos chiffres sur pièces.
 
-## 1. Les questions
+## En bref
 
-### Comment les questions sont générées
+- **Des questions de vrais clients**, adaptées à votre secteur, à votre marché et à vos langues (anglais, français, arabe et d'autres).
+- **Quatre IA interrogées avec recherche web**, comme le ferait un nouvel utilisateur, sans compte ni historique.
+- **Chaque question posée plusieurs fois, chaque semaine**, parce que les IA ne répondent jamais deux fois exactement pareil.
+- **Une marge d'erreur affichée sur chaque score**, pour distinguer une vraie évolution du simple bruit.
+- **Vous validez les questions** avant toute mesure. Rien n'est mesuré sans votre accord.
 
-Les questions sont générées pour chaque marque à partir de trois éléments : son secteur, sa ville et ses langues. La liste se construit en plusieurs étapes.
+## 1. Des questions de vrais clients, adaptées à chaque secteur
 
-1. **Quartiers.** GPT-4o propose des quartiers de la ville. Chacun est vérifié dans OpenStreetMap (Nominatim, recherche limitée à la ville). Les lieux non vérifiés sont écartés.
-2. **Brouillons.** GPT-4o-mini (température 0,9) rédige des questions candidates, avec 40 % de plus que nécessaire. L'ensemble mélange des questions larges à l'échelle de la ville et des questions de longue traîne citant un vrai quartier ou un besoin précis.
-3. **Garde-fou d'alphabet.** Les questions en arabe ne contiennent aucune lettre latine, et les questions en alphabet latin aucune lettre arabe.
-4. **Relecture.** GPT-4o (température 0) rejette les questions irréalistes, hors secteur, ou citant un lieu absent de la liste vérifiée.
-5. **Dédoublonnage.** Chaque question est encodée avec text-embedding-3-small. Deux questions dont la similarité cosinus dépasse 0,85 sont considérées comme des paraphrases, et l'une est supprimée.
+La qualité d'une mesure dépend d'abord des questions posées. Nos questions reproduisent la façon dont vos clients interrogent réellement une IA : « quelle clinique dentaire choisir à Casablanca pour des implants ? », « quel studio 3D recommandez-vous pour un projet immobilier à Genève ? ».
+
+Elles sont construites à partir de votre secteur, de votre marché et de vos langues, et s'adaptent au type d'activité :
+
+- **Commerce local** (restaurant, clinique, hôtel, salon) : des questions à l'échelle de la ville et de ses quartiers, comme le ferait un habitant ou un visiteur.
+- **Service aux professionnels** (agence, cabinet, studio) : des questions à l'échelle de la ville ou de la région, formulées comme un décideur qui choisit un prestataire, avec le vocabulaire de son métier.
+- **Produit vendu en ligne** (logiciel, marque e-commerce) : des questions de choix, de comparaison, de prix et de fonctionnalités, sans notion de lieu.
+
+Le jeu mélange des questions larges (« le meilleur… à… ») et des questions précises (un besoin, un budget, une situation), là où une entreprise spécialisée a le plus de chances d'être recommandée. Chaque question est rédigée naturellement dans sa langue, et l'arabe en arabe standard. Des contrôles de qualité écartent les questions irréalistes, hors sujet ou en double.
 
 ### Votre contrôle
 
-Vous pouvez modifier ou supprimer chaque question avant l'enregistrement. Rien n'est mesuré sans votre validation de la liste.
+Vous pouvez modifier, ajouter ou supprimer chaque question avant l'enregistrement. Rien n'est mesuré sans votre validation.
 
-### Head et longue traîne
+## 2. Quatre IA, interrogées comme un nouvel utilisateur
 
-Chaque question est étiquetée « head » (large, échelle de la ville) ou « longue traîne » (quartier ou besoin précis). Les métriques sont fournies pour les deux périmètres.
+Nous mesurons **ChatGPT, Gemini, Perplexity et Claude**, chacun avec sa **recherche web activée**, comme l'utilisent aujourd'hui la plupart des gens.
 
-## 2. Les moteurs et la façon d'interroger
+- **État neutre** : ni compte connecté, ni mémoire, ni personnalisation. Chaque question part de zéro, comme pour un nouveau client qui ne vous connaît pas. C'est pourquoi nos résultats peuvent différer de ce que vous voyez sur votre propre compte, où l'IA connaît vos habitudes.
+- **Même consigne pour les quatre IA** : répondre naturellement, dans la langue de la question, en nommant des entreprises réelles.
+- **Votre marché** : quand c'est pertinent, l'interrogation est située dans votre ville et votre pays.
 
-### Moteurs et réglages
+### Plusieurs passages, chaque semaine
 
-| Moteur | Modèle et configuration |
-|---|---|
-| ChatGPT | OpenAI Responses API avec recherche web, taille de contexte de recherche « low », localisation approximative réglée sur votre ville et votre pays |
-| Gemini | Gemini 2.5 Flash avec ancrage Google Search, température 0,6 |
-| Perplexity | Sonar, recherche web en direct, température 0,6 |
-| Claude | Claude Haiku 4.5 avec recherche web (2 recherches au maximum), température 0,6, 1024 tokens de sortie |
-
-### La même consigne pour tous les moteurs
-
-Les quatre moteurs reçoivent le même prompt système neutre : répondre naturellement, nommer des entreprises réelles, répondre dans la langue de la question.
-
-### État neutre
-
-Il n'y a ni mémoire, ni personnalisation, ni compte connecté. Chaque question part d'un état vierge, proche de ce que verrait un nouvel utilisateur.
-
-### Passes et rythme
-
-Chaque question est posée 3 fois par moteur, chaque semaine. Pour une marque type, 16 questions × 4 moteurs × 3 passes donnent 192 réponses par rapport.
-
-Les appels sont exécutés en parallèle (6 à la fois), avec 3 nouvelles tentatives en cas d'erreur temporaire.
+Chaque question est posée **3 fois à chaque IA, chaque semaine**. Pour 25 questions, cela représente 300 réponses analysées par rapport.
 
 ### Quand nous refusons de publier
 
-Si moins de 50 % des appels réussissent, aucun rapport n'est émis. Nous ne publions jamais un faux 0 %. Un moteur sans aucune réponse réussie est affiché « non mesuré », jamais 0 %.
+Si trop d'interrogations échouent (panne ou limite d'une IA), aucun rapport n'est émis. Nous ne publions jamais un faux 0 %. Une IA pour laquelle aucune réponse n'a pu être obtenue est affichée « non mesurée », jamais 0 %.
 
-## 3. Comment nous comptons une mention
+## 3. Comment une recommandation est comptée
 
-### L'analyseur
+Chaque réponse est lue et analysée. Une mention n'est comptée que si **le nom de votre entreprise apparaît réellement dans le texte** de la réponse.
 
-Chaque réponse est lue par GPT-4o-mini à température 0. Il renvoie un JSON structuré : marque mentionnée (oui/non), rang de 1 à 10 parmi les entreprises nommées, concurrents suivis mentionnés, autres marques, sources citées, et sentiment (positif, neutre, négatif).
+Nous vérifions aussi les **homonymes** : si l'IA parle d'une autre entreprise portant le même nom, ailleurs ou dans un autre secteur, la mention n'est pas comptée. Plus vous nous donnez d'informations (secteur, ville, site web), plus cette vérification est fiable.
 
-### Deux garde-fous déterministes
+Un concurrent suivi compte au plus une fois par réponse, même s'il est nommé plusieurs fois.
 
-La sortie de l'analyseur n'est jamais prise seule. Deux règles s'appliquent ensuite.
+## 4. Les indicateurs du rapport
 
-1. **Présence littérale.** Le nom de la marque doit apparaître littéralement dans le texte de la réponse. Sinon, la mention est écartée.
-2. **Garde-fou des homonymes.** L'analyseur reçoit l'identité de l'entreprise : secteur, ville, pays, et site web s'il est fourni. Une mention qui désigne clairement une autre entreprise du même nom, ailleurs, n'est pas comptée.
+### Score de visibilité IA
 
-### Concurrents
-
-Un concurrent suivi compte au plus une fois par réponse, quel que soit le nombre de fois où il est nommé.
-
-## 4. Les métriques et leurs formules
-
-### Visibilité
-
-Visibilité = réponses mentionnant la marque ÷ réponses mesurées × 100.
-
-Elle est calculée globalement, par moteur, par question et par périmètre (head / longue traîne). La visibilité par langue est la moyenne des visibilités des questions de cette langue.
+**Visibilité = réponses qui mentionnent votre marque ÷ réponses analysées × 100.** Sur 100 réponses des IA à des questions de clients, combien vous citent ? Elle est calculée globalement, par IA, par question et par langue.
 
 ### Part des recommandations IA
 
-Part = réponses citant la marque ÷ total des citations de la marque et de ses concurrents suivis × 100.
-
-Cette part est calculée uniquement parmi les concurrents que vous suivez. Ce n'est pas une part de l'ensemble du marché.
+**Part = mentions de votre marque ÷ mentions de votre marque et de vos concurrents suivis × 100.** Elle mesure votre place face aux concurrents que vous avez choisis, pas face à tout le marché.
 
 ### Position moyenne
 
-Position moyenne = rang moyen de la marque dans les réponses où elle est citée. 1 signifie que la marque est nommée en premier. Si la marque n'est jamais citée, la valeur est vide, pas 0.
+Le rang moyen de votre marque dans les réponses où elle est citée. 1 signifie qu'elle est nommée en premier. Si elle n'est jamais citée, la valeur reste vide, pas 0.
 
 ### Sentiment
 
-Sentiment = moyenne de 100 (positif), 50 (neutre) et 0 (négatif), sur les réponses où la marque est citée.
+Le ton des réponses quand elles vous citent : 100 pour positif, 50 pour neutre, 0 pour négatif, en moyenne.
 
-### Sources principales
+### Sources consultées par les IA
 
-Sources principales = fréquence des domaines cités par les moteurs. Seules les URL réellement citées comptent. Les URL de redirection sont résolues vers leur domaine final.
+Les sites que les IA citent quand elles répondent (annuaires, plateformes d'avis, articles, sites de vos concurrents). Seules les sources réellement citées sont comptées. C'est votre carte d'action : être présent là où les IA vont chercher.
 
-## 5. Précision et confiance
+## 5. Précision : pourquoi nous affichons une marge d'erreur
 
-### Pourquoi les réponses varient
+La même question posée deux fois à une IA peut donner deux réponses différentes. C'est normal. Un score mesuré une seule fois serait donc un coup de dés.
 
-La même question posée deux fois peut produire deux réponses différentes. C'est normal pour ces moteurs. C'est pourquoi nous posons chaque question 3 fois et associons un intervalle de confiance aux résultats.
+C'est pourquoi chaque score est accompagné d'un **intervalle de confiance à 95 %**, calculé avec des méthodes statistiques reconnues, et reproductible. Exemple : **13 % ± 4** signifie que le vrai score se situe très probablement entre 9 % et 17 %.
 
-### Par question : intervalle de Wilson
+En pratique : passer de 13 % à 14 % d'une semaine à l'autre, c'est du bruit. Passer de 13 % à 25 %, c'est une vraie progression. Le tableau de bord vous indique clairement laquelle des deux situations vous vivez.
 
-Pour chaque question, nous calculons un intervalle de Wilson à 95 % (z = 1,96) sur son taux de mention. Confiance = 100 × (1 − largeur de l'intervalle). Un intervalle étroit signifie un résultat stable.
+## 6. Des rapports sans invention
 
-### Par rapport : bootstrap
-
-Pour le score global, nous rééchantillonnons les questions 1 000 fois avec remise (bootstrap, graine fixe 20260830, donc résultat reproductible). Nous calculons le score pour chaque rééchantillon.
-
-Largeur = 2 × 1,96 × écart-type des scores rééchantillonnés. Confiance = 100 × (1 − largeur).
-
-### Pourquoi le ± est affiché au niveau du rapport
-
-Le ± affiché dans le tableau de bord décrit le score du rapport, pas une question isolée. Une question seule a trop peu de réponses pour un ± significatif. L'intervalle au niveau du rapport indique de combien le score bougerait si le jeu de questions avait été légèrement différent.
-
-## 6. Textes du rapport et anti-hallucination
-
-### Analyses
-
-Les analyses sont rédigées par GPT-4o-mini (température 0,4). Elles sont écrites uniquement à partir des chiffres calculés, et uniquement sur les moteurs mesurés.
-
-### Vérification
-
-Une seconde passe (température 0) contrôle chaque nom de moteur et chaque chiffre du texte par rapport aux données. En cas d'erreur, le texte est régénéré une fois.
-
-### Plan d'action
-
-Le plan d'action (température 0,5) s'appuie sur votre secteur, votre ville et les sources principales observées.
-
-### Filtres déterministes
-
-Après génération, des filtres déterministes suppriment toute mention d'un moteur non mesuré dans le rapport.
-
-### Résumé exécutif
-
-Le résumé exécutif en 5 lignes est calculé directement à partir des données, pas par un modèle de langage.
+- Les textes d'analyse sont rédigés **uniquement à partir des chiffres mesurés**.
+- Chaque chiffre et chaque nom d'IA cité dans le texte est **vérifié automatiquement** avant publication.
+- Une IA qui n'a pas été mesurée n'est jamais mentionnée dans le rapport.
+- Le résumé exécutif est calculé directement à partir des données.
+- Le plan d'action s'appuie sur votre secteur, votre marché et les sources réellement observées.
 
 ## 7. Ce que nous ne mesurons pas (encore)
 
 Nous préférons énoncer nos limites clairement.
 
-- **Moteurs non couverts.** Google AI Overviews et AI Mode, Copilot et Grok ne sont pas mesurés aujourd'hui.
-- **Variation naturelle.** Les réponses varient d'une passe à l'autre. Trois passes et un intervalle de confiance réduisent cet effet sans le supprimer.
+- **IA non couvertes.** Google AI Overviews et AI Mode, Copilot et Grok ne sont pas mesurés aujourd'hui.
+- **Variation naturelle.** Plusieurs passages et une marge d'erreur réduisent l'effet du hasard sans le supprimer.
 - **Homonymes dans la même ville.** Deux entreprises du même nom, dans la même ville et le même secteur, ne peuvent pas être distinguées sans site web.
-- **Volumes de requêtes.** Nous n'estimons pas combien d'utilisateurs réels posent chaque question.
+- **Volumes de recherche.** Nous n'estimons pas combien de personnes posent chaque question.
 - **Fréquence.** Les mesures sont hebdomadaires, pas quotidiennes.
 
 ## 8. Données et sécurité
 
-### Historique
-
-Chaque rapport et chaque réponse brute sont conservés. Le tableau de bord compare chaque rapport au précédent (seuil de variation : 1 point ; 0,2 pour la position) et affiche les tendances sur les 12 derniers rapports.
-
-### Audit gratuit
-
-L'audit gratuit du site pose 3 questions types à 2 moteurs (ChatGPT, Gemini), une fois chacune. La ville est obligatoire. C'est une indication, pas un rapport.
-
-### Sécurité
-
-- Nous utilisons uniquement les API officielles.
-- Les données de chaque client sont isolées par compte (sécurité au niveau des lignes).
-- Nous ne revendons aucune donnée.
+- Chaque rapport et chaque réponse sont conservés. Le tableau de bord compare chaque rapport au précédent et affiche vos tendances dans le temps.
+- Nous utilisons uniquement les accès officiels des IA.
+- Les données de chaque client sont isolées par compte.
+- Nous ne revendons aucune donnée, et vos données ne servent pas à entraîner d'IA.
 - Vous pouvez résilier en un clic.
+- Le test gratuit du site pose quelques questions types, une fois : c'est une indication, pas un rapport.
 
-## 9. Versions
+## 9. Questions fréquentes
 
-**Version du 12 septembre 2026.** Cette page change quand la méthode change.
+### Comment savoir si ChatGPT recommande mon entreprise ?
+
+Poser vous-même la question ne suffit pas : ChatGPT connaît votre historique et ses réponses varient d'une fois à l'autre. Il faut poser les questions de vos clients, depuis un état neutre, plusieurs fois, et compter les réponses qui vous citent. C'est exactement ce que fait AIVisib chaque semaine, sur ChatGPT, Gemini, Perplexity et Claude.
+
+### Pourquoi mon score change-t-il d'une semaine à l'autre ?
+
+Les réponses des IA varient naturellement, et leurs sources évoluent. La marge d'erreur affichée vous indique si un changement est significatif ou s'il reste dans le bruit normal.
+
+### Pourquoi mes résultats diffèrent-ils de ce que je vois sur mon téléphone ?
+
+Sur votre compte, l'IA tient compte de votre historique, de votre position et de vos préférences. Nos mesures reproduisent un nouveau client qui ne vous connaît pas : c'est ce qui compte pour gagner de nouveaux clients.
+
+### Pourquoi mesurer en arabe et en français ?
+
+Parce que vos clients posent leurs questions dans leur langue, et que les IA ne recommandent pas toujours les mêmes entreprises selon la langue. Nous mesurons dans les langues réelles de votre marché.
+
+### En combien de temps peut-on améliorer sa visibilité ?
+
+Les premiers effets des actions apparaissent en général en 4 à 8 semaines, selon le secteur et la concurrence. Nous ne promettons jamais un classement : nous mesurons chaque semaine ce qui change réellement.
+
+### Quelle différence avec le référencement Google ?
+
+Être premier sur Google ne garantit pas d'être recommandé par une IA. Les IA s'appuient sur leurs propres sources (annuaires, avis, articles, forums). La visibilité IA se mesure et se travaille séparément.
+
+## Versions
+
+**Version du 25 septembre 2026.** Cette page évolue avec notre méthode.
 
 ---
 

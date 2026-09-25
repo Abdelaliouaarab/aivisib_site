@@ -1,171 +1,141 @@
-# Methodology
+# Methodology: how AIVisib measures your brand's visibility in AI answers
 
-AIVisib measures whether ChatGPT, Gemini, Perplexity and Claude recommend your business. We publish this page so you can judge our numbers on their merits, not on our word.
+AIVisib measures how often ChatGPT, Gemini, Perplexity and Claude recommend your business when your customers ask them a question. Every week, we ask these four AI assistants the questions your customers actually ask, several times each, and we calculate your visibility score with its margin of error. This page explains our principles, so you can judge our numbers on evidence.
 
-## 1. The questions
+## At a glance
 
-### How questions are generated
+- **Real customer questions**, tailored to your sector, your market and your languages (English, French, Arabic and more).
+- **Four AI assistants queried with web search on**, the way a new user would, with no account and no history.
+- **Every question asked several times, every week**, because AI assistants never answer exactly the same way twice.
+- **A margin of error shown on every score**, so you can tell a real change from noise.
+- **You approve the questions** before anything is measured.
 
-Questions are generated for each brand from three inputs: its sector, its city and its languages. The list is built in several steps.
+## 1. Real customer questions, tailored to each sector
 
-1. **Neighbourhoods.** GPT-4o proposes neighbourhoods of the city. Each one is verified against OpenStreetMap (Nominatim, bounded to the city). Unverified places are dropped.
-2. **Drafts.** GPT-4o-mini (temperature 0.9) writes candidate questions, with 40% more than needed. The set mixes broad, city-level questions and long-tail questions naming a real neighbourhood or a precise need.
-3. **Alphabet guard.** Arabic questions contain no Latin letters, and Latin-script questions contain no Arabic letters.
-4. **Review.** GPT-4o (temperature 0) rejects questions that are unrealistic, outside the sector or that name a place not in the verified list.
-5. **De-duplication.** Each question is embedded with text-embedding-3-small. Two questions with cosine similarity above 0.85 are treated as paraphrases, and one is removed.
+A measurement is only as good as the questions behind it. Our questions reflect how your customers really ask an AI assistant: "which dental clinic should I choose in Casablanca for implants?", "which 3D studio do you recommend for a real estate project in Geneva?".
 
-### Your control
+They are built from your sector, your market and your languages, and they adapt to the type of business:
 
-You can edit or delete every question before saving. Nothing is measured without your approval of the list.
+- **Local business** (restaurant, clinic, hotel, salon): questions at city and neighbourhood level, the way a resident or a visitor would ask.
+- **Professional services** (agency, firm, studio): questions at city or regional level, phrased like a decision-maker choosing a provider, with the vocabulary of their trade.
+- **Product sold online** (software, e-commerce brand): questions about choice, comparison, price and features, with no location.
 
-### Head and long-tail
+Each set mixes broad questions ("the best… in…") with specific ones (a need, a budget, a situation), where a specialised business has the best chance of being recommended. Every question is written naturally in its language, and Arabic questions in Modern Standard Arabic. Quality checks remove unrealistic, off-topic or duplicate questions.
 
-Each question is tagged "head" (broad, city-level) or "long-tail" (specific neighbourhood or need). Metrics are reported for both scopes.
+### You stay in control
 
-## 2. The engines and how we ask
+You can edit, add or delete any question before saving. Nothing is measured without your approval.
 
-### Engines and settings
+## 2. Four AI assistants, queried like a new user
 
-| Engine | Model and configuration |
-|---|---|
-| ChatGPT | OpenAI Responses API with web search, search context size "low", approximate user location set to your city and country |
-| Gemini | Gemini 2.5 Flash with Google Search grounding, temperature 0.6 |
-| Perplexity | Sonar, live web search, temperature 0.6 |
-| Claude | Claude Haiku 4.5 with web search (at most 2 searches), temperature 0.6, 1024 output tokens |
+We measure **ChatGPT, Gemini, Perplexity and Claude**, each with **web search enabled**, the way most people use them today.
 
-### The same instruction for every engine
+- **Neutral state**: no signed-in account, no memory, no personalisation. Every question starts from scratch, like a new customer who does not know you. This is why our results can differ from what you see on your own account, where the assistant knows your habits.
+- **The same instruction for all four assistants**: answer naturally, in the language of the question, naming real businesses.
+- **Your market**: when relevant, the query is located in your city and country.
 
-All four engines receive the same neutral system prompt: answer naturally, name real businesses, reply in the language of the question.
+### Several passes, every week
 
-### Neutral state
+Every question is asked **3 times to each assistant, every week**. For 25 questions, that is 300 answers analysed per report.
 
-There is no memory, no personalisation and no logged-in account. Each question starts from a clean state, close to what a new user would see.
+### When we refuse to publish
 
-### Passes and schedule
+If too many queries fail (an outage or a rate limit on an assistant's side), no report is issued. We never publish a false 0%. An assistant for which no answer could be obtained is shown as "not measured", never 0%.
 
-Every question is asked 3 times per engine, every week. For a typical brand, 16 questions × 4 engines × 3 passes give 192 answers per report.
+## 3. How a recommendation is counted
 
-Calls run in parallel (pool of 6), with 3 retries on temporary errors.
+Every answer is read and analysed. A mention only counts if **your business name actually appears in the text** of the answer.
 
-### When we refuse to report
-
-If fewer than 50% of calls succeed, no report is issued. We never publish a false 0%. An engine with zero successful answers is shown as "not measured", never as 0%.
-
-## 3. How we count a mention
-
-### The analyser
-
-Each answer is read by GPT-4o-mini at temperature 0. It returns structured JSON: brand mentioned (yes/no), rank from 1 to 10 among named businesses, tracked competitors mentioned, other brands, cited sources, and sentiment (positive, neutral, negative).
-
-### Two deterministic guards
-
-The analyser's output is never trusted alone. Two rules apply after it.
-
-1. **Literal presence.** The brand name must appear literally in the answer text. If it does not, the mention is discarded.
-2. **Homonym guard.** The analyser receives the business identity: sector, city, country, and website if provided. A mention that clearly refers to a different business with the same name elsewhere is not counted.
-
-### Competitors
+We also check for **namesakes**: if the assistant is talking about another business with the same name, somewhere else or in another sector, the mention does not count. The more information you give us (sector, city, website), the more reliable this check is.
 
 A tracked competitor counts at most once per answer, however many times it is named.
 
-## 4. The metrics and their formulas
+## 4. The metrics in your report
 
-### Visibility
+### AI visibility score
 
-Visibility = answers mentioning the brand ÷ measured answers × 100.
-
-It is computed overall, per engine, per question and per scope (head / long-tail). Visibility per language is the mean of the visibilities of the questions in that language.
+**Visibility = answers that mention your brand ÷ answers analysed × 100.** Out of 100 AI answers to customer questions, how many recommend you? It is calculated overall, per assistant, per question and per language.
 
 ### Share of AI recommendations
 
-Share = answers citing the brand ÷ total citations of the brand and its tracked competitors × 100.
-
-This share is computed only among the competitors you track. It is not a share of the whole market.
+**Share = mentions of your brand ÷ mentions of your brand and your tracked competitors × 100.** It measures your position against the competitors you chose, not against the whole market.
 
 ### Average position
 
-Average position = mean rank of the brand in the answers where it is cited. 1 means the brand is named first. If the brand is never cited, the value is null, not 0.
+The average rank of your brand in the answers that cite it. 1 means it is named first. If it is never cited, the value stays empty, not 0.
 
 ### Sentiment
 
-Sentiment = mean of 100 (positive), 50 (neutral) and 0 (negative), over the answers where the brand is cited.
+The tone of the answers when they cite you: 100 for positive, 50 for neutral, 0 for negative, averaged.
 
-### Top sources
+### Sources used by AI assistants
 
-Top sources = frequency of the domains cited by the engines. Only URLs actually cited count. Redirect URLs are resolved to their final domain.
+The websites the assistants cite when they answer (directories, review platforms, articles, your competitors' websites). Only sources that are actually cited count. This is your action map: be present where the assistants look.
 
-## 5. Precision and confidence
+## 5. Precision: why we show a margin of error
 
-### Why answers vary
+Ask an AI assistant the same question twice and you can get two different answers. That is normal. A score measured only once would be a roll of the dice.
 
-The same question asked twice can produce different answers. This is normal for these engines. That is why we ask each question 3 times and attach a confidence interval to the results.
+That is why every score comes with a **95% confidence interval**, calculated with established statistical methods and reproducible. Example: **13% ± 4** means the true score is very likely between 9% and 17%.
 
-### Per question: Wilson interval
+In practice: moving from 13% to 14% from one week to the next is noise. Moving from 13% to 25% is real progress. The dashboard tells you clearly which of the two you are looking at.
 
-For each question, we compute a Wilson 95% interval (z = 1.96) on its mention rate. Confidence = 100 × (1 − interval width). A narrow interval means a stable result.
+## 6. Reports with nothing made up
 
-### Per report: bootstrap
-
-For the overall score, we resample the questions 1,000 times with replacement (bootstrap, fixed seed 20260830, so the result is reproducible). We compute the score for each resample.
-
-Width = 2 × 1.96 × standard deviation of the resampled scores. Confidence = 100 × (1 − width).
-
-### Why ± is shown at report level
-
-The ± shown in the dashboard describes the report score, not a single question. A single question has too few answers for a meaningful ± on its own. The report-level interval reflects how much the score would move if the question set had been slightly different.
-
-## 6. Texts of the report and anti-hallucination
-
-### Insights
-
-Insights are written by GPT-4o-mini (temperature 0.4). They are written only from the computed numbers, and only about measured engines.
-
-### Verification
-
-A second pass (temperature 0) checks every engine name and figure in the text against the data. If something is wrong, the text is regenerated once.
-
-### Action plan
-
-The action plan (temperature 0.5) is anchored on your sector, your city and the top sources observed.
-
-### Deterministic filters
-
-After generation, deterministic filters remove any mention of an engine that was not measured in the report.
-
-### Executive summary
-
-The 5-line executive summary is computed directly from the data, not by a language model.
+- Analysis texts are written **only from the measured numbers**.
+- Every number and every assistant named in the text is **checked automatically** before publication.
+- An assistant that was not measured is never mentioned in the report.
+- The executive summary is computed directly from the data.
+- The action plan builds on your sector, your market and the sources actually observed.
 
 ## 7. What we do not measure (yet)
 
-We prefer to state limits plainly.
+We would rather state our limits clearly.
 
-- **Engines not covered.** Google AI Overviews and AI Mode, Copilot and Grok are not measured today.
-- **Natural variation.** Answers vary between passes. Three passes and a confidence interval reduce this effect but do not remove it.
-- **Homonyms in the same city.** Two businesses with the same name, in the same city and sector, cannot be told apart without a website.
-- **Prompt volumes.** We do not estimate how many real users ask each question.
+- **Assistants not covered.** Google AI Overviews and AI Mode, Copilot and Grok are not measured today.
+- **Natural variation.** Several passes and a margin of error reduce the effect of chance without removing it.
+- **Namesakes in the same city.** Two businesses with the same name, in the same city and sector, cannot be told apart without a website.
+- **Search volumes.** We do not estimate how many people ask each question.
 - **Frequency.** Measurements are weekly, not daily.
 
 ## 8. Data and security
 
-### History
-
-Every report and every raw answer is stored. The dashboard compares each report to the previous one (change threshold: 1 point; 0.2 for position) and shows trends over the last 12 reports.
-
-### Free audit
-
-The free audit on the website asks 3 template questions to 2 engines (ChatGPT, Gemini), once each. A city is required. It is an indication, not a report.
-
-### Security
-
-- We use official APIs only.
-- Client data is isolated per account with row-level security.
-- We do not resell data.
+- Every report and every answer is kept. The dashboard compares each report with the previous one and shows your trends over time.
+- We only use the assistants' official access.
+- Each customer's data is isolated per account.
+- We never sell data, and your data is not used to train any AI.
 - You can cancel in one click.
+- The free test on our website asks a few sample questions, once: it is an indication, not a report.
 
-## 9. Versions
+## 9. Frequently asked questions
 
-**Version dated 12 September 2026.** This page changes when the method changes.
+### How do I know if ChatGPT recommends my business?
+
+Asking it yourself is not enough: ChatGPT knows your history and its answers vary from one time to the next. You need to ask your customers' questions, from a neutral state, several times, and count the answers that cite you. That is exactly what AIVisib does every week, on ChatGPT, Gemini, Perplexity and Claude.
+
+### Why does my score change from week to week?
+
+AI answers vary naturally, and their sources evolve. The margin of error shown tells you whether a change is significant or within normal noise.
+
+### Why do my results differ from what I see on my phone?
+
+On your account, the assistant takes your history, location and preferences into account. Our measurements reproduce a new customer who does not know you: that is what matters to win new customers.
+
+### Why measure in Arabic and French?
+
+Because your customers ask in their own language, and AI assistants do not always recommend the same businesses from one language to another. We measure in the real languages of your market.
+
+### How long does it take to improve AI visibility?
+
+The first effects of actions usually appear within 4 to 8 weeks, depending on the sector and the competition. We never promise a ranking: we measure every week what actually changes.
+
+### How is this different from Google SEO?
+
+Ranking first on Google does not guarantee being recommended by an AI assistant. Assistants rely on their own sources (directories, reviews, articles, forums). AI visibility has to be measured and worked on separately.
+
+## Versions
+
+**Version of 25 September 2026.** This page evolves with our method.
 
 ---
 
