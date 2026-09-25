@@ -14,7 +14,7 @@ const footer = idx.match(/<footer>[\s\S]*?<\/footer>/)[0];
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // ——— textes déjà publiés, lus dans l'objet T d'index.html (même source de vérité, déjà validée)
-const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_cmp3","ft_about","ft_privacy","ft_terms"];
+const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_cmp3","ft_about","ft_privacy","ft_terms"];
 const segs = { en: idx.slice(idx.indexOf("en:{tk1"), idx.indexOf("fr:{tk1")), fr: idx.slice(idx.indexOf("fr:{tk1"), idx.indexOf("ar:{tk1")), ar: idx.slice(idx.indexOf("ar:{tk1")) };
 const pick = (l, k) => { const m = segs[l].match(new RegExp("(?:^|[,{]\s*)" + k + ':"((?:[^"\\\\]|\\\\.)*)"')); return m ? JSON.parse('"' + m[1] + '"') : ""; };
 
@@ -184,7 +184,7 @@ function setLang(l){lang=l;document.body.classList.toggle('rtl',l==='ar');docume
  document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(NAV[l][k]!==undefined)e.textContent=NAV[l][k]});
  ['en','fr','ar'].forEach(x=>{document.getElementById('cm_'+x).classList.toggle('on',x===l);const b=document.getElementById('b_'+x);if(b)b.classList.toggle('on',x===l)});
  try{localStorage.setItem('lang',l)}catch(e){}
- document.querySelectorAll('a[href^="https://app.aivisib.com"]').forEach(a=>{a.href='https://app.aivisib.com/?lang='+l});
+ document.querySelectorAll('a[href^="https://app.aivisib.com"]').forEach(a=>{try{const u=new URL(a.href);u.searchParams.set('lang',l);a.href=u.toString()}catch(e){}});
  document.querySelectorAll('a[href^="#"]').forEach(a=>a.setAttribute('href','/'+a.getAttribute('href').replace(/^\\/+/,'')));}
 function toggleMenu(){const b=document.getElementById('burgerBtn'),m=document.getElementById('mmenu');const open=!m.classList.contains('open');m.classList.toggle('open',open);b.setAttribute('aria-expanded',open?'true':'false');}
 function refreshThemeBtn(){const b=document.getElementById('themeBtn');if(b)b.setAttribute('aria-label',document.body.classList.contains('dark')?'Light mode':'Dark mode');}
