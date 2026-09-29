@@ -1562,7 +1562,7 @@ async function auditEmailSend(){
   const email=(inp.value||'').trim(); if(!/^\S+@\S+\.\S+$/.test(email)){ inp.focus(); return; }
   if(!LAST_AUDIT) return; btn.disabled=true;
   try{
-    const r=await fetch(AUDIT_URL+'/audit/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,brand:LAST_AUDIT.brand,sector:LAST_AUDIT.sector,language:lang,result:LAST_AUDIT.d})});
+    const r=await fetch(AUDIT_URL+'/audit/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,aid:LAST_AUDIT.d.aid,language:lang})});
     if(!r.ok) throw new Error('x');
     document.getElementById('au_email').value=email;
     inp.closest('.au-mailbox').innerHTML='<span>'+escH(t.au_mail_ok)+'</span>';
