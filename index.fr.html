@@ -26,15 +26,16 @@
   DÉPLOIEMENT
     Netlify auto-deploy sur push (main). Redirections dans _redirects, en-têtes dans _headers.
 -->
-<html lang="en">
+<html lang="fr">
 <head>
+<!-- prerendered (fr): texte statique pour les robots, réécrit par setLang selon la langue du visiteur -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIVisib — Does AI recommend your brand?</title>
+<title>AIVisib — L'IA recommande-t-elle votre marque ?</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon-180.png">
-<meta name="description" content="AIVisib measures whether ChatGPT, Gemini, Perplexity and Claude recommend your brand — every week, in English, French and Arabic, with the margin of error shown. Built for brands and agencies in the Gulf, Morocco and France. From $59/month.">
-<link rel="canonical" href="https://aivisib.com/">
+<meta name="description" content="AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre marque — chaque semaine, en anglais, français et arabe, avec la marge d'erreur affichée. Conçu pour les marques et les agences du Golfe, du Maroc et de France. Dès 59 $/mois.">
+<link rel="canonical" href="https://aivisib.com/fr">
 <link rel="alternate" hreflang="en" href="https://aivisib.com/"><link rel="alternate" hreflang="fr" href="https://aivisib.com/fr"><link rel="alternate" hreflang="ar" href="https://aivisib.com/ar"><link rel="alternate" hreflang="x-default" href="https://aivisib.com/">
 <meta name="theme-color" content="#0A0A0B">
 <!-- Favicon -->
@@ -43,17 +44,17 @@
 <!-- Open Graph (aperçu de partage : WhatsApp, LinkedIn, Facebook...) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AIVisib">
-<meta property="og:url" content="https://aivisib.com/">
-<meta property="og:title" content="AIVisib — Does AI recommend your brand?">
-<meta property="og:description" content="Does ChatGPT name you or your rival? Weekly measurement on 4 AI engines, in English, French and Arabic, with the margin of error shown.">
+<meta property="og:url" content="https://aivisib.com/fr">
+<meta property="og:title" content="AIVisib — L'IA recommande-t-elle votre marque ?">
+<meta property="og:description" content="ChatGPT vous cite-t-il, vous ou votre concurrent ? Mesure hebdomadaire sur 4 moteurs d'IA, en anglais, français et arabe, avec la marge d'erreur affichée.">
 <meta property="og:image" content="https://aivisib.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="fr_FR">
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AIVisib — Does AI recommend your brand?">
-<meta name="twitter:description" content="Does ChatGPT name you or your rival? Weekly measurement on 4 AI engines, in English, French and Arabic.">
+<meta name="twitter:title" content="AIVisib — L'IA recommande-t-elle votre marque ?">
+<meta name="twitter:description" content="ChatGPT vous cite-t-il, vous ou votre concurrent ? Mesure hebdomadaire sur 4 moteurs d'IA, en anglais, français et arabe, avec la marge d'erreur affichée.">
 <meta name="twitter:image" content="https://aivisib.com/og-image.png">
 <!-- Données structurées (aide Google & les IA à comprendre le produit) -->
 <script type="application/ld+json">
@@ -1102,31 +1103,31 @@ body.dark .shbadge .shb-d{display:inline-block}
 <header><div class="wrap"><nav>
   <a class="logo" href="/" aria-label="AIVisib — accueil"><i>◈</i>AIVisib</a>
   <div class="nl">
-    <a href="#how" class="hm" data-i="n1"></a>
-    <a href="#feat" class="hm" data-i="n2"></a>
-    <a href="#price" class="hm" data-i="n3"></a>
-    <a href="/agences" class="hm" data-i="n5"></a>
-    <a href="/methodologie" class="hm" data-i="n6"></a>
+    <a href="#how" class="hm" data-i="n1">Fonctionnement</a>
+    <a href="#feat" class="hm" data-i="n2">Fonctionnalités</a>
+    <a href="#price" class="hm" data-i="n3">Tarifs</a>
+    <a href="/agences" class="hm" data-i="n5">Agences</a>
+    <a href="/methodologie" class="hm" data-i="n6">Méthodologie</a>
     <div class="lang">
       <button id="b_en" onclick="setLang('en')">EN</button>
       <button id="b_fr" onclick="setLang('fr')">FR</button>
       <button id="b_ar" onclick="setLang('ar')">ع</button>
     </div>
     <button id="themeBtn" class="tswitch" onclick="toggleTheme()" aria-label="Dark / light mode"><span class="tsk"></span><svg class="ti ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M5.4 18.6 7 17M17 7l1.6-1.6"/></svg><svg class="ti ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8Z"/><path d="M17.5 3.5v3M16 5h3" stroke-width="1.6"/></svg></button>
-    <a href="https://app.aivisib.com" class="hm" data-i="n4"></a>
-    <a href="#audit" class="cta" data-i="n_test"></a>
+    <a href="https://app.aivisib.com" class="hm" data-i="n4">Connexion</a>
+    <a href="#audit" class="cta" data-i="n_test">Test gratuit</a>
     <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mmenu" id="mmenu">
-  <a href="#how" data-i="n1"></a>
-  <a href="#feat" data-i="n2"></a>
-  <a href="#price" data-i="n3"></a>
-  <a href="/agences" data-i="n5"></a>
-  <a href="/methodologie" data-i="n6"></a>
-  <a href="/faq" data-i="n7"></a>
-  <a href="https://app.aivisib.com" data-i="n4"></a>
-  <a href="#audit" data-i="n_test"></a>
+  <a href="#how" data-i="n1">Fonctionnement</a>
+  <a href="#feat" data-i="n2">Fonctionnalités</a>
+  <a href="#price" data-i="n3">Tarifs</a>
+  <a href="/agences" data-i="n5">Agences</a>
+  <a href="/methodologie" data-i="n6">Méthodologie</a>
+  <a href="/faq" data-i="n7">FAQ</a>
+  <a href="https://app.aivisib.com" data-i="n4">Connexion</a>
+  <a href="#audit" data-i="n_test">Test gratuit</a>
 </div>
 </div></header>
 
@@ -1135,28 +1136,28 @@ body.dark .shbadge .shb-d{display:inline-block}
   <div class="hg5 hdark">
     <div class="jorb jorb1"></div><div class="jorb jorb2"></div>
     <div class="hcopy">
-      <div class="kicker"><s><i></i><i></i><i></i></s><span data-i="kick"></span></div>
-      <h1 id="h1"></h1>
-      <p class="sub" data-i="subv4"></p>
-      <div class="btns"><a href="#audit" class="cta big" data-i="cta1"></a><a href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1" class="cta out" data-i="cta2"></a></div>
-      <div class="tstrip"><span data-i="ts1"></span><span data-i="ts2"></span><span data-i="ts3"></span><span data-i="ts4"></span></div>
+      <div class="kicker"><s><i></i><i></i><i></i></s><span data-i="kick">Visibilité dans les IA · Multilingue</span></div>
+      <h1 id="h1">Quand vos clients demandent à <em class="rot"><span id="heng">ChatGPT</span></em>, êtes-vous dans la réponse ?</h1>
+      <p class="sub" data-i="subv4">Mesuré chaque semaine sur ChatGPT, Gemini, Perplexity et Claude, en anglais, en français et en arabe. Avec la marge d'erreur, toujours affichée.</p>
+      <div class="btns"><a href="#audit" class="cta big" data-i="cta1">Vérifier ma marque — gratuit, 30 s, sans carte</a><a href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1" class="cta out" data-i="cta2">Voir un vrai rapport</a></div>
+      <div class="tstrip"><span data-i="ts1">4 moteurs, tous inclus</span><span data-i="ts2">3 passages par moteur, chaque semaine</span><span data-i="ts3">Marge d'erreur affichée</span><span data-i="ts4">Anglais · Français · Arabe</span></div>
     </div>
     <div class="hcard" id="hcard" aria-hidden="true">
       <div class="hc-top"><span class="hc-eng"><i class="hc-dot"></i><b id="hcEng">ChatGPT</b></span><span id="hcMeta"></span></div>
       <div class="hc-q"><span class="hc-av">?</span><span id="hcQ"></span></div>
       <div class="hc-a" id="hcA"></div>
-      <div class="hc-foot"><span data-i="hc_f1"></span><span id="hcN"></span></div>
+      <div class="hc-foot"><span data-i="hc_f1">Mesure réelle, rien de simulé</span><span id="hcN"></span></div>
     </div>
   </div>
   <div class="bench rv" id="bench" data-loaded="0">
-    <div class="bh"><div><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="bw_k"></span></div><h2 data-i="bw_t"></h2><p data-i="bw_p"></p></div><div class="bmeta" id="bwMeta"></div></div>
+    <div class="bh"><div><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="bw_k">Benchmark en direct · marques automobiles</span></div><h2 data-i="bw_t">Ce que les IA recommandent, maintenant.</h2><p data-i="bw_p">Huit marques, neuf pays, trois classes de véhicules, quatre moteurs IA. Des mesures réelles et datées. Choisissez une marque.</p></div><div class="bmeta" id="bwMeta"></div></div>
     <div class="blogos" id="bwBrands"><button class="bl" data-b="mercedes" onclick="bwSel('mercedes')"><img src="/brand/logos/mercedes.svg" alt="mercedes"><span></span></button><button class="bl" data-b="bmw" onclick="bwSel('bmw')"><img src="/brand/logos/bmw.svg" alt="bmw"><span></span></button><button class="bl" data-b="audi" onclick="bwSel('audi')"><img src="/brand/logos/audi.svg" alt="audi"><span></span></button><button class="bl" data-b="skoda" onclick="bwSel('skoda')"><img src="/brand/logos/skoda.svg" alt="skoda"><span></span></button><button class="bl" data-b="volkswagen" onclick="bwSel('volkswagen')"><img src="/brand/logos/volkswagen.svg" alt="volkswagen"><span></span></button><button class="bl" data-b="lexus" onclick="bwSel('lexus')"><img src="/brand/logos/lexus.svg" alt="lexus"><span></span></button><button class="bl" data-b="volvo" onclick="bwSel('volvo')"><img src="/brand/logos/volvo.svg" alt="volvo"><span></span></button><button class="bl" data-b="landrover" onclick="bwSel('landrover')"><img src="/brand/logos/landrover.svg" alt="landrover"><span></span></button></div>
     <div class="bfilters">
-      <label><span data-i="bw_country"></span><select id="bwCountry" onchange="bwRender()"></select></label>
-      <label><span data-i="bw_class"></span><select id="bwClass" onchange="bwRender()"></select></label>
-      <label><span data-i="bw_engine"></span><select id="bwEngine" onchange="bwRender()"></select></label>
-      <label><span data-i="bw_metric"></span><select id="bwMetric" onchange="bwRender()"><option value="vis" data-i="bw_m_vis"></option><option value="share" data-i="bw_m_share"></option><option value="pos" data-i="bw_m_pos"></option><option value="sent" data-i="bw_m_sent"></option></select></label>
-      <label class="bwper" hidden><span data-i="bw_period"></span><select id="bwPeriod" onchange="bwRender()"><option value="12" data-i="bw_w12" selected></option><option value="1" data-i="bw_last"></option><option value="4" data-i="bw_w4"></option><option value="8" data-i="bw_w8"></option></select></label>
+      <label><span data-i="bw_country">Pays</span><select id="bwCountry" onchange="bwRender()"></select></label>
+      <label><span data-i="bw_class">Classe de véhicule</span><select id="bwClass" onchange="bwRender()"></select></label>
+      <label><span data-i="bw_engine">Moteur IA</span><select id="bwEngine" onchange="bwRender()"></select></label>
+      <label><span data-i="bw_metric">Indicateur</span><select id="bwMetric" onchange="bwRender()"><option value="vis" data-i="bw_m_vis">Visibilité</option><option value="share" data-i="bw_m_share">Part des recommandations</option><option value="pos" data-i="bw_m_pos">Position moyenne</option><option value="sent" data-i="bw_m_sent">Sentiment</option></select></label>
+      <label class="bwper" hidden><span data-i="bw_period">Période</span><select id="bwPeriod" onchange="bwRender()"><option value="12" data-i="bw_w12" selected>12 dernières semaines</option><option value="1" data-i="bw_last">Dernière mesure</option><option value="4" data-i="bw_w4">4 dernières semaines</option><option value="8" data-i="bw_w8">8 dernières semaines</option></select></label>
     </div>
     <div class="bgrid">
       <div class="bbars" id="bwBars"></div>
@@ -1168,212 +1169,212 @@ body.dark .shbadge .shb-d{display:inline-block}
 
 <!-- CHIFFRES -->
 <section class="nums"><div class="wrap"><div class="numgrid">
-  <div><b>4</b><span data-i="ns1"></span></div>
-  <div><b>×3</b><span data-i="ns2"></span></div>
-  <div><b>192</b><span data-i="ns3"></span></div>
-  <div><b>EN · FR · AR</b><span data-i="ns4"></span></div>
+  <div><b>4</b><span data-i="ns1">moteurs IA, tous inclus</span></div>
+  <div><b>×3</b><span data-i="ns2">passages par question, chaque semaine</span></div>
+  <div><b>192</b><span data-i="ns3">réponses d'IA analysées par semaine</span></div>
+  <div><b>EN · FR · AR</b><span data-i="ns4">trois langues, natives</span></div>
 </div></div></section>
 
 <!-- MÉTHODE (diagramme interactif) -->
 <section class="s" id="how" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="mt_k"></span></div><h2 data-i="mt_t"></h2><p data-i="mt_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="mt_k">Notre méthode</span></div><h2 data-i="mt_t">Comment nous calculons. Sans approximation.</h2><p data-i="mt_p">Cinq étapes, publiées en entier. Cliquez sur une étape pour voir ce qui se passe à l'intérieur.</p></div>
   <div class="mdiag rv" id="mdiag">
     <div class="mflow"><svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" aria-label="AIVisib measurement pipeline">
   <g class="mlines"><path d="M160,182 C200,182 200,50 240,50" class="ml"/><path d="M160,190 C200,190 200,58 240,58" class="ml"/><path d="M160,198 C200,198 200,66 240,66" class="ml"/><path d="M160,182 C200,182 200,140 240,140" class="ml"/><path d="M160,190 C200,190 200,148 240,148" class="ml"/><path d="M160,198 C200,198 200,156 240,156" class="ml"/><path d="M160,182 C200,182 200,230 240,230" class="ml"/><path d="M160,190 C200,190 200,238 240,238" class="ml"/><path d="M160,198 C200,198 200,246 240,246" class="ml"/><path d="M160,182 C200,182 200,320 240,320" class="ml"/><path d="M160,190 C200,190 200,328 240,328" class="ml"/><path d="M160,198 C200,198 200,336 240,336" class="ml"/><path d="M390,58 C435,58 435,190 480,190" class="ml"/><path d="M390,148 C435,148 435,190 480,190" class="ml"/><path d="M390,238 C435,238 435,190 480,190" class="ml"/><path d="M390,328 C435,328 435,190 480,190" class="ml"/><path d="M630,190 L710,190" class="ml thick"/><path d="M860,190 L940,190" class="ml thick"/></g>
-  <g class="mnode on" data-n="1" onclick="mdSel(1)" role="tab" tabindex="0"><rect x="10" y="150" width="150" height="80" rx="16"/><text x="24" y="180" class="mt1" data-i="dg1l"></text><text x="24" y="204" class="mt2" data-i="dg1s"></text></g>
-  <g class="mnode" data-n="2" onclick="mdSel(2)" role="tab" tabindex="0"><rect x="228" y="16" width="174" height="356" rx="20" class="mgroup"/><text x="240" y="366" class="mt2 mgl" data-i="dg2s"></text><g class="meng2"><rect x="240" y="30" width="150" height="56" rx="12"/><text x="254" y="64" class="mt1s">ChatGPT</text></g><g class="meng2"><rect x="240" y="120" width="150" height="56" rx="12"/><text x="254" y="154" class="mt1s">Gemini</text></g><g class="meng2"><rect x="240" y="210" width="150" height="56" rx="12"/><text x="254" y="244" class="mt1s">Perplexity</text></g><g class="meng2"><rect x="240" y="300" width="150" height="56" rx="12"/><text x="254" y="334" class="mt1s">Claude</text></g></g>
-  <g class="mnode" data-n="3" onclick="mdSel(3)" role="tab" tabindex="0"><rect x="480" y="150" width="150" height="80" rx="16"/><text x="494" y="180" class="mt1" data-i="dg3l"></text><text x="494" y="204" class="mt2" data-i="dg3s"></text></g>
-  <g class="mnode" data-n="4" onclick="mdSel(4)" role="tab" tabindex="0"><rect x="710" y="150" width="150" height="80" rx="16"/><text x="724" y="180" class="mt1" data-i="dg4l"></text><text x="724" y="204" class="mt2" data-i="dg4s"></text><text x="846" y="140" class="mtag" text-anchor="end">65 % ± 12</text></g>
-  <g class="mnode" data-n="5" onclick="mdSel(5)" role="tab" tabindex="0"><rect x="940" y="150" width="150" height="80" rx="16"/><text x="954" y="180" class="mt1" data-i="dg5l"></text><text x="954" y="204" class="mt2" data-i="dg5s"></text></g>
+  <g class="mnode on" data-n="1" onclick="mdSel(1)" role="tab" tabindex="0"><rect x="10" y="150" width="150" height="80" rx="16"/><text x="24" y="180" class="mt1" data-i="dg1l">Questions</text><text x="24" y="204" class="mt2" data-i="dg1s">vérifiées</text></g>
+  <g class="mnode" data-n="2" onclick="mdSel(2)" role="tab" tabindex="0"><rect x="228" y="16" width="174" height="356" rx="20" class="mgroup"/><text x="240" y="366" class="mt2 mgl" data-i="dg2s">× 3 passages</text><g class="meng2"><rect x="240" y="30" width="150" height="56" rx="12"/><text x="254" y="64" class="mt1s">ChatGPT</text></g><g class="meng2"><rect x="240" y="120" width="150" height="56" rx="12"/><text x="254" y="154" class="mt1s">Gemini</text></g><g class="meng2"><rect x="240" y="210" width="150" height="56" rx="12"/><text x="254" y="244" class="mt1s">Perplexity</text></g><g class="meng2"><rect x="240" y="300" width="150" height="56" rx="12"/><text x="254" y="334" class="mt1s">Claude</text></g></g>
+  <g class="mnode" data-n="3" onclick="mdSel(3)" role="tab" tabindex="0"><rect x="480" y="150" width="150" height="80" rx="16"/><text x="494" y="180" class="mt1" data-i="dg3l">Analyse</text><text x="494" y="204" class="mt2" data-i="dg3s">2 garde-fous</text></g>
+  <g class="mnode" data-n="4" onclick="mdSel(4)" role="tab" tabindex="0"><rect x="710" y="150" width="150" height="80" rx="16"/><text x="724" y="180" class="mt1" data-i="dg4l">Statistiques</text><text x="724" y="204" class="mt2" data-i="dg4s">avec ±</text><text x="846" y="140" class="mtag" text-anchor="end">65 % ± 12</text></g>
+  <g class="mnode" data-n="5" onclick="mdSel(5)" role="tab" tabindex="0"><rect x="940" y="150" width="150" height="80" rx="16"/><text x="954" y="180" class="mt1" data-i="dg5l">Rapport</text><text x="954" y="204" class="mt2" data-i="dg5s">hebdomadaire</text></g>
   <text x="205" y="120" class="mx3" text-anchor="middle">× 3</text>
   <g class="mdots"><circle r="3.2" class="md"><animateMotion dur="2.20s" begin="-0.00s" repeatCount="indefinite" path="M160,182 C200,182 200,50 240,50"/></circle><circle r="3.2" class="md"><animateMotion dur="2.45s" begin="-0.37s" repeatCount="indefinite" path="M160,190 C200,190 200,58 240,58"/></circle><circle r="3.2" class="md"><animateMotion dur="2.70s" begin="-0.74s" repeatCount="indefinite" path="M160,198 C200,198 200,66 240,66"/></circle><circle r="3.2" class="md"><animateMotion dur="2.95s" begin="-1.11s" repeatCount="indefinite" path="M160,182 C200,182 200,140 240,140"/></circle><circle r="3.2" class="md"><animateMotion dur="3.20s" begin="-1.48s" repeatCount="indefinite" path="M160,190 C200,190 200,148 240,148"/></circle><circle r="3.2" class="md"><animateMotion dur="2.20s" begin="-1.85s" repeatCount="indefinite" path="M160,198 C200,198 200,156 240,156"/></circle><circle r="3.2" class="md"><animateMotion dur="2.45s" begin="-2.22s" repeatCount="indefinite" path="M160,182 C200,182 200,230 240,230"/></circle><circle r="3.2" class="md"><animateMotion dur="2.70s" begin="-0.09s" repeatCount="indefinite" path="M160,190 C200,190 200,238 240,238"/></circle><circle r="3.2" class="md"><animateMotion dur="2.95s" begin="-0.46s" repeatCount="indefinite" path="M160,198 C200,198 200,246 240,246"/></circle><circle r="3.2" class="md"><animateMotion dur="3.20s" begin="-0.83s" repeatCount="indefinite" path="M160,182 C200,182 200,320 240,320"/></circle><circle r="3.2" class="md"><animateMotion dur="2.20s" begin="-1.20s" repeatCount="indefinite" path="M160,190 C200,190 200,328 240,328"/></circle><circle r="3.2" class="md"><animateMotion dur="2.45s" begin="-1.57s" repeatCount="indefinite" path="M160,198 C200,198 200,336 240,336"/></circle><circle r="3.2" class="md"><animateMotion dur="2s" begin="-0.92s" repeatCount="indefinite" path="M390,58 C435,58 435,190 480,190"/></circle><circle r="3.2" class="md"><animateMotion dur="2s" begin="-1.33s" repeatCount="indefinite" path="M390,148 C435,148 435,190 480,190"/></circle><circle r="3.2" class="md"><animateMotion dur="2s" begin="-1.74s" repeatCount="indefinite" path="M390,238 C435,238 435,190 480,190"/></circle><circle r="3.2" class="md"><animateMotion dur="2s" begin="-0.15s" repeatCount="indefinite" path="M390,328 C435,328 435,190 480,190"/></circle><circle r="4" class="md"><animateMotion dur="1.6s" repeatCount="indefinite" path="M630,190 L710,190"/></circle><circle r="4" class="md"><animateMotion dur="1.6s" repeatCount="indefinite" path="M860,190 L940,190"/></circle></g>
 </svg></div>
     <div class="mpanel">
-      <div class="mp" data-p="1"><h3 data-i="dg1t"></h3><p data-i="dg1d"></p><div class="mrig"><span data-i="mt_rig"></span><span data-i="dg1r"></span></div></div>
-      <div class="mp" data-p="2" hidden><h3 data-i="dg2t"></h3><p data-i="dg2d"></p>
+      <div class="mp" data-p="1"><h3 data-i="dg1t">De vraies questions de clients, contrôlées face au réel</h3><p data-i="dg1d">Générées à partir de votre secteur, votre ville et vos langues, avec des quartiers vérifiés sur OpenStreetMap, puis relues et dédoublonnées. Vous validez la liste avant toute mesure.</p><div class="mrig"><span data-i="mt_rig">Rigueur</span><span data-i="dg1r">Questions larges et questions de longue traîne sont étiquetées et mesurées séparément.</span></div></div>
+      <div class="mp" data-p="2" hidden><h3 data-i="dg2t">Chaque question, posée 3 fois à chaque moteur, chaque semaine</h3><p data-i="dg2d">État neutre, recherche web activée, votre ville comme localisation. Les réponses des IA varient d'un passage à l'autre : une capture d'écran ne prouve rien, trois passages si.</p>
         <div class="meng"><span><b>ChatGPT</b> gpt-4o · web search</span><span><b>Gemini</b> 2.5 Flash · Google Search</span><span><b>Perplexity</b> Sonar</span><span><b>Claude</b> Haiku 4.5 · web search</span></div>
-        <div class="mrig"><span data-i="mt_rig"></span><span data-i="dg2r"></span></div></div>
-      <div class="mp" data-p="3" hidden><h3 data-i="dg3t"></h3><p data-i="dg3d"></p>
-        <div class="mguard"><div><i>1</i><span data-i="dg3g1"></span></div><div><i>2</i><span data-i="dg3g2"></span></div></div>
-        <div class="mrig"><span data-i="mt_rig"></span><span data-i="dg3r"></span></div></div>
-      <div class="mp" data-p="4" hidden><h3 data-i="dg4t"></h3><p data-i="dg4d"></p>
+        <div class="mrig"><span data-i="mt_rig">Rigueur</span><span data-i="dg2r">Si moins de 50 % des appels réussissent, aucun rapport n'est émis. Un moteur non mesuré n'est jamais affiché à 0 %.</span></div></div>
+      <div class="mp" data-p="3" hidden><h3 data-i="dg3t">Une citation ne compte que si c'est vraiment vous</h3><p data-i="dg3d">Chaque réponse est lue à température 0 et transformée en données structurées : cité ou non, rang, concurrents, sources, sentiment. Puis deux contrôles déterministes s'appliquent.</p>
+        <div class="mguard"><div><i>1</i><span data-i="dg3g1">Le nom de la marque doit apparaître littéralement dans le texte de la réponse.</span></div><div><i>2</i><span data-i="dg3g2">Un homonyme dans une autre ville ou un autre pays n'est pas compté (secteur, ville, pays, site web).</span></div></div>
+        <div class="mrig"><span data-i="mt_rig">Rigueur</span><span data-i="dg3r">Un concurrent suivi compte au plus une fois par réponse.</span></div></div>
+      <div class="mp" data-p="4" hidden><h3 data-i="dg4t">Un score n'est rien sans sa marge d'erreur</h3><p data-i="dg4d">Visibilité = citations ÷ réponses mesurées. Par question, un intervalle de Wilson à 95 % ; pour le rapport entier, un bootstrap sur les questions (1 000 tirages). Essayez :</p>
         <div class="mcalc">
-          <div class="mcrow"><label><span data-i="cc_runs"></span> <b id="ccRunsV">3</b></label><input type="range" id="ccRuns" min="1" max="12" value="3" oninput="mdCalc()"></div>
-          <div class="mcrow"><label><span data-i="cc_hits"></span> <b id="ccHitsV">2</b></label><input type="range" id="ccHits" min="0" max="3" value="2" oninput="mdCalc()"></div>
-          <div class="mcout"><div><small data-i="cc_vis"></small><b id="ccVis">67 %</b></div><div><small data-i="cc_ci"></small><b id="ccCI">± 40 pts</b></div><div><small data-i="cc_conf"></small><b id="ccConf">20 %</b></div></div>
-          <p class="mcnote" data-i="cc_note"></p>
+          <div class="mcrow"><label><span data-i="cc_runs">Passages par question</span> <b id="ccRunsV">3</b></label><input type="range" id="ccRuns" min="1" max="12" value="3" oninput="mdCalc()"></div>
+          <div class="mcrow"><label><span data-i="cc_hits">Réponses citant la marque</span> <b id="ccHitsV">2</b></label><input type="range" id="ccHits" min="0" max="3" value="2" oninput="mdCalc()"></div>
+          <div class="mcout"><div><small data-i="cc_vis">Visibilité</small><b id="ccVis">67 %</b></div><div><small data-i="cc_ci">Wilson 95 %</small><b id="ccCI">± 40 pts</b></div><div><small data-i="cc_conf">Confiance</small><b id="ccConf">20 %</b></div></div>
+          <p class="mcnote" data-i="cc_note">Avec 1 passage, l'intervalle ne veut presque rien dire. Avec 3 passages par moteur et 16 questions, la marge au niveau du rapport descend vers ± 12 points.</p>
         </div>
-        <div class="mrig"><span data-i="mt_rig"></span><span data-i="dg4r"></span></div></div>
-      <div class="mp" data-p="5" hidden><h3 data-i="dg5t"></h3><p data-i="dg5d"></p><div class="mrig"><span data-i="mt_rig"></span><span data-i="dg5r"></span></div></div>
+        <div class="mrig"><span data-i="mt_rig">Rigueur</span><span data-i="dg4r">Le ± affiché dans chaque rapport sort de ce calcul, pas d'une règle approximative.</span></div></div>
+      <div class="mp" data-p="5" hidden><h3 data-i="dg5t">Les chiffres d'abord, les mots ensuite</h3><p data-i="dg5d">Le résumé exécutif est calculé, pas généré. Les analyses sont rédigées uniquement à partir des chiffres calculés, puis vérifiées par une seconde passe, et toute mention d'un moteur non mesuré est supprimée.</p><div class="mrig"><span data-i="mt_rig">Rigueur</span><span data-i="dg5r">Chaque réponse brute est conservée : chaque chiffre peut être retracé.</span></div></div>
     </div>
-    <a class="faqall" href="/methodologie" data-i="mt_link"></a>
+    <a class="faqall" href="/methodologie" data-i="mt_link">Lire la méthodologie complète →</a>
   </div>
   <p class="hdemo" style="margin:26px 0 0"><a id="demoLink" href="/demo">▶ Watch the demo (96 s)</a></p>
 </div></section>
 
 <!-- CE QUE VOUS RECEVEZ : le vrai rapport (BoursoBank), flouté en bas, cliquable -->
 <section class="s" id="feat" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="f_k"></span></div><h2 data-i="wg_t"></h2><p data-i="rd_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="f_k">Ce qu'il y a dedans</span></div><h2 data-i="wg_t">Ce que vous recevez, chaque semaine.</h2><p data-i="rd_p">Un vrai rapport hebdomadaire sur une marque publique (BoursoBank, banque en ligne, Paris), généré le 12/09/2026 : 25 questions × 4 moteurs × 3 passages. Aucune donnée fictive.</p></div>
   <a class="rshot rv" href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1">
     <img src="/brand/screens/report_boursobank.png" alt="AIVisib — rapport BoursoBank" width="1440" height="2000" loading="lazy">
     <span class="rfade"></span>
-    <span class="rbtn cta big" data-i="rp_open"></span>
+    <span class="rbtn cta big" data-i="rp_open">Ouvrir le rapport complet — tel que les clients le reçoivent →</span>
   </a>
 </div></section>
 
 <!-- GALERIE DE MESURES RÉELLES -->
 <section class="s" id="mesures" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span>ChatGPT · Gemini · 09/2026</span></div><h2 data-i="m_t"></h2><p data-i="m_p2"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span>ChatGPT · Gemini · 09/2026</span></div><h2 data-i="m_t">Ce que les IA répondent vraiment</h2><p data-i="m_p2">Trois des mesures que nous publions sur LinkedIn, en anglais, en français et en arabe. Cliquez pour agrandir.</p></div>
   <div class="gal gal2 rv">
     <a href="/mesures#li_post2_airline" data-lb="/brand/linkedin/li_post2_airline.png" data-lbcap="mi_li_post2_airline"><img src="/brand/screens/g_li_post2_airline.jpg" alt="Paris–Dubai airline" loading="lazy"></a>
     <a href="/mesures#li2_post5_hotel_marrakech" data-lb="/brand/linkedin/li2_post5_hotel_marrakech.png" data-lbcap="mi_li2_post5_hotel_marrakech"><img src="/brand/screens/g_li2_post5_hotel_marrakech.jpg" alt="Hôtels à Marrakech — ChatGPT vs Gemini" loading="lazy"></a>
     <a href="/mesures#li2_post6_hospital_riyadh" data-lb="/brand/linkedin/li2_post6_hospital_riyadh.png" data-lbcap="mi_li2_post6_hospital_riyadh"><img src="/brand/screens/g_li2_post6_hospital_riyadh.jpg" alt="مستشفيات الرياض" loading="lazy"></a>
   </div>
-  <a class="faqall" href="https://www.linkedin.com/company/146271305" target="_blank" rel="noopener" data-i="m_all"></a>
+  <a class="faqall" href="https://www.linkedin.com/company/146271305" target="_blank" rel="noopener" data-i="m_all">Toutes nos mesures publiées sur LinkedIn →</a>
 </div></section>
 
 <!-- AUDIT GRATUIT -->
 <section class="s" id="auditsec" style="padding-top:20px"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="au_k"></span></div><h2 data-i="au_t"></h2><p data-i="au_p2"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="au_k">Test de visibilité IA gratuit</span></div><h2 data-i="au_t">L'IA recommande-t-elle votre marque ?</h2><p data-i="au_p2">Six vraies questions de clients, rédigées pour votre secteur et votre ville, posées en direct à ChatGPT, Gemini et Perplexity. Résultat en 30 secondes environ.</p></div>
   <div class="auditbox wide" id="audit">
     <div class="af-row4"><input id="au_brand" data-i-ph="au_brand_ph" autocomplete="off" required><input id="au_sector" data-i-ph="au_sector_ph" autocomplete="off" list="au_sectors"><datalist id="au_sectors"></datalist><input id="au_city" data-i-ph="au_city_ph" autocomplete="off"><input id="au_email" type="email" data-i-ph="au_email_ph" autocomplete="email"><input id="au_web" type="url" data-i-ph="au_web_ph" autocomplete="url"></div>
-    <label class="au-ww"><input type="checkbox" id="au_global" onchange="auGlobal()"><span data-i="au_ww"></span></label>
+    <label class="au-ww"><input type="checkbox" id="au_global" onchange="auGlobal()"><span data-i="au_ww">Mon marché est mondial (logiciel, service en ligne — sans ville)</span></label>
     <div class="augdpr" id="auGdpr"></div>
-    <button class="cta big" id="auBtn" onclick="runAudit()" data-i="au_btn"></button>
-    <div class="af-note" data-i="au_note"></div>
-    <div class="au-founder"><img src="/brand/founder.jpg" alt="Abdelali" width="36" height="36" loading="lazy" onerror="this.outerHTML='<i>A</i>'"><span data-i-html="au_founder"></span></div>
-    <div class="au-founder team"><img src="/brand/team_ilyas.jpg" alt="Ilyas" width="36" height="36" loading="lazy" onerror="this.outerHTML='<i>I</i>'"><span data-i-html="au_team"></span></div>
+    <button class="cta big" id="auBtn" onclick="runAudit()" data-i="au_btn">Tester ma visibilité IA — gratuit</button>
+    <div class="af-note" data-i="au_note">Gratuit · 6 questions × 3 IA · ~30 secondes · sans carte bancaire</div>
+    <div class="au-founder"><img src="/brand/founder.jpg" alt="Abdelali" width="36" height="36" loading="lazy" onerror="this.outerHTML='<i>A</i>'"><span data-i-html="au_founder"><a href='https://www.linkedin.com/in/abdelali-ouaarab-78929830b' target='_blank' rel='noopener'><b>Abdelali</b></a>, fondateur &amp; CEO — MSc Finance. Je lis et je réponds moi-même à chaque message sur hello@aivisib.com</span></div>
+    <div class="au-founder team"><img src="/brand/team_ilyas.jpg" alt="Ilyas" width="36" height="36" loading="lazy" onerror="this.outerHTML='<i>I</i>'"><span data-i-html="au_team"><a href='https://www.linkedin.com/in/ilyas-midou-906844225/' target='_blank' rel='noopener'><b>Ilyas</b></a>, conseiller scientifique — ingénieur modélisation mathématique (Grenoble INP-Ensimag) · MSc IA, Université Grenoble Alpes. Je valide la méthode de mesure et le seuil de fiabilité.</span></div>
     <div class="auditresult" id="auditResult" style="display:none"></div>
   </div>
 </div></section>
 
 <section class="s" id="compare"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="cmp_k"></span></div><h2 data-i="cmp_t"></h2><p data-i="cmp_p"></p></div>
-  <div class="cmpscroll rv" data-i="cmp_scroll"></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="cmp_k">AIVisib face aux leaders</span></div><h2 data-i="cmp_t">AIVisib à côté de Peec, Otterly et Profound. Des faits, pas des adjectifs.</h2><p data-i="cmp_p">Trois des plateformes de visibilité IA les plus connues, d'après leurs prix et documentations publics, vérifiés en septembre 2026. Quand l'une d'elles fait mieux, c'est écrit ici aussi.</p></div>
+  <div class="cmpscroll rv" data-i="cmp_scroll">← faites défiler le tableau →</div>
   <div class="cmp rv">
     <table class="cmptable">
-      <thead><tr><th data-i="cmp_feat"></th><th class="us">AIVisib</th><th class="them" data-i="cmp_ca"></th><th class="them" data-i="cmp_cb"></th><th class="them" data-i="cmp_cc"></th></tr></thead>
+      <thead><tr><th data-i="cmp_feat">Fonctionnalité</th><th class="us">AIVisib</th><th class="them" data-i="cmp_ca">Peec AI</th><th class="them" data-i="cmp_cb">Otterly.AI</th><th class="them" data-i="cmp_cc">Profound</th></tr></thead>
       <tbody>
-        <tr><td data-i="cmp_r1"></td><td class="us" data-i="cmp_r1u"></td><td class="them" data-i="cmp_r1a"></td><td class="them" data-i="cmp_r1b"></td><td class="them" data-i="cmp_r1c"></td></tr>
-        <tr><td data-i="cmp_r2"></td><td class="us" data-i="cmp_r2u"></td><td class="them" data-i="cmp_r2a"></td><td class="them" data-i="cmp_r2b"></td><td class="them" data-i="cmp_r2c"></td></tr>
-        <tr><td data-i="cmp_r3"></td><td class="us" data-i="cmp_r3u"></td><td class="them" data-i="cmp_r3a"></td><td class="them" data-i="cmp_r3b"></td><td class="them" data-i="cmp_r3c"></td></tr>
-        <tr><td data-i="cmp_r4"></td><td class="us" data-i="cmp_r4u"></td><td class="them" data-i="cmp_r4a"></td><td class="them" data-i="cmp_r4b"></td><td class="them" data-i="cmp_r4c"></td></tr>
-        <tr><td data-i="cmp_r5"></td><td class="us" data-i="cmp_r5u"></td><td class="them" data-i="cmp_r5a"></td><td class="them" data-i="cmp_r5b"></td><td class="them" data-i="cmp_r5c"></td></tr>
-        <tr><td data-i="cmp_r6"></td><td class="us" data-i="cmp_r6u"></td><td class="them" data-i="cmp_r6a"></td><td class="them" data-i="cmp_r6b"></td><td class="them" data-i="cmp_r6c"></td></tr>
-        <tr><td data-i="cmp_r7"></td><td class="us" data-i="cmp_r7u"></td><td class="them" data-i="cmp_r7a"></td><td class="them" data-i="cmp_r7b"></td><td class="them" data-i="cmp_r7c"></td></tr>
-        <tr><td data-i="cmp_r8"></td><td class="us" data-i="cmp_r8u"></td><td class="them" data-i="cmp_r8a"></td><td class="them" data-i="cmp_r8b"></td><td class="them" data-i="cmp_r8c"></td></tr>
-        <tr><td data-i="cmp_r9"></td><td class="us" data-i="cmp_r9u"></td><td class="them" data-i="cmp_r9a"></td><td class="them" data-i="cmp_r9b"></td><td class="them" data-i="cmp_r9c"></td></tr>
-        <tr><td data-i="cmp_r10"></td><td class="us" data-i="cmp_r10u"></td><td class="them" data-i="cmp_r10a"></td><td class="them" data-i="cmp_r10b"></td><td class="them" data-i="cmp_r10c"></td></tr>
-        <tr><td data-i="cmp_r11"></td><td class="us" data-i="cmp_r11u"></td><td class="them" data-i="cmp_r11a"></td><td class="them" data-i="cmp_r11b"></td><td class="them" data-i="cmp_r11c"></td></tr>
+        <tr><td data-i="cmp_r1">Prix d'entrée</td><td class="us" data-i="cmp_r1u">59 $ / mois, sans engagement</td><td class="them" data-i="cmp_r1a">95 $ / mois (80 $ en annuel)</td><td class="them" data-i="cmp_r1b">29 $ / mois (15 questions)</td><td class="them" data-i="cmp_r1c">99 $ / mois, engagement annuel</td></tr>
+        <tr><td data-i="cmp_r2">Moteurs dans l'offre d'entrée</td><td class="us" data-i="cmp_r2u">ChatGPT · Gemini · Perplexity · Claude</td><td class="them" data-i="cmp_r2a">3 au choix (ChatGPT, Gemini, Perplexity)</td><td class="them" data-i="cmp_r2b">ChatGPT · AI Overviews · Perplexity · Copilot</td><td class="them" data-i="cmp_r2c">ChatGPT seul</td></tr>
+        <tr><td data-i="cmp_r3">Claude inclus</td><td class="us" data-i="cmp_r3u">✓ toutes les offres</td><td class="them" data-i="cmp_r3a">Option payante / Enterprise</td><td class="them" data-i="cmp_r3b">Option 29–439 $ / mois</td><td class="them" data-i="cmp_r3c">Enterprise seulement</td></tr>
+        <tr><td data-i="cmp_r4">Gemini inclus</td><td class="us" data-i="cmp_r4u">✓ toutes les offres</td><td class="them" data-i="cmp_r4a">✓ si choisi parmi les 3</td><td class="them" data-i="cmp_r4b">Option 9–249 $ / mois</td><td class="them" data-i="cmp_r4c">Enterprise seulement</td></tr>
+        <tr><td data-i="cmp_r5">Arabe</td><td class="us" data-i="cmp_r5u">✓ questions, réponses, rapports et interface</td><td class="them" data-i="cmp_r5a">Interface en anglais</td><td class="them" data-i="cmp_r5b">Questions possibles, interface en anglais</td><td class="them" data-i="cmp_r5c">Une langue par offre (Enterprise au-delà)</td></tr>
+        <tr><td data-i="cmp_r6">Mesure</td><td class="us" data-i="cmp_r6u">Hebdo · 3 passages · ± affiché</td><td class="them" data-i="cmp_r6a">Quotidien · 1 passage · sans ±</td><td class="them" data-i="cmp_r6b">Quotidien · 1 passage · sans ±</td><td class="them" data-i="cmp_r6c">Quotidien · 1 passage · sans ±</td></tr>
+        <tr><td data-i="cmp_r7">Méthodologie publiée</td><td class="us" data-i="cmp_r7u">✓ page complète, formules, limites</td><td class="them" data-i="cmp_r7a">Formule dans la doc</td><td class="them" data-i="cmp_r7b">Centre d'aide</td><td class="them" data-i="cmp_r7c">Docs, sans chiffre de précision</td></tr>
+        <tr><td data-i="cmp_r8">Ville et quartiers vérifiés</td><td class="us" data-i="cmp_r8u">✓ vérifiés sur OpenStreetMap, par marque</td><td class="them" data-i="cmp_r8a">Au niveau pays (multi-pays dès 495 $)</td><td class="them" data-i="cmp_r8b">Au niveau pays (65+ pays)</td><td class="them" data-i="cmp_r8c">1 région sur Starter</td></tr>
+        <tr><td data-i="cmp_r9">Rapports en marque blanche</td><td class="us" data-i="cmp_r9u">✓ inclus dès 149 $</td><td class="them" data-i="cmp_r9a">Tableaux clients, crédits agence</td><td class="them" data-i="cmp_r9b">Via Looker Studio (Standard 189 $)</td><td class="them" data-i="cmp_r9c">Non</td></tr>
+        <tr><td data-i="cmp_r10">Palier agence</td><td class="us" data-i="cmp_r10u">399 $ / mois, 8 marques, prix affiché</td><td class="them" data-i="cmp_r10a">Crédits, dès 245 $ / mois</td><td class="them" data-i="cmp_r10b">Standard 189 $ (100 questions)</td><td class="them" data-i="cmp_r10c">Sur devis (crédits par client)</td></tr>
+        <tr><td data-i="cmp_r11">Démarrage gratuit</td><td class="us" data-i="cmp_r11u">Audit gratuit en direct, sans compte</td><td class="them" data-i="cmp_r11a">Essai 7 jours</td><td class="them" data-i="cmp_r11b">Essai 7 jours</td><td class="them" data-i="cmp_r11c">Essai 7 jours sur Growth (399 $)</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="cmpnote rv" data-i="cmp_note"></p>
+  <p class="cmpnote rv" data-i="cmp_note">Les données concurrentes viennent de leurs pages de prix et d'aide publiques, septembre 2026 ; les offres changent. Le suivi quotidien est un vrai avantage chez eux ; nous avons choisi une mesure hebdomadaire à plusieurs passages avec un indice de précision. Une erreur ? Écrivez à hello@aivisib.com, nous corrigerons.</p>
 </div></section>
 
 <!-- PRICING -->
 <!-- POUR LES AGENCES -->
 <section class="s" id="agences"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="ag_k"></span></div><h2 data-i="ag_t"></h2><p data-i="ag_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="ag_k">Pour les agences</span></div><h2 data-i="ag_t">Une seule plateforme. Un mode agence pensé pour votre façon de travailler.</h2><p data-i="ag_p">Vos clients vous demandent si l'IA les recommande. Répondez chaque semaine, sous votre propre nom, sans rien construire.</p></div>
   <div class="bento">
-    <div class="b w3 rv"><span class="n">01</span><h3 data-i="ag1t"></h3><p data-i="ag1p"></p>
-      <div class="fx"><div class="mk-lab" data-i="am_clients"></div>
-        <div class="mk-q"><span><b>Orvia Dental Clinic</b> · Muscat</span><span class="mk-chips"><span class="mk-chip on">67%</span><span class="mk-ok" data-i="am_weekly"></span></span></div>
-        <div class="mk-q"><span><b>Riad Zitoune</b> · Marrakech</span><span class="mk-chips"><span class="mk-chip on">52%</span><span class="mk-ok" data-i="am_weekly"></span></span></div>
-        <div class="mk-q"><span><b>Al Noor Law Firm</b> · Dubai</span><span class="mk-chips"><span class="mk-chip on">31%</span><span class="mk-ok" data-i="am_weekly"></span></span></div>
-        <div class="mk-lab" style="margin:10px 0 0" data-i="am_team"></div></div></div>
-    <div class="b w3 rv"><span class="n">02</span><h3 data-i="ag2t"></h3><p data-i="ag2p"></p>
-      <div class="fx"><div class="mk-in"><b style="display:flex;align-items:center;gap:8px"><i style="width:22px;height:22px;border-radius:6px;background:var(--acid);display:inline-grid;place-items:center;color:#0A0A0B;font-style:normal;font-size:11px;font-weight:800">VA</i><span data-i="fm_agency"></span></b><span class="mk-chip on">PDF · AR / FR / EN</span></div>
-        <div class="mk-q" style="border:0;padding:4px 0"><span style="color:var(--dim)"><span data-i="am_by"></span> <b style="color:var(--cream)"><span data-i="fm_agency"></span></b></span><span class="mk-ok" data-i="am_incl"></span></div></div></div>
-    <div class="b w3 rv"><span class="n">03</span><h3 data-i="ag3t"></h3><p data-i="ag3p"></p>
-      <div class="fx"><div class="mk-in"><b style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;direction:ltr;unicode-bidi:isolate">app.aivisib.com/?share=k7Qx…</b><span class="mk-chip on" data-i="am_copy"></span></div>
-        <div class="mk-chips"><span class="mk-chip" data-i="am_link"></span><span class="mk-chip" data-i="am_views"></span><span class="mk-chip" data-i="am_mail"></span></div></div></div>
-    <div class="b w3 rv"><span class="n">04</span><h3 data-i="ag4t"></h3><p data-i="ag4p"></p>
-      <div class="fx"><div class="mk-lab" data-i="am_sumlab"></div>
-        <div style="font-size:15px;font-weight:600;line-height:1.4"><span data-i="am_sum"></span> <mark style="background:var(--acid);color:#0A0A0B;padding:0 5px;border-radius:4px">25%</mark> <span class="mk-ok" data-i="am_delta"></span></div>
-        <div class="mk-plan" style="margin-top:8px"><i>1</i><span data-i="am_prio"></span></div></div></div>
+    <div class="b w3 rv"><span class="n">01</span><h3 data-i="ag1t">Gérez tous vos clients depuis un seul compte</h3><p data-i="ag1p">Chaque client a son espace : marques, concurrents, questions, rapports. Toute votre équipe travaille dans un seul compte — sièges illimités, mesure hebdomadaire sur chaque marque.</p>
+      <div class="fx"><div class="mk-lab" data-i="am_clients">Espaces clients</div>
+        <div class="mk-q"><span><b>Orvia Dental Clinic</b> · Muscat</span><span class="mk-chips"><span class="mk-chip on">67%</span><span class="mk-ok" data-i="am_weekly">✓ hebdo</span></span></div>
+        <div class="mk-q"><span><b>Riad Zitoune</b> · Marrakech</span><span class="mk-chips"><span class="mk-chip on">52%</span><span class="mk-ok" data-i="am_weekly">✓ hebdo</span></span></div>
+        <div class="mk-q"><span><b>Al Noor Law Firm</b> · Dubai</span><span class="mk-chips"><span class="mk-chip on">31%</span><span class="mk-ok" data-i="am_weekly">✓ hebdo</span></span></div>
+        <div class="mk-lab" style="margin:10px 0 0" data-i="am_team">Équipe · 4 membres · sièges illimités</div></div></div>
+    <div class="b w3 rv"><span class="n">02</span><h3 data-i="ag2t">Livrez sous votre propre marque — inclus</h3><p data-i="ag2p">Votre nom et votre logo sur chaque rapport, PDF et page partagée. Aucun outil tiers, aucun supplément : c'est intégré dès le plan Pro.</p>
+      <div class="fx"><div class="mk-in"><b style="display:flex;align-items:center;gap:8px"><i style="width:22px;height:22px;border-radius:6px;background:var(--acid);display:inline-grid;place-items:center;color:#0A0A0B;font-style:normal;font-size:11px;font-weight:800">VA</i><span data-i="fm_agency">Votre Agence</span></b><span class="mk-chip on">PDF · AR / FR / EN</span></div>
+        <div class="mk-q" style="border:0;padding:4px 0"><span style="color:var(--dim)"><span data-i="am_by">Rapport préparé par</span> <b style="color:var(--cream)"><span data-i="fm_agency">Votre Agence</span></b></span><span class="mk-ok" data-i="am_incl">✓ inclus dès Pro</span></div></div></div>
+    <div class="b w3 rv"><span class="n">03</span><h3 data-i="ag3t">Donnez à chaque client un lien vivant</h3><p data-i="ag3p">Un lien en lecture seule montre à votre client le dernier rapport, en marque blanche, sans compte. Chaque rapport hebdomadaire peut aussi lui parvenir automatiquement par email.</p>
+      <div class="fx"><div class="mk-in"><b style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;direction:ltr;unicode-bidi:isolate">app.aivisib.com/?share=k7Qx…</b><span class="mk-chip on" data-i="am_copy">Copier</span></div>
+        <div class="mk-chips"><span class="mk-chip" data-i="am_link">Lecture seule · sans compte</span><span class="mk-chip" data-i="am_views">👁 vu 3 fois · dernier le 02/09</span><span class="mk-chip" data-i="am_mail">✉ email hebdo ✓</span></div></div></div>
+    <div class="b w3 rv"><span class="n">04</span><h3 data-i="ag4t">Envoyez des rapports que vos clients lisent vraiment</h3><p data-i="ag4p">Un résumé exécutif rédigé, ce qui a bougé depuis la semaine dernière, un plan d'action priorisé — en français, en anglais ou en arabe. Des livrables, pas des captures d'écran.</p>
+      <div class="fx"><div class="mk-lab" data-i="am_sumlab">Résumé exécutif · rédigé pour le client</div>
+        <div style="font-size:15px;font-weight:600;line-height:1.4"><span data-i="am_sum">Orvia Dental Clinic est recommandée dans</span> <mark style="background:var(--acid);color:#0A0A0B;padding:0 5px;border-radius:4px">25%</mark> <span class="mk-ok" data-i="am_delta">▲ +6 pts vs semaine dernière</span></div>
+        <div class="mk-plan" style="margin-top:8px"><i>1</i><span data-i="am_prio">Priorité n°1 · publier une FAQ en arabe sur les 5 questions où la clinique est absente</span></div></div></div>
   </div>
-    <div class="agmargin rv"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="ag_margin_k"></span></div><h3 data-i="ag_margin_t"></h3><p data-i="ag_margin_p"></p></div>
-  <div class="agcta rv"><div class="mk-chips" style="flex-basis:100%"><span class="mk-chip" data-i="ac1"></span><span class="mk-chip" data-i="ac2"></span><span class="mk-chip" data-i="ac3"></span><span class="mk-chip" data-i="ac4"></span><span class="mk-chip" data-i="ac5"></span><span class="mk-chip" data-i="ac6"></span></div><p data-i="ag_note"></p><a href="https://app.aivisib.com" class="cta" data-i="ag_c"></a></div>
+    <div class="agmargin rv"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="ag_margin_k">Ce que gagne une agence</span></div><h3 data-i="ag_margin_t">Vous payez 40 $ par client. Le marché le revend entre 500 et 1 500 $.</h3><p data-i="ag_margin_p">L'offre Agency coûte 399 $ par mois pour huit marques, soit 50 $ par client, tout compris. Les agences qui revendent le suivi de visibilité IA le facturent à leurs clients entre 500 et 1 500 $ par mois, et entre 2 000 et 5 000 $ lorsqu'elles réalisent aussi le travail. Le prix que vous pratiquez ne regarde que vous. Au-delà de huit marques, chaque marque supplémentaire coûte 49 $ par mois.</p></div>
+  <div class="agcta rv"><div class="mk-chips" style="flex-basis:100%"><span class="mk-chip" data-i="ac1">8 marques</span><span class="mk-chip" data-i="ac2">200 questions / semaine</span><span class="mk-chip" data-i="ac3">Sièges illimités</span><span class="mk-chip" data-i="ac4">Marque blanche + PDF</span><span class="mk-chip" data-i="ac5">Liens clients + emails hebdo</span><span class="mk-chip" data-i="ac6">399 $ / mois</span></div><p data-i="ag_note">En septembre 2026, les principaux outils de visibilité IA vendent leurs paliers agence dès 205 $/mois en crédits, 399 $/mois par client, ou sur devis — et aucun n'inclut de rapports en marque blanche natifs. AIVisib Agency : 399 $/mois pour 8 marques, marque blanche intégrée.</p><a href="https://app.aivisib.com" class="cta" data-i="ag_c">Démarrer le plan Agency</a></div>
 </div></section>
 
 <section class="s" id="price"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="p_k"></span></div><h2 data-i="p_t"></h2><p data-i="p_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="p_k">Tarifs</span></div><h2 data-i="p_t">Un prix juste. Tout compris.</h2><p data-i="p_p">Trois offres, au mois ou à l'année avec deux mois offerts, sans option payante, sans crédits, sans appel commercial. Claude et Gemini, l'arabe et la marque blanche sont inclus — pas vendus à part.</p></div>
   <div class="ptabs rv" role="tablist">
-    <button type="button" class="ptab on" id="tabSub" role="tab" onclick="priceTab('sub')"><b data-i="tb_sub"></b><span data-i="tb_sub_s"></span></button>
-    <button type="button" class="ptab" id="tabSvc" role="tab" onclick="priceTab('svc')"><b data-i="tb_svc"></b><span data-i="tb_svc_s"></span></button>
+    <button type="button" class="ptab on" id="tabSub" role="tab" onclick="priceTab('sub')"><b data-i="tb_sub">Abonnement</b><span data-i="tb_sub_s">Vous utilisez l'outil : mesure chaque semaine et plan d'action</span></button>
+    <button type="button" class="ptab" id="tabSvc" role="tab" onclick="priceTab('svc')"><b data-i="tb_svc">Service accompagné</b><span data-i="tb_svc_s">Nous faisons le travail avec votre équipe</span></button>
   </div>
   <div id="paneSub">
   <div class="pcount" id="plCount"></div>
   <div class="plans">
-    <div class="pl rv"><h3>Starter</h3><div class="price">$59<small data-i="mo"></small></div><div class="plrow"><span class="plaunch" data-i="pl_tag"></span><span class="pnext" data-i="pl1"></span></div><div class="pyear" data-i-html="p1y"></div><p class="who" data-i="p1w"></p>
-      <div class="meas"><div class="mk-lab" data-i="pm_l"></div><b data-i="pm1"></b><span data-i="pm1n"></span></div>
-      <ul><li data-i="p1a"></li><li data-i="p1b"></li><li data-i="p1c"></li><li data-i="p1d"></li><li data-i="p1e"></li><li data-i="p1f"></li><li data-i="p1g"></li><li data-i="p1h"></li></ul>
-      <a href="https://app.aivisib.com" class="cta out" style="text-align:center" data-i="p_c"></a></div>
-    <div class="pl top rv"><span class="badge" data-i="p_pop"></span><h3>Pro</h3><div class="price">$149<small data-i="mo"></small></div><div class="plrow"><span class="plaunch" data-i="pl_tag"></span><span class="pnext" data-i="pl2"></span></div><div class="pyear" data-i-html="p2y"></div><p class="who" data-i="p2w"></p>
-      <div class="meas"><div class="mk-lab" data-i="pm_l"></div><b data-i="pm2"></b><span data-i="pm2n"></span></div>
-      <ul><li class="plus" data-i="p2a"></li><li data-i="p2b"></li><li data-i="p2c"></li><li data-i="p2d"></li><li data-i="p2e"></li><li class="xb" data-i="p_xb"></li></ul>
-      <a href="https://app.aivisib.com" class="cta" style="text-align:center" data-i="p_c"></a></div>
-    <div class="pl rv"><h3 data-i="p3n"></h3><div class="price">$399<small data-i="mo"></small></div><div class="plrow"><span class="plaunch" data-i="pl_tag"></span><span class="pnext" data-i="pl3"></span></div><div class="pyear" data-i-html="p3y"></div><p class="who" data-i="p3w"></p>
-      <div class="meas"><div class="mk-lab" data-i="pm_l"></div><b data-i="pm3"></b><span data-i="pm3n"></span></div>
-      <ul><li class="plus" data-i="p3a"></li><li data-i="p3b"></li><li data-i="p3c"></li><li data-i="p3d"></li><li data-i="p3e"></li><li data-i="p3f"></li><li class="xb" data-i="p_xb"></li></ul>
-      <a href="https://app.aivisib.com" class="cta out" style="text-align:center" data-i="p_c"></a></div>
+    <div class="pl rv"><h3>Starter</h3><div class="price">$59<small data-i="mo">/mois</small></div><div class="plrow"><span class="plaunch" data-i="pl_tag">Prix de lancement</span><span class="pnext" data-i="pl1">puis 79 $/mois dès le 1er mars 2027</span></div><div class="pyear" data-i-html="p1y">ou <s>708 $</s> 590 $/an · 2 mois offerts</div><p class="who" data-i="p1w">Pour une entreprise qui veut savoir où elle en est face à l'IA.</p>
+      <div class="meas"><div class="mk-lab" data-i="pm_l">Ce que vous mesurez</div><b data-i="pm1">1 marque · 25 questions · 4 moteurs · 3 passages · chaque semaine</b><span data-i="pm1n">≈ 1 200 réponses IA analysées / mois</span></div>
+      <ul><li data-i="p1a">Score de visibilité IA chaque semaine, avec sa marge d’erreur</li><li data-i="p1b">Part de voix face à 4 concurrents de votre choix</li><li data-i="p1c">Position moyenne, sentiment et indice de confiance</li><li data-i="p1d">Sources que les IA citent : sites, médias, annuaires</li><li data-i="p1e">Ce qui a changé depuis la semaine dernière : questions gagnées et perdues</li><li data-i="p1f">Résumé exécutif, interprétation en langage clair, plan d’action priorisé</li><li data-i="p1g">Questions rédigées par l’IA pour votre secteur et votre ville, modifiables</li><li data-i="p1h">Export PDF · support par email</li></ul>
+      <a href="https://app.aivisib.com" class="cta out" style="text-align:center" data-i="p_c">Commencer</a></div>
+    <div class="pl top rv"><span class="badge" data-i="p_pop">POPULAIRE</span><h3>Pro</h3><div class="price">$149<small data-i="mo">/mois</small></div><div class="plrow"><span class="plaunch" data-i="pl_tag">Prix de lancement</span><span class="pnext" data-i="pl2">puis 199 $/mois dès le 1er mars 2027</span></div><div class="pyear" data-i-html="p2y">ou <s>1 788 $</s> 1 490 $/an · 2 mois offerts</div><p class="who" data-i="p2w">Pour une marque qui grandit, ou un consultant avec quelques clients.</p>
+      <div class="meas"><div class="mk-lab" data-i="pm_l">Ce que vous mesurez</div><b data-i="pm2">3 marques · 75 questions · 4 moteurs · 3 passages · chaque semaine</b><span data-i="pm2n">≈ 3 600 réponses IA analysées / mois</span></div>
+      <ul><li class="plus" data-i="p2a">Tout Starter, plus :</li><li data-i="p2b">Marque blanche : votre nom et votre logo sur les rapports et les PDF</li><li data-i="p2c">Liens de partage en lecture seule, sans compte, avec compteur d’ouvertures</li><li data-i="p2d">Jusqu’à 3 marques : vos clients, vos gammes ou vos villes</li><li data-i="p2e">Support prioritaire par email, réponse sous un jour ouvré</li><li class="xb" data-i="p_xb">Besoin de plus de marques ? 49 $/mois par marque, 25 questions incluses.</li></ul>
+      <a href="https://app.aivisib.com" class="cta" style="text-align:center" data-i="p_c">Commencer</a></div>
+    <div class="pl rv"><h3 data-i="p3n">Agence</h3><div class="price">$399<small data-i="mo">/mois</small></div><div class="plrow"><span class="plaunch" data-i="pl_tag">Prix de lancement</span><span class="pnext" data-i="pl3">puis 499 $/mois dès le 1er mars 2027</span></div><div class="pyear" data-i-html="p3y">ou <s>4 788 $</s> 3 990 $/an · 2 mois offerts</div><p class="who" data-i="p3w">Pour les agences qui reportent à plusieurs clients, sous leur propre nom.</p>
+      <div class="meas"><div class="mk-lab" data-i="pm_l">Ce que vous mesurez</div><b data-i="pm3">8 marques · 200 questions · 4 moteurs · 3 passages · chaque semaine</b><span data-i="pm3n">≈ 9 600 réponses IA analysées / mois · ≈ 40 $ par marque</span></div>
+      <ul><li class="plus" data-i="p3a">Tout Pro, plus :</li><li data-i="p3b">Espaces clients séparés, chacun avec son nom et son logo</li><li data-i="p3c">Sièges illimités pour votre équipe, une seule facture</li><li data-i="p3d">Envoi automatique du rapport hebdomadaire à chaque client</li><li data-i="p3e">Marque blanche par défaut sur tout l’espace</li><li data-i="p3f">Support prioritaire par email, réponse sous un jour ouvré</li><li class="xb" data-i="p_xb">Besoin de plus de marques ? 49 $/mois par marque, 25 questions incluses.</li></ul>
+      <a href="https://app.aivisib.com" class="cta out" style="text-align:center" data-i="p_c">Commencer</a></div>
   </div>
-  <div class="pbadge rv"><img src="/brand/badge-demo.svg" alt="" width="268" height="74" loading="lazy"><div><h4 data-i="pb_t"></h4><p data-i="pb_p"></p></div></div>
-  <div class="pall rv"><div class="pall-k" data-i="pa_k"></div><div class="pall-c"><span data-i="pa1"></span><span data-i="pa2"></span><span data-i="pa3"></span><span data-i="pa4"></span><span data-i="pa5"></span><span data-i="pa6"></span><span data-i="pa7"></span><span data-i="pa8"></span></div></div>
-  <div class="hwtrust rv"><span data-i="pt1"></span><span data-i="pt2"></span><span data-i="pt3"></span><span data-i="pt4"></span></div>
-  <div class="pvk rv" data-i="pv_k"></div>
+  <div class="pbadge rv"><img src="/brand/badge-demo.svg" alt="" width="268" height="74" loading="lazy"><div><h4 data-i="pb_t">Affichez votre score, faites-le reconnaître</h4><p data-i="pb_p">Chaque offre inclut un badge que vous collez sur votre propre site : votre score de visibilité réel et sa date de mesure, mis à jour tout seul à chaque rapport hebdomadaire, avec un lien vers votre rapport partageable. Vos clients voient un chiffre, pas une promesse.</p></div></div>
+  <div class="pall rv"><div class="pall-k" data-i="pa_k">Dans toutes les offres</div><div class="pall-c"><span data-i="pa1">4 moteurs : ChatGPT, Gemini, Perplexity, Claude</span><span data-i="pa2">3 passages par question, chaque semaine</span><span data-i="pa3">Questions en 10 langues, dont l’arabe standard</span><span data-i="pa4">Mesure locale ou mondiale, garde-fou anti-homonymes</span><span data-i="pa5">Guide « Comprendre ce rapport »</span><span data-i="pa6">Sans crédits, sans option payante</span><span data-i="pa7">Annulable en un clic</span><span data-i="pa8">Badge pour votre site, avec votre score, mis à jour chaque semaine</span></div></div>
+  <div class="hwtrust rv"><span data-i="pt1">Annulable à tout moment, en un clic</span><span data-i="pt2">Paiement sécurisé par Stripe</span><span data-i="pt3">Sans option payante, sans crédits, sans frais cachés</span><span data-i="pt4">Audit gratuit instantané d'abord, sans carte</span></div>
+  <div class="pvk rv" data-i="pv_k">Face au marché · septembre 2026</div>
   <div class="pvs rv">
-    <div class="pv"><b data-i="pv1t"></b><p data-i="pv1"></p></div>
-    <div class="pv"><b data-i="pv2t"></b><p data-i="pv2"></p></div>
-    <div class="pv"><b data-i="pv3t"></b><p data-i="pv3"></p></div>
-    <div class="pv"><b data-i="pv4t"></b><p data-i="pv4"></p></div>
+    <div class="pv"><b data-i="pv1t">Claude et Gemini</b><p data-i="pv1">Inclus dans chaque offre. Ailleurs : options à 29–439 $/mois, ou réservés à l'Enterprise.</p></div>
+    <div class="pv"><b data-i="pv2t">Marque blanche</b><p data-i="pv2">Incluse dès Pro. Ailleurs : sur demande, ou inexistante.</p></div>
+    <div class="pv"><b data-i="pv3t">Palier agence</b><p data-i="pv3">399 $ pour 8 marques, prix affiché. Ailleurs : dès 205 $/mois en crédits, 399 $/mois par client, ou sur devis.</p></div>
+    <div class="pv"><b data-i="pv4t">Arabe</b><p data-i="pv4">Questions, réponses, rapports et interface en arabe, sans supplément. Ailleurs : au mieux, on peut taper un prompt en arabe.</p></div>
   </div>
-  <a class="pcmp rv" href="/comparatif" data-i="p_cmp_link"></a>
+  <a class="pcmp rv" href="/comparatif" data-i="p_cmp_link">Voir le comparatif avec Peec, Otterly et Profound (11 critères) →</a>
   </div><!-- /paneSub -->
 
   <!-- SERVICE ACCOMPAGNÉ — nous faisons le travail (mesure + diagnostic + mise en œuvre) — 2e onglet -->
   <div class="svc" id="service" hidden>
-    <div class="svc-intro"><h3 data-i="sv_t"></h3><p data-i="sv_p"></p></div>
+    <div class="svc-intro"><h3 data-i="sv_t">Vous préférez que nous fassions le travail ? Nous mesurons, diagnostiquons et agissons.</h3><p data-i="sv_p">L'abonnement mesure et vous dit quoi faire. Le service accompagné va plus loin : nous mettons en œuvre les actions avec votre équipe et prouvons la progression, semaine après semaine.</p></div>
     <div class="plans">
-      <div class="pl rv"><h3 data-i="sv1n"></h3><div class="price">$1,490</div><div class="once" data-i="sv_once"></div><p class="who" data-i="sv1w"></p>
-        <ul><li data-i="sv1a"></li><li data-i="sv1b"></li><li data-i="sv1c"></li><li data-i="sv1d"></li><li data-i="sv1e"></li><li data-i="sv1f"></li></ul>
-        <a href="mailto:hello@aivisib.com?subject=Pack%20Essentiel%20AIVisib" class="cta out" style="text-align:center" data-i="sv_c"></a></div>
-      <div class="pl top rv"><span class="badge" data-i="sv_best"></span><h3 data-i="sv2n"></h3><div class="price">$2,900</div><div class="once" data-i="sv_once"></div><p class="who" data-i="sv2w"></p>
-        <ul><li class="plus" data-i="sv2a"></li><li data-i="sv2b"></li><li data-i="sv2c"></li><li data-i="sv2d"></li></ul>
-        <a href="mailto:hello@aivisib.com?subject=Pack%20Complet%20AIVisib" class="cta" style="text-align:center" data-i="sv_c"></a></div>
-      <div class="pl rv"><h3 data-i="sv3n"></h3><div class="price">$790<small data-i="mo"></small></div><div class="once" data-i="sv_noeng"></div><p class="who" data-i="sv3w"></p>
-        <ul><li data-i="sv3a"></li><li data-i="sv3b"></li><li data-i="sv3c"></li><li data-i="sv3d"></li></ul>
-        <a href="mailto:hello@aivisib.com?subject=Accompagnement%20mensuel%20AIVisib" class="cta out" style="text-align:center" data-i="sv_c"></a></div>
+      <div class="pl rv"><h3 data-i="sv1n">Pack Essentiel</h3><div class="price">$1,490</div><div class="once" data-i="sv_once">paiement unique · 3 mois inclus</div><p class="who" data-i="sv1w">Pour une entreprise qui veut gagner sa place dans les réponses des IA sans faire le travail elle-même.</p>
+        <ul><li data-i="sv1a">Mesure de départ sur 4 IA, 3 langues</li><li data-i="sv1b">Diagnostic : où vous êtes absent et pourquoi</li><li data-i="sv1c">Correctifs techniques livrés prêts à appliquer (données structurées, pages, robots.txt)</li><li data-i="sv1d">Présence sur les sources que lisent les IA (annuaires, Google Business, réponses aux avis)</li><li data-i="sv1e">Mesure et suivi hebdomadaires pendant 3 mois</li><li data-i="sv1f">Bilan avant / après</li></ul>
+        <a href="mailto:hello@aivisib.com?subject=Pack%20Essentiel%20AIVisib" class="cta out" style="text-align:center" data-i="sv_c">Demander ce service</a></div>
+      <div class="pl top rv"><span class="badge" data-i="sv_best">Le plus complet</span><h3 data-i="sv2n">Pack Complet</h3><div class="price">$2,900</div><div class="once" data-i="sv_once">paiement unique · 3 mois inclus</div><p class="who" data-i="sv2w">Tout l'Essentiel, plus les textes de votre site réécrits pour les moteurs IA.</p>
+        <ul><li class="plus" data-i="sv2a">Tout le Pack Essentiel</li><li data-i="sv2b">Vos pages clés réécrites : services, FAQ, à propos</li><li data-i="sv2c">Livrées prêtes à publier, dans votre ton, dans vos langues</li><li data-i="sv2d">Guide d'intégration pour votre webmaster, ou nous le faisons avec vos accès</li></ul>
+        <a href="mailto:hello@aivisib.com?subject=Pack%20Complet%20AIVisib" class="cta" style="text-align:center" data-i="sv_c">Demander ce service</a></div>
+      <div class="pl rv"><h3 data-i="sv3n">Accompagnement mensuel</h3><div class="price">$790<small data-i="mo">/mois</small></div><div class="once" data-i="sv_noeng">par mois · sans engagement</div><p class="who" data-i="sv3w">Pour continuer après un pack : nouvelles actions chaque mois, mesure et bilan.</p>
+        <ul><li data-i="sv3a">Nouvelles actions chaque mois, classées par impact</li><li data-i="sv3b">Mesure hebdomadaire sur 4 IA</li><li data-i="sv3c">Bilan mensuel avec votre équipe</li><li data-i="sv3d">Sans engagement</li></ul>
+        <a href="mailto:hello@aivisib.com?subject=Accompagnement%20mensuel%20AIVisib" class="cta out" style="text-align:center" data-i="sv_c">Demander ce service</a></div>
     </div>
-    <p class="svc-note rv" data-i-html="sv_note"></p>
-    <div class="svc-founder rv"><i data-i="sv_f1"></i><span data-i="sv_f2"></span></div>
+    <p class="svc-note rv" data-i-html="sv_note">Prix en dollars américains, hors taxes. <b>Tarif local Maroc sur demande.</b> Paiement en une ou trois fois. Votre équipe crée ses comptes (annuaires, Google Business) : nous les remplissons. Premiers effets en général sous 4 à 8 semaines. <b>Nous ne promettons jamais un classement</b> : nous mesurons, nous agissons, nous vérifions.</p>
+    <div class="svc-founder rv"><i data-i="sv_f1">Clients fondateurs</i><span data-i="sv_f2">−40 % pour les 5 premières entreprises, en échange d'un témoignage.</span></div>
   </div>
 </div></section>
 
 <!-- FAQ -->
 <section class="s" id="faq"><div class="wrap">
-  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="q_k"></span></div><h2 data-i="q_t"></h2><p data-i="q_p"></p></div>
+  <div class="head"><div class="kicker"><s><i></i><i></i><i></i></s><span data-i="q_k">FAQ</span></div><h2 data-i="q_t">Les questions qu'on se pose avant de payer 59 $.</h2><p data-i="q_p">Des réponses directes, avec des chiffres. Si la vôtre n'est pas là, écrivez-nous — un humain répond.</p></div>
   <div class="faq rv">
-    <div class="faqh" data-i="fh1"></div>
-    <details><summary data-i="fq1"></summary><p data-i="fa1"></p></details>
-    <details><summary data-i="fq2"></summary><p data-i="fa2"></p></details>
-    <details><summary data-i="fq3"></summary><p data-i="fa3"></p></details>
-    <div class="faqh" data-i="fh2"></div>
-    <details><summary data-i="fq4"></summary><p data-i="fa4"></p></details>
-    <details><summary data-i="fq5"></summary><p data-i="fa5"></p></details>
-    <details><summary data-i="fq6"></summary><p data-i="fa6"></p></details>
-    <div class="faqh" data-i="fh3"></div>
-    <details><summary data-i="fq7"></summary><p data-i="fa7"></p></details>
-    <details><summary data-i="fq8"></summary><p data-i="fa8"></p></details>
-    <details><summary data-i="fq9"></summary><p data-i="fa9"></p></details>
-    <details><summary data-i="fq10"></summary><p data-i="fa10"></p></details>
-    <details><summary data-i="fq11"></summary><p data-i="fa11"></p></details>
-    <div class="faqh" data-i="fh4"></div>
-    <details><summary data-i="fq12"></summary><p data-i="fa12"></p></details>
-    <details><summary data-i="fq13"></summary><p data-i="fa13"></p></details>
-    <div class="faqmore"><span data-i="fq_more"></span><a href="mailto:hello@aivisib.com">hello@aivisib.com</a><span data-i="fq_or"></span><a href="#audit" data-i="fq_audit"></a></div>
-    <a class="faqall" href="/faq" data-i="fq_all"></a>
+    <div class="faqh" data-i="fh1">Produit &amp; scores</div>
+    <details><summary data-i="fq1">Que mesure AIVisib exactement ?</summary><p data-i="fa1">Pour chaque question que posent vos clients (par ex. « meilleure clinique dentaire à Mascate pour les familles ? »), nous interrogeons ChatGPT, Gemini, Perplexity et Claude avec recherche web active, plusieurs fois, chaque semaine. Nous enregistrons si votre marque est citée, à quelle position, qui est recommandé à votre place, comment on parle de vous, et quelles sources l'IA a utilisées. Cela donne votre score de visibilité, votre part des recommandations IA, et le détail par langue et par moteur.</p></details>
+    <details><summary data-i="fq2">Quels moteurs IA et quelles langues sont inclus ?</summary><p data-i="fa2">Les quatre moteurs — ChatGPT, Gemini, Perplexity et Claude — dans chaque offre, sans supplément, plus le français, l'anglais et l'arabe standard. La plupart des outils facturent par moteur ou réservent Claude aux offres entreprise ; pas nous.</p></details>
+    <details><summary data-i="fq3">Comment les questions sont-elles choisies, et puis-je les modifier ?</summary><p data-i="fa3">AIVisib rédige de vraies questions clients à partir de votre marque, votre secteur, votre ville et vos langues, sur plusieurs intentions (meilleur, près de moi, prix, service, réputation), et contrôle chacune face au réel avant de la compter. Vous gardez, modifiez ou ajoutez. Starter en suit 25, Pro 100, Agency 400.</p></details>
+    <div class="faqh" data-i="fh2">Fiabilité</div>
+    <details><summary data-i="fq4">Les réponses des IA changent à chaque fois — les scores sont-ils fiables ?</summary><p data-i="fa4">C'est précisément pour ça que nous ne nous fions jamais à une seule réponse. Chaque question est posée plusieurs fois sur quatre moteurs, et chaque score s'affiche avec sa précision (±) et un indice de confiance qui indique la stabilité du résultat à travers vos questions. Une conversation manuelle est une anecdote ; un rapport est une mesure.</p></details>
+    <details><summary data-i="fq5">Pourquoi mon score a-t-il bougé cette semaine ?</summary><p data-i="fa5">Les modèles évoluent, les sources changent, les concurrents publient. C'est tout l'intérêt de mesurer chaque semaine. Lisez la tendance sur quatre semaines plutôt qu'un seul point, et regardez la section « ce qui a changé » : elle liste les moteurs, langues et questions gagnés ou perdus.</p></details>
+    <details><summary data-i="fq6">Pourquoi mon propre ChatGPT donne-t-il une autre réponse ?</summary><p data-i="fa6">Votre conversation personnelle est influencée par votre historique, la mémoire, votre localisation et votre connexion. Nous interrogeons les moteurs dans un état neutre, recherche web activée : le résultat reflète ce que voit un nouveau client — pas ce que vous voyez.</p></details>
+    <div class="faqh" data-i="fh3">Offres, facturation &amp; agences</div>
+    <details><summary data-i="fq7">Quelle différence entre l'audit gratuit et une offre payante ?</summary><p data-i="fa7">Le test gratuit rédige six vraies questions de clients pour votre secteur et votre ville et les pose à trois moteurs (ChatGPT, Gemini et Perplexity), une fois — un instantané en direct sur 18 réponses, avec sa marge d'erreur avec un score, les concurrents cités et deux recommandations. Une offre suit votre jeu complet de questions sur quatre moteurs, en plusieurs langues, chaque semaine, avec l'historique, les concurrents, les sources et un plan d'action.</p></details>
+    <details><summary data-i="fq8">Quelle offre choisir, et puis-je changer ensuite ?</summary><p data-i="fa8">Starter (59 $) pour une marque et 25 questions ; Pro (149 $) jusqu'à trois marques, 75 questions et la marque blanche ; Agency (399 $) pour huit marques, 200 questions, des sièges illimités et des liens clients. Passez à l'offre supérieure ou inférieure à tout moment depuis votre portail de facturation ; Stripe calcule le prorata.</p></details>
+    <details><summary data-i="fq9">Y a-t-il un essai, et comment annuler ?</summary><p data-i="fa9">Pas d'essai : testez d'abord avec l'audit gratuit, puis abonnez-vous au mois. Annulation en un clic depuis le portail de facturation, sans contrat ; vous gardez l'accès jusqu'à la fin de la période payée.</p></details>
+    <details><summary data-i="fq10">Une agence peut-elle gérer plusieurs clients et revendre les rapports ?</summary><p data-i="fa10">Oui. L'offre Agency coûte 399 $ par mois pour huit marques, soit 50 $ par client ; chaque marque supplémentaire coûte 49 $ par mois. Dès Pro, chaque rapport, PDF et page partagée porte votre nom et votre logo à la place des nôtres. Agency ajoute des espaces clients séparés, des sièges illimités, une facture unique et l'envoi automatique du rapport hebdo à chaque client. Le prix que vous facturez à vos clients vous appartient.</p></details>
+    <details><summary data-i="fq11">Y a-t-il des frais cachés, des crédits ou des options payantes ?</summary><p data-i="fa11">Non. Le prix affiché est le prix complet. Tous les moteurs, toutes les langues, les exports PDF et les mesures hebdomadaires sont inclus ; aucun crédit à acheter, aucun supplément par moteur.</p></details>
+    <div class="faqh" data-i="fh4">Confidentialité &amp; résultats</div>
+    <details><summary data-i="fq12">Les données de mes clients restent-elles confidentielles ?</summary><p data-i="fa12">Vos projets, questions et rapports ne sont visibles que par votre compte et les personnes que vous invitez. Nous ne les vendons ni ne les partageons jamais, et ne les utilisons jamais pour entraîner des modèles d'IA. Les paiements passent par Stripe ; nous ne stockons aucun numéro de carte. Supprimez un projet ou votre compte quand vous voulez.</p></details>
+    <details><summary data-i="fq13">Que faire du plan d'action, et quand voit-on des résultats ?</summary><p data-i="fa13">Chaque rapport se termine par une courte liste d'actions priorisées : pages à créer, sources sur lesquelles apparaître, langues à couvrir. La plupart des marques voient un premier mouvement quatre à huit semaines après avoir agi. Nous ne promettons pas un classement — nous le mesurons honnêtement, chaque semaine.</p></details>
+    <div class="faqmore"><span data-i="fq_more">Une autre question ? Écrivez à</span><a href="mailto:hello@aivisib.com">hello@aivisib.com</a><span data-i="fq_or">ou</span><a href="#audit" data-i="fq_audit">lancez d'abord l'audit gratuit</a></div>
+    <a class="faqall" href="/faq" data-i="fq_all">Voir les 13 questions →</a>
   </div>
 </div></section>
 
@@ -1381,25 +1382,25 @@ body.dark .shbadge .shb-d{display:inline-block}
 <section class="s" id="join" style="padding-top:0"><div class="wrap">
   <div class="final v5 rv">
     <div class="jorb jorb1"></div><div class="jorb jorb2"></div>
-    <div class="kicker jk"><s><i></i><i></i><i></i></s><span data-i="j_k"></span></div>
-    <h2 data-i="j_t"></h2>
-    <p data-i="j_p"></p>
-    <div class="jctas"><a href="https://app.aivisib.com" class="cta big" data-i="j_c"></a><a href="#audit" class="jalt" data-i="j_c2"></a></div>
-    <div class="jeng"><span><i></i>ChatGPT</span><span><i></i>Gemini</span><span><i></i>Perplexity</span><span><i></i>Claude</span><b data-i="j_eng"></b></div>
-    <div class="jtrust"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.6c0 4.6 3.2 8.4 7.5 9.8 4.3-1.4 7.5-5.2 7.5-9.8V5.6L12 2.8Z"/><path d="M8.8 13.4v1.6M12 11.2v3.8M15.2 9v6" stroke-width="2"/></svg><em data-i="j_n1"></em></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3.5v2.2M4.2 5.7l1.6 1.6M3.5 11h2.2M9.5 9.5l9.7 3.6-4.2 1.9-1.9 4.2-3.6-9.7Z"/></svg><em data-i="j_n2"></em></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 5.5 13.5h5.5l-1 8 7.5-11h-5.5l1-8Z"/></svg><em data-i="j_n3"></em></span></div>
+    <div class="kicker jk"><s><i></i><i></i><i></i></s><span data-i="j_k">Prêt en cinq minutes</span></div>
+    <h2 data-i="j_t">Commencez à gagner l'ère de la recherche IA.</h2>
+    <p data-i="j_p">Créez votre compte, ajoutez votre marque, et recevez votre premier rapport en quelques minutes. À partir de 59 $/mois — annulable à tout moment.</p>
+    <div class="jctas"><a href="https://app.aivisib.com" class="cta big" data-i="j_c">Créer mon compte</a><a href="#audit" class="jalt" data-i="j_c2">Ou faire le test gratuit d'abord</a></div>
+    <div class="jeng"><span><i></i>ChatGPT</span><span><i></i>Gemini</span><span><i></i>Perplexity</span><span><i></i>Claude</span><b data-i="j_eng">mesurés chaque semaine</b></div>
+    <div class="jtrust"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v5.6c0 4.6 3.2 8.4 7.5 9.8 4.3-1.4 7.5-5.2 7.5-9.8V5.6L12 2.8Z"/><path d="M8.8 13.4v1.6M12 11.2v3.8M15.2 9v6" stroke-width="2"/></svg><em data-i="j_n1">Paiement sécurisé par Stripe</em></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3.5v2.2M4.2 5.7l1.6 1.6M3.5 11h2.2M9.5 9.5l9.7 3.6-4.2 1.9-1.9 4.2-3.6-9.7Z"/></svg><em data-i="j_n2">Annulable en un clic</em></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 5.5 13.5h5.5l-1 8 7.5-11h-5.5l1-8Z"/></svg><em data-i="j_n3">Premier rapport en quelques minutes</em></span></div>
   </div></section>
 
 <footer><div class="wrap">
   <div class="ftg5">
-    <div class="ftc"><a class="logo" href="/" aria-label="AIVisib"><i>◈</i>AIVisib</a><p data-i="f_company"></p><p class="ftlangs"><a href="/?lang=en">English</a> · <a href="/?lang=fr">Français</a> · <a href="/?lang=ar">العربية</a></p><div class="badges"><a class="shbadge" href="https://www.saashub.com/aivisib?utm_source=badge&amp;utm_campaign=badge&amp;utm_content=aivisib&amp;badge_variant=color&amp;badge_kind=approved" target="_blank" rel="noopener" title="Approved on SaaSHub" aria-label="AIVisib is approved on SaaSHub"><img class="shb-l" src="/brand/saashub-approved-dark.png" alt="AIVisib is approved on SaaSHub" width="168" height="56" loading="lazy"><img class="shb-d" src="/brand/saashub-approved-color.png" alt="AIVisib is approved on SaaSHub" width="168" height="56" loading="lazy"></a><a class="shbadge msb" href="https://www.microsoft.com/en-us/startups" target="_blank" rel="noopener" title="AIVisib is part of Microsoft for Startups" aria-label="AIVisib is part of Microsoft for Startups"><img src="/brand/microsoft-for-startups.png" alt="Proud to partner with Microsoft for Startups" width="131" height="56" loading="lazy"></a></div></div>
-    <div class="ftcol"><h4 data-i="ft_prod"></h4>
-      <a href="/#how" data-i="n1"></a><a href="/#price" data-i="n3"></a><a href="/agences" data-i="n5"></a><a href="/#audit" data-i="ft_test"></a><a href="https://app.aivisib.com" data-i="n4"></a></div>
-    <div class="ftcol"><h4 data-i="ft_res"></h4>
-      <a href="/methodologie" data-i="n6"></a><a href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1" data-i="ft_sample"></a><a href="/guide/chatgpt-recommends-your-brand" data-i="ft_guide1"></a><a href="/guide/real-change-or-noise" data-i="ft_guide2"></a><a href="/guide/ai-visibility-for-agencies" data-i="ft_guide3"></a><a href="/comparatif" data-i="ft_cmp3"></a><a href="/faq" data-i="n7"></a></div>
-    <div class="ftcol"><h4 data-i="ft_co"></h4>
-      <a href="/#audit" data-i="ft_about"></a><a href="https://www.linkedin.com/company/146271305" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@AIVisib" target="_blank" rel="noopener">YouTube</a><a href="/privacy.html" data-i="ft_privacy"></a><a href="/terms.html" data-i="ft_terms"></a></div>
+    <div class="ftc"><a class="logo" href="/" aria-label="AIVisib"><i>◈</i>AIVisib</a><p data-i="f_company">AIVisib est un produit de Norstrol LLC (États-Unis). Contact : hello@aivisib.com.</p><p class="ftlangs"><a href="/?lang=en">English</a> · <a href="/?lang=fr">Français</a> · <a href="/?lang=ar">العربية</a></p><div class="badges"><a class="shbadge" href="https://www.saashub.com/aivisib?utm_source=badge&amp;utm_campaign=badge&amp;utm_content=aivisib&amp;badge_variant=color&amp;badge_kind=approved" target="_blank" rel="noopener" title="Approved on SaaSHub" aria-label="AIVisib is approved on SaaSHub"><img class="shb-l" src="/brand/saashub-approved-dark.png" alt="AIVisib is approved on SaaSHub" width="168" height="56" loading="lazy"><img class="shb-d" src="/brand/saashub-approved-color.png" alt="AIVisib is approved on SaaSHub" width="168" height="56" loading="lazy"></a><a class="shbadge msb" href="https://www.microsoft.com/en-us/startups" target="_blank" rel="noopener" title="AIVisib is part of Microsoft for Startups" aria-label="AIVisib is part of Microsoft for Startups"><img src="/brand/microsoft-for-startups.png" alt="Proud to partner with Microsoft for Startups" width="131" height="56" loading="lazy"></a></div></div>
+    <div class="ftcol"><h4 data-i="ft_prod">Produit</h4>
+      <a href="/#how" data-i="n1">Fonctionnement</a><a href="/#price" data-i="n3">Tarifs</a><a href="/agences" data-i="n5">Agences</a><a href="/#audit" data-i="ft_test">Test de visibilité IA gratuit</a><a href="https://app.aivisib.com" data-i="n4">Connexion</a></div>
+    <div class="ftcol"><h4 data-i="ft_res">Ressources</h4>
+      <a href="/methodologie" data-i="n6">Méthodologie</a><a href="https://app.aivisib.com/?share=5i-qHoer2SVAFPDmcbsWUhxY&amp;lang=fr" target="_blank" rel="noopener" data-keep="1" data-i="ft_sample">Rapport exemple — BoursoBank</a><a href="/guide/chatgpt-recommends-your-brand" data-i="ft_guide1">Guide : ChatGPT vous recommande-t-il ?</a><a href="/guide/real-change-or-noise" data-i="ft_guide2">Guide : vrai changement ou bruit ?</a><a href="/guide/ai-visibility-for-agencies" data-i="ft_guide3">Guide : suivre dix clients</a><a href="/comparatif" data-i="ft_cmp3">Comparatif : Peec, Otterly, Profound</a><a href="/faq" data-i="n7">FAQ</a></div>
+    <div class="ftcol"><h4 data-i="ft_co">Entreprise</h4>
+      <a href="/#audit" data-i="ft_about">L'équipe</a><a href="https://www.linkedin.com/company/146271305" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@AIVisib" target="_blank" rel="noopener">YouTube</a><a href="/privacy.html" data-i="ft_privacy">Politique de confidentialité</a><a href="/terms.html" data-i="ft_terms">Conditions</a></div>
   </div>
-  <a class="phfoot" id="phFoot" href="https://www.producthunt.com/products/aivisib?utm_source=aivisib&amp;utm_medium=site_footer" target="_blank" rel="noopener"><span class="phc">P</span><span data-i="ph_foot"></span></a>
+  <a class="phfoot" id="phFoot" href="https://www.producthunt.com/products/aivisib?utm_source=aivisib&amp;utm_medium=site_footer" target="_blank" rel="noopener"><span class="phc">P</span><span data-i="ph_foot">Lancé sur Product Hunt</span></a>
   <div class="ft"><div>© 2026 AIVisib — Norstrol LLC</div><div><a href="mailto:hello@aivisib.com">hello@aivisib.com</a></div></div>
 </div></footer>
 
@@ -1788,7 +1789,7 @@ refreshThemeBtn();
 <!-- Cloudflare Web Analytics (sans cookies, respectueux de la vie privée) -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4eebac051e1a4b8784bff77028e4bd7c"}'></script>
 <!-- LB --><div class="lb" id="lb" hidden role="dialog" aria-modal="true">
-  <div class="lb-bar"><a class="logo" href="/" aria-label="AIVisib"><i>◈</i>AIVisib</a><span class="lb-cap" id="lbCap"></span><a class="lb-all" href="/mesures" id="lbAll" data-i="lb_all"></a><button class="lb-x" onclick="lbClose()" aria-label="Fermer">✕</button></div>
+  <div class="lb-bar"><a class="logo" href="/" aria-label="AIVisib"><i>◈</i>AIVisib</a><span class="lb-cap" id="lbCap"></span><a class="lb-all" href="/mesures" id="lbAll" data-i="lb_all">Toutes les mesures →</a><button class="lb-x" onclick="lbClose()" aria-label="Fermer">✕</button></div>
   <button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Précédent">‹</button>
   <div class="lb-stage" onclick="if(event.target===this)lbClose()"><img id="lbImg" alt=""></div>
   <button class="lb-nav lb-next" onclick="lbStep(1)" aria-label="Suivant">›</button>

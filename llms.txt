@@ -11,13 +11,22 @@
 - For agencies: white-label PDF reports and client share links from the Pro plan.
 
 ## Pricing (USD, per month, no commitment)
+- Launch prices, valid for subscriptions started before 1 March 2027 (kept for as long as the subscription stays active):
 - Starter $59 — 1 brand, 25 questions.
 - Pro $149 — 3 brands, 75 questions, white label.
 - Agency $399 — 8 brands, 200 questions, unlimited seats. Extra brand $49 (25 questions).
+- From 1 March 2027, new subscriptions: Starter $79, Pro $199, Agency $499.
+- Annual billing: 10 months for the price of 12.
 - Free AI visibility check, no account and no credit card: six generated customer questions across three engines.
 
+## Done-for-you service (optional, in addition to the subscription)
+- We implement the recommended actions with the client's team and verify progress week after week.
+- Essential $1,490 (one-time, 3 months included), Complete $2,900 (one-time, 3 months included), Monthly $790 per month without commitment.
+- Local pricing for Morocco on request. We never promise a ranking: we measure, we act, we verify.
+
 ## Key pages
-- Homepage: https://aivisib.com/
+- Homepage: https://aivisib.com/ (French: https://aivisib.com/fr — Arabic: https://aivisib.com/ar)
+- Product demo (96 s video): https://aivisib.com/demo
 - Comparison with Peec AI, Otterly.AI and Profound: https://aivisib.com/compare
 - Published methodology, formulas and limits: https://aivisib.com/methodologie
 - Real published measurements: https://aivisib.com/mesures

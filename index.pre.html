@@ -28,7 +28,7 @@
 -->
 <html lang="en">
 <head>
-<!-- prerendered: texte statique pour les robots, réécrit par setLang selon la langue du visiteur -->
+<!-- prerendered (en): texte statique pour les robots, réécrit par setLang selon la langue du visiteur -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIVisib — Does AI recommend your brand?</title>
@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="/favicon-180.png">
 <meta name="description" content="AIVisib measures whether ChatGPT, Gemini, Perplexity and Claude recommend your brand — every week, in English, French and Arabic, with the margin of error shown. Built for brands and agencies in the Gulf, Morocco and France. From $59/month.">
 <link rel="canonical" href="https://aivisib.com/">
-<link rel="alternate" hreflang="en" href="https://aivisib.com/?lang=en"><link rel="alternate" hreflang="fr" href="https://aivisib.com/?lang=fr"><link rel="alternate" hreflang="ar" href="https://aivisib.com/?lang=ar"><link rel="alternate" hreflang="x-default" href="https://aivisib.com/">
+<link rel="alternate" hreflang="en" href="https://aivisib.com/"><link rel="alternate" hreflang="fr" href="https://aivisib.com/fr"><link rel="alternate" hreflang="ar" href="https://aivisib.com/ar"><link rel="alternate" hreflang="x-default" href="https://aivisib.com/">
 <meta name="theme-color" content="#0A0A0B">
 <!-- Favicon -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -54,7 +54,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AIVisib — Does AI recommend your brand?">
-<meta name="twitter:description" content="Does ChatGPT name you or your rival? Weekly measurement on 4 AI engines, in English, French and Arabic.">
+<meta name="twitter:description" content="Does ChatGPT name you or your rival? Weekly measurement on 4 AI engines, in English, French and Arabic, with the margin of error shown.">
 <meta name="twitter:image" content="https://aivisib.com/og-image.png">
 <!-- Données structurées (aide Google & les IA à comprendre le produit) -->
 <script type="application/ld+json">
@@ -110,11 +110,6 @@ body.rtl .serif{font-family:'Cairo',sans-serif;font-style:normal;font-weight:900
 
 /* ticker */
 /* ===== PRODUCT HUNT : bandeau du lancement (29-30/09) + badge permanent (pied de page) ===== */
-.phbar{display:none;background:#14141A;color:#F7F4EC;text-align:center;font-size:14px;font-weight:600;padding:10px 16px;line-height:1.4}
-.phbar.on{display:block}
-.phbar a{color:#F7F4EC;text-decoration:none;display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
-.phbar .phc{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#FF6154;color:#fff;font:800 12px/1 system-ui,sans-serif;flex:none}
-.phbar .go{color:#0A0A0B;background:var(--acid);border-radius:99px;padding:4px 12px;font-size:13px;white-space:nowrap}
 body.rtl .phbar a{direction:rtl}
 .phfoot{display:none;align-items:center;gap:8px;margin-top:10px;padding:7px 12px;border:1px solid var(--line);border-radius:10px;font-size:12.5px;font-weight:600;color:var(--cream);text-decoration:none;width:max-content}
 .phfoot.on{display:inline-flex}
@@ -1105,7 +1100,6 @@ body.dark .shbadge .shb-d{display:inline-block}
 <script>/* applique le thème choisi AVANT le premier rendu (pas de flash) */
 (function(){try{if(localStorage.getItem('aiv_theme')==='dark')document.body.classList.add('dark');}catch(e){}})();</script>
 
-<div class="phbar" id="phBar"><a href="https://www.producthunt.com/products/aivisib?utm_source=aivisib&amp;utm_medium=site_bar" target="_blank" rel="noopener"><span class="phc">P</span><span data-i="ph_bar">We're live on Product Hunt today! Come see AIVisib and tell us what you think.</span><span class="go" data-i="ph_go">See the launch →</span></a></div>
 <header><div class="wrap"><nav>
   <a class="logo" href="/" aria-label="AIVisib — accueil"><i>◈</i>AIVisib</a>
   <div class="nl">
@@ -1557,8 +1551,7 @@ fetch('/data/bench_cars.json').then(r=>r.json()).then(j=>{HD=j;hcRender();}).cat
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(hcTick,3600);
 // Product Hunt : rien n'apparaît avant l'ouverture de la fiche (29/09/2026 07:01 UTC = 00:01 heure de Californie)
 (function phSchedule(){
-  const now=Date.now(), start=Date.UTC(2026,8,29,7,1), end=Date.UTC(2026,9,1,7,0);
-  if(now>=start&&now<end){const b=document.getElementById('phBar'); if(b) b.classList.add('on');}
+  const now=Date.now(), start=Date.UTC(2026,8,29,7,1);
   if(now>=start){const f=document.getElementById('phFoot'); if(f) f.classList.add('on');}
 })();
 // Onglets des tarifs : « Abonnement » ou « Service accompagné » (lien direct : /#service)
@@ -1705,10 +1698,11 @@ document.querySelectorAll('.rv, .s .head').forEach(el=>io.observe(el));
   document.querySelector('header').insertAdjacentElement('afterend',bar);
   if(v==='faq') sec.querySelectorAll('details').forEach((d,i)=>{ if(i<2) d.open=true; });
 })();
-// Langue initiale : paramètre ?lang= > choix mémorisé > langue du navigateur (fr/ar) > anglais
+// Langue initiale : chemin /fr ou /ar (pages pré-rendues) > paramètre ?lang= > choix mémorisé > langue du navigateur (fr/ar) > anglais
 priceHash();
 setLang((()=>{
   const ok=l=>['en','fr','ar'].includes(l);
+  try{const p=location.pathname.replace(/\/+$/,'');if(p==='/fr')return 'fr';if(p==='/ar')return 'ar';}catch(e){}
   try{const u=new URLSearchParams(location.search).get('lang');if(ok(u))return u;}catch(e){}
   try{const s=localStorage.getItem('lang');if(ok(s))return s;}catch(e){}
   try{const langs=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en']).map(x=>String(x).slice(0,2).toLowerCase());const hit=langs.find(ok);if(hit)return hit;}catch(e){}
