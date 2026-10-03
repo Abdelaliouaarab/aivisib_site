@@ -62,6 +62,11 @@ a{color:inherit;text-decoration:none}
 body.rtl .serif{font-family:'Cairo',sans-serif;font-style:normal;font-weight:900}
 
 /* ticker */
+/* ===== PRODUCT HUNT : bandeau du lancement (29-30/09) + badge permanent (pied de page) ===== */
+body.rtl .phbar a{direction:rtl}
+.phfoot{display:none;align-items:center;gap:8px;margin-top:10px;padding:7px 12px;border:1px solid var(--line);border-radius:10px;font-size:12.5px;font-weight:600;color:var(--cream);text-decoration:none;width:max-content}
+.phfoot.on{display:inline-flex}
+.phfoot .phc{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#FF6154;color:#fff;font:800 10px/1 system-ui,sans-serif}
 .ticker{background:var(--acid);color:#0A0A0B;overflow:hidden;white-space:nowrap;padding:9px 0;font-weight:600;font-size:13px;letter-spacing:.02em}
 .ticker div{display:inline-block;animation:slide 32s linear infinite}
 .ticker span{padding:0 26px}
@@ -108,6 +113,8 @@ body.dark .tswitch .ti-moon{transform:rotate(90deg) scale(.4);opacity:0}
   .tswitch{width:29px;height:29px}.tswitch .ti{width:15px;height:15px}
   .cta{padding:10px 13px;font-size:13px}
 }
+/* très petits écrans : le bouton « Test gratuit » du haut laisse la place au menu ☰ (le grand bouton du hero est juste dessous, et le lien est dans le menu) */
+@media(max-width:470px){nav .nl>.cta{display:none}}
 .cta{background:var(--acid);color:#0A0A0B;font-weight:700;padding:11px 20px;border-radius:99px;font-size:14px;transition:.18s;display:inline-block}
 .cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(204,255,46,.28)}
 .cta.big{padding:17px 34px;font-size:16.5px}
@@ -336,6 +343,20 @@ body.rtl .pl .price{font-family:'Cairo',sans-serif}
 body.rtl .pl .meas span{font-family:'Cairo',sans-serif}
 .pl.top .meas{background:var(--input-bg)}
 .pvs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+/* ===== SERVICE ACCOMPAGNÉ : « on le fait pour vous » (packs, vendus à la main) ===== */
+.svc{margin-top:0}
+.svc-intro{max-width:820px;margin:0 0 24px}
+.svc-intro h3{font-size:24px;line-height:1.2;font-weight:700;letter-spacing:-.02em;margin:0 0 10px;color:var(--cream)}
+.svc-intro p{font-size:15.5px;color:var(--dim);line-height:1.55;margin:0}
+.svc .plans{margin-top:0}
+.svc .pl .price{font-size:40px}
+.svc .pl .price small{font-size:14px;color:var(--dim);font-weight:500;letter-spacing:0;margin-inline-start:6px}
+.svc .pl .once{font-size:12.5px;color:var(--dim);margin:-18px 0 16px;font-family:'JetBrains Mono',monospace}
+body.rtl .svc .pl .once{font-family:'Cairo',sans-serif}
+.svc-note{margin-top:18px;font-size:13.5px;color:var(--dim);max-width:900px;line-height:1.6}
+.svc-note b{color:var(--cream);font-weight:600}
+.svc-founder{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:10px 14px;border:1px dashed var(--acid-ink);border-radius:12px;font-size:13.5px;color:var(--cream)}
+.svc-founder i{font-style:normal;background:var(--acid);color:#0A0A0B;border-radius:99px;padding:2px 9px;font-weight:700;font-size:12px}
 @media(max-width:980px){.pvs{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.pvs{grid-template-columns:1fr}}
 .pv{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px 20px 18px;position:relative;overflow:hidden;transition:.2s}
@@ -895,6 +916,40 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 @keyframes hping{0%{width:60px;height:60px;opacity:.65}100%{width:1600px;height:1600px;opacity:0}}
 @media(prefers-reduced-motion:reduce){.hping{display:none}}
 .pyear{font:500 12.5px 'JetBrains Mono',monospace;color:var(--acid-ink);margin:-8px 0 12px}
+.pyear s{color:var(--dim);text-decoration-thickness:1.5px;margin-inline-end:4px}
+/* prix de lancement : étiquette + futur prix annoncé (les abonnés gardent leur prix) */
+/* ===== ONGLETS TARIFS : « Abonnement » / « Service accompagné » (3 cartes à la fois, jamais 6) ===== */
+.ptabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;border:1px solid var(--line);border-radius:22px;background:var(--panel);margin:0 0 22px;max-width:820px}
+.ptab{appearance:none;border:0;background:none;font:inherit;text-align:start;cursor:pointer;border-radius:15px;padding:14px 18px;display:flex;flex-direction:column;gap:5px;transition:background .18s,transform .18s;color:inherit}
+.ptab b{font-size:16.5px;font-weight:700;color:var(--cream);display:flex;align-items:center;gap:9px}
+.ptab b::before{content:"";width:9px;height:9px;border-radius:50%;border:2px solid var(--dim);flex:none;transition:.18s}
+.ptab span{font-size:13px;color:var(--dim);line-height:1.4}
+.ptab:not(.on):hover{background:rgba(127,127,127,.09)}
+.ptab.on{background:var(--cream)}
+.ptab.on b{color:var(--ink)}.ptab.on b::before{border-color:var(--ink);background:var(--acid)}
+.ptab.on span{color:var(--ink);opacity:.72}
+@media(max-width:560px){.ptab{padding:12px 12px}.ptab b{font-size:14.5px}.ptab span{font-size:12px}}
+.plrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:-14px 0 14px}
+.plaunch{display:inline-block;font:700 10.5px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#0A0A0B;background:var(--acid);border-radius:99px;padding:4px 10px;width:max-content}
+body.rtl .plaunch{font-family:'Cairo',sans-serif;letter-spacing:0}
+.pnext{font-size:13px;font-weight:700;color:#E5484D}
+body.dark .pnext{color:#FF6B6B}
+/* bandeau « prix de lancement » : compte à rebours + barre de progression vers le 1er mars 2027 */
+.pcount{display:none;position:relative;overflow:hidden;align-items:center;gap:14px;margin:0 0 22px;padding:13px 16px 16px;border-radius:16px;border:1px solid rgba(229,72,77,.38);background:rgba(229,72,77,.07);color:var(--cream);font-size:14.5px;line-height:1.45}
+.pcount.on{display:flex}
+.pcount b{font-weight:700}
+.pcount .d{flex:none;display:inline-flex;align-items:center;gap:8px;background:#E5484D;color:#fff;border-radius:99px;padding:7px 14px;font:700 14.5px/1 'Space Grotesk',system-ui,sans-serif;white-space:nowrap}
+.pcount .d::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:plPulse 1.6s ease-in-out infinite}
+@keyframes plPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+@media(prefers-reduced-motion:reduce){.pcount .d::before{animation:none}}
+body.rtl .pcount .d{font-family:'Cairo',sans-serif}
+.pcount .bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(229,72,77,.18)}
+.pcount .bar u{display:block;height:100%;background:#E5484D;border-radius:0 3px 3px 0}
+body.rtl .pcount .bar u{margin-inline-start:0;border-radius:3px 0 0 3px}
+@media(max-width:560px){.pcount{flex-direction:column;align-items:flex-start;gap:9px}}
+.pguide{margin:0 0 26px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;font-size:14.5px;color:var(--cream);line-height:1.55}
+.pguide b{font-weight:700}.pguide a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.plock{margin-top:14px;font-size:13.5px;color:var(--dim)}.plock b{color:var(--cream)}
 body.rtl .pyear{font-family:'Cairo',sans-serif}
 
 /* cartes tarifs : « Tout X, plus : » + bandeau commun */
@@ -975,9 +1030,6 @@ body.dark .shbadge .shb-d{display:inline-block}
 .pbadge p{color:var(--dim);font-size:14.5px;margin:0;max-width:620px;line-height:1.6}
 @media(max-width:700px){.pbadge{padding:16px}.pbadge img{width:100%;height:auto}}
 .hdemo{text-align:center;margin:-6px 0 26px}.hdemo a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;padding:10px 18px;border-radius:99px;border:1px solid var(--line);transition:transform .18s,background .18s}.hdemo a:hover{transform:translateY(-1px);background:var(--acid);color:#14141A}
-
-/* très petits écrans : le bouton « Test gratuit » du haut laisse la place au menu ☰ (lien repris dans le menu) */
-@media(max-width:470px){nav .nl>.cta{display:none}}
 </style>
 <style>
 .gdw{max-width:760px;margin:0 auto;padding:54px 26px 90px}
@@ -1108,41 +1160,41 @@ body.rtl .gdw ul,body.rtl .gdw ol{margin:0 22px 16px 0}
 <p>Nous publions les cinq, y compris là où nos propres chiffres sont faibles. Notre test gratuit tourne sur dix-huit réponses, soit ±18 points : assez pour voir si vous êtes proche de zéro ou nettement présent, pas assez pour trancher un débat. Nous préférons l'écrire plutôt que de vous laisser citer un chiffre qui ne peut pas porter ce poids.</p>
 <hr>
 <p><i>Notre méthode complète, avec la formule de Wilson, le nombre de passages et ce que nous ne mesurons pas, est publiée dans notre méthodologie. Vous pouvez lancer un test gratuit sur votre marque depuis notre page d'accueil, sans compte et sans carte bancaire — et vous savez désormais exactement quelle confiance accorder au chiffre qu'il vous donnera.</i></p></article>
-<article class="gdlang" id="gd_ar" dir="rtl"><h1>نتيجة الظهور في الذكاء الاصطناعي: كيف تميّز التغيّر الحقيقي من الضجيج</h1>
-<p>نتيجة الظهور ليست حقيقة ثابتة، بل تقدير محسوب على عيّنة من الإجابات. على 30 إجابة، قد تعني نتيجة 23٪ في الواقع أي قيمة بين 12٪ و41٪. وعلى 300 إجابة، تضيق النتيجة نفسها بين 19٪ و28٪. فقبل أن تسأل إن كانت نتيجتك ارتفعت، اسأل على كم إجابة حُسبت — لأن الانتقال من 23٪ إلى 28٪ على 300 إجابة لا يعني شيئاً البتة، بينما الانتقال إلى 31٪ يعني شيئاً.</p>
-<p>يشرح هذا الدليل كيف تُقرأ هذه الأرقام، وكيف تعرف، أسبوعاً بعد أسبوع، إن كان شيء قد تغيّر فعلاً.</p>
+<article class="gdlang" id="gd_ar" dir="rtl"><h1>نتيجة الظهور في الذكاء الاصطناعي: كيف تميّزون التغيّر الحقيقي من الضجيج</h1>
+<p>نتيجة الظهور ليست حقيقة ثابتة، بل تقدير محسوب على عيّنة من الإجابات. على 30 إجابة، قد تعني نتيجة 23٪ في الواقع أي قيمة بين 12٪ و41٪. وعلى 300 إجابة، تضيق النتيجة نفسها بين 19٪ و28٪. فقبل أن تسألوا إن كانت نتيجتكم ارتفعت، اسألوا على كم إجابة حُسبت — لأن الانتقال من 23٪ إلى 28٪ على 300 إجابة لا يعني شيئاً البتة، بينما الانتقال إلى 31٪ يعني شيئاً.</p>
+<p>يشرح هذا الدليل كيف تُقرأ هذه الأرقام، وكيف تعرفون، أسبوعاً بعد أسبوع، إن كان شيء قد تغيّر فعلاً.</p>
 <h2>لماذا تتحرك إجابات الذكاء الاصطناعي من تلقاء نفسها</h2>
-<p>أربعة أمور مختلفة تجعل السؤال نفسه يعيد أسماء مختلفة، ولا علاقة لأيٍّ منها بتسويقك.</p>
-<ul><li><b>النماذج تسحب عشوائياً.</b> نموذج اللغة يسحب كلماته بدل أن يستدعيها من جدول. اسأل ثلاث مرات، تحصل على ثلاث قوائم.</li><li><b>الويب حيّ.</b> المساعدون الذين يبحثون يقتبسون صفحات يُعاد فهرستها وترتيبها ونشرها باستمرار.</li><li><b>التخصيص.</b> سجل الحساب والذاكرة والموقع الجغرافي تغيّر الإجابة عن السؤال نفسه.</li><li><b>مجموعة الأسئلة.</b> عشرون سؤالاً عيّنة من آلاف قد يطرحها عملاؤك. غيّر العشرين، تغيّرت النتيجة.</li></ul>
-<p>القياس الجاد لا يستطيع إلغاء هذا التذبذب. كل ما يستطيعه أن يقيسه وأن يخبرك بمقداره.</p>
-<h2>ما هي نتيجتك حقاً</h2>
-<p>إن ظهرتَ في 7 إجابات من 30، فنتيجتك 23٪. هذا الرقم تقدير لقيمة حقيقية غير مرئية، ودقته تعتمد تقريباً بالكامل على عدد الإجابات التي أحصيتها.</p>
+<p>أربعة أمور مختلفة تجعل السؤال نفسه يعيد أسماء مختلفة، ولا علاقة لأيٍّ منها بتسويقكم.</p>
+<ul><li><b>النماذج تسحب عشوائياً.</b> نموذج اللغة يسحب كلماته بدل أن يستدعيها من جدول. اسألوا ثلاث مرات، تحصلوا على ثلاث قوائم.</li><li><b>الويب حيّ.</b> المساعدات التي تبحث تقتبس صفحات يُعاد فهرستها وترتيبها ونشرها باستمرار.</li><li><b>التخصيص.</b> سجل الحساب والذاكرة والموقع الجغرافي تغيّر الإجابة عن السؤال نفسه.</li><li><b>مجموعة الأسئلة.</b> عشرون سؤالاً عيّنة من آلاف قد يطرحها عملاؤكم. غيّروا العشرين، تتغيّر النتيجة.</li></ul>
+<p>القياس الجاد لا يستطيع إلغاء هذا التذبذب. كل ما يستطيعه أن يقيسه وأن يخبركم بمقداره.</p>
+<h2>ما هي نتيجتكم حقاً</h2>
+<p>إن ظهرتم في 7 إجابات من 30، فنتيجتكم 23٪. هذا الرقم تقدير لقيمة حقيقية غير مرئية، ودقته تعتمد تقريباً بالكامل على عدد الإجابات التي أحصيتموها.</p>
 <p>وهذا ما تساويه فعلاً نتيجة 23٪، بثقة 95٪:</p>
 <div class="gdtbl"><table><thead><tr><th>الإجابات المُحصاة</th><th>النتيجة</th><th>المجال المعقول</th><th>الدقة</th></tr></thead><tbody><tr><th scope="row">18</th><td>23٪</td><td>9 – 45٪</td><td>±18 نقطة</td></tr><tr><th scope="row">30</th><td>23٪</td><td>12 – 41٪</td><td>±15 نقطة</td></tr><tr><th scope="row">72</th><td>23٪</td><td>15 – 35٪</td><td>±10 نقاط</td></tr><tr><th scope="row">100</th><td>23٪</td><td>16 – 32٪</td><td>±8 نقاط</td></tr><tr><th scope="row">300</th><td>23٪</td><td>19 – 28٪</td><td>±5 نقاط</td></tr><tr><th scope="row">720</th><td>23٪</td><td>20 – 26٪</td><td>±3 نقاط</td></tr></tbody></table></div>
-<p>ومن ذلك قاعدتان عمليتان. لبلوغ دقة ±10 نقاط تحتاج نحو 66 إجابة. ولبلوغ ±5 نقاط تحتاج نحو 270. وتحت ثلاثين إجابة أنت لا تقيس، بل تستطلع إشاعة.</p>
-<p>أما الحالة القصوى المألوفة: اطرح سؤالاً ثلاث مرات، واظهر مرة واحدة. هذه 33٪ — بمجال معقول من 6٪ إلى 79٪. هذا الرقم لا يساوي شيئاً، وهو بالضبط ما يفعله من يكتب اسم علامته في ChatGPT ثم يستخلص نتيجة.</p>
+<p>ومن ذلك قاعدتان عمليتان. لبلوغ دقة ±10 نقاط تحتاجون نحو 66 إجابة. ولبلوغ ±5 نقاط تحتاجون نحو 270. وتحت ثلاثين إجابة أنتم لا تقيسون، بل تستطلعون إشاعة.</p>
+<p>أما الحالة القصوى المألوفة: اطرحوا سؤالاً ثلاث مرات، واظهروا مرة واحدة. هذه 33٪ — بمجال معقول من 6٪ إلى 79٪. هذا الرقم لا يساوي شيئاً، وهو بالضبط ما يفعله من يكتب اسم علامته في ChatGPT ثم يستخلص نتيجة.</p>
 <h2>لماذا نستعمل مجال ويلسون</h2>
 <p>الصيغة التي يتذكرها الجميع من المدرسة تنهار تحديداً حيث يعيش الظهور في الذكاء الاصطناعي: عيّنات صغيرة، ونِسَب قريبة من الصفر. ومعظم العلامات تبدأ عند 0 أو 3 أو 7٪، فتعيد الصيغة المدرسية حدّاً أدنى تحت الصفر، وهو بلا معنى.</p>
-<p>مجال ويلسون مصمَّم لهذه الحالة. يبقى داخل المجال من 0 إلى 100٪، ويظل أميناً على العيّنات الصغيرة، وهو ما نستعمله في كل رقم ننشره. والصيغة الكاملة في صفحة منهجيتنا، ولك أن تتحقق من حسابنا.</p>
+<p>مجال ويلسون مصمَّم لهذه الحالة. يبقى داخل المجال من 0 إلى 100٪، ويظل أميناً على العيّنات الصغيرة، وهو ما نستعمله في كل رقم ننشره. والصيغة الكاملة في صفحة منهجيتنا، ولكم أن تتحققوا من حسابنا.</p>
 <h2>المتابعة اليومية لا تعني دقة أعلى</h2>
 <p>هذا أكثر سوء فهم شائع في سوقنا، ويستحق التوضيح، لأن أدوات عدة تقيس يومياً وهو ما يبدو أفضل في الظاهر.</p>
-<p>خذ عشرين سؤالاً على أربعة محركات. بقياس يومي واحد تحصل على 80 إجابة في اليوم، أي دقة نحو ±9 نقاط. وبثلاث جولات أسبوعياً تحصل على 240 إجابة في الأسبوع، أي نحو ±6 نقاط. المنحنى اليومي يبدو حيّاً، والرقم يتحرك كل صباح. لكن معظم هذه الحركة ضجيج العيّنة البالغ ±9، لا سوقك.</p>
-<p>وللمتابعة اليومية فائدة حقيقية: رصد حادثة، أو حملة منافس، أو تغيّر مفاجئ عند محرك. أما سؤال <i>«هل يتحسّن ظهوري؟»</i> فرقم أكثر ضجيجاً يُسلَّم أكثر تكراراً يجيب عنه بشكل أسوأ لا أفضل. لهذا اخترنا الأسبوعي بثلاث جولات، ونقولها صراحة: إن كنت تحتاج إشارة يومية فثمّة أدوات تفعل ذلك، ونحن نسمّيها في صفحة المقارنة.</p>
-<h2>كيف تعرف التغيّر الحقيقي</h2>
-<p>من أسبوع إلى آخر، قارن المجالات لا الأرقام.</p>
+<p>خذوا عشرين سؤالاً على أربعة محركات. بقياس يومي واحد تحصلون على 80 إجابة في اليوم، أي دقة نحو ±9 نقاط. وبثلاث جولات أسبوعياً تحصلون على 240 إجابة في الأسبوع، أي نحو ±6 نقاط. المنحنى اليومي يبدو حيّاً، والرقم يتحرك كل صباح. لكن معظم هذه الحركة ضجيج العيّنة البالغ ±9، لا سوقكم.</p>
+<p>وللمتابعة اليومية فائدة حقيقية: رصد حادثة، أو حملة منافس، أو تغيّر مفاجئ عند محرك. أما سؤال <i>«هل يتحسّن ظهوري؟»</i> فرقم أكثر ضجيجاً يُسلَّم أكثر تكراراً يجيب عنه بشكل أسوأ لا أفضل. لهذا اخترنا الأسبوعي بثلاث جولات، ونقولها صراحة: إن كنتم تحتاجون إلى إشارة يومية فثمّة أدوات تفعل ذلك، ونحن نسمّيها في صفحة المقارنة.</p>
+<h2>كيف تعرفون التغيّر الحقيقي</h2>
+<p>من أسبوع إلى آخر، قارنوا المجالات لا الأرقام.</p>
 <p>على 300 إجابة أسبوعياً، انطلاقاً من 23٪:</p>
 <ul><li>26٪ في الأسبوع التالي: داخل الهامش، لا استنتاج.</li><li>28٪: ما زال داخل الهامش، لا استنتاج، ولو بدا مكسباً من خمس نقاط.</li><li>29٪: غير حاسم كذلك، وإن بدأ يثير الاهتمام.</li><li>31٪: هنا يتجاوز الفارق الضجيج. شيء ما تغيّر.</li></ul>
-<p>فعلى هذا الحجم من العيّنة تحتاج نحو ثماني نقاط من الحركة قبل أن تستطيع التأكيد. ولرصد تحسّن بثلاث نقاط تحتاج ثلاثة إلى أربعة أضعاف عدد الإجابات. هذه تكلفة، وهي المقايضة الصادقة التي لا يضعها أحد في هذا السوق على الطاولة.</p>
+<p>فعلى هذا الحجم من العيّنة تحتاجون نحو ثماني نقاط من الحركة قبل أن تستطيعوا التأكيد. ولرصد تحسّن بثلاث نقاط تحتاجون ثلاثة إلى أربعة أضعاف عدد الإجابات. هذه تكلفة، وهي المقايضة الصادقة التي لا يضعها أحد في هذا السوق على الطاولة.</p>
 <p>والطريق الآخر لرؤية تغيّر حقيقي أبكر هو الاتجاه: أربعة أسابيع متتالية في الوجهة نفسها تساوي أكثر من قفزة واحدة كبيرة، حتى لو بقي كل أسبوع منفرداً داخل هامشه.</p>
 <h2>ما لا يغطّيه الهامش</h2>
-<p>مجال الثقة يغطي العشوائية وحدها. وثلاثة أمور أخرى قد تحرّك نتيجتك دون أن ينبّهك أي حساب.</p>
-<ul><li><b>قائمة الأسئلة.</b> أضف أسئلة أو احذفها فأنت تقيس شيئاً آخر. أبقِ القائمة ثابتة، وإن غيّرتها فابدأ سجلاً جديداً بدل التظاهر بأنه مستمر.</li><li><b>تحديثات النماذج.</b> إصدار جديد من محرك قد يعيد رسم المشهد بين ليلة وضحاها. هذا تغيّر حقيقي لا ضجيج، لكنه ليس من صنعك أيضاً.</li><li><b>تركيبة المحركات.</b> نتيجة معدَّلة على أربعة محركات تهبط إذا توقف أحدها عن الإجابة. اقرأ دائماً التفصيل لكل محرك قبل أي استنتاج عن المعدّل.</li></ul>
-<h2>خمسة أسئلة تطرحها على أي بائع</h2>
-<p>مهما كانت الأداة التي تستعملها، أداتنا ضمنها، تخبرك هذه الإجابات الخمس إن كنت تشتري قياساً أم زينة.</p>
-<ol><li><b>على كم إجابة تُحسب نتيجتي أسبوعياً؟</b> إن كان الجواب غامضاً فكل ما تبقّى زينة.</li><li><b>كم مرة يُطرح كل سؤال؟</b> جولة واحدة يومياً سحبة لا قياس.</li><li><b>هل يظهر هامش خطأ بجانب النتيجة؟</b> إن لم يظهر فاسأل لماذا. الهامش موجود دائماً؛ السؤال الوحيد هو هل يُعرض عليك.</li><li><b>ما المحركات المشمولة في الباقة التي أشتريها</b>، وماذا يحدث للمعدّل إذا سقط أحدها؟</li><li><b>هل المنهجية منشورة؟</b> لا صفحة تسويقية، بل الصيغ وأحجام العيّنات والحدود.</li></ol>
-<p>نحن ننشر الخمسة، بما في ذلك مواضع ضعف أرقامنا نحن. فحصنا المجاني يعمل على ثماني عشرة إجابة، أي ±18 نقطة: يكفي لترى إن كنت قرب الصفر أو حاضراً بوضوح، ولا يكفي لحسم نقاش. ونفضّل أن نكتب ذلك على أن ندعك تستشهد برقم لا يحتمل هذا الثقل.</p>
+<p>مجال الثقة يغطي العشوائية وحدها. وثلاثة أمور أخرى قد تحرّك نتيجتكم دون أن ينبّهكم أي حساب.</p>
+<ul><li><b>قائمة الأسئلة.</b> أضيفوا أسئلة أو احذفوها فأنتم تقيسون شيئاً آخر. أبقوا القائمة ثابتة، وإن غيّرتموها فابدؤوا سجلاً جديداً بدل التظاهر بأنه مستمر.</li><li><b>تحديثات النماذج.</b> إصدار جديد من محرك قد يعيد رسم المشهد بين ليلة وضحاها. هذا تغيّر حقيقي لا ضجيج، لكنه ليس من صنعكم أيضاً.</li><li><b>تركيبة المحركات.</b> نتيجة معدَّلة على أربعة محركات تهبط إذا توقف أحدها عن الإجابة. اقرؤوا دائماً التفصيل لكل محرك قبل أي استنتاج عن المعدّل.</li></ul>
+<h2>خمسة أسئلة تطرحونها على أي بائع</h2>
+<p>مهما كانت الأداة التي تستعملونها، أداتنا ضمنها، تخبركم هذه الإجابات الخمس إن كنتم تشترون قياساً أم زينة.</p>
+<ol><li><b>على كم إجابة تُحسب نتيجتي أسبوعياً؟</b> إن كان الجواب غامضاً فكل ما تبقّى زينة.</li><li><b>كم مرة يُطرح كل سؤال؟</b> جولة واحدة يومياً سحبة لا قياس.</li><li><b>هل يظهر هامش خطأ بجانب النتيجة؟</b> إن لم يظهر فاسألوا لماذا. الهامش موجود دائماً؛ السؤال الوحيد هو هل يُعرض عليكم.</li><li><b>ما المحركات المشمولة في الباقة التي أشتريها</b>، وماذا يحدث للمعدّل إذا سقط أحدها؟</li><li><b>هل المنهجية منشورة؟</b> لا صفحة تسويقية، بل الصيغ وأحجام العيّنات والحدود.</li></ol>
+<p>نحن ننشر الخمسة، بما في ذلك مواضع ضعف أرقامنا نحن. فحصنا المجاني يعمل على ثماني عشرة إجابة، أي ±18 نقطة: يكفي لتروا إن كنتم قرب الصفر أو حاضرين بوضوح، ولا يكفي لحسم نقاش. ونفضّل أن نكتب ذلك على أن ندعكم تستشهدون برقم لا يحتمل هذا الثقل.</p>
 <hr>
-<p><i>منهجيتنا الكاملة، بصيغة ويلسون وعدد الجولات وما لا نقيسه، منشورة في صفحة المنهجية. ويمكنك إجراء فحص مجاني لعلامتك من صفحتنا الرئيسية، بلا حساب وبلا بطاقة بنكية — وأنت الآن تعرف تماماً مقدار الثقة التي يستحقها الرقم الذي سيعطيك إياه.</i></p></article>
+<p><i>منهجيتنا الكاملة، بصيغة ويلسون وعدد الجولات وما لا نقيسه، منشورة في صفحة المنهجية. ويمكنكم إجراء فحص مجاني لعلامتكم من صفحتنا الرئيسية، بلا حساب وبلا بطاقة بنكية — وأنتم الآن تعرفون تماماً مقدار الثقة التي يستحقها الرقم الذي سيعطيكم إياه.</i></p></article>
 <div class="gdcta"><a href="/#audit" id="gdcta"></a></div>
 </main>
 <footer><div class="wrap">
@@ -1155,10 +1207,11 @@ body.rtl .gdw ul,body.rtl .gdw ol{margin:0 22px 16px 0}
     <div class="ftcol"><h4 data-i="ft_co"></h4>
       <a href="/#audit" data-i="ft_about"></a><a href="https://www.linkedin.com/company/146271305" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@AIVisib" target="_blank" rel="noopener">YouTube</a><a href="/privacy.html" data-i="ft_privacy"></a><a href="/terms.html" data-i="ft_terms"></a></div>
   </div>
+  <a class="phfoot" id="phFoot" href="https://www.producthunt.com/products/aivisib?utm_source=aivisib&amp;utm_medium=site_footer" target="_blank" rel="noopener"><span class="phc">P</span><span data-i="ph_foot"></span></a>
   <div class="ft"><div>© 2026 AIVisib — Norstrol LLC</div><div><a href="mailto:hello@aivisib.com">hello@aivisib.com</a></div></div>
 </div></footer>
 <script>
-const NAV={"en":{"n1":"How it works","n2":"Features","n3":"Pricing","n4":"Log in","n5":"Agencies","n6":"Methodology","n7":"FAQ","n_test":"Free test","v_back":"← Back to home","f_company":"AIVisib is a product of Norstrol LLC (United States). Contact hello@aivisib.com.","ft_prod":"Product","ft_res":"Resources","ft_co":"Company","ft_test":"Free AI-visibility check","ft_tech":"Technical overview (PDF)","ft_sample":"Sample report — BoursoBank","ft_guide1":"Guide: does ChatGPT recommend you?","ft_guide2":"Guide: real change or noise?","ft_guide3":"Guide: tracking ten clients","ft_cmp3":"Compared with Peec, Otterly, Profound","ft_about":"The team","ft_privacy":"Privacy policy","ft_terms":"Terms"},"fr":{"n1":"Fonctionnement","n2":"Fonctionnalités","n3":"Tarifs","n4":"Connexion","n5":"Agences","n6":"Méthodologie","n7":"FAQ","n_test":"Test gratuit","v_back":"← Retour à l'accueil","f_company":"AIVisib est un produit de Norstrol LLC (États-Unis). Contact : hello@aivisib.com.","ft_prod":"Produit","ft_res":"Ressources","ft_co":"Entreprise","ft_test":"Test de visibilité IA gratuit","ft_tech":"Présentation technique (PDF)","ft_sample":"Rapport exemple — BoursoBank","ft_guide1":"Guide : ChatGPT vous recommande-t-il ?","ft_guide2":"Guide : vrai changement ou bruit ?","ft_guide3":"Guide : suivre dix clients","ft_cmp3":"Comparatif : Peec, Otterly, Profound","ft_about":"L'équipe","ft_privacy":"Politique de confidentialité","ft_terms":"Conditions"},"ar":{"n1":"كيف يعمل","n2":"المميزات","n3":"الأسعار","n4":"تسجيل الدخول","n5":"الوكالات","n6":"المنهجية","n7":"الأسئلة الشائعة","n_test":"فحص مجاني","v_back":"← العودة إلى الرئيسية","f_company":"AIVisib منتج من Norstrol LLC (الولايات المتحدة). للتواصل: hello@aivisib.com.","ft_prod":"المنتج","ft_res":"الموارد","ft_co":"الشركة","ft_test":"فحص مجاني للظهور في الذكاء الاصطناعي","ft_tech":"العرض التقني (PDF)","ft_sample":"تقرير نموذجي — BoursoBank","ft_guide1":"دليل: هل يوصي ChatGPT بعلامتك؟","ft_guide2":"دليل: تغيّر حقيقي أم ضجيج؟","ft_guide3":"دليل: متابعة عشرة عملاء","ft_cmp3":"مقارنة مع Peec، Otterly، Profound","ft_about":"الفريق","ft_privacy":"سياسة الخصوصية","ft_terms":"الشروط"}};const META={"en":{"t":"AI visibility scores: how to tell a real change from noise — AIVisib","d":"On 30 answers a 23% score really means 12–41%. How many answers you need, why we use the Wilson interval, why daily tracking is not more precise, and the five questions to ask any vendor."},"fr":{"t":"Score de visibilité IA : distinguer un vrai changement du bruit — AIVisib","d":"Sur 30 réponses, un score de 23 % veut dire 12–41 %. Combien de réponses il faut, pourquoi l'intervalle de Wilson, pourquoi le quotidien n'est pas plus précis, et cinq questions à poser à tout vendeur."},"ar":{"t":"نتيجة الظهور في الذكاء الاصطناعي: التغيّر الحقيقي أم الضجيج — AIVisib","d":"على 30 إجابة تعني نتيجة 23٪ في الواقع 12–41٪. كم إجابة تحتاج، ولماذا مجال ويلسون، ولماذا لا تعني المتابعة اليومية دقة أعلى، وخمسة أسئلة تطرحها على أي بائع."}};const LANGS=["en","fr","ar"];const DEF="fr";
+const NAV={"en":{"n1":"How it works","n2":"Features","n3":"Pricing","n4":"Log in","n5":"Agencies","n6":"Methodology","n7":"FAQ","n_test":"Free test","v_back":"← Back to home","f_company":"AIVisib is a product of Norstrol LLC (United States). Contact hello@aivisib.com.","ft_prod":"Product","ft_res":"Resources","ft_co":"Company","ft_test":"Free AI-visibility check","ft_tech":"Technical overview (PDF)","ft_sample":"Sample report — BoursoBank","ft_guide1":"Guide: does ChatGPT recommend you?","ft_guide2":"Guide: real change or noise?","ft_guide3":"Guide: tracking ten clients","ft_cmp3":"Compared with Peec, Otterly, Profound","ft_about":"The team","ft_privacy":"Privacy policy","ft_terms":"Terms"},"fr":{"n1":"Fonctionnement","n2":"Fonctionnalités","n3":"Tarifs","n4":"Connexion","n5":"Agences","n6":"Méthodologie","n7":"FAQ","n_test":"Test gratuit","v_back":"← Retour à l'accueil","f_company":"AIVisib est un produit de Norstrol LLC (États-Unis). Contact : hello@aivisib.com.","ft_prod":"Produit","ft_res":"Ressources","ft_co":"Entreprise","ft_test":"Test de visibilité IA gratuit","ft_tech":"Présentation technique (PDF)","ft_sample":"Rapport exemple — BoursoBank","ft_guide1":"Guide : ChatGPT vous recommande-t-il ?","ft_guide2":"Guide : vrai changement ou bruit ?","ft_guide3":"Guide : suivre dix clients","ft_cmp3":"Comparatif : Peec, Otterly, Profound","ft_about":"L'équipe","ft_privacy":"Politique de confidentialité","ft_terms":"Conditions"},"ar":{"n1":"كيف يعمل","n2":"المميزات","n3":"الأسعار","n4":"تسجيل الدخول","n5":"الوكالات","n6":"المنهجية","n7":"الأسئلة الشائعة","n_test":"فحص مجاني","v_back":"← العودة إلى الرئيسية","f_company":"AIVisib منتج من شركة Norstrol LLC (الولايات المتحدة). للتواصل: hello@aivisib.com.","ft_prod":"المنتج","ft_res":"الموارد","ft_co":"الشركة","ft_test":"فحص مجاني للظهور في الذكاء الاصطناعي","ft_tech":"العرض التقني (PDF)","ft_sample":"تقرير نموذجي — BoursoBank","ft_guide1":"دليل: هل يوصي ChatGPT بعلامتكم؟","ft_guide2":"دليل: تغيّر حقيقي أم مجرد تذبذب؟","ft_guide3":"دليل: متابعة عشرة عملاء دون عناء","ft_cmp3":"مقارنة مع Peec، Otterly، Profound","ft_about":"الفريق","ft_privacy":"سياسة الخصوصية","ft_terms":"الشروط"}};const META={"en":{"t":"AI visibility scores: how to tell a real change from noise — AIVisib","d":"On 30 answers a 23% score really means 12–41%. How many answers you need, why we use the Wilson interval, why daily tracking is not more precise, and the five questions to ask any vendor."},"fr":{"t":"Score de visibilité IA : distinguer un vrai changement du bruit — AIVisib","d":"Sur 30 réponses, un score de 23 % veut dire 12–41 %. Combien de réponses il faut, pourquoi l'intervalle de Wilson, pourquoi le quotidien n'est pas plus précis, et cinq questions à poser à tout vendeur."},"ar":{"t":"نتيجة الظهور في الذكاء الاصطناعي: التغيّر الحقيقي أم الضجيج — AIVisib","d":"على 30 إجابة تعني نتيجة 23٪ في الواقع 12–41٪. كم إجابة تحتاجون، ولماذا مجال ويلسون، ولماذا لا تعني المتابعة اليومية دقة أعلى، وخمسة أسئلة تطرحونها على أي بائع."}};const LANGS=["en","fr","ar"];const DEF="fr";
 const CTA={en:"Check my brand — free, no card",fr:"Vérifier ma marque — gratuit, sans carte",ar:"افحص علامتي — مجاناً وبدون بطاقة"};
 function setLang(l){const shown=LANGS.includes(l)?l:(LANGS.includes('en')?'en':DEF);
  document.body.classList.toggle('rtl',shown==='ar');document.documentElement.lang=shown;

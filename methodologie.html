@@ -62,6 +62,11 @@ a{color:inherit;text-decoration:none}
 body.rtl .serif{font-family:'Cairo',sans-serif;font-style:normal;font-weight:900}
 
 /* ticker */
+/* ===== PRODUCT HUNT : bandeau du lancement (29-30/09) + badge permanent (pied de page) ===== */
+body.rtl .phbar a{direction:rtl}
+.phfoot{display:none;align-items:center;gap:8px;margin-top:10px;padding:7px 12px;border:1px solid var(--line);border-radius:10px;font-size:12.5px;font-weight:600;color:var(--cream);text-decoration:none;width:max-content}
+.phfoot.on{display:inline-flex}
+.phfoot .phc{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#FF6154;color:#fff;font:800 10px/1 system-ui,sans-serif}
 .ticker{background:var(--acid);color:#0A0A0B;overflow:hidden;white-space:nowrap;padding:9px 0;font-weight:600;font-size:13px;letter-spacing:.02em}
 .ticker div{display:inline-block;animation:slide 32s linear infinite}
 .ticker span{padding:0 26px}
@@ -108,6 +113,8 @@ body.dark .tswitch .ti-moon{transform:rotate(90deg) scale(.4);opacity:0}
   .tswitch{width:29px;height:29px}.tswitch .ti{width:15px;height:15px}
   .cta{padding:10px 13px;font-size:13px}
 }
+/* très petits écrans : le bouton « Test gratuit » du haut laisse la place au menu ☰ (le grand bouton du hero est juste dessous, et le lien est dans le menu) */
+@media(max-width:470px){nav .nl>.cta{display:none}}
 .cta{background:var(--acid);color:#0A0A0B;font-weight:700;padding:11px 20px;border-radius:99px;font-size:14px;transition:.18s;display:inline-block}
 .cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(204,255,46,.28)}
 .cta.big{padding:17px 34px;font-size:16.5px}
@@ -336,6 +343,20 @@ body.rtl .pl .price{font-family:'Cairo',sans-serif}
 body.rtl .pl .meas span{font-family:'Cairo',sans-serif}
 .pl.top .meas{background:var(--input-bg)}
 .pvs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+/* ===== SERVICE ACCOMPAGNÉ : « on le fait pour vous » (packs, vendus à la main) ===== */
+.svc{margin-top:0}
+.svc-intro{max-width:820px;margin:0 0 24px}
+.svc-intro h3{font-size:24px;line-height:1.2;font-weight:700;letter-spacing:-.02em;margin:0 0 10px;color:var(--cream)}
+.svc-intro p{font-size:15.5px;color:var(--dim);line-height:1.55;margin:0}
+.svc .plans{margin-top:0}
+.svc .pl .price{font-size:40px}
+.svc .pl .price small{font-size:14px;color:var(--dim);font-weight:500;letter-spacing:0;margin-inline-start:6px}
+.svc .pl .once{font-size:12.5px;color:var(--dim);margin:-18px 0 16px;font-family:'JetBrains Mono',monospace}
+body.rtl .svc .pl .once{font-family:'Cairo',sans-serif}
+.svc-note{margin-top:18px;font-size:13.5px;color:var(--dim);max-width:900px;line-height:1.6}
+.svc-note b{color:var(--cream);font-weight:600}
+.svc-founder{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:10px 14px;border:1px dashed var(--acid-ink);border-radius:12px;font-size:13.5px;color:var(--cream)}
+.svc-founder i{font-style:normal;background:var(--acid);color:#0A0A0B;border-radius:99px;padding:2px 9px;font-weight:700;font-size:12px}
 @media(max-width:980px){.pvs{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.pvs{grid-template-columns:1fr}}
 .pv{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px 20px 18px;position:relative;overflow:hidden;transition:.2s}
@@ -895,6 +916,40 @@ body.rtl .hc-top,body.rtl .hc-foot,body.rtl .hc-val,body.rtl .hc-rank{font-famil
 @keyframes hping{0%{width:60px;height:60px;opacity:.65}100%{width:1600px;height:1600px;opacity:0}}
 @media(prefers-reduced-motion:reduce){.hping{display:none}}
 .pyear{font:500 12.5px 'JetBrains Mono',monospace;color:var(--acid-ink);margin:-8px 0 12px}
+.pyear s{color:var(--dim);text-decoration-thickness:1.5px;margin-inline-end:4px}
+/* prix de lancement : étiquette + futur prix annoncé (les abonnés gardent leur prix) */
+/* ===== ONGLETS TARIFS : « Abonnement » / « Service accompagné » (3 cartes à la fois, jamais 6) ===== */
+.ptabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;border:1px solid var(--line);border-radius:22px;background:var(--panel);margin:0 0 22px;max-width:820px}
+.ptab{appearance:none;border:0;background:none;font:inherit;text-align:start;cursor:pointer;border-radius:15px;padding:14px 18px;display:flex;flex-direction:column;gap:5px;transition:background .18s,transform .18s;color:inherit}
+.ptab b{font-size:16.5px;font-weight:700;color:var(--cream);display:flex;align-items:center;gap:9px}
+.ptab b::before{content:"";width:9px;height:9px;border-radius:50%;border:2px solid var(--dim);flex:none;transition:.18s}
+.ptab span{font-size:13px;color:var(--dim);line-height:1.4}
+.ptab:not(.on):hover{background:rgba(127,127,127,.09)}
+.ptab.on{background:var(--cream)}
+.ptab.on b{color:var(--ink)}.ptab.on b::before{border-color:var(--ink);background:var(--acid)}
+.ptab.on span{color:var(--ink);opacity:.72}
+@media(max-width:560px){.ptab{padding:12px 12px}.ptab b{font-size:14.5px}.ptab span{font-size:12px}}
+.plrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:-14px 0 14px}
+.plaunch{display:inline-block;font:700 10.5px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#0A0A0B;background:var(--acid);border-radius:99px;padding:4px 10px;width:max-content}
+body.rtl .plaunch{font-family:'Cairo',sans-serif;letter-spacing:0}
+.pnext{font-size:13px;font-weight:700;color:#E5484D}
+body.dark .pnext{color:#FF6B6B}
+/* bandeau « prix de lancement » : compte à rebours + barre de progression vers le 1er mars 2027 */
+.pcount{display:none;position:relative;overflow:hidden;align-items:center;gap:14px;margin:0 0 22px;padding:13px 16px 16px;border-radius:16px;border:1px solid rgba(229,72,77,.38);background:rgba(229,72,77,.07);color:var(--cream);font-size:14.5px;line-height:1.45}
+.pcount.on{display:flex}
+.pcount b{font-weight:700}
+.pcount .d{flex:none;display:inline-flex;align-items:center;gap:8px;background:#E5484D;color:#fff;border-radius:99px;padding:7px 14px;font:700 14.5px/1 'Space Grotesk',system-ui,sans-serif;white-space:nowrap}
+.pcount .d::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff;animation:plPulse 1.6s ease-in-out infinite}
+@keyframes plPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+@media(prefers-reduced-motion:reduce){.pcount .d::before{animation:none}}
+body.rtl .pcount .d{font-family:'Cairo',sans-serif}
+.pcount .bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(229,72,77,.18)}
+.pcount .bar u{display:block;height:100%;background:#E5484D;border-radius:0 3px 3px 0}
+body.rtl .pcount .bar u{margin-inline-start:0;border-radius:3px 0 0 3px}
+@media(max-width:560px){.pcount{flex-direction:column;align-items:flex-start;gap:9px}}
+.pguide{margin:0 0 26px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;font-size:14.5px;color:var(--cream);line-height:1.55}
+.pguide b{font-weight:700}.pguide a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.plock{margin-top:14px;font-size:13.5px;color:var(--dim)}.plock b{color:var(--cream)}
 body.rtl .pyear{font-family:'Cairo',sans-serif}
 
 /* cartes tarifs : « Tout X, plus : » + bandeau commun */
@@ -975,9 +1030,6 @@ body.dark .shbadge .shb-d{display:inline-block}
 .pbadge p{color:var(--dim);font-size:14.5px;margin:0;max-width:620px;line-height:1.6}
 @media(max-width:700px){.pbadge{padding:16px}.pbadge img{width:100%;height:auto}}
 .hdemo{text-align:center;margin:-6px 0 26px}.hdemo a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;padding:10px 18px;border-radius:99px;border:1px solid var(--line);transition:transform .18s,background .18s}.hdemo a:hover{transform:translateY(-1px);background:var(--acid);color:#14141A}
-
-/* très petits écrans : le bouton « Test gratuit » du haut laisse la place au menu ☰ (lien repris dans le menu) */
-@media(max-width:470px){nav .nl>.cta{display:none}}
 </style>
 <style>
 .mth{max-width:820px;margin:0 auto;padding:54px 26px 90px}
@@ -1156,63 +1208,63 @@ body.rtl .mth ul,body.rtl .mth ol{margin:0 22px 14px 0}
 <p><b>Version du 25 septembre 2026.</b> Cette page évolue avec notre méthode.</p>
 <hr>
 <p>Méthode validée par l'équipe AIVisib.</p></div>
-<div class="mlang" id="ml_ar" dir="rtl"><h1>المنهجية: كيف يقيس AIVisib ظهور علامتك التجارية في إجابات الذكاء الاصطناعي</h1>
-<p>يقيس AIVisib عدد المرات التي توصي فيها المساعدات ChatGPT، Gemini، Perplexity، Claude بنشاطك التجاري عندما يطرح عليها عملاؤك سؤالًا. نطرح على هذه المساعدات الأربعة كل أسبوع الأسئلة التي يطرحها عملاؤك فعلًا، عدة مرات لكل سؤال، ثم نحسب درجة ظهورك مع هامش الخطأ الخاص بها. توضح هذه الصفحة مبادئنا، لتتمكن من الحكم على أرقامنا بالدليل.</p>
+<div class="mlang" id="ml_ar" dir="rtl"><h1>المنهجية: كيف يقيس AIVisib ظهور علامتكم التجارية في إجابات الذكاء الاصطناعي</h1>
+<p>يقيس AIVisib عدد المرات التي توصي فيها مساعدات الذكاء الاصطناعي ChatGPT، Gemini، Perplexity، Claude بنشاطكم التجاري عندما يطرح عليها عملاؤكم سؤالاً. نطرح على هذه المساعدات الأربعة، كل أسبوع، الأسئلة التي يطرحها عملاؤكم فعلاً، عدة مرات لكل سؤال، ثم نحسب درجة ظهوركم مع هامش الخطأ المرافق لها. توضح هذه الصفحة مبادئنا، لتتمكنوا من الحكم على أرقامنا بالدليل.</p>
 <h2 id="s2">باختصار</h2>
-<ul><li><b>أسئلة عملاء حقيقيين</b>، مكيّفة مع قطاعك وسوقك ولغاتك (الإنجليزية، الفرنسية، العربية وغيرها).</li><li><b>أربعة مساعدات ذكاء اصطناعي تُسأل مع تفعيل البحث على الويب</b>، كما يفعل مستخدم جديد، دون حساب ودون سجل سابق.</li><li><b>يُطرح كل سؤال عدة مرات، كل أسبوع</b>، لأن المساعدات لا تجيب أبدًا بالطريقة نفسها تمامًا مرتين.</li><li><b>هامش خطأ معروض مع كل درجة</b>، للتمييز بين تغيّر حقيقي ومجرد تذبذب.</li><li><b>أنت من يعتمد الأسئلة</b> قبل أي قياس.</li></ul>
+<ul><li><b>أسئلة عملاء حقيقيين</b>، مكيّفة مع قطاعكم وسوقكم ولغاتكم (الإنجليزية، الفرنسية، العربية وغيرها).</li><li><b>أربع مساعدات ذكاء اصطناعي تُسأل مع تفعيل البحث في الويب</b>، كما يفعل مستخدم جديد، دون حساب ودون سجل سابق.</li><li><b>يُطرح كل سؤال عدة مرات، كل أسبوع</b>، لأن المساعدات لا تجيب أبداً بالطريقة نفسها تماماً مرتين.</li><li><b>هامش خطأ معروض مع كل درجة</b>، للتمييز بين تغيّر حقيقي ومجرد تذبذب.</li><li><b>أنتم من يعتمد الأسئلة</b> قبل أي قياس.</li></ul>
 <h2 id="s4">1. أسئلة عملاء حقيقيين، مكيّفة مع كل قطاع</h2>
-<p>جودة القياس تبدأ بجودة الأسئلة. أسئلتنا تحاكي الطريقة التي يسأل بها عملاؤك مساعد الذكاء الاصطناعي فعلًا: «أي عيادة أسنان أختار في الدار البيضاء لزراعة الأسنان؟»، «أي استوديو ثلاثي الأبعاد تنصح به لمشروع عقاري في جنيف؟».</p>
-<p>تُبنى الأسئلة انطلاقًا من قطاعك وسوقك ولغاتك، وتتكيّف مع نوع النشاط:</p>
+<p>جودة القياس تبدأ من جودة الأسئلة. أسئلتنا تحاكي الطريقة التي يسأل بها عملاؤكم مساعد الذكاء الاصطناعي فعلاً: «أي عيادة أسنان أختار في الدار البيضاء لزراعة الأسنان؟»، «أي استوديو ثلاثي الأبعاد تنصح به لمشروع عقاري في جنيف؟».</p>
+<p>تُبنى الأسئلة انطلاقاً من قطاعكم وسوقكم ولغاتكم، وتتكيّف مع نوع النشاط:</p>
 <ul><li><b>النشاط المحلي</b> (مطعم، عيادة، فندق، صالون): أسئلة على مستوى المدينة وأحيائها، كما يسأل أحد السكان أو الزوار.</li><li><b>الخدمات المقدَّمة للمهنيين</b> (وكالة، مكتب، استوديو): أسئلة على مستوى المدينة أو المنطقة، بصياغة صاحب قرار يختار مزوّد خدمة، وبمفردات مهنته.</li><li><b>المنتج المبيع عبر الإنترنت</b> (برنامج، علامة تجارة إلكترونية): أسئلة حول الاختيار والمقارنة والسعر والخصائص، دون ذكر مكان.</li></ul>
 <p>تجمع كل مجموعة بين أسئلة عامة («أفضل… في…») وأسئلة دقيقة (حاجة، ميزانية، وضع معيّن)، حيث تكون فرصة النشاط المتخصص في أن يُوصى به أكبر. يُصاغ كل سؤال بشكل طبيعي في لغته، والأسئلة العربية بالعربية الفصحى. وتستبعد عمليات مراقبة الجودة الأسئلة غير الواقعية أو الخارجة عن الموضوع أو المكررة.</p>
-<h3>القرار بيدك</h3>
-<p>يمكنك تعديل أي سؤال أو إضافته أو حذفه قبل الحفظ. لا يُقاس شيء دون موافقتك.</p>
-<h2 id="s11">2. أربعة مساعدات ذكاء اصطناعي، تُسأل كما يسأل مستخدم جديد</h2>
-<p>نقيس <b>ChatGPT، Gemini، Perplexity، Claude</b>، مع <b>تفعيل البحث على الويب</b> لكل منها، كما يستخدمها أغلب الناس اليوم.</p>
-<ul><li><b>حالة محايدة</b>: لا حساب مسجّل، ولا ذاكرة، ولا تخصيص. يبدأ كل سؤال من الصفر، كعميل جديد لا يعرفك. لهذا قد تختلف نتائجنا عمّا تراه في حسابك الخاص، حيث يعرف المساعد عاداتك.</li><li><b>التعليمات نفسها للمساعدات الأربعة</b>: الإجابة بشكل طبيعي، بلغة السؤال، مع ذكر مؤسسات حقيقية.</li><li><b>سوقك</b>: عند الحاجة، يُحدَّد موقع السؤال في مدينتك وبلدك.</li></ul>
+<h3>القرار بأيديكم</h3>
+<p>يمكنكم تعديل أي سؤال أو إضافته أو حذفه قبل الحفظ. لا يُقاس شيء دون موافقتكم.</p>
+<h2 id="s11">2. أربع مساعدات ذكاء اصطناعي، تُسأل كما يسأل مستخدم جديد</h2>
+<p>نقيس <b>ChatGPT، Gemini، Perplexity، Claude</b>، مع <b>تفعيل البحث في الويب</b> لكل منها، كما يستخدمها أغلب الناس اليوم.</p>
+<ul><li><b>حالة محايدة</b>: لا حساب مسجّل، ولا ذاكرة، ولا تخصيص. يبدأ كل سؤال من الصفر، كعميل جديد لا يعرفكم. لهذا قد تختلف نتائجنا عمّا ترونه في حسابكم الخاص، حيث يعرف المساعد عاداتكم.</li><li><b>التعليمات نفسها للمساعدات الأربع</b>: الإجابة بشكل طبيعي، بلغة السؤال، مع ذكر مؤسسات حقيقية.</li><li><b>سوقكم</b>: عند الحاجة، يُحدَّد موقع السؤال في مدينتكم وبلدكم.</li></ul>
 <h3>عدة جولات، كل أسبوع</h3>
-<p>يُطرح كل سؤال <b>ثلاث مرات على كل مساعد، كل أسبوع</b>. بالنسبة إلى 25 سؤالًا، يعني ذلك تحليل 300 إجابة في كل تقرير.</p>
+<p>يُطرح كل سؤال <b>ثلاث مرات على كل مساعد، كل أسبوع</b>. ومع 25 سؤالاً، يعني ذلك تحليل 300 إجابة في كل تقرير.</p>
 <h3>متى نرفض النشر</h3>
-<p>إذا فشل عدد كبير من الاستعلامات (عطل أو حدّ استخدام لدى أحد المساعدات)، لا يصدر أي تقرير. لا ننشر أبدًا نسبة 0% غير صحيحة. والمساعد الذي تعذّر الحصول منه على أي إجابة يُعرض بعبارة «لم يُقَس»، وليس 0% أبدًا.</p>
+<p>إذا فشل عدد كبير من الاستعلامات (عطل أو حدّ استخدام لدى أحد المساعدات)، لا يصدر أي تقرير. لا ننشر أبداً نسبة 0% غير صحيحة. والمساعد الذي تعذّر الحصول منه على أي إجابة يُعرض بعبارة «لم يُقَس»، وليس 0% أبداً.</p>
 <h2 id="s18">3. كيف تُحتسب التوصية</h2>
-<p>تُقرأ كل إجابة وتُحلَّل. ولا يُحتسب الذكر إلا إذا <b>ظهر اسم نشاطك فعلًا في نص الإجابة</b>.</p>
-<p>ونتحقق أيضًا من <b>تشابه الأسماء</b>: إذا كان المساعد يتحدث عن مؤسسة أخرى تحمل الاسم نفسه، في مكان آخر أو في قطاع آخر، فلا يُحتسب الذكر. وكلما زوّدتنا بمعلومات أكثر (القطاع، المدينة، الموقع الإلكتروني)، كان هذا التحقق أدق.</p>
+<p>تُقرأ كل إجابة وتُحلَّل. ولا يُحتسب الذكر إلا إذا <b>ورد اسم نشاطكم فعلاً في نص الإجابة</b>.</p>
+<p>ونتحقق أيضاً من <b>تشابه الأسماء</b>: إذا كان المساعد يتحدث عن مؤسسة أخرى تحمل الاسم نفسه، في مكان آخر أو في قطاع آخر، فلا يُحتسب الذكر. وكلما زوّدتمونا بمعلومات أكثر (القطاع، المدينة، الموقع الإلكتروني)، كان هذا التحقق أدق.</p>
 <p>يُحتسب المنافس المتابَع مرة واحدة على الأكثر في كل إجابة، مهما تكرر ذكره.</p>
 <h2 id="s22">4. مؤشرات التقرير</h2>
 <h3>درجة الظهور في الذكاء الاصطناعي</h3>
-<p><b>الظهور = الإجابات التي تذكر علامتك ÷ الإجابات المحلَّلة × 100.</b> من بين 100 إجابة لمساعدات الذكاء الاصطناعي عن أسئلة العملاء، كم إجابة توصي بك؟ تُحسب إجماليًا، ولكل مساعد، ولكل سؤال، ولكل لغة.</p>
-<h3>حصة التوصيات</h3>
-<p><b>الحصة = مرات ذكر علامتك ÷ مرات ذكر علامتك ومنافسيك المتابَعين × 100.</b> تقيس موقعك مقارنة بالمنافسين الذين اخترتهم، لا مقارنة بالسوق كله.</p>
-<h3>متوسط الترتيب</h3>
-<p>متوسط ترتيب علامتك في الإجابات التي تذكرها. الرقم 1 يعني أنها ذُكرت أولًا. إذا لم تُذكر أبدًا، تبقى القيمة فارغة، وليست 0.</p>
+<p><b>الظهور = الإجابات التي تذكر علامتكم ÷ الإجابات المحلَّلة × 100.</b> من بين 100 إجابة لمساعدات الذكاء الاصطناعي عن أسئلة العملاء، كم إجابة توصي بكم؟ تُحسب إجمالاً، ولكل مساعد، ولكل سؤال، ولكل لغة.</p>
+<h3>نصيب التوصيات</h3>
+<p><b>النصيب = مرات ذكر علامتكم ÷ مرات ذكر علامتكم ومنافسيكم المتابَعين × 100.</b> يقيس موقعكم مقارنةً بالمنافسين الذين اخترتموهم، لا مقارنةً بالسوق كله.</p>
+<h3>الترتيب المتوسط</h3>
+<p>متوسط ترتيب علامتكم في الإجابات التي تذكرها. الرقم 1 يعني أنها ذُكرت أولاً. وإذا لم تُذكر أبداً، تبقى القيمة فارغة، وليست 0.</p>
 <h3>الانطباع</h3>
-<p>نبرة الإجابات عندما تذكرك: 100 للإيجابية، 50 للمحايدة، 0 للسلبية، في المتوسط.</p>
+<p>نبرة الإجابات عندما تذكركم: 100 للإيجابية، 50 للمحايدة، 0 للسلبية، في المتوسط.</p>
 <h3>المصادر التي تعتمد عليها المساعدات</h3>
-<p>المواقع التي تستشهد بها المساعدات عند الإجابة (أدلة، منصات تقييم، مقالات، مواقع منافسيك). لا تُحتسب إلا المصادر المستشهد بها فعلًا. إنها خريطة عملك: أن تكون حاضرًا حيث تبحث المساعدات.</p>
+<p>المواقع التي تستشهد بها المساعدات عند الإجابة (أدلة، منصات تقييم، مقالات، مواقع منافسيكم). لا تُحتسب إلا المصادر المستشهد بها فعلاً. إنها خريطة عملكم: أن تكونوا حاضرين حيث تبحث المساعدات.</p>
 <h2 id="s33">5. الدقة: لماذا نعرض هامش الخطأ</h2>
-<p>إذا طرحت السؤال نفسه مرتين على مساعد ذكاء اصطناعي، فقد تحصل على إجابتين مختلفتين. هذا أمر طبيعي. لذلك فإن درجة تُقاس مرة واحدة فقط تبقى رهينة الصدفة.</p>
+<p>إذا طرحتم السؤال نفسه مرتين على مساعد ذكاء اصطناعي، فقد تحصلون على إجابتين مختلفتين. هذا أمر طبيعي. لذلك فإن درجة تُقاس مرة واحدة فقط تبقى رهينة الصدفة.</p>
 <p>لهذا ترافق كل درجة <b>مجالَ ثقة بنسبة 95%</b>، يُحسب بأساليب إحصائية معتمدة، ويمكن إعادة إنتاجه. مثال: <b>13% ± 4</b> تعني أن الدرجة الحقيقية تقع على الأرجح في المجال الممتد من 9% إلى 17%.</p>
-<p>عمليًا: الانتقال من 13% إلى 14% من أسبوع إلى آخر مجرد تذبذب. أما الانتقال من 13% إلى 25% فهو تقدّم حقيقي. وتوضح لك لوحة التحكم بجلاء أيّ الحالتين تعيشها.</p>
+<p>عملياً: الانتقال من 13% إلى 14% من أسبوع إلى آخر مجرد تذبذب. أما الانتقال من 13% إلى 25% فهو تقدّم حقيقي. وتوضح لكم لوحة التحكم بجلاء أيّ الحالتين تعيشون.</p>
 <h2 id="s37">6. تقارير بلا اختلاق</h2>
-<ul><li>تُكتب نصوص التحليل <b>انطلاقًا من الأرقام المقيسة وحدها</b>.</li><li>يُتحقَّق <b>آليًا</b> من كل رقم وكل اسم مساعد يرد في النص قبل النشر.</li><li>لا يُذكر في التقرير أبدًا مساعد لم يُقَس.</li><li>يُحسب الملخص التنفيذي مباشرة من البيانات.</li><li>تستند خطة العمل إلى قطاعك وسوقك والمصادر التي رُصدت فعلًا.</li></ul>
+<ul><li>تُكتب نصوص التحليل <b>انطلاقاً من الأرقام المقيسة وحدها</b>.</li><li>يُتحقَّق <b>آلياً</b> من كل رقم وكل اسم مساعد يرد في النص قبل النشر.</li><li>لا يُذكر في التقرير أبداً مساعد لم يُقَس.</li><li>يُحسب الملخص التنفيذي مباشرةً من البيانات.</li><li>تستند خطة العمل إلى قطاعكم وسوقكم والمصادر التي رُصدت فعلاً.</li></ul>
 <h2 id="s39">7. ما لا نقيسه (حتى الآن)</h2>
 <p>نفضّل أن نعلن حدودنا بوضوح.</p>
-<ul><li><b>مساعدات غير مشمولة.</b> لا نقيس اليوم Google AI Overviews ولا AI Mode ولا Copilot ولا Grok.</li><li><b>التذبذب الطبيعي.</b> تقلّل الجولات المتعددة وهامش الخطأ من أثر الصدفة دون أن تلغيه.</li><li><b>الأسماء المتشابهة في المدينة نفسها.</b> لا يمكن التمييز بين مؤسستين تحملان الاسم نفسه، في المدينة والقطاع نفسيهما، دون موقع إلكتروني.</li><li><b>أحجام البحث.</b> لا نقدّر عدد الأشخاص الذين يطرحون كل سؤال.</li><li><b>وتيرة القياس.</b> القياس أسبوعي، وليس يوميًا.</li></ul>
+<ul><li><b>مساعدات غير مشمولة.</b> لا نقيس اليوم Google AI Overviews ولا AI Mode ولا Copilot ولا Grok.</li><li><b>التذبذب الطبيعي.</b> تقلّل الجولات المتعددة وهامش الخطأ من أثر الصدفة دون أن تلغيه.</li><li><b>الأسماء المتشابهة في المدينة نفسها.</b> لا يمكن التمييز بين مؤسستين تحملان الاسم نفسه، في المدينة والقطاع نفسيهما، دون موقع إلكتروني.</li><li><b>أحجام البحث.</b> لا نقدّر عدد الأشخاص الذين يطرحون كل سؤال.</li><li><b>وتيرة القياس.</b> القياس أسبوعي، وليس يومياً.</li></ul>
 <h2 id="s42">8. البيانات والأمان</h2>
-<ul><li>يُحتفظ بكل تقرير وكل إجابة. وتقارن لوحة التحكم كل تقرير بالذي سبقه، وتعرض تطوّرك عبر الزمن.</li><li>نستخدم الوصول الرسمي إلى المساعدات فقط.</li><li>بيانات كل عميل معزولة حسب الحساب.</li><li>لا نبيع أي بيانات، ولا تُستخدم بياناتك لتدريب أي ذكاء اصطناعي.</li><li>يمكنك إلغاء الاشتراك بنقرة واحدة.</li><li>يطرح الاختبار المجاني على موقعنا بعض الأسئلة النموذجية مرة واحدة: إنه مؤشر أولي، وليس تقريرًا.</li></ul>
+<ul><li>يُحتفظ بكل تقرير وكل إجابة. وتقارن لوحة التحكم كل تقرير بالذي سبقه، وتعرض تطوّركم عبر الزمن.</li><li>نستخدم الوصول الرسمي إلى المساعدات فقط.</li><li>بيانات كل عميل معزولة حسب الحساب.</li><li>لا نبيع أي بيانات، ولا تُستخدم بياناتكم لتدريب أي ذكاء اصطناعي.</li><li>يمكنكم إلغاء الاشتراك بنقرة واحدة.</li><li>يطرح الفحص المجاني على موقعنا بعض الأسئلة النموذجية مرة واحدة: إنه مؤشر أولي، وليس تقريراً.</li></ul>
 <h2 id="s44">9. أسئلة شائعة</h2>
 <h3>كيف أعرف إن كان ChatGPT يوصي بنشاطي التجاري؟</h3>
-<p>لا يكفي أن تسأله بنفسك: فهذا المساعد يعرف سجلك، وتختلف إجاباته من مرة إلى أخرى. يجب طرح أسئلة عملائك، من حالة محايدة، عدة مرات، ثم احتساب الإجابات التي تذكرك. وهذا بالضبط ما يقوم به AIVisib كل أسبوع على ChatGPT، Gemini، Perplexity، Claude.</p>
+<p>لا يكفي أن تسألوه بأنفسكم: فهذا المساعد يعرف سجلكم، وتختلف إجاباته من مرة إلى أخرى. يجب طرح أسئلة عملائكم، من حالة محايدة، عدة مرات، ثم احتساب الإجابات التي تذكركم. وهذا بالضبط ما يقوم به AIVisib كل أسبوع على ChatGPT، Gemini، Perplexity، Claude.</p>
 <h3>لماذا تتغيّر درجتي من أسبوع إلى آخر؟</h3>
-<p>تختلف إجابات المساعدات بشكل طبيعي، وتتطوّر مصادرها. ويبيّن لك هامش الخطأ المعروض ما إذا كان التغيّر ذا دلالة أم ضمن التذبذب العادي.</p>
+<p>تختلف إجابات المساعدات بشكل طبيعي، وتتطوّر مصادرها. ويبيّن لكم هامش الخطأ المعروض ما إذا كان التغيّر ذا دلالة أم ضمن التذبذب العادي.</p>
 <h3>لماذا تختلف نتائجي عمّا أراه على هاتفي؟</h3>
-<p>في حسابك، يأخذ المساعد في الاعتبار سجلك وموقعك وتفضيلاتك. أما قياساتنا فتحاكي عميلًا جديدًا لا يعرفك: وهذا ما يهمّ لكسب عملاء جدد.</p>
+<p>في حسابكم، يأخذ المساعد في الاعتبار سجلكم وموقعكم وتفضيلاتكم. أما قياساتنا فتحاكي عميلاً جديداً لا يعرفكم: وهذا ما يهمّ لكسب عملاء جدد.</p>
 <h3>لماذا القياس بالعربية والفرنسية؟</h3>
-<p>لأن عملاءك يطرحون أسئلتهم بلغتهم، ولأن المساعدات لا توصي دائمًا بالمؤسسات نفسها من لغة إلى أخرى. نقيس باللغات الفعلية لسوقك.</p>
+<p>لأن عملاءكم يطرحون أسئلتهم بلغتهم، ولأن المساعدات لا توصي دائماً بالمؤسسات نفسها من لغة إلى أخرى. نقيس باللغات الفعلية لسوقكم.</p>
 <h3>كم يستغرق تحسين الظهور في الذكاء الاصطناعي؟</h3>
-<p>تظهر الآثار الأولى للإجراءات عادة خلال 4 إلى 8 أسابيع، بحسب القطاع وحدّة المنافسة. لا نعد أبدًا بترتيب معيّن: نقيس كل أسبوع ما يتغيّر فعلًا.</p>
+<p>تظهر الآثار الأولى للإجراءات عادةً خلال 4 إلى 8 أسابيع، بحسب القطاع وحدّة المنافسة. لا نعد أبداً بترتيب معيّن: نقيس كل أسبوع ما يتغيّر فعلاً.</p>
 <h3>ما الفرق عن تحسين الظهور في محرك Google؟</h3>
-<p>الترتيب الأول في Google لا يضمن أن يوصي بك مساعد ذكاء اصطناعي. فالمساعدات تعتمد على مصادرها الخاصة (أدلة، تقييمات، مقالات، منتديات). ولذلك يجب قياس الظهور في الذكاء الاصطناعي والعمل عليه بشكل مستقل.</p>
+<p>الترتيب الأول في Google لا يضمن أن يوصي بكم مساعد ذكاء اصطناعي. فالمساعدات تعتمد على مصادرها الخاصة (أدلة، تقييمات، مقالات، منتديات). ولذلك يجب قياس الظهور في الذكاء الاصطناعي والعمل عليه بشكل مستقل.</p>
 <h2 id="s57">الإصدارات</h2>
 <p><b>إصدار 25 سبتمبر 2026.</b> تتطور هذه الصفحة مع تطور منهجيتنا.</p>
 <hr>
@@ -1230,10 +1282,11 @@ body.rtl .mth ul,body.rtl .mth ol{margin:0 22px 14px 0}
     <div class="ftcol"><h4 data-i="ft_co"></h4>
       <a href="/#audit" data-i="ft_about"></a><a href="https://www.linkedin.com/company/146271305" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.youtube.com/@AIVisib" target="_blank" rel="noopener">YouTube</a><a href="/privacy.html" data-i="ft_privacy"></a><a href="/terms.html" data-i="ft_terms"></a></div>
   </div>
+  <a class="phfoot" id="phFoot" href="https://www.producthunt.com/products/aivisib?utm_source=aivisib&amp;utm_medium=site_footer" target="_blank" rel="noopener"><span class="phc">P</span><span data-i="ph_foot"></span></a>
   <div class="ft"><div>© 2026 AIVisib — Norstrol LLC</div><div><a href="mailto:hello@aivisib.com">hello@aivisib.com</a></div></div>
 </div></footer>
 <script>
-const NAV={"en":{"n1":"How it works","n2":"Features","n3":"Pricing","n4":"Log in","n5":"Agencies","n6":"Methodology","n7":"FAQ","n_test":"Free test","v_back":"← Back to home","f_company":"AIVisib is a product of Norstrol LLC (United States). Contact hello@aivisib.com.","ft_prod":"Product","ft_res":"Resources","ft_co":"Company","ft_test":"Free AI-visibility check","ft_tech":"Technical overview (PDF)","ft_sample":"Sample report — BoursoBank","ft_guide1":"Guide: does ChatGPT recommend you?","ft_guide2":"Guide: real change or noise?","ft_guide3":"Guide: tracking ten clients","ft_cmp3":"Compared with Peec, Otterly, Profound","ft_about":"The team","ft_privacy":"Privacy policy","ft_terms":"Terms"},"fr":{"n1":"Fonctionnement","n2":"Fonctionnalités","n3":"Tarifs","n4":"Connexion","n5":"Agences","n6":"Méthodologie","n7":"FAQ","n_test":"Test gratuit","v_back":"← Retour à l'accueil","f_company":"AIVisib est un produit de Norstrol LLC (États-Unis). Contact : hello@aivisib.com.","ft_prod":"Produit","ft_res":"Ressources","ft_co":"Entreprise","ft_test":"Test de visibilité IA gratuit","ft_tech":"Présentation technique (PDF)","ft_sample":"Rapport exemple — BoursoBank","ft_guide1":"Guide : ChatGPT vous recommande-t-il ?","ft_guide2":"Guide : vrai changement ou bruit ?","ft_guide3":"Guide : suivre dix clients","ft_cmp3":"Comparatif : Peec, Otterly, Profound","ft_about":"L'équipe","ft_privacy":"Politique de confidentialité","ft_terms":"Conditions"},"ar":{"n1":"كيف يعمل","n2":"المميزات","n3":"الأسعار","n4":"تسجيل الدخول","n5":"الوكالات","n6":"المنهجية","n7":"الأسئلة الشائعة","n_test":"فحص مجاني","v_back":"← العودة إلى الرئيسية","f_company":"AIVisib منتج من Norstrol LLC (الولايات المتحدة). للتواصل: hello@aivisib.com.","ft_prod":"المنتج","ft_res":"الموارد","ft_co":"الشركة","ft_test":"فحص مجاني للظهور في الذكاء الاصطناعي","ft_tech":"العرض التقني (PDF)","ft_sample":"تقرير نموذجي — BoursoBank","ft_guide1":"دليل: هل يوصي ChatGPT بعلامتك؟","ft_guide2":"دليل: تغيّر حقيقي أم ضجيج؟","ft_guide3":"دليل: متابعة عشرة عملاء","ft_cmp3":"مقارنة مع Peec، Otterly، Profound","ft_about":"الفريق","ft_privacy":"سياسة الخصوصية","ft_terms":"الشروط"}};const META={"en":{"t":"How we measure AI visibility — AIVisib methodology","d":"How AIVisib measures if ChatGPT, Gemini, Perplexity and Claude recommend your business: real customer questions, weekly passes, margin of error."},"fr":{"t":"Comment nous mesurons la visibilité IA — méthodologie AIVisib","d":"Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur."},"ar":{"t":"كيف نقيس الظهور في الذكاء الاصطناعي — منهجية AIVisib","d":"كيف يقيس AIVisib إن كانت ChatGPT، Gemini، Perplexity، Claude توصي بنشاطك: أسئلة عملاء حقيقيين، قياس أسبوعي، وهامش خطأ."}};
+const NAV={"en":{"n1":"How it works","n2":"Features","n3":"Pricing","n4":"Log in","n5":"Agencies","n6":"Methodology","n7":"FAQ","n_test":"Free test","v_back":"← Back to home","f_company":"AIVisib is a product of Norstrol LLC (United States). Contact hello@aivisib.com.","ft_prod":"Product","ft_res":"Resources","ft_co":"Company","ft_test":"Free AI-visibility check","ft_tech":"Technical overview (PDF)","ft_sample":"Sample report — BoursoBank","ft_guide1":"Guide: does ChatGPT recommend you?","ft_guide2":"Guide: real change or noise?","ft_guide3":"Guide: tracking ten clients","ft_cmp3":"Compared with Peec, Otterly, Profound","ft_about":"The team","ft_privacy":"Privacy policy","ft_terms":"Terms"},"fr":{"n1":"Fonctionnement","n2":"Fonctionnalités","n3":"Tarifs","n4":"Connexion","n5":"Agences","n6":"Méthodologie","n7":"FAQ","n_test":"Test gratuit","v_back":"← Retour à l'accueil","f_company":"AIVisib est un produit de Norstrol LLC (États-Unis). Contact : hello@aivisib.com.","ft_prod":"Produit","ft_res":"Ressources","ft_co":"Entreprise","ft_test":"Test de visibilité IA gratuit","ft_tech":"Présentation technique (PDF)","ft_sample":"Rapport exemple — BoursoBank","ft_guide1":"Guide : ChatGPT vous recommande-t-il ?","ft_guide2":"Guide : vrai changement ou bruit ?","ft_guide3":"Guide : suivre dix clients","ft_cmp3":"Comparatif : Peec, Otterly, Profound","ft_about":"L'équipe","ft_privacy":"Politique de confidentialité","ft_terms":"Conditions"},"ar":{"n1":"كيف يعمل","n2":"المميزات","n3":"الأسعار","n4":"تسجيل الدخول","n5":"الوكالات","n6":"المنهجية","n7":"الأسئلة الشائعة","n_test":"فحص مجاني","v_back":"← العودة إلى الرئيسية","f_company":"AIVisib منتج من شركة Norstrol LLC (الولايات المتحدة). للتواصل: hello@aivisib.com.","ft_prod":"المنتج","ft_res":"الموارد","ft_co":"الشركة","ft_test":"فحص مجاني للظهور في الذكاء الاصطناعي","ft_tech":"العرض التقني (PDF)","ft_sample":"تقرير نموذجي — BoursoBank","ft_guide1":"دليل: هل يوصي ChatGPT بعلامتكم؟","ft_guide2":"دليل: تغيّر حقيقي أم مجرد تذبذب؟","ft_guide3":"دليل: متابعة عشرة عملاء دون عناء","ft_cmp3":"مقارنة مع Peec، Otterly، Profound","ft_about":"الفريق","ft_privacy":"سياسة الخصوصية","ft_terms":"الشروط"}};const META={"en":{"t":"How we measure AI visibility — AIVisib methodology","d":"How AIVisib measures if ChatGPT, Gemini, Perplexity and Claude recommend your business: real customer questions, weekly passes, margin of error."},"fr":{"t":"Comment nous mesurons la visibilité IA — méthodologie AIVisib","d":"Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur."},"ar":{"t":"كيف نقيس الظهور في الذكاء الاصطناعي — منهجية AIVisib","d":"كيف يقيس AIVisib ما إذا كانت ChatGPT، Gemini، Perplexity، Claude توصي بنشاطكم: أسئلة عملاء حقيقيين، قياس أسبوعي، وهامش خطأ معروض."}};
 const SIGN={en:"Method validated by the AIVisib team.",fr:"Méthode validée par l'équipe AIVisib.",ar:"المنهجية معتمدة من فريق AIVisib."};
 let lang='fr';
 function setLang(l){lang=l;document.body.classList.toggle('rtl',l==='ar');document.documentElement.lang=l;document.title=META[l].t;document.querySelector('meta[name=description]').setAttribute('content',META[l].d);

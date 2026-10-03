@@ -48,7 +48,7 @@ for (const l of ["en", "fr", "ar"]) for (const k of FOOT_KEYS) NAV[l][k] = pick(
 const META = {
   en: { t: "How we measure AI visibility — AIVisib methodology", d: "How AIVisib measures if ChatGPT, Gemini, Perplexity and Claude recommend your business: real customer questions, weekly passes, margin of error." },
   fr: { t: "Comment nous mesurons la visibilité IA — méthodologie AIVisib", d: "Comment AIVisib mesure si ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise : vraies questions clients, mesure hebdo, marge d'erreur." },
-  ar: { t: "كيف نقيس الظهور في الذكاء الاصطناعي — منهجية AIVisib", d: "كيف يقيس AIVisib إن كانت ChatGPT، Gemini، Perplexity، Claude توصي بنشاطك: أسئلة عملاء حقيقيين، قياس أسبوعي، وهامش خطأ." },
+  ar: { t: "كيف نقيس الظهور في الذكاء الاصطناعي — منهجية AIVisib", d: "كيف يقيس AIVisib ما إذا كانت ChatGPT، Gemini، Perplexity، Claude توصي بنشاطكم: أسئلة عملاء حقيقيين، قياس أسبوعي، وهامش خطأ معروض." },
 };
 // Données structurées (Article + FAQ + fil d'Ariane) : lues directement par Google et les moteurs IA.
 // La FAQ est extraite de la section « Questions fréquentes » du texte français (même source de vérité que la page).
