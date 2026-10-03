@@ -61,7 +61,7 @@ const GUIDES = [
     meta: {
       en: { t: "How to know whether ChatGPT recommends your brand — AIVisib", d: "The method, step by step: ask the questions your customers ask, in a neutral session, several times, and count. Why your own ChatGPT gives a false reading, and why a score without a margin of error means nothing." },
       fr: { t: "Comment savoir si ChatGPT recommande votre marque — AIVisib", d: "La méthode, étape par étape : poser les questions de vos clients, en session neutre, plusieurs fois, et compter. Pourquoi votre propre ChatGPT vous ment, et pourquoi un score sans marge d'erreur ne veut rien dire." },
-      ar: { t: "تعرف تعرف إن كان ChatGPT يوصي بعلامتك التجارية — AIVisib", d: "الطريقة خطوة بخطوة: اطرح أسئلة عملائك في جلسة محايدة عدة مرات، ثم أحصوا. لماذا يضلّلك حسابك الشخصي، ولماذا لا تعني نتيجة بلا هامش خطأ شيئاً." },
+      ar: { t: "تعرف تعرف إن كان ChatGPT يوصي بعلامتك التجارية — AIVisib", d: "الطريقة خطوة بخطوة: اطرح أسئلة عملائك في جلسة محايدة عدة مرات، ثم أحصِ. لماذا يضلّلك حسابك الشخصي، ولماذا لا تعني نتيجة بلا هامش خطأ شيئاً." },
     },
   },
   {

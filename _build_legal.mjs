@@ -43,7 +43,7 @@ const PAGES = {
     META: {
       en: { t: "Privacy Policy — AIVisib", d: "AIVisib Privacy Policy: what we collect, how we use it, what we never do with your data, and your rights." },
       fr: { t: "Politique de confidentialité — AIVisib", d: "Politique de confidentialité d'AIVisib : ce que nous collectons, comment nous l'utilisons, ce que nous ne faisons jamais, et vos droits." },
-      ar: { t: "سياسة الخصوصية — AIVisib", d: "سياسة الخصوصية لدى AIVisib: ما نجمعه من بيانات، وكيف نستخدمها، وما لا نفعله بها أبداً، وحقوقكم." },
+      ar: { t: "سياسة الخصوصية — AIVisib", d: "سياسة الخصوصية لدى AIVisib: ما نجمعه من بيانات، وكيف نستخدمها، وما لا نفعله بها أبداً، وحقوقك." },
     },
   },
   terms: {
