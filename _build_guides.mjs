@@ -8,7 +8,18 @@ const fonts = idx.match(/<link href="https:\/\/fonts\.googleapis\.com[^>]+>/)[0]
 const header = idx.match(/<header>[\s\S]*?<\/header>/)[0];
 const footer = idx.match(/<footer>[\s\S]*?<\/footer>/)[0];
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<i>$1</i>").replace(/`(.+?)`/g, "<code>$1</code>");
+const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<i>$1</i>").replace(/`(.+?)`/g, "<code>$1</code>")
+  .replace(/\[([^\]]+)\]\((\/[^)\s]*|https:\/\/[^)\s]+)\)/g, '<a href="$2">$1</a>');
+// questions-réponses d'une page (titres ### suivis d'un paragraphe) → données structurées FAQPage
+const plain = (x) => x.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\*\*?|`/g, "").trim();
+function faqOf(md) {
+  const L = md.split("\n"), out = [];
+  for (let i = 0; i < L.length; i++) if (/^### /.test(L[i]) && /\?\s*$|؟\s*$/.test(L[i])) {
+    let j = i + 1; while (j < L.length && !L[j].trim()) j++;
+    if (j < L.length && !/^#/.test(L[j])) out.push({ "@type": "Question", name: plain(L[i].slice(4)), acceptedAnswer: { "@type": "Answer", text: plain(L[j]) } });
+  }
+  return out;
+}
 
 function md2html(md) {
   const lines = md.split("\n"); const out = []; let i = 0;
@@ -81,6 +92,16 @@ const GUIDES = [
       fr: { t: "Visibilité IA en agence : suivre dix clients sans se noyer — AIVisib", d: "Un projet par client, vingt à quarante questions figées, mesure hebdomadaire, rapport avec sa marge. L'économie à 40 $ par client, le contenu du rapport, les cinq erreurs, et quand dire non." },
     },
   },
+  {
+    // PAGE « PROMESSE » (04/10/2026) : une page = un argument, formulé comme la question que l'acheteur pose à l'IA.
+    src: "white_label", file: "page-marque-blanche.html", url: "https://aivisib.com/white-label-ai-visibility-reports",
+    published: "2026-10-04", faq: true,
+    meta: {
+      en: { t: "White-label AI visibility reports for agencies — AIVisib", d: "Send your clients AI visibility reports under your agency's name and logo: ChatGPT, Gemini, Perplexity and Claude, weekly, with a margin of error. White label from $149 per month; eight clients for $399." },
+      fr: { t: "Rapports de visibilité IA en marque blanche pour les agences — AIVisib", d: "Envoyez à vos clients des rapports de visibilité IA à votre nom et avec votre logo : ChatGPT, Gemini, Perplexity et Claude, chaque semaine, avec la marge d'erreur. Marque blanche dès 149 $ par mois ; huit clients pour 399 $." },
+      ar: { t: "تقارير الظهور في الذكاء الاصطناعي باسم وكالتك وشعارها — AIVisib", d: "أرسل إلى عملائك تقارير الظهور في الذكاء الاصطناعي باسم وكالتك وشعارها: ChatGPT، Gemini، Perplexity، Claude، كل أسبوع، مع هامش الخطأ. ابتداءً من 149 دولاراً شهرياً، وثمانية عملاء مقابل 399 دولاراً." },
+    },
+  },
 ];
 
 for (const g of GUIDES) {
@@ -90,6 +111,7 @@ for (const g of GUIDES) {
     if (existsSync(p)) L[l] = md2html(readFileSync(p, "utf8"));
   }
   const langs = Object.keys(L);
+  const faq = g.faq ? faqOf(readFileSync(`_guides_src/${g.src}_${existsSync(`_guides_src/${g.src}_en.md`) ? "en" : Object.keys(L)[0]}.md`, "utf8")) : [];
   const def = langs.includes("fr") ? "fr" : langs[0];
   const META = {};
   for (const l of ["en", "fr", "ar"]) META[l] = g.meta[l] || g.meta[langs.includes("en") ? "en" : def];
@@ -116,7 +138,7 @@ ${langs.map((l) => `<link rel="alternate" hreflang="${l}" href="${g.url}?lang=${
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0A0A0B">
 <meta property="og:type" content="article"><meta property="og:site_name" content="AIVisib"><meta property="og:url" content="${g.url}"><meta property="og:title" content="${META[def].t}"><meta property="og:description" content="${META[def].d}"><meta property="og:image" content="https://aivisib.com/og-image.png">
-<script type="application/ld+json">${JSON.stringify(ld)}</script>
+<script type="application/ld+json">${JSON.stringify(ld)}</script>${faq.length ? `\n<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq })}</script>` : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 ${fonts}
 ${style}
@@ -131,6 +153,7 @@ ${style}
 body.rtl .gdw ul,body.rtl .gdw ol{margin:0 22px 16px 0}
 .gdw li{margin-bottom:9px}
 .gdw b{color:var(--cream)}
+.gdlang a{color:var(--cream);text-decoration:underline;text-underline-offset:3px}
 .gdw i{font-family:'Instrument Serif',serif;font-style:italic;font-size:17.5px}
 .gdw hr{border:0;border-top:1px solid var(--line);margin:40px 0 24px}
 .gdw hr + p{font-size:15px;background:var(--panel);border:1px solid var(--line);border-inline-start:3px solid var(--acid);border-radius:14px;padding:18px 20px}
