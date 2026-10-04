@@ -55,7 +55,7 @@ function md2html(md) {
 }
 
 // clés de nav / pied de page lues dans l'objet T d'index.html (même source de vérité)
-const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_cmp3","ft_about","ft_privacy","ft_terms"];
+const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_wl","ft_cmp3","ft_about","ft_privacy","ft_terms"];
 const segs = { en: idx.slice(idx.indexOf("en:{tk1"), idx.indexOf("fr:{tk1")), fr: idx.slice(idx.indexOf("fr:{tk1"), idx.indexOf("ar:{tk1")), ar: idx.slice(idx.indexOf("ar:{tk1")) };
 const pick = (l, k) => { const m = segs[l].match(new RegExp("(?:^|[,{]\s*)" + k + ':"((?:[^"\\\\]|\\\\.)*)"')); return m ? JSON.parse('"' + m[1] + '"') : ""; };
 const NAV = {
