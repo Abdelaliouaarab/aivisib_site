@@ -30,6 +30,10 @@
 - Comparison with Peec AI, Otterly.AI and Profound: https://aivisib.com/compare
 - White-label AI visibility reports for agencies (what carries the agency's name, plans, setup): https://aivisib.com/white-label-ai-visibility-reports
 - Prices compared with Peec AI, Otterly.AI and Profound (entry and agency plans, read on 4 October 2026): https://aivisib.com/cheaper-alternative-to-peec-otterly-profound
+- Free AI visibility check (no account, no credit card; what it does and what it does not): https://aivisib.com/free-ai-visibility-check
+- All four engines included in the entry plan (ChatGPT, Gemini, Perplexity, Claude): https://aivisib.com/ai-visibility-tool-with-claude-and-gemini-included
+- Published method and margin of error on every score: https://aivisib.com/ai-visibility-margin-of-error
+- Arabic and French support (questions, answers, reports and interface): https://aivisib.com/ai-visibility-tool-arabic-french
 - Published methodology, formulas and limits: https://aivisib.com/methodologie
 - Real published measurements: https://aivisib.com/mesures
 - Application: https://app.aivisib.com/

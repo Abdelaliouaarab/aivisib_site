@@ -54,4 +54,4 @@ Yes. The [free check](/#audit) measures any brand from our home page, with no ac
 
 ---
 
-*Other tools' prices change; check them on their websites before deciding. To compare features as well (languages, margin of error, agency plans), read our [full comparison](/compare).*
+*Other tools' prices change; check them on their websites before deciding. To compare features as well (languages, margin of error, agency plans), read our [full comparison](/compare). See also: [the free check](/free-ai-visibility-check), [all four engines included](/ai-visibility-tool-with-claude-and-gemini-included), [the margin of error of every score](/ai-visibility-margin-of-error), [Arabic and French](/ai-visibility-tool-arabic-french).*

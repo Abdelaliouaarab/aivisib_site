@@ -63,4 +63,4 @@ Oui. Le [test gratuit](/#audit) mesure n'importe quelle marque depuis notre page
 
 ---
 
-*Pour organiser le suivi de dix clients sans vous noyer (combien de questions par client, quoi facturer, quoi mettre dans le rapport), lisez notre [guide de la visibilité IA en agence](/guide/ai-visibility-for-agencies).*
+*Pour organiser le suivi de dix clients sans vous noyer (combien de questions par client, quoi facturer, quoi mettre dans le rapport), lisez notre [guide de la visibilité IA en agence](/guide/ai-visibility-for-agencies). Voir aussi : [le test gratuit](/free-ai-visibility-check), [les quatre moteurs inclus](/ai-visibility-tool-with-claude-and-gemini-included), [la marge d'erreur de chaque score](/ai-visibility-margin-of-error), [l'arabe et le français](/ai-visibility-tool-arabic-french).*

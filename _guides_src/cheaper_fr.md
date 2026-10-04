@@ -54,4 +54,4 @@ Oui. Le [test gratuit](/#audit) mesure n'importe quelle marque depuis notre page
 
 ---
 
-*Les prix des autres outils changent ; vérifiez-les sur leurs sites avant de décider. Pour comparer aussi les fonctions (langues, marge d'erreur, offres agences), lisez notre [comparatif complet](/comparatif).*
+*Les prix des autres outils changent ; vérifiez-les sur leurs sites avant de décider. Pour comparer aussi les fonctions (langues, marge d'erreur, offres agences), lisez notre [comparatif complet](/comparatif). Voir aussi : [le test gratuit](/free-ai-visibility-check), [les quatre moteurs inclus](/ai-visibility-tool-with-claude-and-gemini-included), [la marge d'erreur de chaque score](/ai-visibility-margin-of-error), [l'arabe et le français](/ai-visibility-tool-arabic-french).*

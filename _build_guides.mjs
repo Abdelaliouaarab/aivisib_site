@@ -112,6 +112,46 @@ const GUIDES = [
       ar: { t: "هل يوجد بديل أرخص من Peec AI، Otterly.AI، Profound؟ مقارنة الأسعار — AIVisib", d: "الباقات الأساسية وباقات الوكالات جنباً إلى جنب، وفق صفحات الأسعار المعلنة بتاريخ 4 أكتوبر 2026: AIVisib بسعر 59 دولاراً مع أربعة محركات، Otterly.AI بسعر 29 دولاراً، Peec AI بسعر 95 دولاراً، Profound عند الطلب. متى يكون AIVisib أرخص." },
     },
   },
+  {
+    // PAGE « PROMESSE » (04/10/2026) : free_check
+    src: "free_check", file: "page-test-gratuit.html", url: "https://aivisib.com/free-ai-visibility-check",
+    published: "2026-10-04", faq: true,
+    meta: {
+      en: { t: "Free AI visibility check, no account and no credit card — AIVisib", d: "Check live whether ChatGPT, Gemini and Perplexity recommend your brand: six real customer questions, 18 answers, a score with its margin of error, the competitors named instead of you. No account, no credit card." },
+      fr: { t: "Test gratuit de visibilité IA, sans compte et sans carte bancaire — AIVisib", d: "Vérifiez en direct si ChatGPT, Gemini et Perplexity recommandent votre marque : six vraies questions de clients, 18 réponses, un score avec sa marge d'erreur, les concurrents cités à votre place. Sans compte, sans carte bancaire." },
+      ar: { t: "فحص مجاني لظهورك في الذكاء الاصطناعي، دون حساب ودون بطاقة بنكية — AIVisib", d: "اعرف مباشرة هل توصي ChatGPT، Gemini، Perplexity بعلامتك: ستة أسئلة حقيقية من أسئلة العملاء، 18 إجابة، درجة مع هامش الخطأ، والمنافسون المذكورون بدلاً منك. دون حساب ودون بطاقة بنكية." },
+    },
+  },
+  {
+    // PAGE « PROMESSE » (04/10/2026) : engines
+    src: "engines", file: "page-moteurs-inclus.html", url: "https://aivisib.com/ai-visibility-tool-with-claude-and-gemini-included",
+    published: "2026-10-04", faq: true,
+    meta: {
+      en: { t: "AI visibility tool with Claude and Gemini included, no extra cost — AIVisib", d: "ChatGPT, Gemini, Perplexity and Claude are measured on every AIVisib plan, from $59 per month: no engine sold as an add-on, three passes per question, a score per engine." },
+      fr: { t: "Outil de visibilité IA avec Claude et Gemini inclus, sans supplément — AIVisib", d: "ChatGPT, Gemini, Perplexity et Claude sont mesurés dans toutes les offres AIVisib, dès 59 $ par mois : aucun moteur en option, trois passages par question, un score par moteur." },
+      ar: { t: "أداة لقياس الظهور في الذكاء الاصطناعي تشمل Claude وGemini دون رسوم إضافية — AIVisib", d: "يقيس AIVisib محركات ChatGPT، Gemini، Perplexity، Claude في جميع الباقات ابتداءً من 59 دولاراً شهرياً: لا محرك يُباع كخيار إضافي، 3 جولات لكل سؤال، ودرجة لكل محرك." },
+    },
+  },
+  {
+    // PAGE « PROMESSE » (04/10/2026) : margin
+    src: "margin", file: "page-marge-erreur.html", url: "https://aivisib.com/ai-visibility-margin-of-error",
+    published: "2026-10-04", faq: true,
+    meta: {
+      en: { t: "AI visibility tool with a published method and a margin of error — AIVisib", d: "AIVisib publishes its full measurement method and shows the margin of error of every score: three passes per question and per engine, precision (±), Wilson confidence interval, and what really changed from week to week." },
+      fr: { t: "Outil de visibilité IA : méthode publiée et marge d'erreur de chaque score — AIVisib", d: "AIVisib publie sa méthode de mesure en entier et affiche la marge d'erreur de chaque score : trois passages par question et par moteur, précision (±), intervalle de confiance de Wilson, et ce qui a vraiment changé d'une semaine à l'autre." },
+      ar: { t: "أداة لقياس الظهور في الذكاء الاصطناعي تنشر منهجيتها وهامش الخطأ لكل درجة — AIVisib", d: "ينشر AIVisib طريقة القياس كاملة ويعرض هامش الخطأ لكل درجة: 3 جولات لكل سؤال على كل محرك، الدقة (±)، مجال ثقة ويلسون، وما تغيّر فعلاً من أسبوع إلى آخر." },
+    },
+  },
+  {
+    // PAGE « PROMESSE » (04/10/2026) : languages
+    src: "languages", file: "page-arabe-francais.html", url: "https://aivisib.com/ai-visibility-tool-arabic-french",
+    published: "2026-10-04", faq: true,
+    meta: {
+      en: { t: "AI visibility tool that works in Arabic and French, not only English — AIVisib", d: "AIVisib asks the questions, reads the answers and writes the reports in Arabic, French and English, with a score per language. Included on every plan, from $59 per month." },
+      fr: { t: "Outil de visibilité IA en arabe et en français, pas seulement en anglais — AIVisib", d: "AIVisib pose les questions, lit les réponses et rédige les rapports en arabe, en français et en anglais, avec un score par langue. Inclus dans toutes les offres, dès 59 $ par mois." },
+      ar: { t: "أداة لقياس الظهور في الذكاء الاصطناعي تعمل بالعربية والفرنسية — AIVisib", d: "يطرح AIVisib الأسئلة ويقرأ الإجابات ويكتب التقارير بالعربية والفرنسية والإنجليزية، مع درجة لكل لغة. مشمول في جميع الباقات ابتداءً من 59 دولاراً شهرياً." },
+    },
+  },
 ];
 
 for (const g of GUIDES) {

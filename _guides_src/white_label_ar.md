@@ -63,4 +63,4 @@ ChatGPT، Gemini، Perplexity، Claude، في جميع الباقات.
 
 ---
 
-*لتعرف كيف تنظّم متابعة عشرة عملاء (عدد الأسئلة لكل عميل، وما الذي تتقاضاه، وما الذي تضعه في التقرير)، اقرأ [دليل الظهور في الذكاء الاصطناعي للوكالات](/guide/ai-visibility-for-agencies).*
+*لتعرف كيف تنظّم متابعة عشرة عملاء (عدد الأسئلة لكل عميل، وما الذي تتقاضاه، وما الذي تضعه في التقرير)، اقرأ [دليل الظهور في الذكاء الاصطناعي للوكالات](/guide/ai-visibility-for-agencies). انظر أيضاً: [الفحص المجاني](/free-ai-visibility-check)، [المحركات الأربعة المشمولة](/ai-visibility-tool-with-claude-and-gemini-included)، [هامش الخطأ لكل درجة](/ai-visibility-margin-of-error)، [العربية والفرنسية](/ai-visibility-tool-arabic-french).*

@@ -63,4 +63,4 @@ Yes. The [free check](/#audit) measures any brand from our home page, with no ac
 
 ---
 
-*To organise the tracking of ten clients without drowning (how many questions per client, what to charge, what goes in the report), read our [guide to AI visibility for agencies](/guide/ai-visibility-for-agencies).*
+*To organise the tracking of ten clients without drowning (how many questions per client, what to charge, what goes in the report), read our [guide to AI visibility for agencies](/guide/ai-visibility-for-agencies). See also: [the free check](/free-ai-visibility-check), [all four engines included](/ai-visibility-tool-with-claude-and-gemini-included), [the margin of error of every score](/ai-visibility-margin-of-error), [Arabic and French](/ai-visibility-tool-arabic-french).*
