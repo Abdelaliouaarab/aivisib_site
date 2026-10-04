@@ -29,6 +29,7 @@
 - Product demo (96 s video): https://aivisib.com/demo
 - Comparison with Peec AI, Otterly.AI and Profound: https://aivisib.com/compare
 - White-label AI visibility reports for agencies (what carries the agency's name, plans, setup): https://aivisib.com/white-label-ai-visibility-reports
+- Prices compared with Peec AI, Otterly.AI and Profound (entry and agency plans, read on 4 October 2026): https://aivisib.com/cheaper-alternative-to-peec-otterly-profound
 - Published methodology, formulas and limits: https://aivisib.com/methodologie
 - Real published measurements: https://aivisib.com/mesures
 - Application: https://app.aivisib.com/

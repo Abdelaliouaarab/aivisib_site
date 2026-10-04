@@ -55,7 +55,7 @@ function md2html(md) {
 }
 
 // clés de nav / pied de page lues dans l'objet T d'index.html (même source de vérité)
-const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_wl","ft_cmp3","ft_about","ft_privacy","ft_terms"];
+const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_wl","ft_cmp3","ft_alt","ft_about","ft_privacy","ft_terms"];
 const segs = { en: idx.slice(idx.indexOf("en:{tk1"), idx.indexOf("fr:{tk1")), fr: idx.slice(idx.indexOf("fr:{tk1"), idx.indexOf("ar:{tk1")), ar: idx.slice(idx.indexOf("ar:{tk1")) };
 const pick = (l, k) => { const m = segs[l].match(new RegExp("(?:^|[,{]\s*)" + k + ':"((?:[^"\\\\]|\\\\.)*)"')); return m ? JSON.parse('"' + m[1] + '"') : ""; };
 const NAV = {
@@ -100,6 +100,16 @@ const GUIDES = [
       en: { t: "White-label AI visibility reports for agencies — AIVisib", d: "Send your clients AI visibility reports under your agency's name and logo: ChatGPT, Gemini, Perplexity and Claude, weekly, with a margin of error. White label from $149 per month; eight clients for $399." },
       fr: { t: "Rapports de visibilité IA en marque blanche pour les agences — AIVisib", d: "Envoyez à vos clients des rapports de visibilité IA à votre nom et avec votre logo : ChatGPT, Gemini, Perplexity et Claude, chaque semaine, avec la marge d'erreur. Marque blanche dès 149 $ par mois ; huit clients pour 399 $." },
       ar: { t: "تقارير الظهور في الذكاء الاصطناعي باسم وكالتك وشعارها — AIVisib", d: "أرسل إلى عملائك تقارير الظهور في الذكاء الاصطناعي باسم وكالتك وشعارها: ChatGPT، Gemini، Perplexity، Claude، كل أسبوع، مع هامش الخطأ. ابتداءً من 149 دولاراً شهرياً، وثمانية عملاء مقابل 399 دولاراً." },
+    },
+  },
+  {
+    // PAGE « PROMESSE » n°2 (04/10/2026) : prix comparés, relevés sur les pages de tarifs publiques — À REVÉRIFIER à chaque mise à jour.
+    src: "cheaper", file: "page-alternative-prix.html", url: "https://aivisib.com/cheaper-alternative-to-peec-otterly-profound",
+    published: "2026-10-04", faq: true,
+    meta: {
+      en: { t: "A cheaper alternative to Peec AI, Otterly.AI and Profound? Prices compared — AIVisib", d: "Entry plans and agency plans side by side, read on each public pricing page on 4 October 2026: AIVisib $59 with four engines included, Otterly.AI $29, Peec AI $95, Profound on quote. When AIVisib costs less." },
+      fr: { t: "Alternative moins chère à Peec AI, Otterly.AI et Profound ? Les prix comparés — AIVisib", d: "Offres d'entrée et offres agences côte à côte, relevées le 4 octobre 2026 sur les pages de tarifs publiques : AIVisib 59 $ avec quatre moteurs inclus, Otterly.AI 29 $, Peec AI 95 $, Profound sur devis. Quand AIVisib revient moins cher." },
+      ar: { t: "هل يوجد بديل أرخص من Peec AI، Otterly.AI، Profound؟ مقارنة الأسعار — AIVisib", d: "الباقات الأساسية وباقات الوكالات جنباً إلى جنب، وفق صفحات الأسعار المعلنة بتاريخ 4 أكتوبر 2026: AIVisib بسعر 59 دولاراً مع أربعة محركات، Otterly.AI بسعر 29 دولاراً، Peec AI بسعر 95 دولاراً، Profound عند الطلب. متى يكون AIVisib أرخص." },
     },
   },
 ];

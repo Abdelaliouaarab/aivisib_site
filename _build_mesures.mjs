@@ -7,7 +7,7 @@ const header = idx.match(/<header>[\s\S]*?<\/header>/)[0];
 const footer = idx.match(/<footer>[\s\S]*?<\/footer>/)[0];
 const lbHtml = idx.match(/<!-- LB -->[\s\S]*?<!-- \/LB -->/)[0];
 const lbJs = idx.match(/\/\* LB-JS \*\/[\s\S]*?\/\* \/LB-JS \*\//)[0];
-const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_wl","ft_cmp3","ft_about","ft_privacy","ft_terms","n1","n2","n3","n4","n5","n6","n7","n_test"];
+const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_wl","ft_cmp3","ft_alt","ft_about","ft_privacy","ft_terms","n1","n2","n3","n4","n5","n6","n7","n_test"];
 const segs = { en: idx.slice(idx.indexOf("en:{tk1"), idx.indexOf("fr:{tk1")), fr: idx.slice(idx.indexOf("fr:{tk1"), idx.indexOf("ar:{tk1")), ar: idx.slice(idx.indexOf("ar:{tk1")) };
 const pick = (l, k) => { const m = segs[l].match(new RegExp("(?:^|[,{]\\s*)" + k + ':"((?:[^"\\\\]|\\\\.)*)"')); return m ? JSON.parse('"' + m[1] + '"') : ""; };
 const NAV = { en: {}, fr: {}, ar: {} };

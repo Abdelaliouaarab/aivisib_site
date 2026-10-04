@@ -14,7 +14,7 @@ const footer = idx.match(/<footer>[\s\S]*?<\/footer>/)[0];
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // ——— textes déjà publiés, lus dans l'objet T d'index.html (même source de vérité, déjà validée)
-const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_wl","ft_cmp3","ft_about","ft_privacy","ft_terms"];
+const FOOT_KEYS = ["f_company","ft_prod","ft_res","ft_co","ft_test","ft_tech","ft_sample","ft_guide1","ft_guide2","ft_guide3","ft_wl","ft_cmp3","ft_alt","ft_about","ft_privacy","ft_terms"];
 const segs = { en: idx.slice(idx.indexOf("en:{tk1"), idx.indexOf("fr:{tk1")), fr: idx.slice(idx.indexOf("fr:{tk1"), idx.indexOf("ar:{tk1")), ar: idx.slice(idx.indexOf("ar:{tk1")) };
 const pick = (l, k) => { const m = segs[l].match(new RegExp("(?:^|[,{]\s*)" + k + ':"((?:[^"\\\\]|\\\\.)*)"')); return m ? JSON.parse('"' + m[1] + '"') : ""; };
 
@@ -26,12 +26,12 @@ const P = {
   en: {
     h1: "AI visibility tools compared: AIVisib, Peec AI, Otterly.AI and Profound",
     back: "← Back to home",
-    checked: "Competitor data taken from their public pricing and help pages, checked in September 2026.",
+    checked: "Competitor data taken from their public pricing and help pages, checked in September 2026; prices checked again on 4 October 2026.",
     needk: "Which tool for which need",
     faqk: "Frequently asked questions",
     needs: [
       ["The cheapest way to cover all four engines",
-       "AIVisib includes ChatGPT, Gemini, Perplexity and Claude in every plan, starting at $59 a month. Peec AI's entry plan covers three engines of your choice; Otterly.AI sells Gemini and Claude as add-ons; Profound's entry plan measures ChatGPT only."],
+       "AIVisib includes ChatGPT, Gemini, Perplexity and Claude in every plan, starting at $59 a month. Peec AI's entry plan covers three engines of your choice; Otterly.AI sells Gemini and Claude as add-ons; Profound publishes no price: a free trial, then a plan on quote."],
       ["An agency with about ten clients",
        "AIVisib Agency is $399 a month for eight brands, which is $50 per client, with white-label reports and client share links included. Extra brands are $49 a month each. Peec AI and Profound work on credits; Otterly.AI's Standard plan is $189 for 100 prompts."],
       ["Measuring in Arabic",
@@ -41,19 +41,19 @@ const P = {
       ["Daily tracking",
        "Here the others are ahead: Peec AI, Otterly.AI and Profound measure daily. AIVisib measures weekly, three passes per question, because a single daily answer moves more than the reality it is supposed to describe. If you need daily movement, they do that better."],
       ["Trying before paying",
-       "AIVisib runs a live free check without an account and without a card: six real customer questions, three engines. The three others offer seven-day trials, which require signing up first."],
+       "AIVisib runs a live free check without an account and without a card: six real customer questions, three engines. The three others offer free trials, which require signing up first."],
     ],
     lead2: "Everything below is factual and checked. Where a competitor does something better, it is written here.",
   },
   fr: {
     h1: "Comparatif des outils de visibilité IA : AIVisib, Peec AI, Otterly.AI et Profound",
     back: "← Retour à l'accueil",
-    checked: "Données concurrentes issues de leurs pages publiques de tarifs et d'aide, vérifiées en septembre 2026.",
+    checked: "Données concurrentes issues de leurs pages publiques de tarifs et d'aide, vérifiées en septembre 2026 ; prix revus le 4 octobre 2026.",
     needk: "Quel outil pour quel besoin",
     faqk: "Questions fréquentes",
     needs: [
       ["Couvrir les quatre moteurs au meilleur prix",
-       "AIVisib inclut ChatGPT, Gemini, Perplexity et Claude dans toutes les offres, à partir de 59 $ par mois. L'offre d'entrée de Peec AI couvre trois moteurs au choix ; Otterly.AI vend Gemini et Claude en options payantes ; l'entrée de gamme de Profound ne mesure que ChatGPT."],
+       "AIVisib inclut ChatGPT, Gemini, Perplexity et Claude dans toutes les offres, à partir de 59 $ par mois. L'offre d'entrée de Peec AI couvre trois moteurs au choix ; Otterly.AI vend Gemini et Claude en options payantes ; Profound ne publie pas de prix : un essai gratuit, puis une offre sur devis."],
       ["Une agence avec une dizaine de clients",
        "L'offre Agency d'AIVisib coûte 399 $ par mois pour huit marques, soit 50 $ par client, rapports en marque blanche et liens de partage inclus. Chaque marque supplémentaire coûte 49 $ par mois. Peec AI et Profound fonctionnent au crédit ; l'offre Standard d'Otterly.AI est à 189 $ pour 100 questions."],
       ["Mesurer en arabe",
@@ -63,19 +63,19 @@ const P = {
       ["Un suivi quotidien",
        "Ici les autres sont devant : Peec AI, Otterly.AI et Profound mesurent chaque jour. AIVisib mesure chaque semaine, trois passages par question, parce qu'une réponse quotidienne unique bouge plus que la réalité qu'elle prétend décrire. Si vous voulez du quotidien, ils le font mieux."],
       ["Essayer avant de payer",
-       "AIVisib propose un test gratuit en direct, sans compte et sans carte : six vraies questions de clients, trois moteurs. Les trois autres proposent des essais de sept jours, après inscription."],
+       "AIVisib propose un test gratuit en direct, sans compte et sans carte : six vraies questions de clients, trois moteurs. Les trois autres proposent des essais gratuits, après inscription."],
     ],
     lead2: "Tout ce qui suit est factuel et vérifié. Là où un concurrent fait mieux, c'est écrit.",
   },
   ar: {
     h1: "مقارنة أدوات قياس الظهور في الذكاء الاصطناعي: AIVisib، Peec AI، Otterly.AI، Profound",
     back: "← العودة إلى الرئيسية",
-    checked: "بيانات المنافسين مأخوذة من صفحات الأسعار والمساعدة المعلنة لديهم، وتم التحقق منها في سبتمبر 2026.",
+    checked: "بيانات المنافسين مأخوذة من صفحات الأسعار والمساعدة المعلنة لديهم، وتم التحقق منها في سبتمبر 2026، ثم روجعت الأسعار في 4 أكتوبر 2026.",
     needk: "أي أداة لأي حاجة",
     faqk: "الأسئلة الشائعة",
     needs: [
       ["تغطية المحركات الأربعة بأقل سعر",
-       "يشمل AIVisib محركات ChatGPT، Gemini، Perplexity، Claude في كل الباقات، ابتداءً من 59 دولاراً شهرياً. باقة Peec AI الأساسية تغطي ثلاثة محركات يختارها المستخدم، وتبيع Otterly.AI محركي Gemini وClaude كإضافات مدفوعة، وباقة Profound الأساسية تقيس ChatGPT فقط."],
+       "يشمل AIVisib محركات ChatGPT، Gemini، Perplexity، Claude في كل الباقات، ابتداءً من 59 دولاراً شهرياً. باقة Peec AI الأساسية تغطي ثلاثة محركات يختارها المستخدم، وتبيع Otterly.AI محركي Gemini وClaude كإضافات مدفوعة، أما Profound فلا ينشر سعراً: تجربة مجانية ثم باقة يُحدَّد سعرها عند الطلب."],
       ["وكالة لديها نحو عشرة عملاء",
        "باقة Agency في AIVisib بـ399 دولاراً شهرياً لثماني علامات، أي 50 دولاراً لكل عميل، مع تقارير بعلامة الوكالة وروابط مشاركة للعملاء، وكل علامة إضافية بـ49 دولاراً شهرياً. أما Peec AI وProfound فيعملان بنظام الأرصدة، وباقة Otterly.AI القياسية بـ189 دولاراً لمئة سؤال."],
       ["القياس بالعربية",
@@ -85,15 +85,15 @@ const P = {
       ["المتابعة اليومية",
        "هنا يتقدم الآخرون: Peec AI، Otterly.AI، Profound تقيس يومياً. أما AIVisib فيقيس أسبوعياً بثلاث جولات لكل سؤال، لأن إجابة يومية واحدة تتقلب أكثر من الواقع الذي يُفترض أن تصفه. إن كنت تريد متابعة يومية، فهم يفعلون ذلك أفضل منا."],
       ["التجربة قبل الدفع",
-       "يقدّم AIVisib فحصاً مجانياً مباشراً دون حساب ودون بطاقة: ستة أسئلة حقيقية من العملاء، على ثلاثة محركات. أما الأدوات الثلاث الأخرى فتقدّم تجربة سبعة أيام بعد التسجيل."],
+       "يقدّم AIVisib فحصاً مجانياً مباشراً دون حساب ودون بطاقة: ستة أسئلة حقيقية من العملاء، على ثلاثة محركات. أما الأدوات الثلاث الأخرى فتقدّم تجربة مجانية بعد التسجيل."],
     ],
     lead2: "كل ما يلي وقائع متحقَّق منها. وحيث يتفوّق منافس، نكتب ذلك هنا.",
   },
 };
 const META = {
-  en: { t: "AI visibility tools compared — AIVisib vs Peec AI, Otterly.AI, Profound", d: "Entry price, engines included, Arabic support, confidence intervals, agency tiers: AIVisib next to Peec AI, Otterly.AI and Profound, from their public pricing, September 2026." },
-  fr: { t: "Comparatif des outils de visibilité IA — AIVisib, Peec AI, Otterly.AI, Profound", d: "Prix d'entrée, moteurs inclus, arabe, intervalles de confiance, offres agences : AIVisib face à Peec AI, Otterly.AI et Profound, d'après leurs tarifs publics, septembre 2026." },
-  ar: { t: "مقارنة أدوات الظهور في الذكاء الاصطناعي — AIVisib، Peec AI، Otterly.AI، Profound", d: "سعر البداية، المحركات المشمولة، العربية، مجالات الثقة، باقات الوكالات: AIVisib في مواجهة Peec AI، Otterly.AI، Profound، وفق أسعارها المعلنة، سبتمبر 2026." },
+  en: { t: "AI visibility tools compared — AIVisib vs Peec AI, Otterly.AI, Profound", d: "Entry price, engines included, Arabic support, confidence intervals, agency tiers: AIVisib next to Peec AI, Otterly.AI and Profound, from their public pricing, October 2026." },
+  fr: { t: "Comparatif des outils de visibilité IA — AIVisib, Peec AI, Otterly.AI, Profound", d: "Prix d'entrée, moteurs inclus, arabe, intervalles de confiance, offres agences : AIVisib face à Peec AI, Otterly.AI et Profound, d'après leurs tarifs publics, octobre 2026." },
+  ar: { t: "مقارنة أدوات الظهور في الذكاء الاصطناعي — AIVisib، Peec AI، Otterly.AI، Profound", d: "سعر البداية، المحركات المشمولة، العربية، مجالات الثقة، باقات الوكالات: AIVisib في مواجهة Peec AI، Otterly.AI، Profound، وفق أسعارها المعلنة، أكتوبر 2026." },
 };
 const NAV = {
   en: { n1: "How it works", n2: "Features", n3: "Pricing", n4: "Log in", n5: "Agencies", n6: "Methodology", n7: "FAQ", n_test: "Free test", v_back: P.en.back },
