@@ -31,3 +31,14 @@
 /methodology /methodologie.html 200
 /mesures      /mesures.html 200
 /measurements /mesures.html 200
+
+# Fichiers retirés définitivement (410 « Gone ») : Google les sort de son index plus vite qu'avec un 404
+/brand/AIVisib_Annexe_Seuil_Dedoublonnage_2026-09.pdf  /gone.html  410
+/brand/AIVisib_Presentation_Technique_2026-09.pdf      /gone.html  410
+/brand/AIVisib_Roadmap_2026-09.pdf                     /gone.html  410
+/brand/AIVisib_Technical_Overview_2026-09.pdf          /gone.html  410
+/video/aivisib-how-it-works-ar.mp4                     /gone.html  410
+/video/poster-ar.jpg                                   /gone.html  410
+/brand/logos/seat.svg                                  /gone.html  410
+/brand/screens/02_report.png                           /gone.html  410
+/brand/screens/03_report_changes.png                   /gone.html  410

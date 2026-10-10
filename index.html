@@ -1537,7 +1537,7 @@ function hcRender(){
   const d=new Date(snap.date);document.getElementById('hcMeta').textContent=ctName+' · '+(t.hc_meas||'')+' '+d.toLocaleDateString(l==='ar'?'ar-MA':l==='en'?'en-GB':'fr-FR');
   const rows=(HD.brands||[]).map(b=>Object.assign({},b,m[b.id]||{vis:0,pm:0,pos:null})).sort((a,b)=>b.vis-a.vis||((a.pos||9)-(b.pos||9))).slice(0,3);
   let n=0;rows.forEach(r=>{n=Math.max(n,r.n||0)});
-  document.getElementById('hcA').innerHTML=rows.map((r,i)=>'<div class="hc-row'+(HWIDE.includes(r.id)?' wide':'')+'" style="animation-delay:'+(i*140)+'ms"><span class="hc-rank">'+(i+1)+'</span><img src="/brand/logos/'+r.id+'.svg" alt=""><span class="hc-name">'+escH(r.name)+'</span><span class="hc-bar"><i data-w="'+r.vis+'"></i></span><span class="hc-val">'+r.vis+' % <small>± '+r.pm+'</small></span></div>').join('');
+  document.getElementById('hcA').innerHTML=rows.map((r,i)=>'<div class="hc-row'+(HWIDE.includes(r.id)?' wide':'')+'" style="animation-delay:'+(i*140)+'ms"><span class="hc-rank">'+(i+1)+'</span><img src="'+LG(r.id)+'" alt=""><span class="hc-name">'+escH(r.name)+'</span><span class="hc-bar"><i data-w="'+r.vis+'"></i></span><span class="hc-val">'+r.vis+' % <small>± '+r.pm+'</small></span></div>').join('');
   document.getElementById('hcN').textContent=n+' '+(t.hc_resp||'');
   requestAnimationFrame(()=>requestAnimationFrame(()=>card.querySelectorAll('.hc-bar i').forEach(b=>b.style.width=b.dataset.w+'%')));
 }
@@ -1589,6 +1589,8 @@ function setLang(l){
 }
 /* ---------- audit gratuit ---------- */
 const AUDIT_URL=(location.hostname==="localhost"||location.hostname==="127.0.0.1")?"http://localhost:8790":"https://aivisib-engine.onrender.com";
+// chemin d'un logo, assemblé pour que les robots ne lisent pas « /brand/logos/ » comme un lien (404 dans Search Console)
+function LG(id){return ["","brand","logos",id+".svg"].join("/");}
 function escH(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 // Test gratuit depuis le hero : on reporte la marque dans le formulaire d'audit et on y amène le visiteur
 function heroTest(ev){
@@ -1734,7 +1736,7 @@ function bwRender(){if(!BW)return;const t=T[lang];const cc=document.getElementBy
   const asc=m==='pos';rows.sort((a,b)=>{if(a.v==null&&b.v==null)return 0;if(a.v==null)return 1;if(b.v==null)return -1;return asc?a.v-b.v:b.v-a.v;});
   const max=m==='pos'?Math.max(...rows.map(r=>r.v||0),1):100;
   bars.innerHTML=rows.map(r=>{const w=r.v==null?0:(m==='pos'?(1-(r.v-1)/Math.max(max,2))*100:r.v);const val=r.v==null?'<small>'+escH(t.bw_none)+'</small>':(m==='pos'?'#'+r.v:r.v+' %'+(m==='vis'?' <small>± '+r.pm+'</small>':''));
-    return '<div class="bb'+(r.id===bwBrand?' on':'')+'" data-b="'+r.id+'" onclick="bwSel(\''+r.id+'\')" style="cursor:pointer"><span class="bn"><img src="/brand/logos/'+r.id+'.svg" alt="">'+escH(r.name)+'</span><span class="bt"><i style="width:'+Math.max(0,Math.min(100,w))+'%"></i></span><span class="bv">'+val+'</span></div>';}).join('');
+    return '<div class="bb'+(r.id===bwBrand?' on':'')+'" data-b="'+r.id+'" onclick="bwSel(\''+r.id+'\')" style="cursor:pointer"><span class="bn"><img src="'+LG(r.id)+'" alt="">'+escH(r.name)+'</span><span class="bt"><i style="width:'+Math.max(0,Math.min(100,w))+'%"></i></span><span class="bv">'+val+'</span></div>';}).join('');
   // graphique : une ligne par marque (couleur dédiée), x = semaines de la période, y = indicateur
   const hist=snaps.slice(-per);const W=520,H=220,px=34,py=22,pb=30;
   const vals=BW.brands.map(br=>({id:br.id,name:br.name,color:br.color||'#888',pts:hist.map((s,i)=>({i,d:s.date,v:(s.data[cc][cl][ek][br.id]||{})[m]}))}));
@@ -1746,9 +1748,9 @@ function bwRender(){if(!BW)return;const t=T[lang];const cc=document.getElementBy
   const order=[...vals].sort((r1,r2)=>(r1.id===bwBrand)-(r2.id===bwBrand));const single=hist.length<2;const ranked=[...vals].filter(r=>r.pts.some(p=>p.v!=null)).sort((r1,r2)=>{const a=r1.pts[0].v,b=r2.pts[0].v;return m==='pos'?a-b:b-a;});const xk={};ranked.forEach((r,k)=>{xk[r.id]=px+(k+.5)*(W-2*px)/ranked.length;});const XP=(r,p)=>single?xk[r.id]:X(p.i);
   for(const r of order){const on=r.id===bwBrand;const pts=r.pts.filter(p=>p.v!=null);if(!pts.length)continue;
     if(pts.length>1){const P=pts.map(p=>[XP(r,p),Y(p.v)]);const d=bwCurve(P);svgs+='<path fill="none" stroke="'+r.color+'" stroke-width="'+(on?3.2:1.6)+'" stroke-opacity="'+(on?1:.5)+'" stroke-linecap="round" d="'+d+'"/>';if(on)svgs+='<path fill="'+r.color+'" fill-opacity=".08" d="'+d+' L'+P[P.length-1][0]+','+(H-pb)+' L'+P[0][0]+','+(H-pb)+' Z"/>';}
-    pts.forEach(p=>{const sz=on?26:18,wide=['skoda','lexus','landrover'].includes(r.id),w=wide?sz*1.9:sz;svgs+='<g style="cursor:pointer" onclick="bwSel(\''+r.id+'\')"><title>'+escH(r.name)+' · '+p.d+' · '+(m==='pos'?'#'+p.v:p.v+' %')+'</title><rect x="'+(XP(r,p)-w/2)+'" y="'+(Y(p.v)-sz/2)+'" width="'+w+'" height="'+sz+'" rx="'+(wide?5:sz/2)+'" fill="#fff" stroke="'+r.color+'" stroke-width="'+(on?2:1)+'" opacity="'+(on?1:.85)+'"/><image href="/brand/logos/'+r.id+'.svg" x="'+(XP(r,p)-w/2+2)+'" y="'+(Y(p.v)-sz/2+2)+'" width="'+(w-4)+'" height="'+(sz-4)+'" preserveAspectRatio="xMidYMid meet"/></g>';if(on)svgs+='<text x="'+XP(r,p)+'" y="'+(Y(p.v)-sz/2-6)+'" text-anchor="middle" font-size="11" font-weight="700" fill="'+r.color+'">'+(m==='pos'?'#'+p.v:p.v+'%')+'</text>';});}
+    pts.forEach(p=>{const sz=on?26:18,wide=['skoda','lexus','landrover'].includes(r.id),w=wide?sz*1.9:sz;svgs+='<g style="cursor:pointer" onclick="bwSel(\''+r.id+'\')"><title>'+escH(r.name)+' · '+p.d+' · '+(m==='pos'?'#'+p.v:p.v+' %')+'</title><rect x="'+(XP(r,p)-w/2)+'" y="'+(Y(p.v)-sz/2)+'" width="'+w+'" height="'+sz+'" rx="'+(wide?5:sz/2)+'" fill="#fff" stroke="'+r.color+'" stroke-width="'+(on?2:1)+'" opacity="'+(on?1:.85)+'"/><image href="'+LG(r.id)+'" x="'+(XP(r,p)-w/2+2)+'" y="'+(Y(p.v)-sz/2+2)+'" width="'+(w-4)+'" height="'+(sz-4)+'" preserveAspectRatio="xMidYMid meet"/></g>';if(on)svgs+='<text x="'+XP(r,p)+'" y="'+(Y(p.v)-sz/2-6)+'" text-anchor="middle" font-size="11" font-weight="700" fill="'+r.color+'">'+(m==='pos'?'#'+p.v:p.v+'%')+'</text>';});}
   document.getElementById('bwTrend').innerHTML=svgs;
-  document.getElementById('bwLegend').innerHTML=vals.map(r=>'<button class="lg'+(r.id===bwBrand?' on':'')+'" data-b="'+r.id+'" onclick="bwSel(\''+r.id+'\')"><img src="/brand/logos/'+r.id+'.svg" alt=""><i style="background:'+r.color+'"></i>'+escH(r.name)+'</button>').join('');
+  document.getElementById('bwLegend').innerHTML=vals.map(r=>'<button class="lg'+(r.id===bwBrand?' on':'')+'" data-b="'+r.id+'" onclick="bwSel(\''+r.id+'\')"><img src="'+LG(r.id)+'" alt=""><i style="background:'+r.color+'"></i>'+escH(r.name)+'</button>').join('');
   const br=BW.brands.find(x=>x.id===bwBrand);document.getElementById('bwTrendTitle').textContent=t.bw_trend+' · '+document.getElementById('bwMetric').selectedOptions[0].textContent+(hist.length>1?' · '+hist.length+' '+t.bw_weeks:'');
   document.getElementById('bwTrendNote').textContent=snaps.length<2?t.bw_hist:(m==='pos'?t.bw_pos1:'');
   const nAns=Object.values(D)[0]?Object.values(D)[0].n:0;
