@@ -2,6 +2,8 @@
 
 AIVisib mesure à quelle fréquence ChatGPT, Gemini, Perplexity et Claude recommandent votre entreprise quand vos clients leur posent une question. Chaque semaine, nous posons à ces quatre IA les questions que vos clients posent réellement, plusieurs fois chacune, et nous calculons votre score de visibilité avec sa marge d'erreur. Cette page explique nos principes, pour que vous puissiez juger nos chiffres sur pièces.
 
+**Le chiffre clé : pourquoi une seule capture d'écran ne suffit pas.** Dans notre étude de 3 200 réponses (4 marques, 40 questions, chaque question posée 5 fois à chacune des 4 IA, août 2026), quand une IA cite une marque au moins une fois, elle ne la cite pas à chaque passage dans 57 % des cas. La liste des concurrents cités change elle aussi d'un passage à l'autre dans 25 % des cas. Une capture unique peut donc montrer une marque absente alors qu'elle est souvent recommandée, ou l'inverse : c'est pourquoi AIVisib pose chaque question plusieurs fois.
+
 ## En bref
 
 - **Des questions de vrais clients**, adaptées à votre secteur, à votre marché et à vos langues (anglais, français, arabe et d'autres).

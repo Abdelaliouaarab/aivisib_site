@@ -2,6 +2,8 @@
 
 AIVisib measures how often ChatGPT, Gemini, Perplexity and Claude recommend your business when your customers ask them a question. Every week, we ask these four AI assistants the questions your customers actually ask, several times each, and we calculate your visibility score with its margin of error. This page explains our principles, so you can judge our numbers on evidence.
 
+**The key figure: why a single screenshot is not enough.** In our study of 3,200 answers (4 brands, 40 questions, each question asked 5 times to each of the 4 AI engines, August 2026), when an AI engine names a brand at least once, it does not name it on every run in 57% of cases. The list of competitors named also changes from one run to the next in 25% of cases. A single screenshot can therefore show a brand as absent when it is often recommended, or the other way round: this is why AIVisib asks every question several times.
+
 ## At a glance
 
 - **Real customer questions**, tailored to your sector, your market and your languages (English, French, Arabic and more).

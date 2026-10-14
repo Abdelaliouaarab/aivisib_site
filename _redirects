@@ -5,10 +5,10 @@
 /fr          /index.fr.html    200
 /ar          /index.ar.html    200
 # Pages dédiées (réécritures : l'URL reste propre, index.html affiche la section demandée)
-/agences     /index.pre.html?view=agences   200
+/agences     /agences.html   200
 /comparatif  /compare.html 200
 /faq         /compare.html 200
-/agencies    /index.pre.html?view=agences   200
+/agencies    /agences.html   200
 /compare     /compare.html 200
 /guide/chatgpt-recommends-your-brand  /guide-chatgpt-brand.html 200
 /guide/real-change-or-noise           /guide-signal-bruit.html 200

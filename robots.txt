@@ -14,4 +14,23 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+# Robots de recherche et de lecture à la demande des assistants (ChatGPT Search, Claude, Perplexity)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://aivisib.com/sitemap.xml

@@ -65,6 +65,10 @@ const html = `<!DOCTYPE html>
 <title>${META.fr.t}</title>
 <meta name="description" content="${META.fr.d}">
 <link rel="canonical" href="https://aivisib.com/mesures">
+<link rel="alternate" hreflang="en" href="https://aivisib.com/mesures?lang=en">
+<link rel="alternate" hreflang="fr" href="https://aivisib.com/mesures?lang=fr">
+<link rel="alternate" hreflang="ar" href="https://aivisib.com/mesures?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://aivisib.com/mesures">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0A0A0B">
 <meta property="og:type" content="article"><meta property="og:site_name" content="AIVisib"><meta property="og:url" content="https://aivisib.com/mesures"><meta property="og:title" content="${META.fr.t}"><meta property="og:description" content="${META.fr.d}"><meta property="og:image" content="https://aivisib.com/brand/linkedin/li_post2_airline.png">
