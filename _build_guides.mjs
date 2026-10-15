@@ -72,7 +72,7 @@ const GUIDES = [
     meta: {
       en: { t: "How to know whether ChatGPT recommends your brand — AIVisib", d: "The method, step by step: ask the questions your customers ask, in a neutral session, several times, and count. Why your own ChatGPT gives a false reading, and why a score without a margin of error means nothing." },
       fr: { t: "Comment savoir si ChatGPT recommande votre marque — AIVisib", d: "La méthode, étape par étape : poser les questions de vos clients, en session neutre, plusieurs fois, et compter. Pourquoi votre propre ChatGPT vous ment, et pourquoi un score sans marge d'erreur ne veut rien dire." },
-      ar: { t: "تعرف تعرف إن كان ChatGPT يوصي بعلامتك التجارية — AIVisib", d: "الطريقة خطوة بخطوة: اطرح أسئلة عملائك في جلسة محايدة عدة مرات، ثم أحصِ. لماذا يضلّلك حسابك الشخصي، ولماذا لا تعني نتيجة بلا هامش خطأ شيئاً." },
+      ar: { t: "كيف تعرف إن كان ChatGPT يوصي بعلامتك التجارية — AIVisib", d: "الطريقة خطوة بخطوة: اطرح أسئلة عملائك في جلسة محايدة عدة مرات، ثم أحصِ. لماذا يضلّلك حسابك الشخصي، ولماذا لا تعني نتيجة بلا هامش خطأ شيئاً." },
     },
   },
   {
@@ -163,6 +163,8 @@ for (const g of GUIDES) {
   const langs = Object.keys(L);
   const faq = g.faq ? faqOf(readFileSync(`_guides_src/${g.src}_${existsSync(`_guides_src/${g.src}_en.md`) ? "en" : Object.keys(L)[0]}.md`, "utf8")) : [];
   const def = langs.includes("fr") ? "fr" : langs[0];
+  const PATH = new URL(g.url).pathname;
+  const LURL = { en: g.url, fr: "https://aivisib.com/fr" + PATH, ar: "https://aivisib.com/ar" + PATH };
   const META = {};
   for (const l of ["en", "fr", "ar"]) META[l] = g.meta[l] || g.meta[langs.includes("en") ? "en" : def];
   // données structurées : un article, lu par les moteurs
@@ -183,7 +185,7 @@ for (const g of GUIDES) {
 <title>${META[def].t}</title>
 <meta name="description" content="${META[def].d}">
 <link rel="canonical" href="${g.url}">
-${langs.map((l) => `<link rel="alternate" hreflang="${l}" href="${g.url}?lang=${l}">`).join("\n")}
+${langs.map((l) => `<link rel="alternate" hreflang="${l}" href="${l === "en" ? g.url + "?lang=en" : LURL[l]}">`).join("\n")}
 <link rel="alternate" hreflang="x-default" href="${g.url}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0A0A0B">
@@ -228,9 +230,9 @@ ${langs.map((l) => `<article class="gdlang" id="gd_${l}"${l === "ar" ? ' dir="rt
 </main>
 ${footer}
 <script>
-const NAV=${JSON.stringify(NAV)};const META=${JSON.stringify(META)};const LANGS=${JSON.stringify(langs)};const DEF=${JSON.stringify(def)};
+const NAV=${JSON.stringify(NAV)};const META=${JSON.stringify(META)};const LANGS=${JSON.stringify(langs)};const DEF=${JSON.stringify(def)};const PAGE_LANG=null;const ALT=${JSON.stringify({ en: g.url + "?lang=en", fr: LURL.fr, ar: LURL.ar })};
 const CTA={en:"Check my brand — free, no card",fr:"Vérifier ma marque — gratuit, sans carte",ar:"افحص علامتي — مجاناً وبدون بطاقة"};
-function setLang(l){const shown=LANGS.includes(l)?l:(LANGS.includes('en')?'en':DEF);
+function setLang(l){if(PAGE_LANG&&l!==PAGE_LANG&&ALT[l]){location.href=ALT[l];return;}const shown=LANGS.includes(l)?l:(LANGS.includes('en')?'en':DEF);
  document.body.classList.toggle('rtl',shown==='ar');document.documentElement.lang=shown;
  document.title=META[l].t;document.querySelector('meta[name=description]').setAttribute('content',META[l].d);
  document.querySelectorAll('[data-i]').forEach(e=>{const k=e.getAttribute('data-i');if(NAV[l]&&NAV[l][k]!==undefined)e.textContent=NAV[l][k]});
@@ -244,11 +246,30 @@ function toggleMenu(){const b=document.getElementById('burgerBtn'),m=document.ge
 function refreshThemeBtn(){const b=document.getElementById('themeBtn');if(b)b.setAttribute('aria-label',document.body.classList.contains('dark')?'Light mode':'Dark mode');}
 function toggleTheme(){document.body.classList.toggle('dark');try{localStorage.setItem('aiv_theme',document.body.classList.contains('dark')?'dark':'light')}catch(e){}refreshThemeBtn();}
 refreshThemeBtn();
-setLang((()=>{const ok=l=>['en','fr','ar'].includes(l);try{const u=new URLSearchParams(location.search).get('lang');if(ok(u))return u;}catch(e){}try{const s=localStorage.getItem('lang');if(ok(s))return s;}catch(e){}try{const langs=(navigator.languages||[navigator.language||'en']).map(x=>String(x).slice(0,2).toLowerCase());const h=langs.find(ok);if(h)return h;}catch(e){}return 'en';})());
+setLang(PAGE_LANG||(()=>{const ok=l=>['en','fr','ar'].includes(l);try{const u=new URLSearchParams(location.search).get('lang');if(ok(u))return u;}catch(e){}try{const s=localStorage.getItem('lang');if(ok(s))return s;}catch(e){}try{const langs=(navigator.languages||[navigator.language||'en']).map(x=>String(x).slice(0,2).toLowerCase());const h=langs.find(ok);if(h)return h;}catch(e){}return 'en';})());
 </script>
 </body>
 </html>`;
   writeFileSync(g.file, html);
+  // versions par langue (15/10/2026) : /ar/… et /fr/… avec titre, description, adresse canonique et texte de LEUR langue seulement.
+  // Avant, l'arabe n'existait qu'en texte caché sur une page déclarée en français : invisible pour Google, Bing et les IA.
+  for (const l of ["ar", "fr"].filter((x) => langs.includes(x))) {
+    const base = g.file.replace(/\.html$/, "");
+    let v = html
+      .replace(`<html lang="${def}">`, `<html lang="${l}"${l === "ar" ? ' dir="rtl"' : ""}>`)
+      .replace(`<title>${META[def].t}</title>`, `<title>${META[l].t}</title>`)
+      .split(`content="${META[def].d}"`).join(`content="${META[l].d}"`)
+      .split(`content="${META[def].t}"`).join(`content="${META[l].t}"`)
+      .replace(`<link rel="canonical" href="${g.url}">`, `<link rel="canonical" href="${LURL[l]}">`)
+      .replace(`<meta property="og:url" content="${g.url}">`, `<meta property="og:url" content="${LURL[l]}">`)
+      .replace("const PAGE_LANG=null;", `const PAGE_LANG=${JSON.stringify(l)};`)
+      .replace(`const LANGS=${JSON.stringify(langs)};`, `const LANGS=${JSON.stringify([l])};`)
+      .replace("<body>", l === "ar" ? '<body class="rtl">' : "<body>");
+    for (const x of langs) if (x !== l) v = v.replace(new RegExp(`<article class="gdlang" id="gd_${x}"[^>]*>[\\s\\S]*?</article>\\n?`), "");
+    v = v.replace(`<article class="gdlang" id="gd_${l}"`, `<article class="gdlang on" id="gd_${l}"`);
+    writeFileSync(`${base}.${l}.html`, v);
+    console.log(`   + ${base}.${l}.html → ${LURL[l]}`);
+  }
   const visible = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().length;
   console.log(`→ ${g.file} (${langs.join(", ")}) · ${visible} caractères lisibles`);
 }

@@ -4,6 +4,24 @@
 # Accueil en français et en arabe, pré-rendus (texte lisible par les robots dans la langue)
 /fr          /index.fr.html    200
 /ar          /index.ar.html    200
+# Versions par langue des guides et pages « promesse » (15/10/2026) : une adresse = une langue
+/fr/guide/ai-visibility-for-agencies  /guide-agences.fr.html  200
+/ar/guide/chatgpt-recommends-your-brand  /guide-chatgpt-brand.ar.html  200
+/fr/guide/chatgpt-recommends-your-brand  /guide-chatgpt-brand.fr.html  200
+/ar/guide/real-change-or-noise  /guide-signal-bruit.ar.html  200
+/fr/guide/real-change-or-noise  /guide-signal-bruit.fr.html  200
+/ar/cheaper-alternative-to-peec-otterly-profound  /page-alternative-prix.ar.html  200
+/fr/cheaper-alternative-to-peec-otterly-profound  /page-alternative-prix.fr.html  200
+/ar/ai-visibility-tool-arabic-french  /page-arabe-francais.ar.html  200
+/fr/ai-visibility-tool-arabic-french  /page-arabe-francais.fr.html  200
+/ar/ai-visibility-margin-of-error  /page-marge-erreur.ar.html  200
+/fr/ai-visibility-margin-of-error  /page-marge-erreur.fr.html  200
+/ar/white-label-ai-visibility-reports  /page-marque-blanche.ar.html  200
+/fr/white-label-ai-visibility-reports  /page-marque-blanche.fr.html  200
+/ar/ai-visibility-tool-with-claude-and-gemini-included  /page-moteurs-inclus.ar.html  200
+/fr/ai-visibility-tool-with-claude-and-gemini-included  /page-moteurs-inclus.fr.html  200
+/ar/free-ai-visibility-check  /page-test-gratuit.ar.html  200
+/fr/free-ai-visibility-check  /page-test-gratuit.fr.html  200
 # Pages dédiées (réécritures : l'URL reste propre, index.html affiche la section demandée)
 /agences     /agences.html   200
 /comparatif  /compare.html 200
