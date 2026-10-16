@@ -22,6 +22,11 @@
 /fr/ai-visibility-tool-with-claude-and-gemini-included  /page-moteurs-inclus.fr.html  200
 /ar/free-ai-visibility-check  /page-test-gratuit.ar.html  200
 /fr/free-ai-visibility-check  /page-test-gratuit.fr.html  200
+# Analyseur GRATUIT du site (16/10/2026) : une adresse par langue
+/site-check  /site-check.html  200
+/fr/site-check  /site-check.fr.html  200
+/ar/site-check  /site-check.ar.html  200
+/analyse-gratuite-site  /site-check.fr.html  200
 # Pages dédiées (réécritures : l'URL reste propre, index.html affiche la section demandée)
 /agences     /agences.html   200
 /comparatif  /compare.html 200
