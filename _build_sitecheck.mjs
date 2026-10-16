@@ -22,9 +22,9 @@ for (const l of ["en", "fr", "ar"]) for (const k of FOOT_KEYS) NAV[l][k] = pick(
 
 const P = {
   en: {
-    title: "Free AI readability check: can ChatGPT read your website? — AIVisib",
-    desc: "Free, instant check of 24 signals AI engines need to read your website: AI crawlers allowed, text readable without JavaScript, structured data, FAQ, languages. No account.",
-    h1: "Can AI engines read your website?", lead: "A free, instant check of the 24 signals ChatGPT, Gemini, Perplexity and Claude need to read and understand your site. No account, no card.",
+    title: "Free GEO audit: can ChatGPT and AI engines read your website? — AIVisib",
+    desc: "Free GEO audit: an instant check of 24 signals AI engines need to read your website: AI crawlers allowed, text readable without JavaScript, structured data, FAQ, languages. No account.",
+    geo: "Free GEO audit · GEO = Generative Engine Optimization, optimizing your site for AI engines", h1: "Can AI engines read your website?", lead: "A free, instant check of the 24 signals ChatGPT, Gemini, Perplexity and Claude need to read and understand your site. No account, no card.",
     url: "Your website address", brand: "Your brand name (optional)", langs: "Your customers' languages", go: "Check my site", wait: "Reading your site… (10 to 30 seconds)",
     score: "AI readability score", fix: "To fix first", good: "Already good", ev: "Technical detail",
     mailT: "Receive this report by email", mailP: "Your email address", mailB: "Send me the report", mailOk: "Sent. Check your inbox (and your spam folder).",
@@ -38,9 +38,9 @@ const P = {
     ],
   },
   fr: {
-    title: "Analyse gratuite : votre site est-il lisible par ChatGPT et les IA ? — AIVisib",
-    desc: "Vérification gratuite et immédiate des 24 signaux dont les IA ont besoin pour lire votre site : robots des IA autorisés, texte sans JavaScript, données structurées, FAQ, langues. Sans compte.",
-    h1: "Les IA peuvent-elles lire votre site ?", lead: "Une analyse gratuite et immédiate des 24 signaux dont ChatGPT, Gemini, Perplexity et Claude ont besoin pour lire et comprendre votre site. Sans compte, sans carte.",
+    title: "Audit GEO gratuit : votre site est-il lisible par ChatGPT et les IA ? — AIVisib",
+    desc: "Audit GEO gratuit : vérification immédiate des 24 signaux dont les IA ont besoin pour lire votre site : robots des IA autorisés, texte sans JavaScript, données structurées, FAQ, langues. Sans compte.",
+    geo: "Audit GEO gratuit · GEO = optimisation pour les moteurs d'IA générative", h1: "Les IA peuvent-elles lire votre site ?", lead: "Une analyse gratuite et immédiate des 24 signaux dont ChatGPT, Gemini, Perplexity et Claude ont besoin pour lire et comprendre votre site. Sans compte, sans carte.",
     url: "L'adresse de votre site", brand: "Le nom de votre marque (facultatif)", langs: "Les langues de vos clients", go: "Analyser mon site", wait: "Lecture de votre site… (10 à 30 secondes)",
     score: "Note de lisibilité par les IA", fix: "À corriger en priorité", good: "Déjà bon", ev: "Détail technique",
     mailT: "Recevoir ce rapport par email", mailP: "Votre adresse email", mailB: "M'envoyer le rapport", mailOk: "Envoyé. Regardez votre boîte de réception (et vos courriers indésirables).",
@@ -54,9 +54,9 @@ const P = {
     ],
   },
   ar: {
-    title: "فحص مجاني: هل يستطيع ChatGPT وأنظمة الذكاء الاصطناعي قراءة موقعكم؟ — AIVisib",
-    desc: "فحص مجاني وفوري لـ 24 مؤشراً تحتاجها أنظمة الذكاء الاصطناعي لقراءة موقعكم: السماح لروبوتاتها، والنص المقروء دون JavaScript، والبيانات المنظّمة، والأسئلة الشائعة، واللغات. دون حساب.",
-    h1: "هل تستطيع أنظمة الذكاء الاصطناعي قراءة موقعكم؟", lead: "فحص مجاني وفوري لـ 24 مؤشراً تحتاجها ChatGPT، Gemini، Perplexity، Claude لقراءة موقعكم وفهمه. دون حساب ودون بطاقة.",
+    title: "فحص GEO مجاني: هل تستطيع أنظمة الذكاء الاصطناعي قراءة موقعكم؟ — AIVisib",
+    desc: "فحص GEO مجاني وفوري لـ 24 مؤشراً تحتاجها أنظمة الذكاء الاصطناعي لقراءة موقعكم: السماح لروبوتاتها، والنص المقروء دون JavaScript، والبيانات المنظّمة، والأسئلة الشائعة، واللغات. دون حساب.",
+    geo: "فحص GEO مجاني · GEO هو تحسين الموقع لمحركات الذكاء الاصطناعي التوليدي", h1: "هل تستطيع أنظمة الذكاء الاصطناعي قراءة موقعكم؟", lead: "فحص مجاني وفوري لـ 24 مؤشراً تحتاجها ChatGPT، Gemini، Perplexity، Claude لقراءة موقعكم وفهمه. دون حساب ودون بطاقة.",
     url: "عنوان موقعكم", brand: "اسم علامتكم (اختياري)", langs: "لغات عملائكم", go: "افحصوا موقعي", wait: "جارٍ قراءة موقعكم… (من 10 إلى 30 ثانية)",
     score: "نتيجة قابلية القراءة", fix: "ما يجب تصحيحه أولاً", good: "ما هو جيد", ev: "تفصيل تقني",
     mailT: "استلموا هذا التقرير بالبريد الإلكتروني", mailP: "بريدكم الإلكتروني", mailB: "أرسلوا لي التقرير", mailOk: "تم الإرسال. راجعوا صندوق الوارد (والرسائل غير المرغوب فيها).",
@@ -97,6 +97,7 @@ ${fonts}
 ${style}
 <style>
 .scw{max-width:820px;margin:0 auto;padding:54px 24px 90px}
+.scw .geo{display:inline-block;margin:0 0 14px;padding:6px 14px;border-radius:99px;border:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--dim)}
 .scw h1{font-size:clamp(32px,4.6vw,52px);letter-spacing:-.03em;line-height:1.08;margin-bottom:16px}
 .scw .lead{font-size:18px;color:var(--dim);line-height:1.65;margin-bottom:28px}
 .scf{display:block!important;text-align:start;width:100%;max-width:none;box-sizing:border-box;margin:0;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px}
@@ -127,6 +128,7 @@ body.rtl .scw .seo ul{margin:0 20px 10px 0}.scw .seo h3{font-size:17px;margin:20
 ${header}
 <div class="vback"><a href="${L === "en" ? "/" : "/" + L}" data-i="v_back"></a></div>
 <main class="scw">
+<p class="geo">${p.geo}</p>
 <h1>${p.h1}</h1>
 <p class="lead">${p.lead}</p>
 <form class="scf" id="scf" onsubmit="return runCheck(event)">
