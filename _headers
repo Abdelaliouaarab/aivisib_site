@@ -7,3 +7,8 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()
   Cross-Origin-Opener-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
+
+# Découverte par les agents IA (RFC 8288) : résumé lisible par les IA + plan du site
+/
+  Link: </llms.txt>; rel="describedby"; type="text/markdown", </llms.txt>; rel="service-doc"; type="text/markdown", </sitemap.xml>; rel="sitemap"; type="application/xml"
+  Vary: Accept

@@ -1,4 +1,6 @@
 User-agent: *
+# Content Signals (contentsignals.org) : nous autorisons la recherche, les réponses des IA et l'entraînement — nous voulons que les IA connaissent AIVisib
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 # AI crawlers welcome — we want AI engines to know AIVisib
