@@ -1719,6 +1719,28 @@ setLang((()=>{
   return 'en';
 })());
 
+/* ===== arrivée depuis les pubs Meta du Golfe (28/10/2026) : on reprend le message de la vidéo (agences, Golfe, arabe + anglais)
+   et le test gratuit monte juste sous le hero ; uniquement pour utm_campaign golfe_agences / emirats_agences ===== */
+(function(){
+  let c='',q=null;try{q=new URLSearchParams(location.search);c=(q.get('utm_campaign')||'').toLowerCase();}catch(e){}
+  if(!/golfe|emirats|gulf/.test(c)) return;
+  Object.assign(T.en,{
+    kick:"For agencies in the Gulf · Arabic & English",
+    h1v5:"Is {eng} recommending your clients, or their competitors?",
+    subv4:"Customers in Dubai, Riyadh and Doha now ask AI which company to choose, often in Arabic. AIVisib measures how often ChatGPT, Gemini, Perplexity and Claude recommend a brand, in Arabic and English, with white-label reports under your agency's name.",
+    cta1:"Test a client's brand, free",
+    au_t:"Test one of your clients, free, in 30 seconds",
+    au_brand_ph:"Your client's brand name",
+    au_sector_ph:"Their sector (e.g. villa renovation)",
+    au_btn:"Run the free test",
+    au_p2:"Enter a client's brand, its sector and its city (e.g. villa renovation, Dubai). We ask ChatGPT, Gemini and Perplexity the questions real customers ask and show you who they recommend. No account, no card."
+  });
+  // le hero contient aussi le banc d'essai (très long sur mobile) : le test se place juste sous la carte du hero
+  const hg=document.querySelector('#hero .hg5'),au=document.getElementById('auditsec');
+  if(hg&&au){ hg.after(au); au.style.padding='28px 0 8px'; const w=au.querySelector('.wrap'); if(w) w.style.padding='0'; }
+  setLang(q&&['en','fr','ar'].includes(q.get('lang'))?q.get('lang'):'en');
+})();
+
 /* ===== diagramme de méthode ===== */
 function mdSel(n){document.querySelectorAll('.mnode').forEach(b=>b.classList.toggle('on',+b.dataset.n===n));document.querySelectorAll('.mp').forEach(p=>{p.hidden=+p.dataset.p!==n;});if(n===4)mdCalc();}
 function mdCalc(){const r=+document.getElementById('ccRuns').value;const hi=document.getElementById('ccHits');hi.max=r;let k=Math.min(+hi.value,r);hi.value=k;document.getElementById('ccRunsV').textContent=r;document.getElementById('ccHitsV').textContent=k;
